@@ -1,9 +1,5 @@
 @use 'abstracts' as *;
 
-.js-is-hidden {
-  opacity: 0 !important;
-}
-
 /* 
  * Utility class to hide content visually while keeping it screen reader-accessible.
  * Source: https://www.scottohara.me/blog/2017/04/14/inclusively-hidden.html 
