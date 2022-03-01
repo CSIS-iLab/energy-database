@@ -6,8 +6,8 @@ This repo use `node v16.9.1 (npm v8.4.1)`
 Clone & Install the dependencies...
 
 ```bash
-git clone git@github.com:CSIS-iLab/energy-database-spa.git
-cd energy-database-spa
+git clone git@github.com:CSIS-iLab/energy-database.git
+cd energy-database
 npm install
 ```
 

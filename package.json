@@ -7,6 +7,9 @@
     "dev": "rollup -c -w",
     "start": "sirv public --no-clear"
   },
+  "keywords": [],
+  "author": "José Romero",
+  "license": "See license in LICENSE",
   "devDependencies": {
     "@rollup/plugin-commonjs": "^17.0.0",
     "@rollup/plugin-node-resolve": "^11.0.0",
