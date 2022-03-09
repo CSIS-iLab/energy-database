@@ -6,11 +6,11 @@ const dataset = {
   columns: [],
   data: []
 }
+
 export function fetchData() {
   const dataPromise = d3Fetch.csv( URL )
   return dataPromise
 }
-
 
 function formatData (array) {
   // format policy_goals into an array of strings
@@ -19,6 +19,9 @@ function formatData (array) {
   array = formatTags(array)
   // format activity with title, description and link
   array = formatActivity(array)
+  // format columns titles
+  array['titles'] = formatColumnsTitle(array)
+
   return array
 }
 
@@ -33,36 +36,23 @@ export function getData() {
   })
 }
 
-// export default fetchData
-
 function formatPolicyGoals(array) {
   const policy_goals = ['emissions_reduction', 'economic_development', 'resilience']
   array.forEach( el => {
-    // console.log('title: ',el.title)
     const formattedPolicyGoals = []
     policy_goals.forEach( (policy, i) => {
-      // console.log(policy)
       if (el[policy_goals[i]])
         formattedPolicyGoals.push(policy_goals[i])
-        // console.log('is policy is: ',policy_goals[j])
     })
     el['policy_goals'] = formattedPolicyGoals
   })
   
-  // clean array
+  // clean array: it deletes the unnecessary keys because they are not under the policy_goals key
   array.forEach(row => {
     policy_goals.forEach(policy => {
       delete row[policy]
     })
   })
-  // const newArray = array.filter((item, i) => {
-  //   if(i == 0) console.log(item)
-  //   if (!item.emissions_reduction || !item.economic_development || !item.resilience) {
-  //     // console.log('item: ',item)
-  //     return true
-  //   }
-  //   delete
-  // })
   return array
 }
 
@@ -90,7 +80,7 @@ function formatTags(array) {
     el['tags'] = formattedTags
   })
 
-  // clean array
+  // clean array: it deletes the unnecessary keys because they are not under the tags key
   array.forEach(row => {
     tags.forEach(tag => {
       delete row[tag]
@@ -108,11 +98,27 @@ function formatActivity(array) {
     }
     el['activity'] = formattedActivity
   })
-  // clean array
+  // clean array: it deletes the unnecessary keys because they are not under the activity key
   array.forEach(row => {
     delete row.title
     delete row.description
     delete row.link
   })
   return array
+}
+
+function formatColumnsTitle(array) {
+  const titles = array.columns.map( title => title.replaceAll('_', ' '))
+  return titles.map( title => capitalizeWord(title))
+}
+
+
+function capitalizeWord(str) {
+  return str.toLowerCase()
+    .split(' ')
+    .map(
+      string => string[0]
+      .toUpperCase() + string.slice(1)
+    )
+    .join(' ')
 }
