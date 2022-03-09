@@ -94,7 +94,7 @@ function formatActivity(array) {
     const formattedActivity = {
       title: el.title,
       description: el.description,
-      link: el.link
+      link: el.URL
     }
     el['activity'] = formattedActivity
   })
@@ -102,7 +102,7 @@ function formatActivity(array) {
   array.forEach(row => {
     delete row.title
     delete row.description
-    delete row.link
+    delete row.URL
   })
   return array
 }
@@ -111,7 +111,6 @@ function formatColumnsTitle(array) {
   const titles = array.columns.map( title => title.replaceAll('_', ' '))
   return titles.map( title => capitalizeWord(title))
 }
-
 
 function capitalizeWord(str) {
   return str.toLowerCase()
