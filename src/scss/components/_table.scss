@@ -1,0 +1,30 @@
+@use '../abstracts/' as *;
+
+$color-royalblue: royalblue;
+$color-white: #fff;
+
+.table {
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+
+  thead {
+    width: 100vw;
+    tr td {
+      background-color: $color-royalblue;
+      border: 1px solid #ccc;
+      color: $color-white;
+      padding: .5rem .5rem;
+    }
+  }
+
+  tbody {
+    width: 100vw;
+    tr td {
+      background-color: $color-royalblue;
+      border: 1px solid #ccc;
+      color: $color-white;
+      padding: .5rem .5rem;
+    }
+  }
+}
