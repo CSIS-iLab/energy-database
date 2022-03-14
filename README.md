@@ -1,5 +1,4 @@
 # Energy Database | CSIS
----
 ### Quick Start Instructions
 This repo uses `node v16.9.1 (npm v8.4.1)`
 Data coming from `https://docs.google.com/spreadsheets/d/e/2PACX-1vRAWqEOfyQi5rqdsQ-ssGUe08fdB8AczK6_sUwf-deKITfbLlqSTYpOzO4yG5u_B5O68_tB595NjPDU/pub?output=csv`
