@@ -1,8 +1,7 @@
 # Energy Database | CSIS
----
 ### Quick Start Instructions
-This repo use `node v16.9.1 (npm v8.4.1)`
-
+This repo uses `node v16.9.1 (npm v8.4.1)`
+Data coming from `https://docs.google.com/spreadsheets/d/e/2PACX-1vRAWqEOfyQi5rqdsQ-ssGUe08fdB8AczK6_sUwf-deKITfbLlqSTYpOzO4yG5u_B5O68_tB595NjPDU/pub?output=csv`
 Clone & Install the dependencies...
 
 ```bash
@@ -56,4 +55,4 @@ Write clear and concise commit messages describing the changes you are making an
 This project uses the [BEM](http://getbem.com/introduction/) naming convention.
 
 ### Copyright / License
-Copyright © 2019 CSIS iDeas Lab under the [License](LICENSE).
+Copyright © 2022 CSIS iDeas Lab under the [License](LICENSE).
