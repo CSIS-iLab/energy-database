@@ -1,10 +1,11 @@
 import * as d3Fetch from 'd3-fetch'
+import { object_without_properties } from 'svelte/internal'
 
 const URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRAWqEOfyQi5rqdsQ-ssGUe08fdB8AczK6_sUwf-deKITfbLlqSTYpOzO4yG5u_B5O68_tB595NjPDU/pub?output=csv"
 
 const dataset = {
-  columns: [],
-  data: []
+  // columns: [],
+  // data: []
 }
 
 export function fetchData() {
@@ -13,6 +14,9 @@ export function fetchData() {
 }
 
 function formatData (array) {
+  // console.log(array)
+  // add id
+  array = addID(array)  
   // format policy_goals into an array of strings
   array = formatPolicyGoals(array)
   // format tags into an array of strings
@@ -28,12 +32,21 @@ function formatData (array) {
 export function getData() {
   console.log('getdata')
   const dataPromise = d3Fetch.csv( URL )
-  .then( data => {
-    console.log(data)
-    const newData = formatData(data)
-    dataset.columns = data.columns
-    dataset.data = newData
-  })
+  // const data = Promise.all([dataPromise])
+    .then( res => {
+      // console.log(res)
+      const newData = formatData(res)
+      // dataset["columnsTitles"] = newData.titles
+      dataset["data"] = newData
+      return {...dataset}
+    })
+  return dataPromise
+}
+
+function addID(array) {
+  array.forEach( (el, i) => el['id'] = i  )
+  // console.log(array)
+  return array
 }
 
 function formatPolicyGoals(array) {
@@ -47,7 +60,7 @@ function formatPolicyGoals(array) {
     el['policy_goals'] = formattedPolicyGoals
   })
   
-  // clean array: it deletes the unnecessary keys because they are not under the policy_goals key
+  // clean array: it deletes the unnecessary keys because they are now under the policy_goals key
   array.forEach(row => {
     policy_goals.forEach(policy => {
       delete row[policy]
@@ -74,13 +87,13 @@ function formatTags(array) {
   array.forEach( el => {
     const formattedTags = []
     tags.forEach( (tag, i) => {
-      if (el[tags[i]])
+      if ( el[tags[i]] )
         formattedTags.push(tags[i])
     })
     el['tags'] = formattedTags
   })
 
-  // clean array: it deletes the unnecessary keys because they are not under the tags key
+  // clean array: it deletes the unnecessary keys because they are now under the tags key
   array.forEach(row => {
     tags.forEach(tag => {
       delete row[tag]
@@ -98,7 +111,7 @@ function formatActivity(array) {
     }
     el['activity'] = formattedActivity
   })
-  // clean array: it deletes the unnecessary keys because they are not under the activity key
+  // clean array: it deletes the unnecessary keys because they are now under the activity key
   array.forEach(row => {
     delete row.title
     delete row.description
@@ -108,8 +121,7 @@ function formatActivity(array) {
 }
 
 function formatColumnsTitle(array) {
-  const titles = array.columns.map( title => title.replaceAll('_', ' '))
-  return titles.map( title => capitalizeWord(title))
+  return Object.keys(array[0]).map( title => title.replaceAll('_', ' '))
 }
 
 function capitalizeWord(str) {

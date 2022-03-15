@@ -3,31 +3,18 @@
   import { fetchData, getData } from './data'
   import Table from './components/Table.svelte'
 
-  const dataset =  {
-    data: [],
-    columns: []
-  }
+  const dataset =  {}
 
-  function capitalizeWord(str) {
-    return str.toLowerCase()
-      .split(' ')
-      .map(
-        string => string[0]
-        .toUpperCase() + string.slice(1)
-      )
-      .join(' ')
+  async function loadData() {
+    let res = await getData()
+    return res
   }
 
   onMount( () => {
-    getData()
-
-    // temporary code to help me visualize: load the current table
-    fetchData().then(res => {
-      dataset.data = [...res]
-      // remove '_' and add space and capitalize columns names
-      let formattedColumns = res.columns.map(col => col.replaceAll('_',' ') )
-      // dataset.columns = [...formattedColumns.map(col => capitalizeWord(col))]
-      dataset.columns = [...res.columns]
+    getData().then( res => {
+      console.log(res.data)
+      dataset["data"] = [...res.data]
+      dataset["titles"] = [...res.data.titles]
     })
   })
 
@@ -35,10 +22,13 @@
 
 <main>
 	<div>
-    Hello World!
-    <Table dataset={dataset} />
+    <h1>Hello World!</h1>
+
+    <Table dataset={dataset}/>
+  </div>  
 </main>
 
 <style lang='scss' global>
-  @import './scss/layout/_base.scss';
+  // @import './scss/layout/_base.scss';
+  @use './scss/main.scss';
 </style>
