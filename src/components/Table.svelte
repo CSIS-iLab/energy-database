@@ -1,4 +1,5 @@
 <script>
+  import Icon from './Icons.svelte';
   export let dataset
 
   function handleClick(e) {
@@ -30,7 +31,7 @@
     <tbody>
       {#each dataset.data as rows (rows.id)}
         <tr on:click={(e)=>handleClick(e)}>
-          <td>&#43; {rows.activity.title}</td>
+          <td><Icon name="icon-plus" width={'1rem'} height={'1rem'} class="icon"/>{rows.activity.title}</td>
           <td>{rows.state}</td>
           <td>{rows.policy_goals}</td>
           <td>{rows.authority}</td>

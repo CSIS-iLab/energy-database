@@ -44,10 +44,6 @@ $color-black-090: rgba(0, 0, 0, 0.9);
   }
 
   .extra-content {
-    .description{
-
-    }
-
     .link {
       color: blue;
       text-decoration: underline;
@@ -59,15 +55,8 @@ $color-black-090: rgba(0, 0, 0, 0.9);
         text-decoration: underline;
         text-transform: uppercase;
       }
-      &__description {}
     }
   }
-
-  // .btn {
-  //   &__icon{
-  //     background-color: transparent;
-  //   }
-  // }
 }
 
 
