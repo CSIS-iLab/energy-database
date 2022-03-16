@@ -25,7 +25,8 @@ function formatData (array) {
   array = formatActivity(array)
   // format columns titles
   array['titles'] = formatColumnsTitle(array)
-
+  // format states
+  array['states'] = formatStates(array)
   return array
 }
 
@@ -122,6 +123,10 @@ function formatActivity(array) {
 
 function formatColumnsTitle(array) {
   return Object.keys(array[0]).map( title => title.replaceAll('_', ' '))
+}
+
+function formatStates(array) {
+  return [...new Set(array.map(el => el.state))]
 }
 
 function capitalizeWord(str) {

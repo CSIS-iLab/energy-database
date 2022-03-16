@@ -1,6 +1,11 @@
 <script>
-  import Icon from './Icons.svelte';
+import { onMount } from 'svelte';
+
+  import Icon from './Icons.svelte'
+  import Select from './Select.svelte'
   export let dataset
+  // export let selectOptions
+  export let selected
 
   function handleClick(e) {
     console.log('clicked', e )
@@ -12,42 +17,52 @@
     // e.target.classList.toggle('description')
     // e.target.classList.add('description')
   }
+
 </script>
 
-<table class="table">
-  <thead>
-    <tr>
-      {#if (dataset.titles)}
-        <th scope="col">{dataset.titles[6]}</th>  <!-- activity -->
-        <th scope="col">{dataset.titles[0]}</th>  <!--- state -->
-        <th scope="col">{dataset.titles[4]}</th>  <!-- policy goals -->
-        <th scope="col">{dataset.titles[1]}</th>  <!-- authority -->
-        <th scope="col">{dataset.titles[2]}</th>  <!-- type of resource -->
-        <th scope="col">{dataset.titles[5]}</th>  <!-- tags -->
-      {/if}
-    </tr>
-  </thead>
-  {#if dataset.data}
-    <tbody>
-      {#each dataset.data as rows (rows.id)}
-        <tr on:click={(e)=>handleClick(e)}>
-          <td><Icon name="icon-plus" width={'1rem'} height={'1rem'} class="icon"/>{rows.activity.title}</td>
-          <td>{rows.state}</td>
-          <td>{rows.policy_goals}</td>
-          <td>{rows.authority}</td>
-          <td>{rows.type_of_resource}</td>
-          <td>{rows.tags}</td>
-          <div class="extra-content hide">
-            <div class="description">{rows.activity.description}</div>
-            <div class="link"><a href="{rows.activity.link}" target="_blank" rel="noopener noreferrer">{rows.activity.link}</a></div>
-            <div class="policy-goals"><span class="policy-goals__title">Policy Goals:</span> {rows.policy_goals}</div>
-          </div>
-        </tr>
-      {/each}
-    </tbody>
-  {/if}
-</table>
-
+<Select
+  selectOptions={dataset.states}
+  selected={selected}
+/>
+{#if dataset}
+  <table class="table">
+    <thead>
+      <tr>
+        {#if (dataset.titles)}  
+          <th scope="col">{dataset.titles[6]}</th>  <!-- activity -->
+          <th scope="col">{dataset.titles[0]}</th>  <!-- state -->
+          <th scope="col">{dataset.titles[4]}</th>  <!-- policy goals -->
+          <th scope="col">{dataset.titles[1]}</th>  <!-- authority -->
+          <th scope="col">{dataset.titles[2]}</th>  <!-- type of resource -->
+          <th scope="col">{dataset.titles[5]}</th>  <!-- tags -->
+        {/if}
+      </tr>
+    </thead>
+    {#if dataset.data}
+      <tbody>
+        {#each dataset.data as rows (rows.id)}
+          <tr on:click={(e)=>handleClick(e)}>
+            <td><Icon name="icon-plus" width={'1rem'} height={'1rem'} class="icon"/>{rows.activity.title}</td>
+            <td>{rows.state}</td>
+            <td>{rows.policy_goals}</td>
+            <td>{rows.authority}</td>
+            <td>{rows.type_of_resource}</td>
+            <td>{rows.tags}</td>
+            <td colspan="6" class="extra-content hide">
+              <div>
+                <div class="description">{rows.activity.description}</div>
+                <div class="link"><a href="{rows.activity.link}" target="_blank" rel="noopener noreferrer">{rows.activity.link}</a></div>
+                <div class="policy-goals"><span class="policy-goals__title">Policy Goals:</span> {rows.policy_goals}</div>
+              </div>
+            </td>
+          </tr>
+        {/each}
+      </tbody>
+    {/if}
+  </table>
+{:else}
+  <p>loading...</p>
+{/if}
 <style lang='scss'>
   @use '../scss/components/table.scss';
 </style>
