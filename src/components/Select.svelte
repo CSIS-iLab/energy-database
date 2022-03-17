@@ -2,23 +2,28 @@
 <script> 
   export let selected
   export let selectOptions
+  export let selectName
+  export let filterKey
+
+
 </script>
 
-<label for="pronouns-select">State</label>
-<select name="pronouns" id="pronouns-select" on:change={selected}>
-  <option value="">Select a State</option>
+<label for="{selectName}-select">{selectName}</label>
+<select name="{selectName}" key="{filterKey}" id="{filterKey}-select" on:change={selected}>
+  <option value="">Select a {selectName}</option>
   {#if selectOptions}
-    {#each selectOptions as val}
-      <option value="{val}">{(val ? val : 'No Data' )}</option>
+    {#if filterKey === 'state'}
+      {#each selectOptions as option}
+        <option value="{option.abbreviation}">{option.name}</option>
+      {/each}
     {:else}
-      <p>loading</p>
-    {/each}
+      {#each selectOptions as val}
+        <option value="{val}">{(val ? val : 'No Data' )}</option>
+      {/each}
+    {/if}
   {/if}
 </select>
 
-<style>
-  label[aria-hidden="true"],
-  [hidden] {
-    display: none;
-  }
+<style lang='scss'>
+
 </style>

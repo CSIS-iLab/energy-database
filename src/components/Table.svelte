@@ -1,21 +1,14 @@
 <script>
-import { onMount } from 'svelte';
-
   import Icon from './Icons.svelte'
   import Select from './Select.svelte'
   export let dataset
-  // export let selectOptions
   export let selected
 
   function handleClick(e) {
-    console.log('clicked', e )
+    // console.log('clicked', e )
     const extraContent = e.target.parentNode.lastElementChild
-    console.log('currentRow', extraContent)
+    // console.log('currentRow', extraContent)
     extraContent.classList.toggle('hide')
-    // const description = document.querySelector('#description')
-    // e.target.classList.toggle('hide')
-    // e.target.classList.toggle('description')
-    // e.target.classList.add('description')
   }
 
 </script>
@@ -23,7 +16,32 @@ import { onMount } from 'svelte';
 <Select
   selectOptions={dataset.states}
   selected={selected}
+  selectName="State"
+  filterKey="state"
 />
+
+<Select
+  selectOptions={dataset.resourceType}
+  selected={selected}
+  selectName="Resource Type"
+  filterKey="type_of_resource"
+/>
+
+<Select
+  selectOptions={dataset.authority}
+  selected={selected}
+  selectName="Authority"
+  filterKey="authority"
+/>
+
+<!-- TODO: Tags select must allow selecting multiple options -->
+<!-- <Select
+  selectOptions={dataset.states}
+  selected={selected}
+  selectName="Tags"
+/> -->
+
+
 {#if dataset}
   <table class="table">
     <thead>

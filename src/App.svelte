@@ -1,13 +1,9 @@
 <script>
   import { onMount } from 'svelte'
-  import { fetchData, getData } from './data'
+  import getData from './data'
   import Table from './components/Table.svelte'
 
   const dataset =  {}
-  async function loadData() {
-    let res = await getData()
-    return res
-  }
 
   onMount( async () => {
     const res = await getData()
@@ -15,22 +11,26 @@
     dataset["originalData"] = [...res.data]
     dataset["titles"] = [...res.data.titles]
     dataset["states"] = [...res.data.states]
-    // console.log(res)
+    dataset["resourceType"] = [...res.data.resourceType]
+    dataset["authority"] = [...res.data.authority]
+    // console.log(dataset)
   })
 
   const filterBy = (e) => {
-    let filter = e.target.value
-    console.log(filter)
-    console.log(dataset.originalData)
-    const result = dataset.originalData.filter( el => el.state.includes( filter ) )
-    console.log(result)
+    // console.log(e.target)
+    const filter = e.target.value
+    const key = e.target.attributes.key.value
+    // console.log(filter)
+    // console.log(key)
+    const result = dataset.originalData.filter( el => el[key].includes( filter ) )
+    // console.log(result)
     dataset.data = [...result]
   }
 </script>
 
 <main>
 	<div>
-    <h1>Hello World!</h1>
+    <h1>Energy Database | SPA</h1>
 
     <Table
       dataset={dataset}

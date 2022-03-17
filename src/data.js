@@ -1,16 +1,60 @@
 import * as d3Fetch from 'd3-fetch'
-import { object_without_properties } from 'svelte/internal'
 
 const URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRAWqEOfyQi5rqdsQ-ssGUe08fdB8AczK6_sUwf-deKITfbLlqSTYpOzO4yG5u_B5O68_tB595NjPDU/pub?output=csv"
 
-const dataset = {
-  // columns: [],
-  // data: []
-}
-
-export function fetchData() {
-  const dataPromise = d3Fetch.csv( URL )
-  return dataPromise
+const dataset = {}
+const US_states = {
+  "AL": "Alabama",
+  "AK": "Alaska",
+  "AZ": "Arizona",
+  "AR": "Arkansas",
+  "CA": "California",
+  "CO": "Colorado",
+  "CT": "Connecticut",
+  "DE": "Delaware",
+  "DC": "District Of Columbia",
+  "FL": "Florida",
+  "GA": "Georgia",
+  "HI": "Hawaii",
+  "ID": "Idaho",
+  "IL": "Illinois",
+  "IN": "Indiana",
+  "IA": "Iowa",
+  "KS": "Kansas",
+  "KY": "Kentucky",
+  "LA": "Louisiana",
+  "ME": "Maine",
+  "MD": "Maryland",
+  "MA": "Massachusetts",
+  "MI": "Michigan",
+  "MN": "Minnesota",
+  "MS": "Mississippi",
+  "MO": "Missouri",
+  "MT": "Montana",
+  "NE": "Nebraska",
+  "NV": "Nevada",
+  "NH": "New Hampshire",
+  "NJ": "New Jersey",
+  "NM": "New Mexico",
+  "NY": "New York",
+  "NC": "North Carolina",
+  "ND": "North Dakota",
+  "OH": "Ohio",
+  "OK": "Oklahoma",
+  "OR": "Oregon",
+  "PA": "Pennsylvania",
+  "RI": "Rhode Island",
+  "SC": "South Carolina",
+  "SD": "South Dakota",
+  "TN": "Tennessee",
+  "TX": "Texas",
+  "UT": "Utah",
+  "VT": "Vermont",
+  "VA": "Virginia",
+  "WA": "Washington",
+  "WV": "West Virginia",
+  "WI": "Wisconsin",
+  "WY": "Wyoming"
 }
 
 function formatData (array) {
@@ -27,13 +71,16 @@ function formatData (array) {
   array['titles'] = formatColumnsTitle(array)
   // format states
   array['states'] = formatStates(array)
+  // format resource
+  array['resourceType'] = formatResourceType(array)
+  // format authority
+  array['authority'] = formatAuthority(array)
   return array
 }
 
-export function getData() {
+export default function getData() {
   console.log('getdata')
   const dataPromise = d3Fetch.csv( URL )
-  // const data = Promise.all([dataPromise])
     .then( res => {
       // console.log(res)
       const newData = formatData(res)
@@ -126,7 +173,26 @@ function formatColumnsTitle(array) {
 }
 
 function formatStates(array) {
-  return [...new Set(array.map(el => el.state))]
+  // console.log(array)
+  const uniqueStates = [...new Set(array.map(el => el.state))]
+  const formattedStates = [] 
+  uniqueStates.forEach( state => {
+    formattedStates.push({
+      name: US_states[state],
+      abbreviation: state
+    })
+  })
+  // console.log(formattedStates)
+  // return [...new Set(array.map(el => el.state))]
+  return formattedStates
+}
+
+function formatResourceType(array) {
+  return [...new Set (array.map(el => el.type_of_resource))]
+}
+
+function formatAuthority(array) {
+  return [...new Set(array.map(el => el.authority))]
 }
 
 function capitalizeWord(str) {
