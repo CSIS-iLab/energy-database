@@ -58,6 +58,19 @@ const US_states = {
 }
 
 function formatData (array) {
+  console.log(array[0])
+  // const formattedData = array.map( (el, index) => {
+  //   // console.log(el)
+  //   return {
+  //     id: index,
+  //     policy_goals: formatPolicyGoals(el),
+  //   }
+  //   // return data = {
+  //   //   id: index,
+  //   //   policy_goals: el.policy_goals,
+  //   // }
+  // })
+  // console.log(formattedData)
   // console.log(array)
   // add id
   array = addID(array)  
@@ -98,6 +111,7 @@ function addID(array) {
 }
 
 function formatPolicyGoals(array) {
+  console.log(array)
   const policy_goals = ['emissions_reduction', 'economic_development', 'resilience']
   array.forEach( el => {
     const formattedPolicyGoals = []

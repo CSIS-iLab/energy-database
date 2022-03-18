@@ -5,9 +5,8 @@
   export let selected
 
   function handleClick(e) {
-    // console.log('clicked', e )
-    const extraContent = e.target.parentNode.lastElementChild
-    // console.log('currentRow', extraContent)
+    const extraContent = e.target.parentNode.nextElementSibling
+    // console.log('currentRow',extraContent)
     extraContent.classList.toggle('hide')
   }
 
@@ -66,7 +65,9 @@
             <td>{rows.authority}</td>
             <td>{rows.type_of_resource}</td>
             <td>{rows.tags}</td>
-            <td colspan="6" class="extra-content hide">
+          </tr>
+          <tr class="extra-content hide">
+            <td colspan="6">
               <div>
                 <div class="description">{rows.activity.description}</div>
                 <div class="link"><a href="{rows.activity.link}" target="_blank" rel="noopener noreferrer">{rows.activity.link}</a></div>
