@@ -59,36 +59,36 @@ const US_states = {
 
 function formatData (array) {
   console.log(array[0])
-  // const formattedData = array.map( (el, index) => {
-  //   // console.log(el)
-  //   return {
-  //     id: index,
-  //     policy_goals: formatPolicyGoals(el),
-  //   }
-  //   // return data = {
-  //   //   id: index,
-  //   //   policy_goals: el.policy_goals,
-  //   // }
-  // })
-  // console.log(formattedData)
+  const formattedData = array.map( (policyGoal, index) => {
+    // console.log(el)
+    return {
+      id: index,
+      policy_goals: formatPolicyGoals(policyGoal),
+    }
+    // return data = {
+    //   id: index,
+    //   policy_goals: el.policy_goals,
+    // }
+  })
+  console.log(formattedData)
   // console.log(array)
   // add id
-  array = addID(array)  
-  // format policy_goals into an array of strings
-  array = formatPolicyGoals(array)
-  // format tags into an array of strings
-  array = formatTags(array)
-  // format activity with title, description and link
-  array = formatActivity(array)
-  // format columns titles
-  array['titles'] = formatColumnsTitle(array)
-  // format states
-  array['states'] = formatStates(array)
-  // format resource
-  array['resourceType'] = formatResourceType(array)
-  // format authority
-  array['authority'] = formatAuthority(array)
-  return array
+  // array = addID(array)  
+  // // format policy_goals into an array of strings
+  // array = formatPolicyGoals(array)
+  // // format tags into an array of strings
+  // array = formatTags(array)
+  // // format activity with title, description and link
+  // array = formatActivity(array)
+  // // format columns titles
+  // array['titles'] = formatColumnsTitle(array)
+  // // format states
+  // array['states'] = formatStates(array)
+  // // format resource
+  // array['resourceType'] = formatResourceType(array)
+  // // format authority
+  // array['authority'] = formatAuthority(array)
+  // return array
 }
 
 export default function getData() {
@@ -110,25 +110,15 @@ function addID(array) {
   return array
 }
 
-function formatPolicyGoals(array) {
-  console.log(array)
+function formatPolicyGoals( policy ) {
   const policy_goals = ['emissions_reduction', 'economic_development', 'resilience']
-  array.forEach( el => {
-    const formattedPolicyGoals = []
-    policy_goals.forEach( (policy, i) => {
-      if (el[policy_goals[i]])
-        formattedPolicyGoals.push(policy_goals[i])
-    })
-    el['policy_goals'] = formattedPolicyGoals
-  })
+  const formattedPolicyGoals = []
+  for ( const prop in policy)
+    if ( policy_goals.includes( prop ) && policy[prop] )
+      formattedPolicyGoals.push( prop )
+    
   
-  // clean array: it deletes the unnecessary keys because they are now under the policy_goals key
-  array.forEach(row => {
-    policy_goals.forEach(policy => {
-      delete row[policy]
-    })
-  })
-  return array
+  return formattedPolicyGoals
 }
 
 function formatTags(array) {
