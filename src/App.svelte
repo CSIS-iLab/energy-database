@@ -10,9 +10,6 @@
     dataset["data"] = [...res.data]
     dataset["originalData"] = [...res.data]
     dataset["titles"] = [...res.data.titles]
-    dataset["states"] = [...res.data.states]
-    dataset["resourceType"] = [...res.data.resourceType]
-    dataset["authority"] = [...res.data.authority]
     // console.log(dataset)
   })
 

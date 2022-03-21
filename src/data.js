@@ -58,37 +58,20 @@ const US_states = {
 }
 
 function formatData (array) {
-  console.log(array[0])
-  const formattedData = array.map( (policyGoal, index) => {
-    // console.log(el)
+  // console.log(array)
+  const formattedData = array.map( (row, index) => {
     return {
       id: index,
-      policy_goals: formatPolicyGoals(policyGoal),
+      policy_goals: formatPolicyGoals(row),
+      tags: formatTags(row),
+      activity: formatActivity(row),
+      state: row.state,
+      authority: row.authority,
+      type_of_resource: row.type_of_resource,
     }
-    // return data = {
-    //   id: index,
-    //   policy_goals: el.policy_goals,
-    // }
   })
-  console.log(formattedData)
-  // console.log(array)
-  // add id
-  // array = addID(array)  
-  // // format policy_goals into an array of strings
-  // array = formatPolicyGoals(array)
-  // // format tags into an array of strings
-  // array = formatTags(array)
-  // // format activity with title, description and link
-  // array = formatActivity(array)
-  // // format columns titles
-  // array['titles'] = formatColumnsTitle(array)
-  // // format states
-  // array['states'] = formatStates(array)
-  // // format resource
-  // array['resourceType'] = formatResourceType(array)
-  // // format authority
-  // array['authority'] = formatAuthority(array)
-  // return array
+  // console.log(formattedData)
+  return formattedData
 }
 
 export default function getData() {
@@ -97,31 +80,23 @@ export default function getData() {
     .then( res => {
       // console.log(res)
       const newData = formatData(res)
-      // dataset["columnsTitles"] = newData.titles
+      newData['titles'] = ['Activity', 'Policy Goals', 'Tags', 'State', 'Authority', 'Type of Resource']
       dataset["data"] = newData
       return {...dataset}
     })
   return dataPromise
 }
 
-function addID(array) {
-  array.forEach( (el, i) => el['id'] = i  )
-  // console.log(array)
-  return array
-}
-
-function formatPolicyGoals( policy ) {
+function formatPolicyGoals( row ) {
   const policy_goals = ['emissions_reduction', 'economic_development', 'resilience']
   const formattedPolicyGoals = []
-  for ( const prop in policy)
-    if ( policy_goals.includes( prop ) && policy[prop] )
+  for ( const prop in row)
+    if ( policy_goals.includes( prop ) && row[prop] )
       formattedPolicyGoals.push( prop )
-    
-  
   return formattedPolicyGoals
 }
 
-function formatTags(array) {
+function formatTags( row ) {
   const tags = [
     'anticipating_climate_impacts',
     'comprehensive_planning_grid_modernization',
@@ -136,67 +111,19 @@ function formatTags(array) {
     'technology_or_system_standards',
     'workforce_development'
   ]
-  array.forEach( el => {
-    const formattedTags = []
-    tags.forEach( (tag, i) => {
-      if ( el[tags[i]] )
-        formattedTags.push(tags[i])
-    })
-    el['tags'] = formattedTags
-  })
-
-  // clean array: it deletes the unnecessary keys because they are now under the tags key
-  array.forEach(row => {
-    tags.forEach(tag => {
-      delete row[tag]
-    })
-  })
-  return array
+  const formattedTags = []
+  for ( const prop in row)
+    if ( tags.includes( prop ) && row[prop] )
+      formattedTags.push( prop )
+  return formattedTags
 }
 
-function formatActivity(array) {
-  array.forEach( el => {
-    const formattedActivity = {
-      title: el.title,
-      description: el.description,
-      link: el.URL
-    }
-    el['activity'] = formattedActivity
-  })
-  // clean array: it deletes the unnecessary keys because they are now under the activity key
-  array.forEach(row => {
-    delete row.title
-    delete row.description
-    delete row.URL
-  })
-  return array
-}
-
-function formatColumnsTitle(array) {
-  return Object.keys(array[0]).map( title => title.replaceAll('_', ' '))
-}
-
-function formatStates(array) {
-  // console.log(array)
-  const uniqueStates = [...new Set(array.map(el => el.state))]
-  const formattedStates = [] 
-  uniqueStates.forEach( state => {
-    formattedStates.push({
-      name: US_states[state],
-      abbreviation: state
-    })
-  })
-  // console.log(formattedStates)
-  // return [...new Set(array.map(el => el.state))]
-  return formattedStates
-}
-
-function formatResourceType(array) {
-  return [...new Set (array.map(el => el.type_of_resource))]
-}
-
-function formatAuthority(array) {
-  return [...new Set(array.map(el => el.authority))]
+function formatActivity( row ) {
+  return {
+    title: row.title,
+    description: row.description,
+    link: row.URL
+  }
 }
 
 function capitalizeWord(str) {

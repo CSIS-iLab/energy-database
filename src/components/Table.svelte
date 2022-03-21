@@ -46,12 +46,12 @@
     <thead>
       <tr>
         {#if (dataset.titles)}  
-          <th scope="col">{dataset.titles[6]}</th>  <!-- activity -->
-          <th scope="col">{dataset.titles[0]}</th>  <!-- state -->
-          <th scope="col">{dataset.titles[4]}</th>  <!-- policy goals -->
-          <th scope="col">{dataset.titles[1]}</th>  <!-- authority -->
-          <th scope="col">{dataset.titles[2]}</th>  <!-- type of resource -->
-          <th scope="col">{dataset.titles[5]}</th>  <!-- tags -->
+          <th scope="col">{dataset.titles[0]}</th>  <!-- activity -->
+          <th scope="col">{dataset.titles[3]}</th>  <!-- state -->
+          <th scope="col">{dataset.titles[1]}</th>  <!-- policy goals -->
+          <th scope="col">{dataset.titles[4]}</th>  <!-- authority -->
+          <th scope="col">{dataset.titles[5]}</th>  <!-- type of resource -->
+          <th scope="col">{dataset.titles[2]}</th>  <!-- tags -->
         {/if}
       </tr>
     </thead>
