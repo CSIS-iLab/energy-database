@@ -7,18 +7,20 @@
 
   onMount( async () => {
     const res = await getData()
+    // console.log(res.data.states);
     dataset["data"] = [...res.data]
     dataset["originalData"] = [...res.data]
     dataset["titles"] = [...res.data.titles]
-    // console.log(dataset)
+    dataset["states"] = [...res.data.states]
+    console.log(dataset)
   })
 
   const filterBy = (e) => {
-    // console.log(e.target)
+    console.log(e.target)
     const filter = e.target.value
     const key = e.target.attributes.key.value
-    // console.log(filter)
-    // console.log(key)
+    console.log(filter)
+    console.log(key)
     const result = dataset.originalData.filter( el => el[key].includes( filter ) )
     // console.log(result)
     dataset.data = [...result]
