@@ -1,15 +1,21 @@
 
 <script> 
+  export let selectedState
   export let selected
   export let selectOptions
   export let selectName
   export let filterKey
 
-
 </script>
 
 <label for="{selectName}-select">{selectName}</label>
-<select name="{selectName}" key="{filterKey}" id="{filterKey}-select" on:change={selected}>
+<select
+  name="{selectName}"
+  key="{filterKey}"
+  id="{filterKey}-select"
+  bind:value="{selectedState}"
+  on:change={selected}
+>
   <option value="">Select a {selectName}</option>
   {#if selectOptions}
     {#if filterKey === 'state'}

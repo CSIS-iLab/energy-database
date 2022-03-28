@@ -7,7 +7,7 @@ const tags = ['anticipating_climate_impacts', 'comprehensive_planning_grid_moder
 
 export default function getData() {
   const dataPromise = d3Fetch.csv(URL).then(res => {
-    console.log(res)
+    // console.log(res)
     const data = res.map((row, index) => {
       return {
         id: index,
@@ -20,7 +20,7 @@ export default function getData() {
         },
         state: row.state,
         // state: row.state_abbr,
-        // state_name: row.state_name,
+        state_name: row.state_name,
         authority: row.authority,
         type_of_resource: row.type_of_resource,
       }
@@ -30,12 +30,14 @@ export default function getData() {
 
     const resourceTypes = formatResourceType(data)
 
+    const states = formatStates(data)
+
     return {
       data: data,
-      states: [],
+      states: states,
       tags: tags,
       authority: authority,
-      resourceTypes: resourceTypes
+      resourceTypes: resourceTypes,
     }
   })
   return dataPromise
@@ -47,6 +49,18 @@ function formatAuthority(array) {
 
 function formatResourceType(array) {
   return [...new Set(array.map(el => el.type_of_resource))]
+}
+
+function formatStates(row) {
+  // console.log(row)
+  // console.log([...new Set(row.map(r => r.state))])
+  return [...new Set(row.map(r => r.state))]
+    .map(state => {
+      return {
+        name: row.find(r => r.state === state).state_name,
+        abbreviation: row.find(r => r.state === state).state,
+      }
+    })
 }
 
 // const dataset = {}
@@ -118,16 +132,6 @@ function formatResourceType(array) {
 //     description: row.description,
 //     link: row.URL
 //   }
-// }
-
-// function formatStates(row) {
-//   return [...new Set(row.map(r => r.state_abbr))]
-//     .map(state => {
-//       return {
-//         name: row.find(r => r.state_abbr === state).state_name,
-//         abbreviation: row.find(r => r.state_abbr === state).state_abbr,
-//       }
-//     })
 // }
 
 // function formatColumnTitles(row) {

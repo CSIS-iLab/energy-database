@@ -1,12 +1,10 @@
 <script>
   import Icon from "./Icons.svelte";
-  import Select from "./Select.svelte";
 
-  export let dataset;
-  export let filteredData;
-  export let selected;
-  console.log(dataset);
+  // export let dataset
+  export let filteredData
 
+  // export let states
   function handleClick(e) {
     const extraContent = e.target.parentNode.nextElementSibling;
     // console.log('currentRow',extraContent)
@@ -23,33 +21,6 @@
   ];
 </script>
 
-<Select
-  selectOptions={dataset.states}
-  {selected}
-  selectName="State"
-  filterKey="state"
-/>
-
-<Select
-  selectOptions={dataset.resourceTypes}
-  {selected}
-  selectName="Resource Type"
-  filterKey="type_of_resource"
-/>
-
-<Select
-  selectOptions={dataset.authority}
-  {selected}
-  selectName="Authority"
-  filterKey="authority"
-/>
-
-<!-- TODO: Tags select must allow selecting multiple options -->
-<!-- <Select
-  selectOptions={dataset.states}
-  selected={selected}
-  selectName="Tags"
-/> -->
 <table class="table">
   <thead>
     <tr>
