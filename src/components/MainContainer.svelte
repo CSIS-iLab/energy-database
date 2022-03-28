@@ -5,33 +5,75 @@
 
   export let dataset
   let selectedState = ''
-
-  const headerNames = [
-    "Activity",
-    "State",
-    "Policy Goals",
-    "Authority",
-    "Type of Resource",
-    "Tags",
-  ];
+  let selectedResourceType = ''
+  let selectedAuthority = ''
 
   $: filteredData = () => {
-    return selectedState
-      ? dataset.data.filter(el => el.state === selectedState)
-      : dataset.data
+    if (selectedState && selectedResourceType && selectedAuthority) {
+      console.log(selectedState, selectedResourceType)
+      return dataset.data.filter(
+        (row) =>
+          row.state === selectedState &&
+          row.type_of_resource === selectedResourceType &&
+          row.authority === selectedAuthority
+      )
+    } else if (selectedState && selectedResourceType) {
+      return dataset.data.filter(
+        (row) =>
+          row.state === selectedState &&
+          row.type_of_resource === selectedResourceType
+      )
+    } else if (selectedState && selectedAuthority) {
+      return dataset.data.filter(
+        (row) =>
+          row.state === selectedState &&
+          row.authority === selectedAuthority
+      )
+    } else if (selectedResourceType && selectedAuthority) {
+      return dataset.data.filter(
+        (row) =>
+          row.type_of_resource === selectedResourceType &&
+          row.authority === selectedAuthority
+      )
+    } else if (selectedState) {
+      return dataset.data.filter((row) => row.state === selectedState)
+    } else if (selectedResourceType) {
+      return dataset.data.filter(
+        (row) => row.type_of_resource === selectedResourceType
+      )
+    } else if (selectedAuthority) {
+      return dataset.data.filter((row) => row.authority === selectedAuthority)
+    } else {
+      return dataset.data
+    }
   }
 
 </script>
 
 <Options
+  selectName="State"
   selectOptions={dataset.states}
   bind:selectedState
-  selectName="State"
-  filterKey="state"
 />
+
+<Options
+  selectName="Resources"
+  selectOptions={dataset.resourceTypes}
+  bind:selectedResourceType
+/>
+
+<Options
+  selectName="Authority"
+  selectOptions={dataset.authority}
+  bind:selectedAuthority
+/>
+
+
 
 <!-- TODO: remove this p tag -->
 <p>selected state {selectedState ? selectedState : ''}</p>
+<p>selected resources {selectedResourceType ? selectedResourceType : ''}</p>
+<p>selected authority {selectedAuthority ? selectedAuthority : ''}</p>
 
 <!-- TODO: Tags select must allow selecting multiple options -->
 

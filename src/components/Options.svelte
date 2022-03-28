@@ -1,32 +1,56 @@
 
 <script> 
   export let selectedState
+  export let selectedResourceType
+  export let selectedAuthority
   export let selectOptions
   export let selectName
-  export let filterKey
+  export let filterBy
 
 </script>
 
+{#if selectName === 'State'}
 <label for="{selectName}-select">{selectName}</label>
 <select
   name="{selectName}"
-  key="{filterKey}"
-  id="{filterKey}-select"
+  id="{filterBy}-select"
   bind:value="{selectedState}"
 >
-  <option value="">Select a {selectName}</option>
-  {#if selectOptions}
-    {#if filterKey === 'state'}
-      {#each selectOptions as option}
-        <option value="{option.abbreviation}">{option.name}</option>
-      {/each}
-    {:else}
-      {#each selectOptions as val}
-        <option value="{val}">{(val ? val : 'No Data' )}</option>
-      {/each}
-    {/if}
-  {/if}
+    <option value="">Select a {selectName}</option>
+    {#each selectOptions as option}
+      <option value="{option.abbreviation}">{option.name}</option>
+    {/each}
+    
 </select>
+{/if}
+
+{#if selectName === 'Resources'}
+  <label for="{selectName}-select">{selectName}</label>
+  <select
+    name="{selectName}"
+    id="{filterBy}-select"
+    bind:value="{selectedResourceType}"
+  >
+  <option value="">Select a {selectName}</option>
+  {#each selectOptions as option}
+    <option value="{option}">{option}</option>
+  {/each}
+  </select>
+{/if}
+
+{#if selectName === 'Authority'}
+  <label for="{selectName}-select">{selectName}</label>
+  <select
+    name="{selectName}"
+    id="{filterBy}-select"
+    bind:value="{selectedAuthority}"
+  >
+  <option value="">Select a {selectName}</option>
+  {#each selectOptions as option}
+    <option value="{option}">{option}</option>
+  {/each}
+  </select>
+{/if}
 
 <style lang='scss'>
 
