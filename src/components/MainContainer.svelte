@@ -29,8 +29,12 @@
   selectName="State"
   filterKey="state"
 />
+
+<!-- TODO: remove this p tag -->
 <p>selected state {selectedState ? selectedState : ''}</p>
+
 <!-- TODO: Tags select must allow selecting multiple options -->
+
 <Table
   filteredData={filteredData()}
   bind:selectedState

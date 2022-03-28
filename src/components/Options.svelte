@@ -1,7 +1,6 @@
 
 <script> 
   export let selectedState
-  export let selected
   export let selectOptions
   export let selectName
   export let filterKey
@@ -14,7 +13,6 @@
   key="{filterKey}"
   id="{filterKey}-select"
   bind:value="{selectedState}"
-  on:change={selected}
 >
   <option value="">Select a {selectName}</option>
   {#if selectOptions}
