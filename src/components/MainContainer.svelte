@@ -1,9 +1,6 @@
 <script>
   import Table from "./Table.svelte"
   import Options from "./Options.svelte"
-  import OutlinedButton from "./OutlinedButton.svelte"
-  import DefaultButton from "./DefaultButton.svelte"
-
 
   export let dataset
   let selectedState = ''
@@ -51,8 +48,6 @@
   }
 
 </script>
-<DefaultButton />
-<OutlinedButton />
 
 <Options
   selectName="State"
@@ -85,5 +80,5 @@
 />
 
 <style lang="scss">
-  @use "../scss/components/table.scss";
+  // @use "../scss/components/table.scss";
 </style>

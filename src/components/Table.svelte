@@ -25,9 +25,7 @@ import { element } from "svelte/internal";
   let sortBy = {col: 'activity', ascending: true}
 
 	$: sort = (column) => {
-		console.log('sort', column)
-    column = column.toLowerCase().replace(/\s/g, '_')
-		console.log('sort fixed', column)
+    column = column.toLowerCase().replace(/\s/g, '_') // replace spaces using regex with undesrscore
 		if (sortBy.col == column) {
 			sortBy.ascending = !sortBy.ascending
 		} else {
@@ -54,7 +52,7 @@ import { element } from "svelte/internal";
   <thead>
     <tr>
       {#each headerNames as name}
-        <th scope="col" on:click={ sort( name.toLowerCase() == 'type of resource' ? 'type_of_resource' : name.toLowerCase() ) }>{name}</th>
+        <th scope="col" on:click={ sort( name ) }>{name}</th>
       {/each}
     </tr>
   </thead>
