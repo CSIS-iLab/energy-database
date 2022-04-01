@@ -72,11 +72,11 @@
   bind:selectedAuthority
 />
 
-<Options
+<!-- <Options
   selectName="Tags"
   selectOptions={dataset.tags}
   bind:selectedTags
-/>
+/> -->
 
 <!-- TODO: Tags select must allow selecting multiple options -->
 <Table

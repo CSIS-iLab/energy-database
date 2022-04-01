@@ -8,7 +8,7 @@
   export let selectOptions
   export let selectName
 
-  let selectedValue = ''
+  // let selectedValue = ''
 
 </script>
 
@@ -25,7 +25,7 @@
 >
     <option value="">Select a {selectName}</option>
     {#each selectOptions as option}
-      <option value="{option.abbreviation}">{option.name}</option>
+      <option value="{option.value}">{option.name}</option>
     {/each}
     
 </select>

@@ -26,6 +26,8 @@ import { element } from "svelte/internal";
 
 	$: sort = (column) => {
 		console.log('sort', column)
+    column = column.toLowerCase().replace(/\s/g, '_')
+		console.log('sort fixed', column)
 		if (sortBy.col == column) {
 			sortBy.ascending = !sortBy.ascending
 		} else {
