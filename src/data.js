@@ -58,7 +58,7 @@ function formatStates(row) {
     .map(state => {
       return {
         name: row.find(r => r.state === state).state_name,
-        abbreviation: row.find(r => r.state === state).state,
+        value: row.find(r => r.state === state).state,
       }
     })
 }

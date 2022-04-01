@@ -1,19 +1,26 @@
 
-<script> 
+<script>
+  import Select from "./Select.svelte"
   export let selectedState
   export let selectedResourceType
   export let selectedAuthority
+  export let selectedTags
   export let selectOptions
   export let selectName
-  export let filterBy
+
+  let selectedValue = ''
 
 </script>
 
 {#if selectName === 'State'}
+  <!-- <Select name='State' options={selectOptions} bind:selectedValue />
+  <p>{selectedValue}</p>
+
+  <Select name={selectName} {...selectOptions} bind:selectedValue /> -->
+
 <label for="{selectName}-select">{selectName}</label>
 <select
   name="{selectName}"
-  id="{filterBy}-select"
   bind:value="{selectedState}"
 >
     <option value="">Select a {selectName}</option>
@@ -28,7 +35,6 @@
   <label for="{selectName}-select">{selectName}</label>
   <select
     name="{selectName}"
-    id="{filterBy}-select"
     bind:value="{selectedResourceType}"
   >
   <option value="">Select a {selectName}</option>
@@ -42,7 +48,6 @@
   <label for="{selectName}-select">{selectName}</label>
   <select
     name="{selectName}"
-    id="{filterBy}-select"
     bind:value="{selectedAuthority}"
   >
   <option value="">Select a {selectName}</option>
@@ -51,6 +56,20 @@
   {/each}
   </select>
 {/if}
+
+{#if selectName === 'Tags'}
+  <label for="{selectName}-select">{selectName}</label>
+  <select
+    name="{selectName}"
+    bind:value="{selectedTags}"
+  >
+  <option value="">Select a {selectName}</option>
+  {#each selectOptions as option}
+    <option value="{option}">{option}</option>
+  {/each}
+  </select>
+{/if}
+
 
 <style lang='scss'>
 

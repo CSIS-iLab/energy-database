@@ -1,4 +1,6 @@
 <script>
+import { element } from "svelte/internal";
+
   import Icon from "./Icons.svelte";
 
   // export let dataset
@@ -6,9 +8,9 @@
 
   // export let states
   function handleClick(e) {
-    const extraContent = e.target.parentNode.nextElementSibling;
+    const extraContent = e.target.parentNode.nextElementSibling
     // console.log('currentRow',extraContent)
-    extraContent.classList.toggle("hide");
+    extraContent.classList.toggle("hide")
   }
 
   const headerNames = [
@@ -18,14 +20,39 @@
     "Authority",
     "Type of Resource",
     "Tags",
-  ];
+  ]
+
+  let sortBy = {col: 'activity', ascending: true}
+
+	$: sort = (column) => {
+		console.log('sort', column)
+		if (sortBy.col == column) {
+			sortBy.ascending = !sortBy.ascending
+		} else {
+			sortBy.col = column
+			sortBy.ascending = true
+		}
+		
+		// Modifier to sorting function for ascending or descending
+		let sortModifier = (sortBy.ascending) ? 1 : -1;
+		
+		let sort = (a, b) => 
+			(a[column] < b[column]) 
+			? -1 * sortModifier 
+			: (a[column] > b[column]) 
+			? 1 * sortModifier 
+			: 0;
+		
+      filteredData = filteredData.sort(sort);
+	}
+
 </script>
 
 <table class="table">
   <thead>
     <tr>
       {#each headerNames as name}
-        <th scope="col">{name}</th>
+        <th scope="col" on:click={ sort( name.toLowerCase() == 'type of resource' ? 'type_of_resource' : name.toLowerCase() ) }>{name}</th>
       {/each}
     </tr>
   </thead>
@@ -63,6 +90,10 @@
             </div>
           </div>
         </td>
+      </tr>
+    {:else}
+      <tr>
+        <td colspan="6">No data found</td>
       </tr>
     {/each}
   </tbody>

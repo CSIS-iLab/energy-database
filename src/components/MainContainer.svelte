@@ -1,13 +1,15 @@
 <script>
-  import Table from "./Table.svelte";
-  import Options from "./Options.svelte";
+  import Table from "./Table.svelte"
+  import Options from "./Options.svelte"
+  import OutlinedButton from "./OutlinedButton.svelte"
+  import DefaultButton from "./DefaultButton.svelte"
 
 
   export let dataset
   let selectedState = ''
   let selectedResourceType = ''
   let selectedAuthority = ''
-
+  let selectedTags = []
   $: filteredData = () => {
     if (selectedState && selectedResourceType && selectedAuthority) {
       console.log(selectedState, selectedResourceType)
@@ -49,6 +51,8 @@
   }
 
 </script>
+<DefaultButton />
+<OutlinedButton />
 
 <Options
   selectName="State"
@@ -68,34 +72,17 @@
   bind:selectedAuthority
 />
 
-
-
-<!-- TODO: remove this p tag -->
-<p>selected state {selectedState ? selectedState : ''}</p>
-<p>selected resources {selectedResourceType ? selectedResourceType : ''}</p>
-<p>selected authority {selectedAuthority ? selectedAuthority : ''}</p>
+<Options
+  selectName="Tags"
+  selectOptions={dataset.tags}
+  bind:selectedTags
+/>
 
 <!-- TODO: Tags select must allow selecting multiple options -->
-
 <Table
   filteredData={filteredData()}
   bind:selectedState
 />
-<!-- <Options
-  selectOptions={dataset.resourceTypes}
-  {selectedState}
-  selectName="Resource Type"
-  filterKey="type_of_resource"
-/>
-
-<Options
-  selectOptions={dataset.authority}
-  {selectedState}
-  selectName="Authority"
-  filterKey="authority"
-/> -->
-
-
 
 <style lang="scss">
   @use "../scss/components/table.scss";
