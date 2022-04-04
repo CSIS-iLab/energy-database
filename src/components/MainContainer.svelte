@@ -1,55 +1,54 @@
 <script>
-  import Table from "./Table.svelte"
-  import Options from "./Options.svelte"
+  import Table from "./Table.svelte";
+  import Options from "./Options.svelte";
 
-  export let dataset
-  let selectedState = ''
-  let selectedResourceType = ''
-  let selectedAuthority = ''
-  let selectedTags = []
+  export let dataset;
+  let selectedState = "";
+  let selectedResourceType = "";
+  let selectedAuthority = "";
+  let selectedTags = [];
+
   $: filteredData = () => {
     if (selectedState && selectedResourceType && selectedAuthority) {
-      console.log(selectedState, selectedResourceType)
+      console.log(selectedState, selectedResourceType);
       return dataset.data.filter(
         (row) =>
           row.state === selectedState &&
           row.type_of_resource === selectedResourceType &&
           row.authority === selectedAuthority
-      )
+      );
     } else if (selectedState && selectedResourceType) {
       return dataset.data.filter(
         (row) =>
           row.state === selectedState &&
           row.type_of_resource === selectedResourceType
-      )
+      );
     } else if (selectedState && selectedAuthority) {
       return dataset.data.filter(
         (row) =>
-          row.state === selectedState &&
-          row.authority === selectedAuthority
-      )
+          row.state === selectedState && row.authority === selectedAuthority
+      );
     } else if (selectedResourceType && selectedAuthority) {
       return dataset.data.filter(
         (row) =>
           row.type_of_resource === selectedResourceType &&
           row.authority === selectedAuthority
-      )
+      );
     } else if (selectedState) {
-      return dataset.data.filter((row) => row.state === selectedState)
+      return dataset.data.filter((row) => row.state === selectedState);
     } else if (selectedResourceType) {
       return dataset.data.filter(
         (row) => row.type_of_resource === selectedResourceType
-      )
+      );
     } else if (selectedAuthority) {
-      return dataset.data.filter((row) => row.authority === selectedAuthority)
+      return dataset.data.filter((row) => row.authority === selectedAuthority);
     } else {
-      return dataset.data
+      return dataset.data;
     }
-  }
-
+  };
 </script>
 
-<Options
+<!-- <Options
   selectName="State"
   selectOptions={dataset.states}
   bind:selectedState
@@ -65,6 +64,13 @@
   selectName="Authority"
   selectOptions={dataset.authority}
   bind:selectedAuthority
+/> -->
+
+<Options
+  {dataset}
+  bind:selectedAuthority
+  bind:selectedResourceType
+  bind:selectedState
 />
 
 <!-- <Options
@@ -74,10 +80,7 @@
 /> -->
 
 <!-- TODO: Tags select must allow selecting multiple options -->
-<Table
-  filteredData={filteredData()}
-  bind:selectedState
-/>
+<Table filteredData={filteredData()} bind:selectedState />
 
 <style lang="scss">
   // @use "../scss/components/table.scss";

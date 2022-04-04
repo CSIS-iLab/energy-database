@@ -1,16 +1,13 @@
 <script>
-  import { onMount } from "svelte"
-  import getData from "./data"
-  import MainContainer from "./components/MainContainer.svelte"
+  import { onMount } from "svelte";
+  import getData from "./data";
+  import MainContainer from "./components/MainContainer.svelte";
 
-  let dataset = {}
-  let filteredData = []
+  let dataset = {};
 
   onMount(async () => {
-    const res = await getData()
-    dataset = res
-    console.log(dataset)
-    filteredData = dataset.data
+    const res = await getData();
+    dataset = res;
   });
 </script>
 
@@ -19,10 +16,7 @@
     <h1>Energy Database | SPA</h1>
 
     {#if dataset.data && dataset.data.length > 0}
-      <MainContainer
-        {dataset}
-        {filteredData}
-      />
+      <MainContainer {dataset} />
     {:else}
       <div class="loading-container">
         <div class="loading" />
