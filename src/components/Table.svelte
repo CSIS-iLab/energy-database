@@ -9,7 +9,6 @@ import { element } from "svelte/internal";
   // export let states
   function handleClick(e) {
     const extraContent = e.target.parentNode.nextElementSibling
-    // console.log('currentRow',extraContent)
     extraContent.classList.toggle("hide")
   }
 
