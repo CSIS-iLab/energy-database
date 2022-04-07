@@ -1,0 +1,15 @@
+@use '../abstracts/' as *;
+
+.themed {
+  --border: 0;
+  // --borderRadius: 10px;
+  --placeholderColor: #7E8694;
+  display: flex;
+  justify-content: space-around;
+  // border-bottom: 1px solid #D3D4D6;
+
+  .selectContainer::after {
+      color: black;
+      clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+  }
+}

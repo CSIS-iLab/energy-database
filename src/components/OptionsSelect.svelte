@@ -4,7 +4,8 @@
 -->
 <script>
   import Select from 'svelte-select'
-
+  import Icon from './Icons.svelte'
+  
   const optionIdentifier = 'value';
   const labelIdentifier = 'label';
 
@@ -36,29 +37,54 @@
   // export let selectedTags;
 </script>
 
-<div>
+<div class="themed icon">
   <Select
-  {optionIdentifier} labelIdentifier={'name'} items={dataset.states}
-  placeholder="Select a State"
-  on:select={(event) => handleSelect(event, 'State')}
-  on:clear={(event) => handleClear(event, 'State')}
+    containerClasses="myclass"
+    inputStyles="box-sizing: border-box; border-bottom: 1px solid #D3D4D6;"
+    {optionIdentifier} labelIdentifier={'name'} items={dataset.states}
+    placeholder="Select a State"
+    on:select={(event) => handleSelect(event, 'State')}
+    on:clear={(event) => handleClear(event, 'State')}
+    {Icon}
   ></Select>
-  
+  <Icon
+    name="icon-caret-down"
+    width={"1rem"}
+    height={"1rem"}
+    class="icon"
+  />
+
   <Select
-  {optionIdentifier} {labelIdentifier} items={dataset.authority}
-  placeholder="Select an Authority"
-  on:select={(event) => handleSelect(event, 'Authority')}
-  on:clear={(event) => handleClear(event, 'Authority')}
+    containerClasses="myclass"
+    inputStyles="box-sizing: border-box; border-bottom: 1px solid #D3D4D6;"
+    showChevron={true}
+    {optionIdentifier} {labelIdentifier} items={dataset.authority}
+    placeholder="Select an Authority"
+    on:select={(event) => handleSelect(event, 'Authority')}
+    on:clear={(event) => handleClear(event, 'Authority')}
   ></Select>
 
   <Select
-  {optionIdentifier} {labelIdentifier} items={dataset.resourceTypes}
-  placeholder="Select an Authority"
-  on:select={(event) => handleSelect(event, 'ResourceType')}
-  on:clear={(event) => handleClear(event, 'ResourceType')}
+    containerClasses="myclass"
+    inputStyles="box-sizing: border-box; border-bottom: 1px solid #D3D4D6;"
+    showChevron={true}
+    {optionIdentifier} {labelIdentifier} items={dataset.resourceTypes}
+    placeholder="Select a Resource"
+    on:select={(event) => handleSelect(event, 'ResourceType')}
+    on:clear={(event) => handleClear(event, 'ResourceType')}
   ></Select>
   
+  <Select
+    containerClasses="myclass"
+    inputStyles="box-sizing: border-box; border-bottom: 1px solid #D3D4D6;"
+    showChevron={true}
+  ></Select>
 </div>
 
 <style lang="scss">
+  @use "../scss/components/select";
+  :global(.myclass) {
+    width: 200px;
+  }
+
 </style>

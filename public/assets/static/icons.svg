@@ -1,12 +1,16 @@
 <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<defs>
-<symbol id="icon-chevron-right" viewBox="0 0 32 32">
-<title>chevron-right</title>
-<path d="M22.552 15.951l-11.219 11.219-1.886-1.886 9.333-9.333-9.333-9.333 1.886-1.886 11.219 11.219z"></path>
-</symbol>
-<symbol id="icon-plus" viewBox="0 0 16 16">
-<title>icon-plus</title>
-<path d="M6.125 0H4.875V4.375H0.5V5.625H4.875V10H6.125V5.625H10.1875V4.375H6.125V0Z"/>
-</symbol>
-</defs>
+  <defs>
+    <symbol id="icon-chevron-right" viewBox="0 0 32 32">
+      <title>chevron-right</title>
+      <path d="M22.552 15.951l-11.219 11.219-1.886-1.886 9.333-9.333-9.333-9.333 1.886-1.886 11.219 11.219z"></path>
+    </symbol>
+    <symbol id="icon-plus" viewBox="0 0 16 16">
+      <title>icon-plus</title>
+      <path d="M6.125 0H4.875V4.375H0.5V5.625H4.875V10H6.125V5.625H10.1875V4.375H6.125V0Z"/>
+    </symbol>
+    <symbol id="icon-caret-down" viewBox="0 0 48 48">
+      <title>icon-caret-down</title>
+      <path d="M11 19L25 34L39 19L11 19Z"/>
+    </symbol>
+  </defs>
 </svg>

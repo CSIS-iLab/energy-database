@@ -1,5 +1,5 @@
 <script>
-import { element } from "svelte/internal";
+  import { onMount } from "svelte";
 
   import Icon from "./Icons.svelte";
 
@@ -21,7 +21,7 @@ import { element } from "svelte/internal";
     "Tags",
   ]
 
-  let sortBy = {col: 'activity', ascending: true}
+  let sortBy = {col: 'activity', ascending: false}
 
 	$: sort = (column) => {
     column = column.toLowerCase().replace(/\s/g, '_') // replace spaces using regex with undesrscore
@@ -35,15 +35,34 @@ import { element } from "svelte/internal";
 		// Modifier to sorting function for ascending or descending
 		let sortModifier = (sortBy.ascending) ? 1 : -1;
 		
-		let sort = (a, b) => 
-			(a[column] < b[column]) 
-			? -1 * sortModifier 
-			: (a[column] > b[column]) 
-			? 1 * sortModifier 
-			: 0;
+    // Sort by activity title
+    if (column == 'activity') {
+      return filteredData = filteredData.sort((a, b) => {
+        if (a.activity.title < b.activity.title) {
+          return -1 * sortModifier
+        } else if (a.activity.title > b.activity.title) {
+          return 1 * sortModifier
+        } else {
+          return 0
+        }
+      })
+    } 
+    console.log(column);
+
+    let sort = (a, b) => 
+        (a[column] < b[column]) 
+        ? -1 * sortModifier 
+        : (a[column] > b[column]) 
+        ? 1 * sortModifier 
+        : 0;
 		
-      filteredData = filteredData.sort(sort);
+    console.log(filteredData)
+    filteredData = filteredData.sort(sort);
 	}
+
+  onMount(() => {
+    sort('activity')
+  })
 
 </script>
 
