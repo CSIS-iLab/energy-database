@@ -1,6 +1,7 @@
 <script>
   import Table from "./Table.svelte";
   import Options from "./Options.svelte";
+  import OptionsSelect from "./OptionsSelect.svelte";
 
   export let dataset;
   let selectedState = "";
@@ -49,24 +50,13 @@
 </script>
 
 <!-- <Options
-  selectName="State"
-  selectOptions={dataset.states}
-  bind:selectedState
-/>
-
-<Options
-  selectName="Resources"
-  selectOptions={dataset.resourceTypes}
-  bind:selectedResourceType
-/>
-
-<Options
-  selectName="Authority"
-  selectOptions={dataset.authority}
+  {dataset}
   bind:selectedAuthority
+  bind:selectedResourceType
+  bind:selectedState
 /> -->
 
-<Options
+<OptionsSelect
   {dataset}
   bind:selectedAuthority
   bind:selectedResourceType
