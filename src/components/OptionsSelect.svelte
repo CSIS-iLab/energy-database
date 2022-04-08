@@ -4,6 +4,7 @@
 -->
 <script>
   import Select from 'svelte-select'
+  import SelectMultiple from './SelectMultiple.svelte';
   import Icon from './Icons.svelte'
   
   const optionIdentifier = 'value';
@@ -34,7 +35,7 @@
   export let selectedState;
   export let selectedResourceType;
   export let selectedAuthority;
-  // export let selectedTags;
+  export let selectedTags;
 
   // handle the icon
   const chevronUp = '<svg class="test" width="28" height="15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M28 15 14 0 0 15h28z" fill="#000"/></svg>';
@@ -85,11 +86,16 @@
     on:clear={(event) => handleClear(event, 'ResourceType')}
   ></Select>
   
-  <Select
+  <!-- <Select
     containerClasses="myclass"
     inputStyles="box-sizing: border-box; border-bottom: 1px solid #D3D4D6;"
     showChevron={true}
-  ></Select>
+  ></Select> -->
+  <SelectMultiple
+    bind:selectedValue={selectedTags}
+    options={dataset.tags}
+    selectName="Tags"
+  />
 </div>
 
 <style lang="scss">
@@ -128,8 +134,8 @@
       width: 1rem;
       height: 1rem;
       color: royalblue;
-      // margin-right: 0.3em;
-      // text-align: center;
+      margin-right: 0.3em;
+      text-align: center;
       // position: relative;
       // left: 0;
       // top: -4px;
