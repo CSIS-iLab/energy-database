@@ -3,13 +3,24 @@
 .themed {
   --border: 0;
   // --borderRadius: 10px;
-  --placeholderColor: #7E8694;
+  // --itemHoverColor: black ;
+  // --itemHoverBG: red;
+  --itemColor: #2B2F38;
+  --itemIsActiveColor: #2B2F38;
+  // --itemPadding: 0 20px 0 48px;
+  --itemIsActiveBG: #EFF5F8;
+  // --indicatorColor: purple;
+  // --placeholderColor: #7E8694;
   display: flex;
   justify-content: space-around;
   // border-bottom: 1px solid #D3D4D6;
 
-  .selectContainer::after {
-      color: black;
-      clip-path: polygon(100% 0%, 0 0%, 50% 100%);
-  }
+  // .selectContainer::before {
+  //     color: black;
+  //     clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+  // }
+  
+  // .test {
+  //   fill: purple;
+  // }
 }
