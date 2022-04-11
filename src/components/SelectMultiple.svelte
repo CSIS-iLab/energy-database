@@ -13,7 +13,7 @@
     }
   };
 
-  $: console.log(selectedValue)
+  // $: console.log(selectedValue)
 </script>
 
 <label for="{selectName}-select">{selectName}</label>

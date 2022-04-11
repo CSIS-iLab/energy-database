@@ -72,7 +72,6 @@
       return dataset.data.filter(
         (row) =>
           row.authority === selectedAuthority &&
-          // selectedTags.every((tag) => row.tags.includes(tag))
           row.tags.some((tag) => selectedTags.includes(tag))
       )
     }  else if (selectedState) {
@@ -88,7 +87,6 @@
       console.log(selectedTags)
       return dataset.data.filter((row) =>
         selectedTags.every((tag) => row.tags.includes(tag))
-        // row.tags.some((tag) => selectedTags.includes(tag))
       );
     } else {
       return dataset.data;
