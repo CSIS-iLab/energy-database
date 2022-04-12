@@ -1,6 +1,6 @@
 <script>
   import Table from "./Table.svelte";
-  import Options from "./Options.svelte";
+  // import Options from "./Options.svelte";
   import OptionsSelect from "./OptionsSelect.svelte";
 
   export let dataset;
@@ -83,8 +83,6 @@
     } else if (selectedAuthority) {
       return dataset.data.filter((row) => row.authority === selectedAuthority);
     } else if (selectedTags.length > 0 && selectedTags[0] !== "") {
-      console.log(dataset.data);
-      console.log(selectedTags)
       return dataset.data.filter((row) =>
         selectedTags.every((tag) => row.tags.includes(tag))
       );
@@ -109,7 +107,6 @@
   bind:selectedTags
 />
 
-<!-- TODO: Tags select must allow selecting multiple options -->
 <Table filteredData={filteredData()} />
 
 <style lang="scss">

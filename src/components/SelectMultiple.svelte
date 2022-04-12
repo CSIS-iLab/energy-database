@@ -3,6 +3,10 @@
   export let options = [];
   export let selectedValue = [];
   
+  let isListOpen = false;
+  let optionsList
+  let selectLabel = `Select a ${selectName}`
+
   const formatOption = (opt, type) => {
     if (selectName !== "State") {
       return opt;
@@ -13,29 +17,46 @@
     }
   };
 
-  // $: console.log(selectedValue)
+  let showOptions = () => {
+    (isListOpen) ? optionsList.style.display = 'none' : optionsList.style.display = 'block'
+    isListOpen = !isListOpen
+  }
+
+  $: if (selectedValue.length > 0 && selectedValue !== "") {
+    selectLabel = selectedValue
+  } else {
+    selectLabel = `Select a ${selectName}`
+  }
 </script>
 
-<label for="{selectName}-select">{selectName}</label>
-<select multiple name={selectName} bind:value={selectedValue}>
+<div>Select {selectName}</div>
+<div
+  class="select__select-tag"
+  contenteditable="false"
+  bind:innerHTML={selectLabel}
+  on:click={showOptions}
+>Select {selectName}</div>
+<div class="select__tags-options" bind:this={optionsList}>
+  {#each options as option}
+    <label for="{formatOption(option, "value")}">
+    <input
+      type="checkbox"
+      name="tags"
+      value="{formatOption(option, "value")}"
+      bind:group={selectedValue}
+      >
+      {formatOption(option, "name")}</label>
+  {/each}
+</div>
+
+
+<!-- <select multiple name={selectName} bind:value={selectedValue}>
   <option value="">Select a {selectName}</option>
   {#each options as option}
     <option value={formatOption(option, "value")}>{formatOption(option, "name")}</option>
   {/each}
-</select>
+</select> -->
 
 <style lang="scss">
-  select {
-    border: 0;
-    background-color: transparent;
-    border-bottom: 1px solid #D3D4D6;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-
-    &:hover {
-      border-bottom: 1px solid #1475DC;
-      -webkit-appearance: #1475DC;
-      -moz-appearance: #1475DC;
-    }
-  }
+  @use "../scss/components/select";
 </style>
