@@ -29,24 +29,26 @@
   }
 </script>
 
-<div>Select {selectName}</div>
-<div
-  class="select__select-tag"
-  contenteditable="false"
-  bind:innerHTML={selectLabel}
-  on:click={showOptions}
->Select {selectName}</div>
-<div class="select__tags-options" bind:this={optionsList}>
-  {#each options as option}
-    <label for="{formatOption(option, "value")}">
-    <input
-      type="checkbox"
-      name="tags"
-      value="{formatOption(option, "value")}"
-      bind:group={selectedValue}
-      >
-      {formatOption(option, "name")}</label>
-  {/each}
+<div>
+  <!-- <div class="select__label">Select {selectName}</div> -->
+  <div
+    class="select__select-tag"
+    contenteditable="false"
+    bind:innerHTML={selectLabel}
+    on:click={showOptions}
+  >Select {selectName}</div>
+  <div class="select__tags-options" bind:this={optionsList}>
+    {#each options as option}
+      <label for="{formatOption(option, "value")}">
+      <input
+        type="checkbox"
+        name="tags"
+        value="{formatOption(option, "value")}"
+        bind:group={selectedValue}
+        >
+        {formatOption(option, "name")}</label>
+    {/each}
+  </div>
 </div>
 
 
