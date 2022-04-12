@@ -1,4 +1,5 @@
 <script>
+  import {clickOutside} from "../js/clickOutside.js";
   export let selectName = "name";
   export let options = [];
   export let selectedValue = [];
@@ -27,26 +28,33 @@
   } else {
     selectLabel = `Select a ${selectName}`
   }
+
+	let handleClickOutside = (event) => {
+    optionsList.style.display = 'none'
+    isListOpen = false
+	}
 </script>
 
 <div>
-  <!-- <div class="select__label">Select {selectName}</div> -->
   <div
     class="select__select-tag"
     contenteditable="false"
     bind:innerHTML={selectLabel}
     on:click={showOptions}
   >Select {selectName}</div>
-  <div class="select__tags-options" bind:this={optionsList}>
+  <div class="select__tags-options" bind:this={optionsList}
+    use:clickOutside on:click_outside={handleClickOutside}
+  >
     {#each options as option}
       <label for="{formatOption(option, "value")}">
-      <input
-        type="checkbox"
-        name="tags"
-        value="{formatOption(option, "value")}"
-        bind:group={selectedValue}
-        >
-        {formatOption(option, "name")}</label>
+        <input
+          type="checkbox"
+          name="tags"
+          value="{formatOption(option, "value")}"
+          bind:group={selectedValue}
+          >
+          {formatOption(option, "name")}
+      </label>
     {/each}
   </div>
 </div>
