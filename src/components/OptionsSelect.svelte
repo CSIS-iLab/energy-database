@@ -47,26 +47,25 @@
 </script>
 
 <div class="themed icon">
-  <Select
-    containerClasses="myclass"
-    showChevron={true}
-    indicatorSvg={chevron}
-    bind:listOpen={isListOpen}
-    listOffset={16}
-    inputStyles="box-sizing: border-box; border-bottom: 1px solid #D3D4D6;"
-    {optionIdentifier} labelIdentifier={'name'} items={dataset.states}
-    placeholder="Select a State"
-    on:select={(event) => handleSelect(event, 'State')}
-    on:clear={(event) => handleClear(event, 'State')}
-  ></Select>
-  <!-- <Icon
-    name="icon-caret-down"
-    width={"1rem"}
-    height={"1rem"}
-    class="icon"
-  /> -->
+  <div>
+    <div class="label">State</div>
+    <Select
+      containerClasses="myclass"
+      showChevron={true}
+      indicatorSvg={chevron}
+      bind:listOpen={isListOpen}
+      listOffset={16}
+      inputStyles="box-sizing: border-box; border-bottom: 1px solid #D3D4D6;"
+      {optionIdentifier} labelIdentifier={'name'} items={dataset.states}
+      placeholder="Select a State"
+      on:select={(event) => handleSelect(event, 'State')}
+      on:clear={(event) => handleClear(event, 'State')}
+    ></Select>
+  </div>
 
-  <Select
+  <div>
+    <div class="label">Authority</div>
+    <Select
     containerClasses="myclass"
     inputStyles="box-sizing: border-box; border-bottom: 1px solid #D3D4D6;"
     showChevron={true}
@@ -75,8 +74,11 @@
     on:select={(event) => handleSelect(event, 'Authority')}
     on:clear={(event) => handleClear(event, 'Authority')}
   ></Select>
+  </div>
 
-  <Select
+  <div>
+    <div class="label">Resource Type</div>
+    <Select
     containerClasses="myclass"
     inputStyles="box-sizing: border-box; border-bottom: 1px solid #D3D4D6;"
     showChevron={true}
@@ -85,21 +87,21 @@
     on:select={(event) => handleSelect(event, 'ResourceType')}
     on:clear={(event) => handleClear(event, 'ResourceType')}
   ></Select>
+  </div>
   
-  <!-- <Select
-    containerClasses="myclass"
-    inputStyles="box-sizing: border-box; border-bottom: 1px solid #D3D4D6;"
-    showChevron={true}
-  ></Select> -->
-  <SelectMultiple
+  <div>
+    <div class="label">Tags</div>
+    <SelectMultiple
     bind:selectedValue={selectedTags}
     options={dataset.tags}
     selectName="Tags"
   />
+  </div>
 </div>
 
 <style lang="scss">
   @use "../scss/components/select";
+  @use "../scss/components/label";
   :global(.myclass) {
     width: 200px;
     // &::before {

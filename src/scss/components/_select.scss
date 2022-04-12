@@ -14,30 +14,9 @@
   display: flex;
   justify-content: space-around;
   // border-bottom: 1px solid #D3D4D6;
-
-  // .selectContainer::before {
-  //     color: black;
-  //     clip-path: polygon(100% 0%, 0 0%, 50% 100%);
-  // }
-  
-  // .test {
-  //   fill: purple;
-  // }
 }
 
 .select {
-  // border: 0;
-  // background-color: transparent;
-  // border-bottom: 1px solid #D3D4D6;
-  // -webkit-appearance: none;
-  // -moz-appearance: none;
-
-  // &:hover {
-  //   border-bottom: 1px solid #1475DC;
-  //   -webkit-appearance: #1475DC;
-  //   -moz-appearance: #1475DC;
-  // }
-
   &__select-tag {
     color: #D3D4D6;
     border-bottom: 1px solid #D3D4D6;
@@ -45,9 +24,5 @@
 
   &__tags-options {
     display: none;
-  }
-
-  &__label {
-    color: #D3D4D6;
   }
 }
