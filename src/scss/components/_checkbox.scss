@@ -6,55 +6,90 @@
     align-items: center;
     margin-bottom: 10px;
   }
-
-  + label {
-    padding-left: 12px;
-  }
 }
 
 
 input[type=checkbox] {
-  // position: absolute;
-  // opacity: 0;
-  /* Borders / Gray-300 */
-  border: 0;
-  cursor: pointer;
-  width: 20px;
-  height: 20px;
-  appearance: none;
-  -webkit-appearance: none;
+  position: absolute;
+  opacity: 0;
 
-  &::before,
-  &::after {
-    border-width: 1px;
-    border-style: solid;
-    border-color: #B1B4B9;
-    border-radius: 2px;
-    pointer-events: none;
-  }
+  + label {
+    /* Text / Gray-400 */
+    color: #2B2F38;
+    display: inline-block;
+    position: relative;
+    padding-top: .5rem;
+    padding-left: 1.5rem;
+    cursor: pointer;
 
-  &::before {
-    content: '✓';
-  }
+    &::before {
+      /* Borders / Gray-300 */
+      content: '';
+      border-width: 1px;
+      border-style: solid;
+      border-color: #B1B4B9;
+      border-radius: 2px;
+      display: block;
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      transition: background 0.3s ease-in-out, border 0.3s ease-in-out;
+      top:4px;
+      left: 0;
+    }
 
-  &::after {
-    content: '⨯';
-  }
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: .4rem;
+      height: .75rem;
+    }
 
-  &:checked::before {
-    mix-blend-mode: blue;
-    color: transparent;
-  }
-
+  }  
 
   &:hover {
+    + label::before {
     /* Brand / Blue 700 */
     border-color: #0054A4;
+    }
   }
 
   &:focus {
-    outline-width: 3px;
-    outline-style: solid;
-    outline-color: rgba(151, 200, 247, 0.68);
+    + label::before {
+      outline-width: 3px;
+      outline-style: solid;
+      outline-color: rgba(151, 200, 247, 0.68);
+    }
   }
+
+  &:checked {
+    + label::before {
+      /* Brand/Blue 600 */
+      // background: #1475DC;
+      background-color: #1475DC;
+      border-color: #1475DC;
+    }
+
+    + label::after {
+      /* Background / White */
+      // border-style: solid;
+      // border-color: #FFFFFF;
+      // border-right: 2px;
+      // border-bottom: 2px;
+      // transform: rotate(225deg);
+      content: 'L';
+      font-family: arial;
+      color: white;
+      -ms-transform: scaleX(-1) rotate(-35deg); /* IE 9 */
+      -webkit-transform: scaleX(-1) rotate(-35deg); /* Chrome, Safari, Opera */
+      transform: scaleX(-1) rotate(-35deg);
+      line-height: 1rem;
+      padding-right: .3rem;
+      text-align: center;
+    }
+  }
+
 }
