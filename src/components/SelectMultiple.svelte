@@ -1,5 +1,7 @@
 <script>
   import {clickOutside} from "../js/clickOutside.js";
+  import Icon from "./Icons.svelte";
+
   export let selectName = "name";
   export let options = [];
   export let selectedValue = [];
@@ -11,6 +13,8 @@
   const formatOption = (opt, type) => {
     if (selectName !== "State") {
       return opt;
+    } else if (type === "icon") {
+      return type + "-" + opt.name
     } else if (type === "name") {
       return opt.name;
     } else if (type === "value") {
@@ -48,13 +52,19 @@
     {#each options as option}
       <div class="checkbox__container">
         <input
-        id="{formatOption(option, "value")}"
+        id={formatOption(option, "value")}
         type="checkbox"
         name="tags"
-        value="{formatOption(option, "value")}"
+        value={formatOption(option, "value")}
         bind:group={selectedValue}
         >
-        <label for="{formatOption(option, "value")}">
+        <label for={formatOption(option, "value")}>
+          <Icon
+            name="icon-{formatOption(option, "name")}"
+            width={"1.5rem"}
+            height={"1.5rem"}
+            class="icon"
+          />
           {formatOption(option, "name")}
         </label>
       </div>
