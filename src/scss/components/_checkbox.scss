@@ -1,0 +1,60 @@
+@use '../abstracts/' as *;
+
+.checkbox {
+  &__container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  + label {
+    padding-left: 12px;
+  }
+}
+
+
+input[type=checkbox] {
+  // position: absolute;
+  // opacity: 0;
+  /* Borders / Gray-300 */
+  border: 0;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  appearance: none;
+  -webkit-appearance: none;
+
+  &::before,
+  &::after {
+    border-width: 1px;
+    border-style: solid;
+    border-color: #B1B4B9;
+    border-radius: 2px;
+    pointer-events: none;
+  }
+
+  &::before {
+    content: '✓';
+  }
+
+  &::after {
+    content: '⨯';
+  }
+
+  &:checked::before {
+    mix-blend-mode: blue;
+    color: transparent;
+  }
+
+
+  &:hover {
+    /* Brand / Blue 700 */
+    border-color: #0054A4;
+  }
+
+  &:focus {
+    outline-width: 3px;
+    outline-style: solid;
+    outline-color: rgba(151, 200, 247, 0.68);
+  }
+}

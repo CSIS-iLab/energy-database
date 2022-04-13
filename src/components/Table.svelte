@@ -1,6 +1,6 @@
 <script>
   import { onMount } from "svelte";
-
+  import Button from "./Button.svelte";
   import Icon from "./Icons.svelte";
 
   // export let dataset
@@ -64,8 +64,21 @@
     sort('activity')
   })
 
-</script>
+  function handleScrollLeft() {
+    let scrollLeft = document.querySelector(".table").scrollLeft
+    document.querySelector(".table").scrollLeft = scrollLeft - 150
+  }
 
+  function handleScrollRight() {
+    let scrollLeft = document.querySelector(".table").scrollLeft
+    document.querySelector(".table").scrollLeft = scrollLeft + 150
+  }
+
+</script>
+<div>
+  <Button id='btn-scroll-left' text="<" classes="btn btn--scroll btn--scroll--left" ariaLabel="Scroll table to the left" on:click={handleScrollLeft} />
+  <Button id='btn-scroll-right' text=">" classes="btn btn--scroll btn--scroll--right" ariaLabel="Scroll table to the right" on:click={handleScrollRight} />
+</div>
 <table class="table">
   <thead>
     <tr>
@@ -118,5 +131,5 @@
 </table>
 
 <style lang="scss">
-  @use "../scss/components/table.scss";
+  @use "../scss/components/table";
 </style>

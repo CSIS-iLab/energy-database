@@ -46,15 +46,17 @@
     use:clickOutside on:click_outside={handleClickOutside}
   >
     {#each options as option}
-      <label for="{formatOption(option, "value")}">
+      <div class="checkbox__container">
         <input
-          type="checkbox"
-          name="tags"
-          value="{formatOption(option, "value")}"
-          bind:group={selectedValue}
-          >
+        type="checkbox"
+        name="tags"
+        value="{formatOption(option, "value")}"
+        bind:group={selectedValue}
+        >
+        <label for="{formatOption(option, "value")}">
           {formatOption(option, "name")}
-      </label>
+        </label>
+      </div>
     {/each}
   </div>
 </div>
@@ -69,4 +71,5 @@
 
 <style lang="scss">
   @use "../scss/components/select";
+  @use "../scss/components/checkbox";
 </style>
