@@ -13,10 +13,9 @@
   const formatOption = (opt, type) => {
     if (selectName !== "State") {
       return opt;
-    } else if (type === "icon") {
-      return type + "-" + opt.name
     } else if (type === "name") {
-      return opt.name;
+      const name = opt.name
+      return name
     } else if (type === "value") {
       return opt.value;
     }
@@ -60,9 +59,9 @@
         >
         <label for={formatOption(option, "value")}>
           <Icon
-            name="icon-{formatOption(option, "name")}"
-            width={"1.5rem"}
-            height={"1.5rem"}
+            name="icon {formatOption(option, "name")}"
+            width={"1rem"}
+            height={"1rem"}
             class="icon"
           />
           {formatOption(option, "name")}

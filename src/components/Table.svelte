@@ -73,7 +73,6 @@
     let scrollLeft = document.querySelector(".table").scrollLeft
     document.querySelector(".table").scrollLeft = scrollLeft + 150
   }
-
 </script>
 <div>
   <Button id='btn-scroll-left' text="<" classes="btn btn--scroll btn--scroll--left" ariaLabel="Scroll table to the left" on:click={handleScrollLeft} />
@@ -102,7 +101,16 @@
         <td>{rows.policy_goals}</td>
         <td>{rows.authority}</td>
         <td>{rows.type_of_resource}</td>
-        <td>{rows.tags}</td>
+        <td>
+          {#each rows.tags as tag}
+            <Icon
+              name="icon {tag}"
+              width={"1rem"}
+              height={"1rem"}
+              class="icon"
+            />
+          {/each}
+        </td>
       </tr>
       <tr class="extra-content hide">
         <td colspan="6">

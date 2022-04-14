@@ -2,8 +2,8 @@ import * as d3Fetch from 'd3-fetch'
 
 const URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRAWqEOfyQi5rqdsQ-ssGUe08fdB8AczK6_sUwf-deKITfbLlqSTYpOzO4yG5u_B5O68_tB595NjPDU/pub?output=csv"
 
-const policyGoals = ['emissions_reduction', 'economic_development', 'resilience']
-const tags = ['anticipating_climate_impacts', 'comprehensive_planning_grid_modernization', 'data_transparency_or_visualization', 'electric_vehicles', 'energy_storage', 'environmental_justice', 'innovation_and_clusters', 'local-level_planning_or_support', 'microgrids', 'distributed_energy_resources_(DERs)', 'technology_or_system_standards', 'workforce_development']
+const policyGoals = ['Emissions_Reduction', 'Economic_Development', 'Resilience']
+const tags = ['Anticipating_Climate_Impacts', 'Comprehensive_Planning_Grid_Modernization', 'Data_Transparency_or_Visualization', 'Electric_Vehicles', 'Energy_Storage', 'Environmental_Justice', 'Innovation_and_Clusters', 'Local-Level_Planning_or_Support', 'Microgrids', 'Distributed_Energy_Resources_(DERs)', 'Technology_or_System_Standards', 'Workforce_Development']
 
 export default function getData() {
   const dataPromise = d3Fetch.csv(URL).then(res => {
@@ -12,7 +12,7 @@ export default function getData() {
       return {
         id: index,
         policy_goals: policyGoals.filter((goalName) => row[goalName]),
-        tags: tags.filter((tagName) => row[tagName]),
+        tags: tags.filter((tagName) => row[tagName]).map(tagName => tagName.split('_').join(' ')),
         activity: {
           title: row.title,
           description: row.description,
@@ -34,7 +34,7 @@ export default function getData() {
     return {
       data: data,
       states: states,
-      tags: tags,
+      tags: tags.map(tagName => tagName.split('_').join(' ')),
       authority: authority,
       resourceTypes: resourceTypes,
     }
