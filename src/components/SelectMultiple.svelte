@@ -60,9 +60,7 @@
         <label for={formatOption(option, "value")}>
           <Icon
             name="icon {formatOption(option, "name")}"
-            width={"1rem"}
-            height={"1rem"}
-            class="icon"
+            class="icon__select"
           />
           {formatOption(option, "name")}
         </label>
@@ -82,4 +80,5 @@
 <style lang="scss">
   @use "../scss/components/select";
   @use "../scss/components/checkbox";
+  @use "../scss/components/icon";
 </style>

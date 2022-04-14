@@ -5,7 +5,7 @@
   export let focusable = false;
 </script>
 
-<svg class={$$props.class} {focusable} {width} {height}>
+<svg class={$$props.class} {focusable}>
   <use href={`assets/static/icons.svg#${name}`} />
 </svg>
 

@@ -3,4 +3,15 @@
   fill: royalblue;
   vertical-align: middle;
   transition: all 0.3s ease-in-out;
+  width: 1rem;
+  height: 1rem;
+
+  &__tags {
+    width: 1rem;
+    height: 1rem;
+  }
+  &__select {
+    width: 1rem;
+    height: 1rem;
+  }
 }

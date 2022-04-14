@@ -105,9 +105,7 @@
           {#each rows.tags as tag}
             <Icon
               name="icon {tag}"
-              width={"1rem"}
-              height={"1rem"}
-              class="icon"
+              class="icon__tags"
             />
           {/each}
         </td>
