@@ -2,6 +2,7 @@
   import Table from "./Table.svelte";
   import Options from "./Options.svelte";
   import Search from "./Search.svelte";
+  import Header from "./Header.svelte";
 
   export let dataset;
   let selectedState = "";
@@ -29,6 +30,8 @@
     )
   }
 </script>
+
+<Header />
 
 <Options
   {dataset}

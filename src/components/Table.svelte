@@ -90,7 +90,7 @@
       <tr on:click={(e) => handleClick(e)}>
         <td
           ><Icon
-            name="icon-plus"
+            name="Icon-down"
             width={"1rem"}
             height={"1rem"}
             class="icon"

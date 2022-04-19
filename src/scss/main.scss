@@ -1,3 +1,5 @@
+@use 'layout/normalize';
+
 /* ----------  Components  ---------- */
 @use 'components/header';
 @use 'components/loading';
@@ -8,8 +10,3 @@
 @use 'layout/layout';
 
 /* ----------  Custom Components  ---------- */
-
-h1 {
-  text-align: center;
-  margin-bottom: 4rem;
-}

@@ -13,8 +13,6 @@
 
 <main>
   <div>
-    <h1>Energy Database | SPA</h1>
-
     {#if dataset.data && dataset.data.length > 0}
       <MainContainer {dataset} />
     {:else}
@@ -26,6 +24,5 @@
 </main>
 
 <style lang="scss" global>
-  // @import './scss/layout/_base.scss';
   @use "./scss/main.scss";
 </style>
