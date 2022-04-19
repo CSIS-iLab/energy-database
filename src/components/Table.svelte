@@ -46,8 +46,7 @@
           return 0
         }
       })
-    } 
-    console.log(column);
+    }
 
     let sort = (a, b) => 
         (a[column] < b[column]) 

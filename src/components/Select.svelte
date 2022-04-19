@@ -23,17 +23,5 @@
 </select>
 
 <style lang="scss">
-  select {
-    border: 0;
-    background-color: transparent;
-    border-bottom: 1px solid #D3D4D6;
-    -webkit-appearance: none;
-    -moz-appearance: none;
 
-    &:hover {
-      border-bottom: 1px solid #1475DC;
-      -webkit-appearance: #1475DC;
-      -moz-appearance: #1475DC;
-    }
-  }
 </style>
