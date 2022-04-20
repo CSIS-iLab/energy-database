@@ -12,6 +12,7 @@
   }
 </script>
 
+<!-- TODO: Get the links from the program to update them -->
 <ul class="share">
   <li class="share__item">
     <a href="https://www.facebook.com/sharer.php?u=https://energydatabase.csis.org/" class="share__link" target="_blank">
@@ -36,7 +37,6 @@
   <li class="share__item">
     <button class="share__link" on:click={copyURL}>
       <Icon class="icon__share" name="Icon-link-chain" />
-
     </button>
   </li>
 </ul>

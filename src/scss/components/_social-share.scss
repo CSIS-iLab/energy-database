@@ -1,15 +1,11 @@
 @use '../abstracts' as *;
 
 .share {
-  display: none;
+  display: flex;
   align-items: center;
   margin: 0;
   padding: 0;
   list-style-type: none;
-  
-  @include breakpoint('medium') {
-    display: flex;
-  }
 
   &__link {
     @include font-size(16px);

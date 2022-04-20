@@ -1,4 +1,5 @@
-@use 'layout/normalize';
+@use 'vendors/reset';
+@use 'vendors/normalize';
 
 /* ----------  Components  ---------- */
 @use 'components/header';
