@@ -11,17 +11,13 @@
   });
 </script>
 
-<main>
-  <div>
-    {#if dataset.data && dataset.data.length > 0}
-      <MainContainer {dataset} />
-    {:else}
-      <div class="loading-container">
-        <div class="loading" />
-      </div>
-    {/if}
+{#if dataset.data && dataset.data.length > 0}
+  <MainContainer {dataset} />
+{:else}
+  <div class="loading-container">
+    <div class="loading" />
   </div>
-</main>
+{/if}
 
 <style lang="scss" global>
   @use "./scss/main.scss";

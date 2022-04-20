@@ -5,15 +5,6 @@
 ===============================*/
 
 .header {
-  margin: rem(50) 0;
-
-  .nav {
-    
-  }
-
-  &__title {
-    max-width: rem(800);
-    margin: 0 auto;
-    @extend %text-style-heading-1;
-  }
+  display: flex;
+  justify-content: space-between;
 }

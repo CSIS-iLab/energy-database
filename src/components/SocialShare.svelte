@@ -15,27 +15,27 @@
 <ul class="share">
   <li class="share__item">
     <a href="https://www.facebook.com/sharer.php?u=https://energydatabase.csis.org/" class="share__link" target="_blank">
-      <Icon class="share__icon" name="Icon-Facebook" />
+      <Icon class="icon__share" name="Icon-Facebook" />
     </a>
   </li>
   <li class="share__item">
     <a href="https://twitter.com/intent/tweet?url=https://energydatabase.csis.org/&amp;via=CSIS&amp;related=CSIS" class="share__link" target="_blank">
-      <Icon class="share__icon" name="Icon-twitter" />
+      <Icon class="icon__share" name="Icon-twitter" />
     </a>
   </li>
   <li class="share__item">
     <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://energydatabase.csis.org/&source=CSIS" class="share__link" target="_blank">
-      <Icon class="share__icon" name="Icon-linkedin" />
+      <Icon class="icon__share" name="Icon-linkedin" />
     </a>
   </li>
   <li class="share__item">
     <a href="mailto:energy@csis.org?subject=Data Governance | CSIS Technology Policy Program" class="share__link">
-      <Icon class="share__icon" name="Icon-email" />
+      <Icon class="icon__share" name="Icon-email" />
     </a>
   </li>
   <li class="share__item">
     <button class="share__link" on:click={copyURL}>
-      <Icon class="share__icon" name="Icon-link-chain" />
+      <Icon class="icon__share" name="Icon-link-chain" />
 
     </button>
   </li>

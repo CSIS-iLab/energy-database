@@ -11,12 +11,6 @@
     display: flex;
   }
 
-  &__icon {
-    filter: invert(6%) sepia(6%) saturate(4727%) hue-rotate(181deg) brightness(91%) contrast(88%);
-    width: 1rem;
-    height: 1rem;
-  }
-
   &__link {
     @include font-size(16px);
     padding: rem(8px);
@@ -27,14 +21,14 @@
       color: $color-text-white;
     }
 
-    &-email {
-      @include font-size(22px);
-    }
+    // &-email {
+    //   @include font-size(22px);
+    // }
 
-    &-print {
-      background: none;
-      border: 0;
-      cursor: pointer;
-    }
+    // &-print {
+    //   background: none;
+    //   border: 0;
+    //   cursor: pointer;
+    // }
   }
 }

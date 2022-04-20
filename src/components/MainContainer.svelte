@@ -1,19 +1,21 @@
 <script>
-  import Table from "./Table.svelte";
+  import Header from "./Header.svelte";
+  import IntroContent from "./IntroContent.svelte";
+  import Test from "./Test.svelte";
   import Options from "./Options.svelte";
   import Search from "./Search.svelte";
-  import Header from "./Header.svelte";
-
+  import Table from "./Table.svelte";
   export let dataset;
   let selectedState = "";
   let selectedResourceType = "";
   let selectedAuthority = "";
   let selectedTags = [];
-  let searchText;
+  let searchText
 
   $: filteredData = () => {
     return dataset.data.filter(
       (row) => {
+        const search = searchText ? searchText.toLowerCase() : "";
         const filteredActivity = searchText ? searchText : row.activity.title
         const filteredState = selectedState ? selectedState : row.state
         const filteredResource = selectedResourceType ? selectedResourceType : row.type_of_resource
@@ -22,6 +24,11 @@
         
 
         return row.activity.title.toLowerCase().includes(filteredActivity.toLowerCase()) &&
+          // row.state.toLowerCase().includes(filteredActivity.toLowerCase()) ||
+          // row.type_of_resource.toLowerCase().includes(filteredActivity.toLowerCase()) ||
+          // row.authority.toLowerCase().includes(filteredActivity.toLowerCase()) 
+          // &&
+          // row.state.toLowerCase().includes(search) ||
           row.state === filteredState &&
           row.type_of_resource === filteredResource &&
           row.authority === filteredAuthority &&
@@ -32,19 +39,23 @@
 </script>
 
 <Header />
-
-<Options
-  {dataset}
-  bind:selectedAuthority
-  bind:selectedResourceType
-  bind:selectedState
-  bind:selectedTags
-/>
-
-<Search bind:searchText/>
-
-<Table filteredData={filteredData()} />
-
+<div class="container">
+    <IntroContent />
+    <Options
+    {dataset}
+    bind:selectedAuthority
+    bind:selectedResourceType
+    bind:selectedState
+    bind:selectedTags
+    />
+    
+    <Search bind:searchText/>
+    
+    <Table filteredData={filteredData()} />
+    
+    <Test />
+</div>
+    
 <style lang="scss">
-  
+
 </style>

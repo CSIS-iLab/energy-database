@@ -1,5 +1,5 @@
 <script>
-  export let searchText
+  export let searchText = "";
 </script>
 
 <label for="search" aria-hidden="true" hidden>Search</label>
