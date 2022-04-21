@@ -9,7 +9,11 @@
   <p class="intro-content__introduction">A curated database of state-level activities facilitating emissions reductions, 
     positive economic outcomes, and climate resilience—from the <span>Clean Resilient States Initiative</span>, 
     created by the CSIS Energy Security & Climate Change Program.</p>
-  <p><a href="#"><Icon class="icon__info" name="Icon-info" />More on this database</a></p>
+  <p class="intro-content__more"><a href="https://www.csis.org/programs/energy-security-and-climate-change-program/projects/clean-resilient-states-initiative" target="_blank"><span><Icon class="icon__info" name="Icon-info" /></span> <span>More on this database</span></a></p>
+  <div class="intro-content__graphs">
+    <img src="/assets/static/Authorities-graph.svg" alt="Most referenced authorities" >
+    <img src="/assets/static/Tags-graph.svg" alt="Top tags" >
+  </div>
 </main>
 
 <style lang="scss">

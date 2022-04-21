@@ -33,6 +33,7 @@ main {
         width: 23px;
         height: 2px;
         margin: 0 auto;
+        margin-top: rem(8);
       }
     }
   }
@@ -56,4 +57,22 @@ main {
     }
   }
 
+  &__more {
+    margin-bottom: rem(56);
+  }
+
+  &__graphs {
+    max-width: $size__content-max-width;
+    margin-bottom: rem(80);
+
+    img:first-child {
+      margin-bottom: rem(56);
+    }
+
+    @include breakpoint('medium') {
+      display: flex;
+      justify-content: space-between;
+      max-width: rem(1200);
+    }
+  }
 }
