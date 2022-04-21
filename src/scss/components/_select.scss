@@ -12,9 +12,20 @@
   // --indicatorColor: purple;
   // --placeholderColor: #7E8694;
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
   // border-bottom: 1px solid #D3D4D6;
+  
+  @include breakpoint('medium') {
+    flex-direction: row;
+    justify-content: space-around;
+  }
 }
+
+  .select-container {
+    @include breakpoint('medium') {
+      width: 200px;
+    }
+  }
 
 .select {
   &__select-tag {

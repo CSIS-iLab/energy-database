@@ -46,8 +46,8 @@
   $: chevron = isListOpen ? chevronUp : chevronDown;
 </script>
 
-<div class="themed icon">
-  <div>
+<div class="themed">
+  <div class="select-container">
     <div class="label">State</div>
     <Select
       containerClasses="myclass"
@@ -63,7 +63,7 @@
     ></Select>
   </div>
 
-  <div>
+  <div class="select-container">
     <div class="label">Authority</div>
     <Select
     containerClasses="myclass"
@@ -76,7 +76,7 @@
   ></Select>
   </div>
 
-  <div>
+  <div class="select-container">
     <div class="label">Resource Type</div>
     <Select
     containerClasses="myclass"
@@ -89,7 +89,7 @@
   ></Select>
   </div>
   
-  <div>
+  <div class="select-container">
     <div class="label">Tags</div>
     <SelectMultiple
     bind:selectedValue={selectedTags}
@@ -102,9 +102,9 @@
 <style lang="scss">
   @use "../scss/components/select";
   @use "../scss/components/label";
-  :global(.myclass) {
-    width: 200px;
-  }
+  // :global(.myclass) {
+  //   width: 200px;
+  // }
 
   :global(.selectContainer .item.active) {
     &::before {
