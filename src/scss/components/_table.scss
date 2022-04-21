@@ -1,10 +1,5 @@
 @use '../abstracts/' as *;
 
-$color-royalblue: royalblue;
-$color-gray: #c6c6c6;
-$color-white: #fff;
-$color-black-090: rgba(0, 0, 0, 0.9);
-
 .table {
   display: block;
   overflow-x: auto;

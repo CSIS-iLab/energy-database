@@ -1,0 +1,50 @@
+@use '../abstracts/' as *;
+
+.about {
+  margin-top: rem(80);
+  margin-bottom: rem(56);
+  color: $color-text-gray-500;
+  max-width: $size__content-max-width;
+
+  &__subtitle {
+    @extend %text-style-heading-2;
+    padding-bottom: rem(42);
+  }
+
+  &__description {
+    @extend %text-style-paragraph-1;
+    // color: $color-text-gray-500;
+
+    p:first-child {
+      padding-bottom: rem(32);
+    }
+  }
+
+  &__reports {
+    &__title {
+      @extend %text-style-ui-5-bold-caps;
+      margin-top: rem(42);
+      margin-bottom: rem(12);
+    }
+
+    ul {
+      padding: 0;
+
+      li {
+        margin-bottom: rem(8);
+
+        &:last-child {
+          margin-bottom: rem(56);
+        }
+      }
+    }
+  }
+
+  &__initiative {
+    @extend %text-style-paragraph-1-italic;
+
+    span {
+      color: $color-brand-blue-600;
+    }
+  }
+}

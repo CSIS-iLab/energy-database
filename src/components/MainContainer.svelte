@@ -1,10 +1,12 @@
 <script>
   import Header from "./Header.svelte";
   import IntroContent from "./IntroContent.svelte";
-  import Test from "./Test.svelte";
+  // import Test from "./Test.svelte";
   import Options from "./Options.svelte";
   import Search from "./Search.svelte";
   import Table from "./Table.svelte";
+  import About from "./About.svelte";
+  import Footer from "./Footer.svelte";
   export let dataset;
   let selectedState = "";
   let selectedResourceType = "";
@@ -38,24 +40,30 @@
   }
 </script>
 
-<Header />
-<div class="container">
+<div id="site-content">
+  <Header />
+  <div class="container">
     <IntroContent />
-    <Options
-    {dataset}
-    bind:selectedAuthority
-    bind:selectedResourceType
-    bind:selectedState
-    bind:selectedTags
-    />
-    
-    <Search bind:searchText/>
-    
-    <Table filteredData={filteredData()} />
-    
-    <Test />
+    <section class="table-container">
+      <h2 class="table__subtitle">Explore Policy Goals</h2>
+      <Options
+      {dataset}
+      bind:selectedAuthority
+      bind:selectedResourceType
+      bind:selectedState
+      bind:selectedTags
+      />
+      
+      <Search bind:searchText/>
+      
+      <Table filteredData={filteredData()} />
+    </section>
+    <About />
+    <!-- <Test /> -->
+  </div>
+  <Footer />
 </div>
     
 <style lang="scss">
-
+  @use "../scss/components/table-container";
 </style>

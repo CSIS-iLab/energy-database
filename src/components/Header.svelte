@@ -1,18 +1,17 @@
 <script>
-  // import Icon from './Icons.svelte';
+  import Logo from './Logo.svelte';
   import SocialShare from './SocialShare.svelte';
 
 </script>
 <header class="header">
-  <div class="container header__inner">
+  <div class="header__inner">
     <a href="https://www.csis.org" alt="CSIS website">
-      <!-- <Icon class="site-header__logo" /> -->
-      <div class="site-header__logo"></div>
+      <Logo className="__site-header"/>
     </a>
     <SocialShare />
   </div>
 </header>
 
 <style lang="scss">
-  @use "../scss/components/header";
+  @use "../scss/layout/header";
 </style>

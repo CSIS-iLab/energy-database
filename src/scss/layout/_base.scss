@@ -6,17 +6,13 @@
   --logo-width: 120px;
   --logo-height: 32px;
   --logo-color: #{$color-text-gray-300};
-  --site-header-height: #{rem(48)};
+  --site-header-height: #{rem(0)};
   --container-padding: #{6vw};
 
   @include breakpoint('large') {
     --logo-width: 175px;
     --logo-height: 48px;
-    --site-header-height: #{rem(56)};
-  }
-
-  @include breakpoint(xxlarge) {
-    --container-padding: #{rem(80)};
+    // --site-header-height: #{rem(56)};
   }
 }
 
@@ -32,10 +28,10 @@ body {
 
 body {
   padding: 0;
-  background: linear-gradient(201.75deg, rgba(253, 254, 255, 0.5) 4.76%, rgba(224, 239, 248, 0.5) 29.06%, rgba(248, 248, 248, 0.5) 71.58%),
-  linear-gradient(164.14deg, #E0EFF8 25.66%, rgba(224, 239, 248, 0.14) 62.15%),
-  linear-gradient(0deg, #F8F8F8, #F8F8F8),
-  #F5F5F5;
+  // background: linear-gradient(201.75deg, rgba(253, 254, 255, 0.5) 4.76%, rgba(224, 239, 248, 0.5) 29.06%, rgba(248, 248, 248, 0.5) 71.58%),
+  // linear-gradient(164.14deg, #E0EFF8 25.66%, rgba(224, 239, 248, 0.14) 62.15%),
+  // linear-gradient(0deg, #F8F8F8, #F8F8F8),
+  // #F5F5F5;
 }
 
 .container {
@@ -49,9 +45,7 @@ body {
   max-width: $size__container-max-width;
   margin-right: auto;
   margin-left: auto;
-  padding-right: 6vw;
   padding-right: var(--container-padding);
-  padding-left: 6vw;
   padding-left: var(--container-padding);
 
   /* This will keep the footer positioned at the bottom of the page, no matter the amount of content we have. From: https://moderncss.dev/keep-the-footer-at-the-bottom-flexbox-vs-grid/ */
@@ -60,7 +54,6 @@ body {
     flex-direction: column;
     min-height: 100vh;
   }
-
 }
 
 #site-content {
