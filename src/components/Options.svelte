@@ -7,6 +7,13 @@
   import SelectMultiple from './SelectMultiple.svelte';
   import Icon from './Icons.svelte'
   
+  export let dataset;
+  export let selectedState;
+  export let selectedResourceType;
+  export let selectedAuthority;
+  export let selectedTags;
+  export let selectedPolicyGoal;
+
   const optionIdentifier = 'value';
   const labelIdentifier = 'label';
 
@@ -33,13 +40,6 @@
       selectedResourceType = ''
     }
   }
-
-  export let dataset;
-  export let selectedState;
-  export let selectedResourceType;
-  export let selectedAuthority;
-  export let selectedTags;
-  export let selectedPolicyGoal;
 
   // handle the icon
   const chevronUp = '<svg class="test" width="28" height="15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M28 15 14 0 0 15h28z" fill="#000"/></svg>';
