@@ -8,7 +8,7 @@
     <div class="site-footer__logo">
       <a href="https://www.csis.org" alt="CSIS website">
         <!-- <Icon class="site-header__logo" /> -->
-        <div class="site-header__logo"></div>
+        <!-- <div class="site-header__logo"></div> -->
         <Logo />
       </a>
     </div>

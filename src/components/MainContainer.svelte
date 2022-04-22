@@ -27,7 +27,9 @@
         const filteredPolicyGoal = selectedPolicyGoal.length > 0 ? row.policy_goals.some((policy) => selectedPolicyGoal.includes(policy)) : row.policy_goals
         // console.log(filteredPolicyGoal)
         return (row.activity.title.toLowerCase().includes(filteredActivity.toLowerCase()) ||
-          row.state.toLowerCase().includes(filteredActivity.toLowerCase())) &&
+          row.state.toLowerCase().includes(filteredActivity.toLowerCase()) || 
+          row.type_of_resource.toLowerCase().includes(filteredActivity.toLowerCase()) ||
+          row.authority.toLowerCase().includes(filteredActivity.toLowerCase())) &&
           row.state === filteredState &&
           row.type_of_resource === filteredResource &&
           row.authority === filteredAuthority &&
@@ -57,9 +59,9 @@
       
       <Table filteredData={filteredData()} />
     </section>
-    <About />
     <!-- <Test /> -->
   </div>
+  <About />
   <Footer />
 </div>
     
