@@ -12,16 +12,19 @@
 
   function handleSelect(event, selectName) {
     if (selectName === 'State') {
-      console.log(event.detail.value)
+      // console.log(event.detail.value)
       selectedState = event.detail.value
     } else if (selectName === 'Authority') {
       selectedAuthority = event.detail.value
-    } else {
+    } else if (selectName === 'Policy Goal') {
+      selectedPolicyGoal = event.target.value
+      // console.log(selectedPolicyGoal, event)
+    }  else {
       selectedResourceType = event.detail.value
     }
   }
 
-  export function handleClear(event, selectName) {
+  export function handleClear(selectName) {
     if (selectName === 'State') {
       selectedState = ''
     } else if (selectName === 'Authority') {
@@ -49,9 +52,9 @@
 
 <div class="options">
   <div class="options__header">
-    <button class="options__btn--tab">All</button>
+    <button class="options__btn--tab" on:click={(event) => handleSelect(event, 'Policy Goal')}>All</button>
     {#each dataset.policyGoals as policy}
-      <button class="options__btn--tab">{policy}</button>
+      <button class="options__btn--tab" value="{policy}" on:click={(event) => handleSelect(event, 'Policy Goal')}>{policy.split('_').join(' ')}</button>
     {/each}
   </div>
   <div class="selects">
@@ -66,7 +69,7 @@
         {optionIdentifier} labelIdentifier={'name'} items={dataset.states}
         placeholder="Select a State"
         on:select={(event) => handleSelect(event, 'State')}
-        on:clear={(event) => handleClear(event, 'State')}
+        on:clear={() => handleClear('State')}
       />
     </div>
 

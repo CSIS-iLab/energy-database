@@ -37,7 +37,7 @@ export default function getData() {
       tags: tags.map(tagName => tagName.split('_').join(' ')),
       authority: authority,
       resourceTypes: resourceTypes,
-      policyGoals: policyGoals.map(policy => policy.split('_').join(' ')),
+      policyGoals: policyGoals,
     }
   })
   return dataPromise

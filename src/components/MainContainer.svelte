@@ -18,14 +18,14 @@
   $: filteredData = () => {
     return dataset.data.filter(
       (row) => {
-        const search = searchText ? searchText.toLowerCase() : "";
+        // const search = searchText ? searchText.toLowerCase() : "";
         const filteredActivity = searchText ? searchText : row.activity.title
         const filteredState = selectedState ? selectedState : row.state
         const filteredResource = selectedResourceType ? selectedResourceType : row.type_of_resource
         const filteredAuthority = selectedAuthority ? selectedAuthority : row.authority
         const filteredTags = selectedTags.length > 0 ? row.tags.some((tag) => selectedTags.includes(tag)) : row.tags
-        const filteredPolicyGoal = selectedPolicyGoal ? selectedPolicyGoal : row.policy_goals        
-
+        const filteredPolicyGoal = selectedPolicyGoal.length > 0 ? row.policy_goals.some((policy) => selectedPolicyGoal.includes(policy)) : row.policy_goals
+        // console.log(filteredPolicyGoal)
         return row.activity.title.toLowerCase().includes(filteredActivity.toLowerCase()) &&
           // row.state.toLowerCase().includes(filteredActivity.toLowerCase()) ||
           // row.type_of_resource.toLowerCase().includes(filteredActivity.toLowerCase()) ||
@@ -35,7 +35,7 @@
           row.state === filteredState &&
           row.type_of_resource === filteredResource &&
           row.authority === filteredAuthority &&
-          row.policy_goals === filteredPolicyGoal &&
+          filteredPolicyGoal &&
           filteredTags
       }
     )
