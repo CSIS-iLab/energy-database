@@ -12,6 +12,7 @@
   let selectedResourceType = "";
   let selectedAuthority = "";
   let selectedTags = [];
+  let selectedPolicyGoal = "";
   let searchText
 
   $: filteredData = () => {
@@ -23,7 +24,7 @@
         const filteredResource = selectedResourceType ? selectedResourceType : row.type_of_resource
         const filteredAuthority = selectedAuthority ? selectedAuthority : row.authority
         const filteredTags = selectedTags.length > 0 ? row.tags.some((tag) => selectedTags.includes(tag)) : row.tags
-        
+        const filteredPolicyGoal = selectedPolicyGoal ? selectedPolicyGoal : row.policy_goals        
 
         return row.activity.title.toLowerCase().includes(filteredActivity.toLowerCase()) &&
           // row.state.toLowerCase().includes(filteredActivity.toLowerCase()) ||
@@ -34,6 +35,7 @@
           row.state === filteredState &&
           row.type_of_resource === filteredResource &&
           row.authority === filteredAuthority &&
+          row.policy_goals === filteredPolicyGoal &&
           filteredTags
       }
     )
@@ -45,13 +47,14 @@
   <div class="container">
     <IntroContent />
     <section class="table-container">
-      <h2 class="table__subtitle">Explore Policy Goals</h2>
+      <h2 class="table-container__subtitle">Explore Policy Goals</h2>
       <Options
       {dataset}
       bind:selectedAuthority
       bind:selectedResourceType
       bind:selectedState
       bind:selectedTags
+      bind:selectedPolicyGoal
       />
       
       <Search bind:searchText/>

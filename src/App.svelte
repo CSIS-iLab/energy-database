@@ -8,6 +8,7 @@
   onMount(async () => {
     const res = await getData();
     dataset = res;
+    console.log(dataset);
   });
 </script>
 

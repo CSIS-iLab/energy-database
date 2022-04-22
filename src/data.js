@@ -37,6 +37,7 @@ export default function getData() {
       tags: tags.map(tagName => tagName.split('_').join(' ')),
       authority: authority,
       resourceTypes: resourceTypes,
+      policyGoals: policyGoals.map(policy => policy.split('_').join(' ')),
     }
   })
   return dataPromise
@@ -51,7 +52,6 @@ function formatResourceType(array) {
 }
 
 function formatStates(row) {
-
   return [...new Set(row.map(r => r.state))]
     .map(state => {
       return {

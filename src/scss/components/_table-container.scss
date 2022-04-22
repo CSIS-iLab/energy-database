@@ -2,4 +2,8 @@
 
 .table-container {
   background-color: $color-background-gray-100;
+
+  &__subtitle {
+    @extend %text-style-heading-2;
+  }
 }

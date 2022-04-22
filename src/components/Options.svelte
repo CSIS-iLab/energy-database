@@ -36,6 +36,7 @@
   export let selectedResourceType;
   export let selectedAuthority;
   export let selectedTags;
+  export let selectedPolicyGoal;
 
   // handle the icon
   const chevronUp = '<svg class="test" width="28" height="15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M28 15 14 0 0 15h28z" fill="#000"/></svg>';
@@ -46,57 +47,63 @@
   $: chevron = isListOpen ? chevronUp : chevronDown;
 </script>
 
-<div class="themed">
-  <div class="select-container">
-    <div class="label">State</div>
-    <Select
-      containerClasses="myclass"
-      showChevron={true}
-      indicatorSvg={chevron}
-      bind:listOpen={isListOpen}
-      listOffset={16}
-      inputStyles="box-sizing: border-box; border-bottom: 1px solid #D3D4D6;"
-      {optionIdentifier} labelIdentifier={'name'} items={dataset.states}
-      placeholder="Select a State"
-      on:select={(event) => handleSelect(event, 'State')}
-      on:clear={(event) => handleClear(event, 'State')}
-    ></Select>
+<div class="options">
+  <div class="options__header">
+    <button class="options__btn--tab">All</button>
+    {#each dataset.policyGoals as policy}
+      <button class="options__btn--tab">{policy}</button>
+    {/each}
+  </div>
+  <div class="selects">
+    <div class="select-container">
+      <div class="label">State</div>
+      <Select
+        showChevron={true}
+        indicatorSvg={chevron}
+        bind:listOpen={isListOpen}
+        listOffset={16}
+        inputStyles="box-sizing: border-box; border-bottom: 1px solid #D3D4D6;"
+        {optionIdentifier} labelIdentifier={'name'} items={dataset.states}
+        placeholder="Select a State"
+        on:select={(event) => handleSelect(event, 'State')}
+        on:clear={(event) => handleClear(event, 'State')}
+      />
+    </div>
+
+    <div class="select-container">
+      <div class="label">Authority</div>
+      <Select
+        inputStyles="box-sizing: border-box; border-bottom: 1px solid #D3D4D6;"
+        showChevron={true}
+        {optionIdentifier} {labelIdentifier} items={dataset.authority}
+        placeholder="Select an Authority"
+        on:select={(event) => handleSelect(event, 'Authority')}
+        on:clear={(event) => handleClear(event, 'Authority')}
+      />
+    </div>
+
+    <div class="select-container">
+      <div class="label">Resource Type</div>
+      <Select
+        inputStyles="box-sizing: border-box; border-bottom: 1px solid #D3D4D6;"
+        showChevron={true}
+        {optionIdentifier} {labelIdentifier} items={dataset.resourceTypes}
+        placeholder="Select a Resource"
+        on:select={(event) => handleSelect(event, 'ResourceType')}
+        on:clear={(event) => handleClear(event, 'ResourceType')}
+      />
+    </div>
+    
+    <div class="select-container">
+      <div class="label">Tags</div>
+      <SelectMultiple
+        bind:selectedValue={selectedTags}
+        options={dataset.tags}
+        selectName="Tags"
+      />
+    </div>
   </div>
 
-  <div class="select-container">
-    <div class="label">Authority</div>
-    <Select
-    containerClasses="myclass"
-    inputStyles="box-sizing: border-box; border-bottom: 1px solid #D3D4D6;"
-    showChevron={true}
-    {optionIdentifier} {labelIdentifier} items={dataset.authority}
-    placeholder="Select an Authority"
-    on:select={(event) => handleSelect(event, 'Authority')}
-    on:clear={(event) => handleClear(event, 'Authority')}
-  ></Select>
-  </div>
-
-  <div class="select-container">
-    <div class="label">Resource Type</div>
-    <Select
-    containerClasses="myclass"
-    inputStyles="box-sizing: border-box; border-bottom: 1px solid #D3D4D6;"
-    showChevron={true}
-    {optionIdentifier} {labelIdentifier} items={dataset.resourceTypes}
-    placeholder="Select a Resource"
-    on:select={(event) => handleSelect(event, 'ResourceType')}
-    on:clear={(event) => handleClear(event, 'ResourceType')}
-  ></Select>
-  </div>
-  
-  <div class="select-container">
-    <div class="label">Tags</div>
-    <SelectMultiple
-    bind:selectedValue={selectedTags}
-    options={dataset.tags}
-    selectName="Tags"
-  />
-  </div>
 </div>
 
 <style lang="scss">
