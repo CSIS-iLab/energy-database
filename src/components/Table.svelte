@@ -1,6 +1,5 @@
 <script>
   import { onMount } from "svelte";
-  import Button from "./Button.svelte";
   import Icon from "./Icons.svelte";
 
   // export let dataset
@@ -63,77 +62,74 @@
     sort('activity')
   })
 
-  function handleScrollLeft() {
-    let scrollLeft = document.querySelector(".table").scrollLeft
-    document.querySelector(".table").scrollLeft = scrollLeft - 150
-  }
-
-  function handleScrollRight() {
-    let scrollLeft = document.querySelector(".table").scrollLeft
-    document.querySelector(".table").scrollLeft = scrollLeft + 150
-  }
 </script>
+
 <div>
-  <Button id='btn-scroll-left' text="<" classes="btn btn--scroll btn--scroll--left" ariaLabel="Scroll table to the left" on:click={handleScrollLeft} />
-  <Button id='btn-scroll-right' text=">" classes="btn btn--scroll btn--scroll--right" ariaLabel="Scroll table to the right" on:click={handleScrollRight} />
-</div>
-<table class="table">
-  <thead>
-    <tr>
-      {#each headerNames as name}
-        <th scope="col" on:click={ sort( name ) }>{name}</th>
-      {/each}
-    </tr>
-  </thead>
-  <tbody>
-    {#each filteredData as rows}
-      <tr on:click={(e) => handleClick(e)}>
-        <td
-          ><Icon
-            name="Icon-down"
-            width={"1rem"}
-            height={"1rem"}
-            class="icon"
-          />{rows.activity.title}</td
-        >
-        <td>{rows.state}</td>
-        <td>{rows.policy_goals}</td>
-        <td>{rows.authority}</td>
-        <td>{rows.type_of_resource}</td>
-        <td>
-          {#each rows.tags as tag}
-            <Icon
-              name="icon {tag}"
-              class="icon__tags"
-            />
+  <div class="table__container table__container--sticky">
+    <table class="table">
+      <thead>
+        <tr class="table__header-row">
+          {#each headerNames as name}
+            <th class="table__cell--header" scope="col" on:click={ sort( name ) }>{name}</th>
           {/each}
-        </td>
-      </tr>
-      <tr class="extra-content hide">
-        <td colspan="6">
-          <div>
-            <div class="description">{rows.activity.description}</div>
-            <div class="link">
-              <a
-                href={rows.activity.link}
-                target="_blank"
-                rel="noopener noreferrer">{rows.activity.link}</a
-              >
-            </div>
-            <div class="policy-goals">
-              <span class="policy-goals__title">Policy Goals:</span>
-              {rows.policy_goals}
-            </div>
-          </div>
-        </td>
-      </tr>
-    {:else}
-      <tr>
-        <td colspan="6">No data found</td>
-      </tr>
-    {/each}
-  </tbody>
-</table>
+        </tr>
+      </thead>
+    </table>
+  </div>
+  <div class="table__container">
+    <table class="table__body">
+      <tbody>
+        {#each filteredData as rows}
+          <tr on:click={(e) => handleClick(e)}>
+            <td class="table__body__cell"
+              ><Icon
+                name="Icon-down"
+                width={"1rem"}
+                height={"1rem"}
+                class="icon"
+              />{rows.activity.title}</td
+            >
+            <td class="table__body__cell">{rows.state}</td>
+            <td class="table__body__cell">{rows.policy_goals}</td>
+            <td class="table__body__cell">{rows.authority}</td>
+            <td class="table__body__cell">{rows.type_of_resource}</td>
+            <td class="table__body__cell">
+              {#each rows.tags as tag}
+                <Icon
+                  name="icon {tag}"
+                  class="icon__tags"
+                />
+              {/each}
+            </td>
+          </tr>
+          <tr class="extra-content hide">
+            <td class="table__body__cell" colspan="6">
+              <div class="extra-content__container">
+                <div class="description">{rows.activity.description}</div>
+                <div class="link">
+                  <a
+                    href={rows.activity.link}
+                    target="_blank"
+                    rel="noopener noreferrer">{rows.activity.link}</a
+                  >
+                </div>
+                <div class="policy-goals">
+                  <span class="policy-goals__title">Policy Goals:</span>
+                  {rows.policy_goals}
+                </div>
+              </div>
+            </td>
+          </tr>
+        {:else}
+          <tr>
+            <td colspan="6">No data found</td>
+          </tr>
+        {/each}
+      </tbody>
+    </table>
+  </div>
+</div>
+
 
 <style lang="scss">
   @use "../scss/components/table";

@@ -3,6 +3,8 @@
   site: https://github.com/rob-balfre/svelte-select
 -->
 <script>
+  import Button from "./Button.svelte";
+  import Search from "./Search.svelte";
   import Select from 'svelte-select'
   import SelectMultiple from './SelectMultiple.svelte';
   import Icon from './Icons.svelte'
@@ -13,6 +15,7 @@
   export let selectedAuthority;
   export let selectedTags;
   export let selectedPolicyGoal;
+  export let searchText;
 
   const optionIdentifier = 'value';
   const labelIdentifier = 'label';
@@ -48,9 +51,21 @@
   let isListOpen = false;
   
   $: chevron = isListOpen ? chevronUp : chevronDown;
+
+
+  function handleScrollLeft() {
+    let scrollLeft = document.querySelector(".table").scrollLeft
+    document.querySelector(".table").scrollLeft = scrollLeft - 150
+    console.log(document.querySelector(".table__body"));
+  }
+
+  function handleScrollRight() {
+    let scrollLeft = document.querySelector(".table").scrollLeft
+    document.querySelector(".table").scrollLeft = scrollLeft + 150
+  }
 </script>
 
-<div class="options">
+<section class="table__options">
   <div class="options__header">
     <button class="options__btn--tab" on:click={(event) => handleSelect(event, 'Policy Goal')}>All</button>
     {#each dataset.policyGoals as policy}
@@ -106,12 +121,22 @@
       />
     </div>
   </div>
+  <section class="table__options--sticky table__options__navigation">
+    <!-- div class="table__container table__container--sticky" -->
+    <Search bind:searchText/>
+    <div>
+      <span class="table__total-entries">Showing x entries</span>
+      <Button id='btn-scroll-left' text="<" classes="btn btn--scroll btn--scroll--left" ariaLabel="Scroll table to the left" on:click={handleScrollLeft} />
+      <Button id='btn-scroll-right' text=">" classes="btn btn--scroll btn--scroll--right" ariaLabel="Scroll table to the right" on:click={handleScrollRight} />
+    </div>
+  </section>
 
-</div>
+</section>
 
 <style lang="scss">
-  @use "../scss/components/select";
   @use "../scss/components/label";
+  @use "../scss/components/select";
+  @use "../scss/components/table";
   // :global(.myclass) {
   //   width: 200px;
   // }

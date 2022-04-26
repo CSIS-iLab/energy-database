@@ -3,10 +3,11 @@
   import IntroContent from "./IntroContent.svelte";
   // import Test from "./Test.svelte";
   import Options from "./Options.svelte";
-  import Search from "./Search.svelte";
+  // import Search from "./Search.svelte";
   import Table from "./Table.svelte";
   import About from "./About.svelte";
   import Footer from "./Footer.svelte";
+
   export let dataset;
   let selectedState = "";
   let selectedResourceType = "";
@@ -44,23 +45,24 @@
   <Header />
   <div class="container">
     <IntroContent />
-    <section class="table-container">
-      <h2 class="table-container__subtitle">Explore Policy Goals</h2>
-      <Options
-      {dataset}
-      bind:selectedAuthority
-      bind:selectedResourceType
-      bind:selectedState
-      bind:selectedTags
-      bind:selectedPolicyGoal
-      />
-      
-      <Search bind:searchText/>
-      
-      <Table filteredData={filteredData()} />
-    </section>
     <!-- <Test /> -->
   </div>
+  <section class="table-container">
+    <h2 class="table-container__subtitle">Explore Policy Goals</h2>
+    <Options
+    {dataset}
+    bind:selectedAuthority
+    bind:selectedResourceType
+    bind:selectedState
+    bind:selectedTags
+    bind:selectedPolicyGoal
+    bind:searchText
+    />
+    
+    <!-- <Search bind:searchText/> -->
+    
+    <Table filteredData={filteredData()} />
+  </section>
   <About />
   <Footer />
 </div>
