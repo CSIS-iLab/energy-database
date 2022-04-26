@@ -1,14 +1,21 @@
+@use '../abstracts/' as *;
 
 .options {
-  &__navigation {
-    display: flex;
-    justify-content: space-between;
-  
+
+  &__container {
+    position: relative;
+    
     &--sticky {
       position: sticky;
       top: 0;
       // top: calc(var(--optionsHeight) - 2px);
       z-index: 15;
     }
+  }
+
+  &__navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: rem(16);
   }
 }

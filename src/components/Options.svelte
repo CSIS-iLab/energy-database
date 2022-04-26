@@ -121,15 +121,19 @@
       />
     </div>
   </div>
-  <section class="options__navigation options__navigation--sticky">
-    <!-- div class="table__container table__container--sticky" -->
-    <Search bind:searchText/>
-    <div>
-      <span class="table__total-entries">Showing x entries</span>
-      <Button id='btn-scroll-left' text="<" classes="btn btn--scroll btn--scroll--left" ariaLabel="Scroll table to the left" on:click={handleScrollLeft} />
-      <Button id='btn-scroll-right' text=">" classes="btn btn--scroll btn--scroll--right" ariaLabel="Scroll table to the right" on:click={handleScrollRight} />
-    </div>
-  </section>
+  <div>
+  <div class="options__container options__container--sticky">
+    <section class="options__navigation">
+      <!-- div class="table__container table__container--sticky" -->
+      <Search bind:searchText/>
+      <div>
+        <span class="table__total-entries">Showing x entries</span>
+        <Button id='btn-scroll-left' text="<" classes="btn btn--scroll btn--scroll--left" ariaLabel="Scroll table to the left" on:click={handleScrollLeft} />
+        <Button id='btn-scroll-right' text=">" classes="btn btn--scroll btn--scroll--right" ariaLabel="Scroll table to the right" on:click={handleScrollRight} />
+      </div>
+    </section>
+  </div>
+  </div>
 
 </section>
 
