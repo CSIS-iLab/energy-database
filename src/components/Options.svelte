@@ -121,7 +121,7 @@
       />
     </div>
   </div>
-  <section class="table__options--sticky table__options__navigation">
+  <section class="options__navigation options__navigation--sticky">
     <!-- div class="table__container table__container--sticky" -->
     <Search bind:searchText/>
     <div>
@@ -136,7 +136,8 @@
 <style lang="scss">
   @use "../scss/components/label";
   @use "../scss/components/select";
-  @use "../scss/components/table";
+  @use "../scss/components/options";
+  // @use "../scss/components/table";
   // :global(.myclass) {
   //   width: 200px;
   // }

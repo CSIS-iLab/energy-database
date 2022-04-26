@@ -1,14 +1,15 @@
 @use '../abstracts/' as *;
 
 .table {
-  display: block;
+  // display: block;
   overflow-x: auto;
-  white-space: nowrap;
+  // white-space: nowrap;
   // width: 100vw;
   border: none;
   border-top: 1px solid #EEEEEE;
   font-family: arial, sans-serif;
   border-collapse: collapse;
+  table-layout: fixed;
 
   margin-top: 1rem;
 
@@ -44,6 +45,31 @@
         max-width: rem(440);
         min-width: rem(440);
       }
+
+      &:nth-child(2) {
+        min-width: rem(128);
+        max-width: rem(128);
+      }
+
+      &:nth-child(3) {
+        min-width: rem(224);
+        max-width: rem(224);
+      }
+
+      &:nth-child(4) {
+        min-width: rem(240);
+        max-width: rem(240);
+      }
+
+      &:nth-child(5) {
+        min-width: rem(224);
+        max-width: rem(224);
+      }
+
+      &:nth-child(6) {
+        min-width: rem(240);
+        max-width: rem(240);
+      }
     }
   }
 
@@ -69,20 +95,6 @@
       top: 45px;
       // top: calc(var(--optionsHeight) - 2px);
       z-index: 10;
-    }
-  }
-
-  &__options {
-    &--sticky {
-      position: sticky;
-      top: 25px;
-      // top: calc(var(--optionsHeight) - 2px);
-      z-index: 10;
-    }
-
-    &__navigation {
-      display: flex;
-      justify-content: space-between;
     }
   }
 }
@@ -122,12 +134,39 @@
     color: $color-text-gray-500;
     padding: rem(12) rem(16);
     background-color: $color-background-white;
-  
+    overflow-wrap: break-word;
+
     &:first-child {
       padding: rem(12) rem(16);
       padding-left: rem(48);
       max-width: rem(440);
       min-width: rem(440);
+      // word-break: break-word;
+    }
+
+    &:nth-child(2) {
+      min-width: rem(128);
+      max-width: rem(128);
+    }
+    
+    &:nth-child(3) {
+      min-width: rem(224);
+      max-width: rem(224);
+    }
+    
+    &:nth-child(4) {
+      min-width: rem(240);
+      max-width: rem(240);
+    }
+    
+    &:nth-child(5) {
+      min-width: rem(224);
+      max-width: rem(224);
+    }
+    
+    &:nth-child(6) {
+      min-width: rem(240);
+      max-width: rem(240);
     }
   }
 }

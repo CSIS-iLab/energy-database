@@ -77,7 +77,7 @@
     </table>
   </div>
   <div class="table__container">
-    <table class="table__body">
+    <table class="table table__body">
       <tbody>
         {#each filteredData as rows}
           <tr on:click={(e) => handleClick(e)}>
