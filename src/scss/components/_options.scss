@@ -33,4 +33,12 @@
       border-bottom: 3px solid $color-borders-gray-400;
     }
   }
+
+  &__count {
+    background-color: $color-text-gray-400;
+    border-radius: rem(19);
+    color: $color-text-white;
+    @extend %text-style-ui-5;
+    padding: rem(3) rem(8) rem(4);
+  }
 }

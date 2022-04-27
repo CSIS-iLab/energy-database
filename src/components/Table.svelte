@@ -63,12 +63,16 @@
     sort('activity')
   })
 
+  // Syncrhonize the scroll position of the table and the scroll buttons
+  function SyncScroll(table) {
+    console.log(table);
+  }
 </script>
 
 <div>
   <div class="table__container table__container--sticky">
     <!-- <EasyScrollSync> -->
-    <table data-scrollsync class="table">
+    <table id="tableHead" data-scrollsync class="table">
       <thead>
         <tr class="table__header-row">
           {#each headerNames as name}
@@ -81,7 +85,7 @@
   </div>
   <div class="table__container">
     <!-- <EasyScrollSync> -->
-    <table data-scrollsync class="table table__body">
+    <table id="tableBody" on:scroll="{(e)=>SyncScroll(e)}" data-scrollsync class="table table__body">
       <tbody>
         {#each filteredData as rows}
           <tr on:click={(e) => handleClick(e)}>

@@ -16,17 +16,15 @@
   export let selectedAuthority;
   export let selectedTags;
   export let selectedPolicyGoal;
-  export let searchText;
-
-  // Economic_Development
+  export let searchText = '';
 
   $: totalEntries =filteredData.length
-  $: console.log(totalEntries)
-  
+
   const policyGoalsTotal = dataset.data.length
   function getPGCount(policyGoal) {
     return dataset.data.filter(row => row.policy_goals.includes(policyGoal)).length
   }
+
   const optionIdentifier = 'value';
   const labelIdentifier = 'label';
 
@@ -46,13 +44,10 @@
 
   export function handleClear(selectName) {
     if (selectName === 'State') {
-      console.log('i got clicked', selectName);
       selectedState = ''
     } else if (selectName === 'Authority') {
-      console.log('i got clicked', selectName);
       selectedAuthority = ''
     } else {
-      console.log('i got clicked', selectName);
       selectedResourceType = ''
     }
   }
@@ -80,9 +75,9 @@
 
 <section class="table__options">
   <div class="options__header">
-    <button class="options__btn--tab options__btn--active" on:click={(event) => handleSelect(event, 'Policy Goal')}>All <span>{policyGoalsTotal}</span></button>
+    <button class="options__btn--tab options__btn--active" on:click={(event) => handleSelect(event, 'Policy Goal')}>All <span class="options__count">{policyGoalsTotal}</span></button>
     {#each dataset.policyGoals as policy}
-      <button class="options__btn--tab" value="{policy}" on:click={(event) => handleSelect(event, 'Policy Goal')}>{policy.split('_').join(' ')} <span>{getPGCount(policy)}</span></button>
+      <button class="options__btn--tab" value="{policy}" on:click={(event) => handleSelect(event, 'Policy Goal')}>{policy.split('_').join(' ')} <span class="options__count">{getPGCount(policy)}</span></button>
     {/each}
   </div>
   <div class="selects">

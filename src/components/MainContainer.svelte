@@ -25,7 +25,7 @@
         const filteredResource = selectedResourceType ? selectedResourceType : row.type_of_resource
         const filteredAuthority = selectedAuthority ? selectedAuthority : row.authority
         const filteredTags = selectedTags.length > 0 ? row.tags.some((tag) => selectedTags.includes(tag)) : row.tags
-        const filteredPolicyGoal = selectedPolicyGoal.length > 0 ? row.policy_goals.some((policy) => selectedPolicyGoal.includes(policy)) : row.policy_goals
+        const filteredPolicyGoal = selectedPolicyGoal ? row.policy_goals.some((policy) => selectedPolicyGoal.includes(policy)) : row.policy_goals
         // console.log(filteredPolicyGoal)
         return (row.activity.title.toLowerCase().includes(filteredActivity.toLowerCase()) ||
           row.state.toLowerCase().includes(filteredActivity.toLowerCase()) || 
