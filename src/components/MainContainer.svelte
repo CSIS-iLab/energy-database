@@ -51,6 +51,7 @@
     <h2 class="table-container__subtitle">Explore Policy Goals</h2>
     <Options
     {dataset}
+    filteredData={filteredData()}
     bind:selectedAuthority
     bind:selectedResourceType
     bind:selectedState

@@ -10,6 +10,7 @@
   import Icon from './Icons.svelte'
   
   export let dataset;
+  export let filteredData;
   export let selectedState;
   export let selectedResourceType;
   export let selectedAuthority;
@@ -17,6 +18,15 @@
   export let selectedPolicyGoal;
   export let searchText;
 
+  // Economic_Development
+
+  $: totalEntries =filteredData.length
+  $: console.log(totalEntries)
+  
+  const policyGoalsTotal = dataset.data.length
+  function getPGCount(policyGoal) {
+    return dataset.data.filter(row => row.policy_goals.includes(policyGoal)).length
+  }
   const optionIdentifier = 'value';
   const labelIdentifier = 'label';
 
@@ -36,10 +46,13 @@
 
   export function handleClear(selectName) {
     if (selectName === 'State') {
+      console.log('i got clicked', selectName);
       selectedState = ''
     } else if (selectName === 'Authority') {
+      console.log('i got clicked', selectName);
       selectedAuthority = ''
     } else {
+      console.log('i got clicked', selectName);
       selectedResourceType = ''
     }
   }
@@ -67,9 +80,9 @@
 
 <section class="table__options">
   <div class="options__header">
-    <button class="options__btn--tab" on:click={(event) => handleSelect(event, 'Policy Goal')}>All</button>
+    <button class="options__btn--tab options__btn--active" on:click={(event) => handleSelect(event, 'Policy Goal')}>All <span>{policyGoalsTotal}</span></button>
     {#each dataset.policyGoals as policy}
-      <button class="options__btn--tab" value="{policy}" on:click={(event) => handleSelect(event, 'Policy Goal')}>{policy.split('_').join(' ')}</button>
+      <button class="options__btn--tab" value="{policy}" on:click={(event) => handleSelect(event, 'Policy Goal')}>{policy.split('_').join(' ')} <span>{getPGCount(policy)}</span></button>
     {/each}
   </div>
   <div class="selects">
@@ -96,7 +109,7 @@
         {optionIdentifier} {labelIdentifier} items={dataset.authority}
         placeholder="Select an Authority"
         on:select={(event) => handleSelect(event, 'Authority')}
-        on:clear={(event) => handleClear(event, 'Authority')}
+        on:clear={() => handleClear('Authority')}
       />
     </div>
 
@@ -127,7 +140,7 @@
       <!-- div class="table__container table__container--sticky" -->
       <Search bind:searchText/>
       <div>
-        <span class="table__total-entries">Showing x entries</span>
+        <span class="table__total-entries">Showing {totalEntries} entries</span>
         <Button id='btn-scroll-left' text="<" classes="btn btn--scroll btn--scroll--left" ariaLabel="Scroll table to the left" on:click={handleScrollLeft} />
         <Button id='btn-scroll-right' text=">" classes="btn btn--scroll btn--scroll--right" ariaLabel="Scroll table to the right" on:click={handleScrollRight} />
       </div>

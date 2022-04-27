@@ -23,14 +23,6 @@
   &__header {
     // display: block;
   }
-  
-  &__btn {
-    // margin-left: rem(16);
-
-    &--tab {
-      border-bottom: 3px solid $color-borders-gray-400;
-    }  
-  }
 
   button + button {
     margin-left: rem(16);
@@ -48,6 +40,7 @@
   }
 }
 .select-container {
+  z-index: 15;
   @include breakpoint('medium') {
     width: 200px;
   }

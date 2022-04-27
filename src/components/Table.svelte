@@ -1,7 +1,7 @@
 <script>
   import { onMount } from "svelte";
   import Icon from "./Icons.svelte";
-  // import EasyScrollSync from 'easy-scroll-sync';
+  // import { EasyScrollSync } from 'easy-scroll-sync';
 
   // export let dataset
   export let filteredData
@@ -68,7 +68,7 @@
 <div>
   <div class="table__container table__container--sticky">
     <!-- <EasyScrollSync> -->
-    <table class="table">
+    <table data-scrollsync class="table">
       <thead>
         <tr class="table__header-row">
           {#each headerNames as name}
@@ -81,7 +81,7 @@
   </div>
   <div class="table__container">
     <!-- <EasyScrollSync> -->
-    <table class="table table__body">
+    <table data-scrollsync class="table table__body">
       <tbody>
         {#each filteredData as rows}
           <tr on:click={(e) => handleClick(e)}>

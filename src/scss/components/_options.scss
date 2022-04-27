@@ -1,7 +1,6 @@
 @use '../abstracts/' as *;
 
 .options {
-
   &__container {
     position: relative;
     
@@ -9,7 +8,7 @@
       position: sticky;
       top: 0;
       // top: calc(var(--optionsHeight) - 2px);
-      z-index: 15;
+      // z-index: 15;
     }
   }
 
@@ -17,5 +16,21 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: rem(16);
+  }
+
+  &__header {
+    display: block;
+    padding-left:  var(--container-padding);
+    padding-right: var(--container-padding);
+  }
+
+  &__btn {
+    &--tab {
+      padding: 0 rem(16);      
+    }
+
+    &--active {
+      border-bottom: 3px solid $color-borders-gray-400;
+    }
   }
 }
