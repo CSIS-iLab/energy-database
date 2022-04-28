@@ -2,13 +2,15 @@
 
 .options {
   &__container {
-    position: relative;
-    
+    // position: relative;
+    padding-left: var(--container-padding);
+    padding-right: var(--container-padding);
+
     &--sticky {
       position: sticky;
       top: 0;
       // top: calc(var(--optionsHeight) - 2px);
-      // z-index: 15;
+      z-index: 10;
     }
   }
 
@@ -20,8 +22,8 @@
 
   &__header {
     display: block;
-    padding-left:  var(--container-padding);
-    padding-right: var(--container-padding);
+    // padding-left:  var(--container-padding);
+    // padding-right: var(--container-padding);
   }
 
   &__btn {

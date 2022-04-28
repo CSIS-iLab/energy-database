@@ -73,7 +73,7 @@
   }
 </script>
 
-<section class="table__options">
+<section class="options__container">
   <div class="options__header">
     <button class="options__btn--tab options__btn--active" on:click={(event) => handleSelect(event, 'Policy Goal')}>All <span class="options__count">{policyGoalsTotal}</span></button>
     {#each dataset.policyGoals as policy}
@@ -130,21 +130,18 @@
     </div>
   </div>
   <div>
-  <div class="options__container options__container--sticky">
-    <section class="options__navigation">
-      <!-- div class="table__container table__container--sticky" -->
-      <Search bind:searchText/>
-      <div>
-        <span class="table__total-entries">Showing {totalEntries} entries</span>
-        <Button id='btn-scroll-left' text="<" classes="btn btn--scroll btn--scroll--left" ariaLabel="Scroll table to the left" on:click={handleScrollLeft} />
-        <Button id='btn-scroll-right' text=">" classes="btn btn--scroll btn--scroll--right" ariaLabel="Scroll table to the right" on:click={handleScrollRight} />
-      </div>
-    </section>
-  </div>
-  </div>
-
 </section>
-
+<div class="options__container options__container--sticky">
+  <section class="options__navigation">
+    <!-- div class="table__container table__container--sticky" -->
+    <Search bind:searchText/>
+    <div>
+      <span class="table__total-entries">Showing {totalEntries} entries</span>
+      <Button id='btn-scroll-left' text="<" classes="btn btn--scroll btn--scroll--left" ariaLabel="Scroll table to the left" on:click={handleScrollLeft} />
+      <Button id='btn-scroll-right' text=">" classes="btn btn--scroll btn--scroll--right" ariaLabel="Scroll table to the right" on:click={handleScrollRight} />
+    </div>
+  </section>
+</div>
 <style lang="scss">
   @use "../scss/components/label";
   @use "../scss/components/select";

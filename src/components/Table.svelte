@@ -64,15 +64,39 @@
   })
 
   // Syncrhonize the scroll position of the table and the scroll buttons
-  function SyncScroll(table) {
-    console.log(table);
+  // function SyncScroll(table) {
+  //   console.log(table);
+  // }
+
+// Sync horizontal scroll of table header and table body
+// Inspired by https://codepen.io/Goweb/pen/rgrjWx
+  const scrollSync = () => {
+    console.log('yooooo');
+    const tableHeader = document.querySelector('#tableHead')
+    const tableBody = document.querySelector('#tableBody')
+
+    const bindSyncScrolling = (one, two) => {
+      console.log('bind something!');
+      let echo = false
+      const sync = (elOne, elTwo) => () => (echo = !echo) && ((elOne.scrollTop = elTwo.scrollTop), (elOne.scrollLeft = elTwo.scrollLeft))
+      two.onscroll = sync(one, two)
+      one.onscroll = sync(two, one)
+    }
+    bindSyncScrolling(tableHeader, tableBody)
+  }
+  // scrollSync()
+  function scrollThis() {
+    console.log('scroll this');
+    // const tableHeader = document.querySelector('#tableHead')
+    // const tableBody = document.querySelector('#tableBody')
+    // tableHeader.scrollLeft = tableBody.scrollLeft
   }
 </script>
 
 <div>
   <div class="table__container table__container--sticky">
     <!-- <EasyScrollSync> -->
-    <table id="tableHead" data-scrollsync class="table">
+    <table id="tableHead" on:scroll="{scrollThis()}" class="table">
       <thead>
         <tr class="table__header-row">
           {#each headerNames as name}
@@ -81,11 +105,11 @@
         </tr>
       </thead>
     </table>
-  <!-- </EasyScrollSync> -->
+    <!-- </EasyScrollSync> -->
   </div>
   <div class="table__container">
     <!-- <EasyScrollSync> -->
-    <table id="tableBody" on:scroll="{(e)=>SyncScroll(e)}" data-scrollsync class="table table__body">
+    <table id="tableBody" on:scroll="{scrollSync()}" class="table table__body">
       <tbody>
         {#each filteredData as rows}
           <tr on:click={(e) => handleClick(e)}>
