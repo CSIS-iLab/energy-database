@@ -62,14 +62,13 @@
 
 
   function handleScrollLeft() {
-    let scrollLeft = document.querySelector(".table").scrollLeft
-    document.querySelector(".table").scrollLeft = scrollLeft - 150
-    console.log(document.querySelector(".table__body"));
+    let scrollLeft = document.querySelector("#table-header").scrollLeft
+    document.querySelector("#table-header").scrollLeft = scrollLeft - 150
   }
 
   function handleScrollRight() {
-    let scrollLeft = document.querySelector(".table").scrollLeft
-    document.querySelector(".table").scrollLeft = scrollLeft + 150
+    let scrollLeft = document.querySelector("#table-header").scrollLeft
+    document.querySelector("#table-header").scrollLeft = scrollLeft + 150
   }
 </script>
 

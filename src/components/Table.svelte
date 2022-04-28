@@ -1,7 +1,6 @@
 <script>
   import { onMount } from "svelte";
   import Icon from "./Icons.svelte";
-  // import { EasyScrollSync } from 'easy-scroll-sync';
 
   // export let dataset
   export let filteredData;
@@ -65,12 +64,10 @@
     // Sync horizontal scroll of table header and table body
     // Inspired by https://codepen.io/Goweb/pen/rgrjWx
     const scrollSync = () => {
-      console.log("yooooo");
       const tableHeader = document.querySelector("#table-header");
       const tableBody = document.querySelector("#table-body");
 
       const bindSyncScrolling = (one, two) => {
-        console.log("bind something!");
         let echo = false;
         const sync = (elOne, elTwo) => () =>
           (echo = !echo) &&
@@ -84,45 +81,11 @@
 
     scrollSync();
   });
-
-  // Syncrhonize the scroll position of the table and the scroll buttons
-  // function SyncScroll(table) {
-  //   console.log(table);
-  // }
-
-  // // Sync horizontal scroll of table header and table body
-  // // Inspired by https://codepen.io/Goweb/pen/rgrjWx
-  // const scrollSync = () => {
-  //   console.log("yooooo");
-  //   const tableHeader = document.querySelector("#table-header");
-  //   const tableBody = document.querySelector("#table-body");
-
-  //   const bindSyncScrolling = (one, two) => {
-  //     console.log("bind something!");
-  //     let echo = false;
-  //     const sync = (elOne, elTwo) => () =>
-  //       (echo = !echo) &&
-  //       ((elOne.scrollTop = elTwo.scrollTop),
-  //       (elOne.scrollLeft = elTwo.scrollLeft));
-  //     two.onscroll = sync(one, two);
-  //     one.onscroll = sync(two, one);
-  //   };
-  //   bindSyncScrolling(tableHeader, tableBody);
-  // };
-
-  // scrollSync()
-  // function scrollThis() {
-  // console.log("scroll this");
-  // const tableHeader = document.querySelector('#tableHead')
-  // const tableBody = document.querySelector('#tableBody')
-  // tableHeader.scrollLeft = tableBody.scrollLeft
-  // }
 </script>
 
 <div>
   <div class="table__container table__container--sticky" id="table-header">
-    <!-- <EasyScrollSync> -->
-    <table id="tableHead" class="table">
+    <table class="table">
       <thead>
         <tr class="table__header-row">
           {#each headerNames as name}
@@ -133,11 +96,9 @@
         </tr>
       </thead>
     </table>
-    <!-- </EasyScrollSync> -->
   </div>
   <div class="table__container" id="table-body">
-    <!-- <EasyScrollSync> -->
-    <table id="tableBody" class="table table__body">
+    <table class="table table__body">
       <tbody>
         {#each filteredData as rows}
           <tr on:click={(e) => handleClick(e)}>
@@ -184,7 +145,6 @@
         {/each}
       </tbody>
     </table>
-    <!-- </EasyScrollSync> -->
   </div>
 </div>
 
