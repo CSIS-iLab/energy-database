@@ -4,12 +4,12 @@
   // import { EasyScrollSync } from 'easy-scroll-sync';
 
   // export let dataset
-  export let filteredData
+  export let filteredData;
 
   // export let states
   function handleClick(e) {
-    const extraContent = e.target.parentNode.nextElementSibling
-    extraContent.classList.toggle("hide")
+    const extraContent = e.target.parentNode.nextElementSibling;
+    extraContent.classList.toggle("hide");
   }
 
   const headerNames = [
@@ -19,97 +19,125 @@
     "Authority",
     "Type of Resource",
     "Tags",
-  ]
+  ];
 
-  let sortBy = {col: 'activity', ascending: false}
+  let sortBy = { col: "activity", ascending: false };
 
-	$: sort = (column) => {
-    column = column.toLowerCase().replace(/\s/g, '_') // replace spaces using regex with undesrscore
-		if (sortBy.col == column) {
-			sortBy.ascending = !sortBy.ascending
-		} else {
-			sortBy.col = column
-			sortBy.ascending = true
-		}
-		
-		// Modifier to sorting function for ascending or descending
-		let sortModifier = (sortBy.ascending) ? 1 : -1;
-		
-    // Sort by activity title
-    if (column == 'activity') {
-      return filteredData = filteredData.sort((a, b) => {
-        if (a.activity.title < b.activity.title) {
-          return -1 * sortModifier
-        } else if (a.activity.title > b.activity.title) {
-          return 1 * sortModifier
-        } else {
-          return 0
-        }
-      })
+  $: sort = (column) => {
+    column = column.toLowerCase().replace(/\s/g, "_"); // replace spaces using regex with undesrscore
+    if (sortBy.col == column) {
+      sortBy.ascending = !sortBy.ascending;
+    } else {
+      sortBy.col = column;
+      sortBy.ascending = true;
     }
 
-    let sort = (a, b) => 
-        (a[column] < b[column]) 
-        ? -1 * sortModifier 
-        : (a[column] > b[column]) 
-        ? 1 * sortModifier 
+    // Modifier to sorting function for ascending or descending
+    let sortModifier = sortBy.ascending ? 1 : -1;
+
+    // Sort by activity title
+    if (column == "activity") {
+      return (filteredData = filteredData.sort((a, b) => {
+        if (a.activity.title < b.activity.title) {
+          return -1 * sortModifier;
+        } else if (a.activity.title > b.activity.title) {
+          return 1 * sortModifier;
+        } else {
+          return 0;
+        }
+      }));
+    }
+
+    let sort = (a, b) =>
+      a[column] < b[column]
+        ? -1 * sortModifier
+        : a[column] > b[column]
+        ? 1 * sortModifier
         : 0;
-		
-    console.log(filteredData)
+
+    console.log(filteredData);
     filteredData = filteredData.sort(sort);
-	}
+  };
 
   onMount(() => {
-    sort('activity')
-  })
+    sort("activity");
+
+    // Sync horizontal scroll of table header and table body
+    // Inspired by https://codepen.io/Goweb/pen/rgrjWx
+    const scrollSync = () => {
+      console.log("yooooo");
+      const tableHeader = document.querySelector("#table-header");
+      const tableBody = document.querySelector("#table-body");
+
+      const bindSyncScrolling = (one, two) => {
+        console.log("bind something!");
+        let echo = false;
+        const sync = (elOne, elTwo) => () =>
+          (echo = !echo) &&
+          ((elOne.scrollTop = elTwo.scrollTop),
+          (elOne.scrollLeft = elTwo.scrollLeft));
+        two.onscroll = sync(one, two);
+        one.onscroll = sync(two, one);
+      };
+      bindSyncScrolling(tableHeader, tableBody);
+    };
+
+    scrollSync();
+  });
 
   // Syncrhonize the scroll position of the table and the scroll buttons
   // function SyncScroll(table) {
   //   console.log(table);
   // }
 
-// Sync horizontal scroll of table header and table body
-// Inspired by https://codepen.io/Goweb/pen/rgrjWx
-  const scrollSync = () => {
-    console.log('yooooo');
-    const tableHeader = document.querySelector('#tableHead')
-    const tableBody = document.querySelector('#tableBody')
+  // // Sync horizontal scroll of table header and table body
+  // // Inspired by https://codepen.io/Goweb/pen/rgrjWx
+  // const scrollSync = () => {
+  //   console.log("yooooo");
+  //   const tableHeader = document.querySelector("#table-header");
+  //   const tableBody = document.querySelector("#table-body");
 
-    const bindSyncScrolling = (one, two) => {
-      console.log('bind something!');
-      let echo = false
-      const sync = (elOne, elTwo) => () => (echo = !echo) && ((elOne.scrollTop = elTwo.scrollTop), (elOne.scrollLeft = elTwo.scrollLeft))
-      two.onscroll = sync(one, two)
-      one.onscroll = sync(two, one)
-    }
-    bindSyncScrolling(tableHeader, tableBody)
-  }
+  //   const bindSyncScrolling = (one, two) => {
+  //     console.log("bind something!");
+  //     let echo = false;
+  //     const sync = (elOne, elTwo) => () =>
+  //       (echo = !echo) &&
+  //       ((elOne.scrollTop = elTwo.scrollTop),
+  //       (elOne.scrollLeft = elTwo.scrollLeft));
+  //     two.onscroll = sync(one, two);
+  //     one.onscroll = sync(two, one);
+  //   };
+  //   bindSyncScrolling(tableHeader, tableBody);
+  // };
+
   // scrollSync()
-  function scrollThis() {
-    console.log('scroll this');
-    // const tableHeader = document.querySelector('#tableHead')
-    // const tableBody = document.querySelector('#tableBody')
-    // tableHeader.scrollLeft = tableBody.scrollLeft
-  }
+  // function scrollThis() {
+  // console.log("scroll this");
+  // const tableHeader = document.querySelector('#tableHead')
+  // const tableBody = document.querySelector('#tableBody')
+  // tableHeader.scrollLeft = tableBody.scrollLeft
+  // }
 </script>
 
 <div>
-  <div class="table__container table__container--sticky">
+  <div class="table__container table__container--sticky" id="table-header">
     <!-- <EasyScrollSync> -->
-    <table id="tableHead" on:scroll="{scrollThis()}" class="table">
+    <table id="tableHead" class="table">
       <thead>
         <tr class="table__header-row">
           {#each headerNames as name}
-            <th class="table__cell--header" scope="col" on:click={ sort( name ) }>{name}</th>
+            <th class="table__cell--header" scope="col" on:click={sort(name)}
+              >{name}</th
+            >
           {/each}
         </tr>
       </thead>
     </table>
     <!-- </EasyScrollSync> -->
   </div>
-  <div class="table__container">
+  <div class="table__container" id="table-body">
     <!-- <EasyScrollSync> -->
-    <table id="tableBody" on:scroll="{scrollSync()}" class="table table__body">
+    <table id="tableBody" class="table table__body">
       <tbody>
         {#each filteredData as rows}
           <tr on:click={(e) => handleClick(e)}>
@@ -127,10 +155,7 @@
             <td class="table__body__cell">{rows.type_of_resource}</td>
             <td class="table__body__cell">
               {#each rows.tags as tag}
-                <Icon
-                  name="icon {tag}"
-                  class="icon__tags"
-                />
+                <Icon name="icon {tag}" class="icon__tags" />
               {/each}
             </td>
           </tr>
@@ -162,7 +187,6 @@
     <!-- </EasyScrollSync> -->
   </div>
 </div>
-
 
 <style lang="scss">
   @use "../scss/components/table";
