@@ -5,10 +5,16 @@
   // export let dataset
   export let filteredData;
 
+  export const rowIsOpen = {
+    value: false,
+  };
+
   // export let states
   function handleClick(e) {
     const extraContent = e.target.parentNode.nextElementSibling;
     extraContent.classList.toggle("hide");
+    rowIsOpen.value = !rowIsOpen.value;
+    console.log(rowIsOpen.value)
   }
 
   const headerNames = [
@@ -81,6 +87,7 @@
 
     scrollSync();
   });
+
 </script>
 
 <div>

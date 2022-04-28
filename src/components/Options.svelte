@@ -17,6 +17,7 @@
   export let selectedTags;
   export let selectedPolicyGoal;
   export let searchText = '';
+  export let rowIsOpen;
 
   $: totalEntries =filteredData.length
 
@@ -29,6 +30,7 @@
   const labelIdentifier = 'label';
 
   function handleSelect(event, selectName) {
+    console.log(rowIsOpen)
     if (selectName === 'State') {
       // console.log(event.detail.value)
       selectedState = event.detail.value
