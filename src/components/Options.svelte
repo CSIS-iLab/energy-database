@@ -191,8 +191,8 @@
     <Search bind:searchText/>
     <div>
       <span class="table__total-entries">Showing {totalEntries} entries</span>
-      <Button id='btn-scroll-left' text="<" classes="btn btn--scroll btn--scroll--left inactive" ariaLabel="Scroll table to the left" on:click={handleScrollLeft} />
-      <Button id='btn-scroll-right' text=">" classes="btn btn--scroll btn--scroll--right" ariaLabel="Scroll table to the right" on:click={handleScrollRight} />
+      <Button id='btn-scroll-left' iconName="Icon-left" classes="btn btn--scroll btn--scroll--left inactive" ariaLabel="Scroll table to the left" on:click={handleScrollLeft} />
+      <Button id='btn-scroll-right' iconName="Icon-right" classes="btn btn--scroll btn--scroll--right" ariaLabel="Scroll table to the right" on:click={handleScrollRight} />
     </div>
   </section>
 </div>

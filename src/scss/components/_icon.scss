@@ -1,3 +1,5 @@
+@use "../abstracts/" as *;
+
 .icon {
   // color: royalblue !important;
   // filter: invert(6%) sepia(6%) saturate(4727%) hue-rotate(181deg) brightness(91%) contrast(88%);
@@ -34,5 +36,19 @@
     filter: invert(39%) sepia(72%) saturate(6596%) hue-rotate(200deg) brightness(100%) contrast(84%);
     width: 1rem;
     height: 1rem;
+  }
+
+  &__table-navigation {
+    // width: 1rem;
+    // height: 1rem;
+    // .active {
+    //   color: $color-text-gray-200;
+    //   filter: invert(57%) sepia(7%) saturate(666%) hue-rotate(180deg) brightness(92%) contrast(89%);
+    // }
+
+    // .inactive {
+    //   color: $color-text-gray-100;
+    //   filter: invert(85%) sepia(7%) saturate(361%) hue-rotate(182deg) brightness(94%) contrast(84%);
+    // }
   }
 }
