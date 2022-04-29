@@ -103,6 +103,28 @@
     }
   }
 
+  onMount( () => {
+
+    const tableContainer = document.getElementById('table-body') 
+    const table = document.getElementsByClassName('table')[0]
+    const btnLeft = document.querySelector('#btn-scroll-left')
+    const btnRight = document.querySelector('#btn-scroll-right')
+    tableContainer.addEventListener('scroll', () => {
+      const left = tableContainer.scrollLeft
+      if (left > 0) {
+        btnLeft.classList.remove('inactive')
+      }
+      if (Math.ceil(tableContainer.scrollLeft) + tableContainer.offsetWidth + 2 >= table.offsetWidth) {
+        btnRight.classList.add('inactive')
+      }
+      if (Math.ceil(tableContainer.scrollLeft) + tableContainer.offsetWidth + 2 <= table.offsetWidth) {
+        btnRight.classList.remove('inactive')
+      }
+      if (left === 0) {
+        btnLeft.classList.add('inactive')
+      }
+    })
+  })
 </script>
 
 <section class="options__container">
