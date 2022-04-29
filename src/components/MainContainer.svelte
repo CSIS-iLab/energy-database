@@ -15,7 +15,8 @@
   let selectedTags = [];
   let selectedPolicyGoal = "";
   let searchText
-  // let rowIsOpen;
+  $: row = { isOpen: false };
+  // $: rowIsOpen = false;
 
   $: filteredData = () => {
     return dataset.data.filter(
@@ -41,7 +42,7 @@
     )
   }
 
-  $: console.log(rowIsOpen)
+  $: console.log(row.isOpen)
 </script>
 
 <div id="site-content">
@@ -53,20 +54,20 @@
   <section class="table-container">
     <h2 class="table-container__subtitle">Explore Policy Goals</h2>
     <Options
-    {dataset}
-    filteredData={filteredData()}
-    rowIsOpen={rowIsOpen}
-    bind:selectedAuthority
-    bind:selectedResourceType
-    bind:selectedState
-    bind:selectedTags
-    bind:selectedPolicyGoal
-    bind:searchText
+      {dataset}
+      filteredData={filteredData()}
+      bind:row
+      bind:selectedAuthority
+      bind:selectedResourceType
+      bind:selectedState
+      bind:selectedTags
+      bind:selectedPolicyGoal
+      bind:searchText
     />
     
     <!-- <Search bind:searchText/> -->
     
-    <Table filteredData={filteredData()} rowIsOpen={rowIsOpen}/>
+    <Table filteredData={filteredData()} bind:row />
   </section>
   <About />
   <Footer />

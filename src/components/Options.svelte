@@ -3,6 +3,7 @@
   site: https://github.com/rob-balfre/svelte-select
 -->
 <script>
+  import { onMount } from "svelte";
   import Button from "./Button.svelte";
   import Search from "./Search.svelte";
   import Select from 'svelte-select'
@@ -17,7 +18,7 @@
   export let selectedTags;
   export let selectedPolicyGoal;
   export let searchText = '';
-  export let rowIsOpen;
+  export let row;
 
   $: totalEntries =filteredData.length
 
@@ -30,7 +31,7 @@
   const labelIdentifier = 'label';
 
   function handleSelect(event, selectName) {
-    console.log(rowIsOpen)
+    row.isOpen = !row.isOpen
     if (selectName === 'State') {
       // console.log(event.detail.value)
       selectedState = event.detail.value
@@ -45,6 +46,7 @@
   }
 
   export function handleClear(selectName) {
+    row.isOpen = !row.isOpen
     if (selectName === 'State') {
       selectedState = ''
     } else if (selectName === 'Authority') {
@@ -63,20 +65,49 @@
   $: chevron = isListOpen ? chevronUp : chevronDown;
 
 
+    // const tableContainer = document.getElementById('table-body') 
+    // const table = document.getElementsByClassName('table')[0]
+    // const btnLeft = document.querySelector('#btn-scroll-left')
+
   function handleScrollLeft() {
-    let scrollLeft = document.querySelector("#table-header").scrollLeft
-    document.querySelector("#table-header").scrollLeft = scrollLeft - 150
+    // let scrollLeft = document.querySelector("#table-header").scrollLeft
+    // document.querySelector("#table-header").scrollLeft = scrollLeft - 150
+    const tableContainer = document.getElementById('table-body') 
+    // const table = document.getElementsByClassName('table')[0]
+    const btnRight = document.querySelector('#btn-scroll-right')
+    const btnLeft = document.querySelector('#btn-scroll-left')
+    tableContainer.scrollLeft -= 100
+    if (btnRight.classList.contains('inactive')) {
+      btnRight.classList.remove('inactive')
+    }
+    if (tableContainer.scrollLeft === 0) {
+      btnLeft.classList.add('inactive')
+    }
   }
 
   function handleScrollRight() {
-    let scrollLeft = document.querySelector("#table-header").scrollLeft
-    document.querySelector("#table-header").scrollLeft = scrollLeft + 150
+    // let scrollLeft = document.querySelector("#table-header").scrollLeft
+    // document.querySelector("#table-header").scrollLeft = scrollLeft + 150
+
+    const tableContainer = document.getElementById('table-body') 
+    const table = document.getElementsByClassName('table')[0]
+    const btnLeft = document.querySelector('#btn-scroll-left')
+    const btnRight = document.querySelector('#btn-scroll-right')
+    // console.log(tableContainer);
+    tableContainer.scrollLeft += 100
+    if (btnLeft.classList.contains('inactive')) {
+      btnLeft.classList.remove('inactive')
+    }
+    if (Math.ceil(tableContainer.scrollLeft) + tableContainer.offsetWidth >= table.offsetWidth) {
+      btnRight.classList.add('inactive')
+    }
   }
+
 </script>
 
 <section class="options__container">
   <div class="options__header">
-    <button class="options__btn--tab options__btn--active" on:click={(event) => handleSelect(event, 'Policy Goal')}>All <span class="options__count">{policyGoalsTotal}</span></button>
+    <button class="options__btn--tab options__btn--tab--active" on:click={(event) => handleSelect(event, 'Policy Goal')}>All <span class="options__count">{policyGoalsTotal}</span></button>
     {#each dataset.policyGoals as policy}
       <button class="options__btn--tab" value="{policy}" on:click={(event) => handleSelect(event, 'Policy Goal')}>{policy.split('_').join(' ')} <span class="options__count">{getPGCount(policy)}</span></button>
     {/each}
@@ -138,7 +169,7 @@
     <Search bind:searchText/>
     <div>
       <span class="table__total-entries">Showing {totalEntries} entries</span>
-      <Button id='btn-scroll-left' text="<" classes="btn btn--scroll btn--scroll--left" ariaLabel="Scroll table to the left" on:click={handleScrollLeft} />
+      <Button id='btn-scroll-left' text="<" classes="btn btn--scroll btn--scroll--left inactive" ariaLabel="Scroll table to the left" on:click={handleScrollLeft} />
       <Button id='btn-scroll-right' text=">" classes="btn btn--scroll btn--scroll--right" ariaLabel="Scroll table to the right" on:click={handleScrollRight} />
     </div>
   </section>
