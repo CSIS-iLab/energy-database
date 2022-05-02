@@ -31,25 +31,29 @@
   const optionIdentifier = 'value';
   const labelIdentifier = 'label';
 
-  function handleSelect(event, selectName) {
-    // row.isOpen = !row.isOpen
-    if (row.isOpen) {
+  function closeExtraContent() {
+    // if (row.isOpen) {
+    row.isOpen = !row.isOpen
     console.log('open')
     const extraContent = document.querySelectorAll(".extra-content");
     // console.log(extraContent);
       extraContent.forEach(content => {
         console.log('inside the extra content');
-        console.log(!content.classList.contains('hide'))
-        if (!content.classList.contains('hide')) {
-          content.classList.remove('hide');
+        console.log(content.classList.contains('active'))
+        if (content.classList.contains('active')) {
+          content.classList.add('hide');
         } else {
-          // content.classList.add('hide');
           return
         }
       });
-      row.isOpen = !row.isOpen
-    }
+    // }
+  }
 
+  function handleSelect(event, selectName) {
+    // row.isOpen = !row.isOpen
+    if (row.isOpen) {
+      closeExtraContent()      
+    }
     if (selectName === 'State') {
       // console.log(event.detail.value)
       selectedState = event.detail.value
@@ -64,7 +68,10 @@
   }
 
   export function handleClear(selectName) {
-    row.isOpen = !row.isOpen
+    console.log('inside habldeClear', row.isOpen);
+    if (row.isOpen) {
+      closeExtraContent()
+    }
     if (selectName === 'State') {
       selectedState = ''
     } else if (selectName === 'Authority') {

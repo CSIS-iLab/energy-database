@@ -12,6 +12,7 @@
     // console.log(extraContent);
     const extraContent = e.target.parentNode.nextElementSibling;
     // console.log(extraContent);
+    extraContent.classList.add('active');
     extraContent.classList.toggle("hide");
     row.isOpen = !row.isOpen;
     // console.log(rowIsOpen.value)
