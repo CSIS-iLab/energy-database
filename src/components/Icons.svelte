@@ -3,7 +3,7 @@
   export let focusable = false;
 </script>
 
-<svg class={$$props.class} {focusable}>
+<svg id={$$props.id} class={$$props.class} {focusable}>
   <use href={`assets/static/icons.svg#${name}`} />
 </svg>
 

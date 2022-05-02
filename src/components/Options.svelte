@@ -76,12 +76,15 @@
     // const table = document.getElementsByClassName('table')[0]
     const btnRight = document.querySelector('#btn-scroll-right')
     const btnLeft = document.querySelector('#btn-scroll-left')
+    const btnIconLeft = document.querySelector('#icon-scroll-left')
+    const btnIconRight = document.querySelector('#icon-scroll-right')
+    
     tableContainer.scrollLeft -= 100
-    if (btnRight.classList.contains('inactive')) {
-      btnRight.classList.remove('inactive')
+    if (btnIconRight.classList.contains('inactive')) {
+      btnIconRight.classList.remove('inactive')
     }
     if (tableContainer.scrollLeft === 0) {
-      btnLeft.classList.add('inactive')
+      btnIconLeft.classList.add('inactive')
     }
   }
 
@@ -93,13 +96,15 @@
     const table = document.getElementsByClassName('table')[0]
     const btnLeft = document.querySelector('#btn-scroll-left')
     const btnRight = document.querySelector('#btn-scroll-right')
+    const btnIconLeft = document.querySelector('#icon-scroll-left')
+    const btnIconRight = document.querySelector('#icon-scroll-right')
     // console.log(tableContainer);
     tableContainer.scrollLeft += 100
-    if (btnLeft.classList.contains('inactive')) {
-      btnLeft.classList.remove('inactive')
+    if (btnIconLeft.classList.contains('inactive')) {
+      btnIconLeft.classList.remove('inactive')
     }
     if (Math.ceil(tableContainer.scrollLeft) + tableContainer.offsetWidth >= table.offsetWidth) {
-      btnRight.classList.add('inactive')
+      btnIconRight.classList.add('inactive')
     }
   }
 
@@ -109,19 +114,21 @@
     const table = document.getElementsByClassName('table')[0]
     const btnLeft = document.querySelector('#btn-scroll-left')
     const btnRight = document.querySelector('#btn-scroll-right')
+    const btnIconLeft = document.querySelector('#icon-scroll-left')
+    const btnIconRight = document.querySelector('#icon-scroll-right')
     tableContainer.addEventListener('scroll', () => {
       const left = tableContainer.scrollLeft
       if (left > 0) {
-        btnLeft.classList.remove('inactive')
+        btnIconLeft.classList.remove('inactive')
       }
       if (Math.ceil(tableContainer.scrollLeft) + tableContainer.offsetWidth + 2 >= table.offsetWidth) {
-        btnRight.classList.add('inactive')
+        btnIconRight.classList.add('inactive')
       }
       if (Math.ceil(tableContainer.scrollLeft) + tableContainer.offsetWidth + 2 <= table.offsetWidth) {
-        btnRight.classList.remove('inactive')
+        btnIconRight.classList.remove('inactive')
       }
       if (left === 0) {
-        btnLeft.classList.add('inactive')
+        btnIconLeft.classList.add('inactive')
       }
     })
   })
@@ -191,12 +198,19 @@
     <Search bind:searchText/>
     <div>
       <span class="table__total-entries">Showing {totalEntries} entries</span>
-      <Button id='btn-scroll-left' iconName="Icon-left" classes="btn btn--scroll btn--scroll--left inactive" ariaLabel="Scroll table to the left" on:click={handleScrollLeft} />
-      <Button id='btn-scroll-right' iconName="Icon-right" classes="btn btn--scroll btn--scroll--right" ariaLabel="Scroll table to the right" on:click={handleScrollRight} />
+      <!-- <Button id='btn-scroll-left' iconName="Icon-left" classes="btn btn--scroll btn--scroll--left inactive" ariaLabel="Scroll table to the left" on:click={handleScrollLeft} /> -->
+      <!-- <Button id='btn-scroll-right' iconName="Icon-right" classes="btn btn--scroll btn--scroll--right" ariaLabel="Scroll table to the right" on:click={handleScrollRight} /> -->
+      <button id='btn-scroll-left' class="btn btn--scroll btn--scroll--left inactive"
+        ariaLabel="Scroll table to the left"
+        on:click={handleScrollLeft}><Icon id="icon-scroll-left" name="Icon-left" class="icon inactive" /></button>
+      <button id='btn-scroll-right' class="btn btn--scroll btn--scroll--right"
+        ariaLabel="Scroll table to the right"
+        on:click={handleScrollRight}><Icon id="icon-scroll-right"name="Icon-right" class="icon"/></button>
     </div>
   </section>
 </div>
 <style lang="scss">
+  @use "../scss/components/button";
   @use "../scss/components/label";
   @use "../scss/components/select";
   @use "../scss/components/options";

@@ -21,13 +21,3 @@
     }
   }
 }
-
-.active {
-  // color: $color-text-gray-200;
-  filter: invert(57%) sepia(7%) saturate(666%) hue-rotate(180deg) brightness(92%) contrast(89%);
-}
-
-.inactive {
-  // color: $color-text-gray-100;
-      filter: invert(85%) sepia(7%) saturate(361%) hue-rotate(182deg) brightness(94%) contrast(84%);
-}
