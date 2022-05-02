@@ -43,6 +43,7 @@
   }
 
   $: console.log(row.isOpen)
+
 </script>
 
 <div id="site-content">

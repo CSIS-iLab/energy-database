@@ -32,7 +32,24 @@
   const labelIdentifier = 'label';
 
   function handleSelect(event, selectName) {
-    row.isOpen = !row.isOpen
+    // row.isOpen = !row.isOpen
+    if (row.isOpen) {
+    console.log('open')
+    const extraContent = document.querySelectorAll(".extra-content");
+    // console.log(extraContent);
+      extraContent.forEach(content => {
+        console.log('inside the extra content');
+        console.log(!content.classList.contains('hide'))
+        if (!content.classList.contains('hide')) {
+          content.classList.remove('hide');
+        } else {
+          // content.classList.add('hide');
+          return
+        }
+      });
+      row.isOpen = !row.isOpen
+    }
+
     if (selectName === 'State') {
       // console.log(event.detail.value)
       selectedState = event.detail.value
@@ -77,8 +94,8 @@
     // document.querySelector("#table-header").scrollLeft = scrollLeft - 150
     const tableContainer = document.getElementById('table-body') 
     // const table = document.getElementsByClassName('table')[0]
-    const btnRight = document.querySelector('#btn-scroll-right')
-    const btnLeft = document.querySelector('#btn-scroll-left')
+    // const btnRight = document.querySelector('#btn-scroll-right')
+    // const btnLeft = document.querySelector('#btn-scroll-left')
     const btnIconLeft = document.querySelector('#icon-scroll-left')
     const btnIconRight = document.querySelector('#icon-scroll-right')
     
@@ -97,8 +114,8 @@
 
     const tableContainer = document.getElementById('table-body') 
     const table = document.getElementsByClassName('table')[0]
-    const btnLeft = document.querySelector('#btn-scroll-left')
-    const btnRight = document.querySelector('#btn-scroll-right')
+    // const btnLeft = document.querySelector('#btn-scroll-left')
+    // const btnRight = document.querySelector('#btn-scroll-right')
     const btnIconLeft = document.querySelector('#icon-scroll-left')
     const btnIconRight = document.querySelector('#icon-scroll-right')
     // console.log(tableContainer);
@@ -115,8 +132,8 @@
 
     const tableContainer = document.getElementById('table-body') 
     const table = document.getElementsByClassName('table')[0]
-    const btnLeft = document.querySelector('#btn-scroll-left')
-    const btnRight = document.querySelector('#btn-scroll-right')
+    // const btnLeft = document.querySelector('#btn-scroll-left')
+    // const btnRight = document.querySelector('#btn-scroll-right')
     const btnIconLeft = document.querySelector('#icon-scroll-left')
     const btnIconRight = document.querySelector('#icon-scroll-right')
     tableContainer.addEventListener('scroll', () => {

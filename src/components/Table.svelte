@@ -8,14 +8,21 @@
   let hide = 'hide'
   // let extraContent
   // export let states
-  function handleClick() {
+  function handleClick(e) {
     // console.log(extraContent);
-    // const extraContent = e.target.parentNode.nextElementSibling;
-    const extraContent = document.querySelector(".extra-content");
+    const extraContent = e.target.parentNode.nextElementSibling;
     // console.log(extraContent);
     extraContent.classList.toggle("hide");
     row.isOpen = !row.isOpen;
     // console.log(rowIsOpen.value)
+    // const input = Array.from(document.querySelectorAll("input"));
+    // input.map(item => {
+    //   console.log(item)
+    // });
+    // console.log(e);
+      // if extracontent has class of active then select is clicked close extracontent 
+
+    // console.log(input)
   }
 
   const headerNames = [
@@ -108,7 +115,7 @@
     <table class="table table__body">
       <tbody>
         {#each filteredData as rows}
-          <tr on:click={() => handleClick()}>
+          <tr on:click={(e) => handleClick(e)}>
             <td class="table__body__cell"
               ><Icon
                 name="Icon-down"
@@ -127,7 +134,8 @@
               {/each}
             </td>
           </tr>
-          <tr class="extra-content" class:hide class:unHide={!hide}>
+          <!-- <tr class="extra-content" class:hide class:unHide={!hide}> -->
+          <tr class="extra-content hide">
             <td class="table__body__cell" colspan="6">
               <div class="extra-content__container">
                 <div class="description">{rows.activity.description}</div>
