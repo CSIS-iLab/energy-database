@@ -41,6 +41,7 @@
 }
 .select-container {
   z-index: 15;
+
   @include breakpoint('medium') {
     width: 200px;
   }

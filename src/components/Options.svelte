@@ -8,7 +8,8 @@
   import Search from "./Search.svelte";
   import Select from 'svelte-select'
   import SelectMultiple from './SelectMultiple.svelte';
-  import Icon from './Icons.svelte'
+  import Icon from "./Icons.svelte";
+  // import Icon from './icons/IconUp.svelte';
   
   export let dataset;
   export let filteredData;
@@ -59,6 +60,8 @@
   // handle the icon
   const chevronUp = '<svg class="test" width="28" height="15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M28 15 14 0 0 15h28z" fill="#000"/></svg>';
   const chevronDown = '<svg width="28" height="15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m0 0 14 15L28 0H0z" fill="#000"/></svg>';
+  // const chevronUp = IconUp;
+  // const chevronDown = IconUp;
   let chevron = chevronDown;
   let isListOpen = false;
   
@@ -149,7 +152,7 @@
         indicatorSvg={chevron}
         bind:listOpen={isListOpen}
         listOffset={16}
-        inputStyles="box-sizing: border-box; border-bottom: 1px solid #D3D4D6;"
+        inputStyles="box-sizing: border-box; border-bottom: 1px solid #D3D4D6; z-index: 16;"
         {optionIdentifier} labelIdentifier={'name'} items={dataset.states}
         placeholder="Select a State"
         on:select={(event) => handleSelect(event, 'State')}
@@ -197,19 +200,18 @@
     <!-- div class="table__container table__container--sticky" -->
     <Search bind:searchText/>
     <div>
-      <span class="table__total-entries">Showing {totalEntries} entries</span>
+      <span class="table__total-entries">Showing {totalEntries} {totalEntries > 1 ? "entries" : "entry"}</span>
       <!-- <Button id='btn-scroll-left' iconName="Icon-left" classes="btn btn--scroll btn--scroll--left inactive" ariaLabel="Scroll table to the left" on:click={handleScrollLeft} /> -->
       <!-- <Button id='btn-scroll-right' iconName="Icon-right" classes="btn btn--scroll btn--scroll--right" ariaLabel="Scroll table to the right" on:click={handleScrollRight} /> -->
-      <button id='btn-scroll-left' class="btn btn--scroll btn--scroll--left inactive"
-        ariaLabel="Scroll table to the left"
-        on:click={handleScrollLeft}><Icon id="icon-scroll-left" name="Icon-left" class="icon inactive" /></button>
-      <button id='btn-scroll-right' class="btn btn--scroll btn--scroll--right"
-        ariaLabel="Scroll table to the right"
-        on:click={handleScrollRight}><Icon id="icon-scroll-right"name="Icon-right" class="icon"/></button>
+      <button id='btn-scroll-left' class="btn btn--scroll btn--scroll--left inactive" ariaLabel="Scroll table to the left"
+        on:click={handleScrollLeft}><Icon id="icon-scroll-left" name="Icon-left" class="icon inactive"/></button>
+      <button id='btn-scroll-right' class="btn btn--scroll btn--scroll--right" ariaLabel="Scroll table to the right"
+        on:click={handleScrollRight}><Icon id="icon-scroll-right" name="Icon-right" class="icon"/></button>
     </div>
   </section>
 </div>
 <style lang="scss">
+
   @use "../scss/components/button";
   @use "../scss/components/label";
   @use "../scss/components/select";

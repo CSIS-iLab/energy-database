@@ -11,7 +11,7 @@
   function handleClick() {
     // console.log(extraContent);
     // const extraContent = e.target.parentNode.nextElementSibling;
-    // const extraContent = document.querySelector(".extra-content");
+    const extraContent = document.querySelector(".extra-content");
     // console.log(extraContent);
     extraContent.classList.toggle("hide");
     row.isOpen = !row.isOpen;
