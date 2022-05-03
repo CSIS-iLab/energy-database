@@ -1,19 +1,9 @@
 <script>
   import Icon from './Icons.svelte';
-
-  function copyURL(e) {
-    e.preventDefault()
-    const url = window.location.href
-    //Use the clipboard's writeText method to pass the inputs text to the clipboard
-    navigator.clipboard.writeText(url).then(res=>{
-        console.log("Input data copied to clipboard successfully");
-        console.log(url)
-    })
-  }
 </script>
 
 <!-- TODO: Get the links from the program to update them -->
-<ul class="share">
+<ul class="social">
   <li class="share__item">
     <a href="https://www.facebook.com/sharer.php?u=https://energydatabase.csis.org/" class="share__link" target="_blank">
       <Icon class="icon__share" name="Icon-Facebook" />
