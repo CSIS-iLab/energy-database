@@ -38,12 +38,11 @@
     const extraContent = document.querySelectorAll(".extra-content");
     // console.log(extraContent);
       extraContent.forEach(content => {
-        console.log('inside the extra content');
-        console.log(content.classList.contains('active'))
+        // console.log('inside the extra content');
+        // console.log(content.classList.contains('active'))
         if (content.classList.contains('active')) {
+          content.classList.remove('active')
           content.classList.add('hide');
-        } else {
-          return
         }
       });
     // }
@@ -52,7 +51,19 @@
   function handleSelect(event, selectName) {
     // row.isOpen = !row.isOpen
     if (row.isOpen) {
-      closeExtraContent()      
+      // closeExtraContent()
+      row.isOpen = !row.isOpen
+      console.log('open')
+      const extraContent = document.querySelectorAll(".extra-content");
+      // console.log(extraContent);
+        extraContent.forEach(content => {
+          // console.log('inside the extra content');
+          // console.log(content.classList.contains('active'))
+          if (content.classList.contains('active')) {
+            content.classList.remove('active')
+            content.classList.add('hide');
+          }
+        });
     }
     if (selectName === 'State') {
       // console.log(event.detail.value)
@@ -68,9 +79,21 @@
   }
 
   export function handleClear(selectName) {
-    console.log('inside habldeClear', row.isOpen);
+    console.log('inside handleClear', row.isOpen);
     if (row.isOpen) {
-      closeExtraContent()
+      // closeExtraContent()
+      row.isOpen = !row.isOpen
+      console.log('close')
+      const extraContent = document.querySelectorAll(".extra-content");
+      // console.log(extraContent);
+        extraContent.forEach(content => {
+          // console.log('inside the extra content');
+          // console.log(content.classList.contains('active'))
+          if (content.classList.contains('active')) {
+            content.classList.remove('active')
+            content.classList.add('hide');
+          }
+        });
     }
     if (selectName === 'State') {
       selectedState = ''

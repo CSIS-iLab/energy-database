@@ -48,7 +48,9 @@
   }
 
   &__copyright {
-    color: black;
+    color: $color-text-gray-200;
+    @extend %text-style-ui-4;
+    // @extend %text-style-paragraph-2;
     opacity: 0.77;
   }
 
@@ -61,6 +63,10 @@
   &__desc,
   &__address {
     color: black;
+  }
+
+  &__desc {
+    max-width: $size__content-max-width;
   }
 
   &__address {
