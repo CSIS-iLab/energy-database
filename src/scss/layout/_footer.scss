@@ -60,12 +60,16 @@
     margin-bottom: rem(24);
 
     a {
-      color: $color-text-gray-400;
+      color: $color-text-gray-300;
       transition: color 0.3s ease-in-out;
     
       &:hover {
-        color: $color-brand-blue-600;
+        color: $color-text-gray-500;
         text-decoration: none;
+      }
+
+      &:focus {
+        outline: 3px solid $color-focus-outline;
       }
     }
   }
