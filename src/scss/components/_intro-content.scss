@@ -11,10 +11,6 @@ main {
 .intro-content {
   padding-top: rem(56);
   max-width: $size__intro-content-wide-max-width;
-  // display: flex;
-  // justify-content: center;
-  // align-items: center;
-  // flex-direction: column;
   text-align: center;
 
   &__overline {
@@ -70,7 +66,6 @@ main {
   &__graphs {
     display: flex;
     flex-direction: column;
-    // justify-content: center;
     align-items: center;
     margin: 0 auto;
     margin-bottom: rem(80);
@@ -80,10 +75,13 @@ main {
     }
 
     @include breakpoint('medium') {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: rem(80);
+
+      img:first-child {
+        margin-bottom: 0;
+      }
     }
   }
 }
