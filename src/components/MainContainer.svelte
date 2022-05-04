@@ -50,21 +50,22 @@
   <Header />
   <div class="container">
     <IntroContent />
-    <!-- <Test /> -->
   </div>
   <section class="table-container">
-    <h2 class="table-container__subtitle">Explore Policy Goals</h2>
-    <Options
-      {dataset}
-      filteredData={filteredData()}
-      bind:row
-      bind:selectedAuthority
-      bind:selectedResourceType
-      bind:selectedState
-      bind:selectedTags
-      bind:selectedPolicyGoal
-      bind:searchText
-    />
+    <section class="table-container__header">
+      <h2 class="table-container__subtitle">Explore Policy Goals</h2>
+    </section>
+      <Options
+        {dataset}
+        filteredData={filteredData()}
+        bind:row
+        bind:selectedAuthority
+        bind:selectedResourceType
+        bind:selectedState
+        bind:selectedTags
+        bind:selectedPolicyGoal
+        bind:searchText
+      />
     
     <!-- <Search bind:searchText/> -->
     

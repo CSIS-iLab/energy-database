@@ -242,7 +242,7 @@
   </div>
   <div>
 </section>
-<div class="options__container options__container--sticky">
+<div class="options options__container options__container--sticky">
   <section class="options__navigation">
     <!-- div class="table__container table__container--sticky" -->
     <Search bind:searchText/>
