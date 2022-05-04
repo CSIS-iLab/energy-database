@@ -29,8 +29,23 @@
   // left: -10px;
   // position: relative;
 
-  &__share-item {
-
+  &__link {
+    @include font-size(16px);
+    padding: rem(8px);
+    color: $color-text-gray-300;
+    transition: color 0.5s ease;
+  
+    &:hover {
+      color: $color-text-white;
+    }
   }
- 
+
+  &__item {
+    &:focus-visible {
+      outline: 1px solid transparent;
+    }
+    &:focus {
+      outline: 3px solid $color-focus-outline;
+    }
+  }
 }
