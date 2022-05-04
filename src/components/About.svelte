@@ -23,9 +23,9 @@
     <div class="about__reports">
       <p class="about__reports__title">Associated Reports</p>
       <ul>
-        <li><a href="https://www.csis.org/analysis/insights-emissions-reduction-among-us-states" target="_blank">Insights on Emissions Reduction among U.S. States <Icon class="icon__report" name="Icon-open-blank"/></a></li>
-        <li><a href="https://www.csis.org/analysis/state-strategies-expanding-economic-opportunity-clean-energy" target="_blank">State Strategies for Expanding Economic Opportunity in Clean Energy <Icon class="icon__report" name="Icon-open-blank"/></a></li>
-        <li><a href="https://www.csis.org/programs/energy-security-and-climate-change-program/projects/clean-resilient-states-initiative" target="_blank">TBD Third Report <Icon class="icon__report" name="Icon-open-blank"/></a></li>
+        <li><a class="about__reports__link" href="https://www.csis.org/analysis/insights-emissions-reduction-among-us-states" target="_blank">Insights on Emissions Reduction among U.S. States <Icon class="icon__report" name="Icon-open-blank"/></a></li>
+        <li><a class="about__reports__link" href="https://www.csis.org/analysis/state-strategies-expanding-economic-opportunity-clean-energy" target="_blank">State Strategies for Expanding Economic Opportunity in Clean Energy <Icon class="icon__report" name="Icon-open-blank"/></a></li>
+        <li><a class="about__reports__link" href="https://www.csis.org/programs/energy-security-and-climate-change-program/projects/clean-resilient-states-initiative" target="_blank">TBD Third Report <Icon class="icon__report" name="Icon-open-blank"/></a></li>
       </ul>
     </div>
     <div class="about__initiative">

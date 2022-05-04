@@ -20,6 +20,7 @@
   &__subtitle {
     @extend %text-style-heading-2;
     padding-bottom: rem(42);
+    line-height: 1;
   }
 
   &__description {
@@ -47,6 +48,26 @@
         &:last-child {
           margin-bottom: rem(56);
         }
+      }
+    }
+
+    &__link {
+      @extend %text-style-ui-2;
+      color: $color-brand-blue-600;
+
+      &:hover {
+        color: $color-brand-blue-700;
+        // filter: invert(39%) sepia(72%) saturate(6596%) hue-rotate(200deg) brightness(100%) contrast(84%);
+      }
+      
+      &:focus {
+        color: $color-brand-blue-700;
+        background-color: $color-background-light-blue-100;
+        outline: 0;
+      }
+
+      &:visited {
+        color: $color-brand-blue-870;
       }
     }
   }
