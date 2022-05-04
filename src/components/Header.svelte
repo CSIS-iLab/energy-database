@@ -6,7 +6,8 @@
 <header class="header">
   <div class="header__inner">
     <a href="https://www.csis.org" alt="CSIS website">
-      <Logo className="__site-header"/>
+      <span class="header__logo"></span>
+      <!-- <Logo className="__site-header"/> -->
     </a>
     <SocialShare />
   </div>

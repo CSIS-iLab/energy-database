@@ -26,27 +26,14 @@
 
   &__share {
     // color gray-300
-    filter: invert(29%) sepia(14%) saturate(711%) hue-rotate(181deg) brightness(94%) contrast(89%);
+    // filter: invert(29%) sepia(14%) saturate(711%) hue-rotate(181deg) brightness(94%) contrast(89%);
     width: 1rem;
     height: 1rem;
   }
 
   &__social {
-    // color gray-300
-    // filter: invert(29%) sepia(14%) saturate(711%) hue-rotate(181deg) brightness(94%) contrast(89%);
     width: 1rem;
     height: 1rem;
-
-    // &:hover {
-    //   // color: $color-brand-blue-600;
-    //   filter: invert(39%) sepia(72%) saturate(6596%) hue-rotate(200deg) brightness(100%) contrast(84%);
-    // }
-
-    // &:focus {
-    //   filter: none;
-    //   filter: invert(39%) sepia(72%) saturate(6596%) hue-rotate(200deg) brightness(100%) contrast(84%);
-    //   outline: 3px solid $color-focus-outline;
-    // }
   }
 
   &__report {
