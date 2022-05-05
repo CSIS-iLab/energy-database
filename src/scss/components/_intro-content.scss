@@ -60,6 +60,7 @@ main {
   }
 
   &__more {
+    // TODO: remove this margin or the padding top on __grahps
     margin-bottom: rem(56);
   }
 
@@ -67,8 +68,11 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 0 auto;
-    margin-bottom: rem(80);
+    margin: 0;
+    margin-left: var(--container-padding);
+    margin-right: var(--container-padding);
+    padding-top: rem(56);
+    padding-bottom: rem(80);
 
     img:first-child {
       margin-bottom: rem(56);
@@ -84,4 +88,9 @@ main {
       }
     }
   }
+}
+
+.wrapper {
+  background-color: $color-background-gray-100;
+
 }

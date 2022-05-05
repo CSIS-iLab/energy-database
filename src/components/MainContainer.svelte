@@ -48,13 +48,13 @@
 
 <div id="site-content">
   <Header />
-  <div class="container">
-    <IntroContent />
-  </div>
+  <!-- <div class="container">
+  </div> -->
+  <IntroContent />
   <section class="table-container">
-    <section class="table-container__header">
+    <!-- <section class="table-container__header">
       <h2 class="table-container__subtitle">Explore Policy Goals</h2>
-    </section>
+    </section> -->
       <Options
         {dataset}
         filteredData={filteredData()}

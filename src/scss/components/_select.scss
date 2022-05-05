@@ -32,11 +32,17 @@
 .selects {
   display: flex;
   flex-direction: column;
+  padding-top: rem(32);
+  padding-bottom: rem(48);
   // border-bottom: 1px solid #D3D4D6;
   
   @include breakpoint('medium') {
-    flex-direction: row;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: rem(40);
+    padding-bottom: 0;
+    // padding-top: rem(46);
+    // padding-bottom: rem(56);
   }
 }
 .select-container {

@@ -29,7 +29,7 @@
   $: if (selectedValue.length > 0 && selectedValue !== "") {
     selectLabel = selectedValue
   } else {
-    selectLabel = `Select a ${selectName}`
+    selectLabel = `Select ${selectName}`
   }
 
 	let handleClickOutside = (event) => {

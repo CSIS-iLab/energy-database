@@ -48,6 +48,16 @@
     // }
   }
 
+  function updateActiveTab(val) {
+    // console.log(val);
+    val = (val) ? val : 'all'
+    const activeTab = document.querySelector(".options__btn--tab--active");
+    const tabActivate = document.querySelector(`.options__btn--tab[data-tab="${val}"]`);
+    activeTab.classList.remove("options__btn--tab--active");
+    tabActivate.classList.add("options__btn--tab--active");
+    // console.log(tabActivate);
+  }
+
   function handleSelect(event, selectName) {
     // row.isOpen = !row.isOpen
     if (row.isOpen) {
@@ -71,6 +81,7 @@
     } else if (selectName === 'Authority') {
       selectedAuthority = event.detail.value
     } else if (selectName === 'Policy Goal') {
+      updateActiveTab(event.target.value)
       selectedPolicyGoal = event.target.value
       // console.log(selectedPolicyGoal, event)
     }  else {
@@ -184,12 +195,27 @@
   })
 </script>
 
+  <section class="table-container__header">
+    <h2 class="table-container__subtitle">Explore Policy Goals</h2>
+  </section>
+
 <section class="options__container">
   <div class="options__header">
-    <button class="options__btn--tab options__btn--tab--active" on:click={(event) => handleSelect(event, 'Policy Goal')}>All <span class="options__count">{policyGoalsTotal}</span></button>
+    <button class="options__btbn options__btn--tab options__btn--tab--active"
+      data-tab={'all'}
+      on:click={(event) => handleSelect(event, 'Policy Goal')}
+      >All <span class="options__count">{policyGoalsTotal}</span>
+    </button>
     {#each dataset.policyGoals as policy}
-      <button class="options__btn--tab" value="{policy}" on:click={(event) => handleSelect(event, 'Policy Goal')}>{policy.split('_').join(' ')} <span class="options__count">{getPGCount(policy)}</span></button>
+      <button class="options__btn--tab"
+        data-tab={policy}
+        value="{policy}"
+        on:click={(event) => handleSelect(event, 'Policy Goal')}
+      >{policy.split('_').join(' ')} <span class="options__count">{getPGCount(policy)}</span>
+      </button>
     {/each}
+    <!-- <span class="options__btn--tab--slider"></span> -->
+    <!-- <span class="et-hero-tab-slider"></span> -->
   </div>
   <div class="selects">
     <div class="select-container">
@@ -201,7 +227,7 @@
         listOffset={16}
         inputStyles="box-sizing: border-box; border-bottom: 1px solid #D3D4D6; z-index: 16;"
         {optionIdentifier} labelIdentifier={'name'} items={dataset.states}
-        placeholder="Select a State"
+        placeholder="Select a state"
         on:select={(event) => handleSelect(event, 'State')}
         on:clear={() => handleClear('State')}
       />
@@ -213,7 +239,7 @@
         inputStyles="box-sizing: border-box; border-bottom: 1px solid #D3D4D6;"
         showChevron={true}
         {optionIdentifier} {labelIdentifier} items={dataset.authority}
-        placeholder="Select an Authority"
+        placeholder="Select an authority"
         on:select={(event) => handleSelect(event, 'Authority')}
         on:clear={() => handleClear('Authority')}
       />
@@ -225,7 +251,7 @@
         inputStyles="box-sizing: border-box; border-bottom: 1px solid #D3D4D6;"
         showChevron={true}
         {optionIdentifier} {labelIdentifier} items={dataset.resourceTypes}
-        placeholder="Select a Resource"
+        placeholder="Select a type"
         on:select={(event) => handleSelect(event, 'ResourceType')}
         on:clear={(event) => handleClear(event, 'ResourceType')}
       />
@@ -236,11 +262,10 @@
       <SelectMultiple
         bind:selectedValue={selectedTags}
         options={dataset.tags}
-        selectName="Tags"
+        selectName="tags"
       />
     </div>
   </div>
-  <div>
 </section>
 <div class="options options__container options__container--sticky">
   <section class="options__navigation">
@@ -258,7 +283,7 @@
   </section>
 </div>
 <style lang="scss">
-
+  @use "../scss/components/table-container";
   @use "../scss/components/button";
   @use "../scss/components/label";
   @use "../scss/components/select";
