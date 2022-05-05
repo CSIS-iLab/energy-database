@@ -49,12 +49,21 @@
   }
 
   function updateActiveTab(val) {
-    // console.log(val);
+    console.log(val);
     val = (val) ? val : 'all'
+    const spanCountActive = document.querySelector(".options__count--active");
+    const spanCount = document.querySelector(`.options__count[data-count="${val}"]`);
+    console.log(spanCount);
+    spanCountActive.classList.remove("options__count--active");
+    // spanCount.classList.add("options__count--" + val);
+    const newClass = `options__count--active options__count--active--${val}`
+    spanCount.classList.add('options__count--active options__count--active--Economic_Development');
+
     const activeTab = document.querySelector(".options__btn--tab--active");
     const tabActivate = document.querySelector(`.options__btn--tab[data-tab="${val}"]`);
     activeTab.classList.remove("options__btn--tab--active");
-    tabActivate.classList.add("options__btn--tab--active");
+    // let newClass = `options__btn--tab--active options__btn--tab--active--${val}`
+    tabActivate.classList.add(`options__btn--tab--active options__count--active--Economic_Development`);
     // console.log(tabActivate);
   }
 
@@ -201,21 +210,19 @@
 
 <section class="options__container">
   <div class="options__header">
-    <button class="options__btbn options__btn--tab options__btn--tab--active"
-      data-tab={'all'}
+    <button class="options__btn options__btn--tab options__btn--tab--active"
+      data-tab={"all"}
       on:click={(event) => handleSelect(event, 'Policy Goal')}
-      >All <span class="options__count">{policyGoalsTotal}</span>
+      >All <span data-count={"all"} class="options__count options__count--active">{policyGoalsTotal}</span>
     </button>
     {#each dataset.policyGoals as policy}
       <button class="options__btn--tab"
         data-tab={policy}
         value="{policy}"
         on:click={(event) => handleSelect(event, 'Policy Goal')}
-      >{policy.split('_').join(' ')} <span class="options__count">{getPGCount(policy)}</span>
+      >{policy.split('_').join(' ')} <span data-count={policy} class="options__count">{getPGCount(policy)}</span>
       </button>
     {/each}
-    <!-- <span class="options__btn--tab--slider"></span> -->
-    <!-- <span class="et-hero-tab-slider"></span> -->
   </div>
   <div class="selects">
     <div class="select-container">

@@ -11,7 +11,6 @@
     &--sticky {
       position: sticky;
       top: 0;
-      // top: calc(var(--optionsHeight) - 2px);
       z-index: 10;
     }
   }
@@ -27,29 +26,14 @@
     display: flex;
     text-align: left;
     margin-top: rem(32);
-    // border-bottom: 3px solid $color-background-gray-300;
-    // padding-left:  var(--container-padding);
-    // padding-right: var(--container-padding);
-      &::before {
-        content: "";
-        position: absolute;
-        // height: 5px;
-        border-bottom: 3px solid purple;
-        bottom: 0;
-        left: -6vw;
-        width: 100vw;
-      }
-    @include breakpoint('medium') {
-      &::before {
-        content: "";
-        position: absolute;
-        // height: 5px;
-        border-bottom: 3px solid $color-borders-gray-300;
-        // top: 38.5px;
-        bottom: 0;
-        left: -6vw;
-        width: 100vw;
-      }
+
+    &::before {
+      content: "";
+      position: absolute;
+      border-bottom: 3px solid $color-borders-gray-300;
+      bottom: 0;
+      left: -6vw;
+      width: 100vw;
     }
   }
 
@@ -57,48 +41,54 @@
     display: flex;
 
     &--tab {
-      // padding: 0 rem(16);
+      display: flex;
+      align-items: flex-end;
       position: relative;
       text-align: left;
+      inline-size: min-content;
       padding-top: rem(4);
       padding-bottom: rem(16); 
       padding-left: rem(8);
       padding-right: rem(4);
       border-bottom: 3px solid $color-borders-gray-300;
-      z-index: 20;
+      margin-right: rem(16);
     }
-
-    // &--tab::before {
-    //   content: "";
-    //   position: absolute;
-    //   // height: 5px;
-    //   border-bottom: 3px solid $color-borders-gray-300;
-    //   top: 38px;
-    //   left: -6vw;
-    //   width: 100vw;
-    //   z-index: -2;
-    // }
 
     &--tab--active {
       border-bottom: 3px solid $color-borders-gray-400;
     }
 
-    &--tab--slider {
-      position: absolute;
-      bottom: 0;
-      width: 0;
-      height: 3px;
-      background: royalblue;
-      transition: left 0.3s ease;
+    &--tab:hover {
+      border-bottom: 3px solid $color-borders-gray-400;
+
+      .options__count {
+        color: $color-text-gray-300;
+        background-color: $color-background-gray-300;
+      }
+    }
+
+    &--tab:focus {
+      outline: 3px solid $color-focus-outline;
+    }
+  }
+
+  @include breakpoint('medium') {
+    &__btn--tab {
+      inline-size: initial;
     }
   }
 
   &__count {
-    background-color: $color-text-gray-400;
+    background-color: $color-background-gray-200;
     border-radius: rem(19);
-    color: $color-text-white;
+    color: $color-text-gray-300;
     @extend %text-style-ui-5;
     padding: rem(3) rem(8) rem(4);
     margin-left: rem(12);
+
+    &--active {
+      color: $color-text-white;
+      background-color: $color-text-gray-400;
+    }
   }
 }
