@@ -49,16 +49,17 @@
   }
 
   function updateActiveTab(val) {
-    val = (val) ? val : 'all'
-    const spanCountActive = document.querySelector(".options__count--active");
-    const spanCount = document.querySelector(`.options__count[data-count="${val}"]`);
-    spanCountActive.classList.remove("options__count--active");
-    spanCount.classList.add('options__count--active', `options__count--active--${val}`);
+    const value = (val) ? val.split('_').join('-') : 'all'
+    console.log(value);
+    const spanCountActive = document.querySelector(`.options__count--active`);
+    const spanCount = document.querySelector(`.options__count[data-count="${value}"]`);
+    spanCountActive.classList.remove('options__count--active');
+    spanCount.classList.add(`options__count--active`);
 
-    const activeTab = document.querySelector(".options__btn--tab--active");
-    const tabActivate = document.querySelector(`.options__btn--tab[data-tab="${val}"]`);
-    activeTab.classList.remove("options__btn--tab--active");
-    tabActivate.classList.add('options__btn--tab--active', `options__btn--tab--active--${val}`);
+    const activeTab = document.querySelector(`.options__btn--tab--active`);
+    const tabActivate = document.querySelector(`.options__btn--tab[data-tab="${value}"]`);
+    activeTab.classList.remove('options__btn--tab--active', 'options__btn--tab--Resilience--active', 'options__btn--tab--Economic-Development--active', 'options__btn--tab--Emissions-Reduction--active', 'options__btn--tab--all--active');
+    tabActivate.classList.add('options__btn--tab--active', `options__btn--tab--${value}--active`);
   }
 
   function handleSelect(event, selectName) {
@@ -121,17 +122,10 @@
   // handle the icon
   const chevronUp = '<svg class="test" width="28" height="15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M28 15 14 0 0 15h28z" fill="#000"/></svg>';
   const chevronDown = '<svg width="28" height="15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m0 0 14 15L28 0H0z" fill="#000"/></svg>';
-  // const chevronUp = IconUp;
-  // const chevronDown = IconUp;
   let chevron = chevronDown;
   let isListOpen = false;
   
   $: chevron = isListOpen ? chevronUp : chevronDown;
-
-
-    // const tableContainer = document.getElementById('table-body') 
-    // const table = document.getElementsByClassName('table')[0]
-    // const btnLeft = document.querySelector('#btn-scroll-left')
 
   function handleScrollLeft() {
     // let scrollLeft = document.querySelector("#table-header").scrollLeft
@@ -210,11 +204,11 @@
       >All <span data-count={"all"} class="options__count options__count--active">{policyGoalsTotal}</span>
     </button>
     {#each dataset.policyGoals as policy}
-      <button class="options__btn options__btn--tab options__btn--tab--{policy.split('_').join('-')}"
-        data-tab={policy}
+      <button class="options__btn options__btn--tab options__btn--tab--{policy.split('_').join('-')} "
+        data-tab={policy.split('_').join('-')}
         value="{policy}"
         on:click={(event) => handleSelect(event, 'Policy Goal')}
-      >{policy.split('_').join(' ')} <span data-count={policy} class="options__count">{getPGCount(policy)}</span>
+      >{policy.split('_').join(' ')} <span data-count={policy.split('_').join('-')} class="options__count options__count--{policy.split('_').join('-')}">{getPGCount(policy)}</span>
       </button>
     {/each}
   </div>
