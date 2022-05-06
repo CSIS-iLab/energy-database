@@ -55,20 +55,64 @@
     }
 
     &--tab--active {
+      transition: background 0.3s ease-in-out, border 0.3s ease-in-out;
       border-bottom: 3px solid $color-borders-gray-400;
     }
 
-    &--tab:hover {
+    // &--tab:hover {
+    //   .options__count {
+    //     color: $color-text-gray-300;
+    //     background-color: $color-background-gray-300;
+    //   }
+    // }
+
+    &--tab:focus {
+      outline: 3px solid $color-focus-outline;
+    }
+
+    &--tab--all:hover {
       border-bottom: 3px solid $color-borders-gray-400;
+      transition: border 0.3s ease-in-out;
+
+      // only on selected
+      // .options__count {
+      //   color: $color-text-gray-300;
+      //   background-color: $color-background-gray-300;
+      //   transition: background 0.3s ease-in-out, border 0.3s ease-in-out;
+      // }
+    }
+
+    &--tab--Economic-Development:hover {
+      border-bottom: 3px solid $color-policy-goals-economic-development;
+      transition: border 0.3s ease-in-out;
 
       .options__count {
         color: $color-text-gray-300;
         background-color: $color-background-gray-300;
+        transition: background 0.3s ease-in-out, border 0.3s ease-in-out;
       }
     }
 
-    &--tab:focus {
-      outline: 3px solid $color-focus-outline;
+    &--tab--Emissions-Reduction:hover {
+      border-bottom: 3px solid $color-policy-goals-emissions-reduction;
+      transition: border 0.3s ease-in-out;
+
+      .options__count {
+        color: $color-text-gray-300;
+        background-color: $color-background-gray-300;
+        transition: background 0.3s ease-in-out, border 0.3s ease-in-out;
+      }
+    }
+
+    &--tab--Resilience:hover {
+      border-bottom: 3px solid $color-policy-goals-resilience;
+      transition: border 0.3s ease-in-out;
+
+      .options__count {
+        color: $color-text-gray-300;
+        background-color: $color-background-gray-300;
+        transition: background 0.3s ease-in-out, border 0.3s ease-in-out;
+      }
     }
   }
 
@@ -85,10 +129,12 @@
     @extend %text-style-ui-5;
     padding: rem(3) rem(8) rem(4);
     margin-left: rem(12);
+    pointer-events: none;
 
     &--active {
       color: $color-text-white;
       background-color: $color-text-gray-400;
+      transition: background 0.3s ease-in-out, border 0.3s ease-in-out;
     }
   }
 }

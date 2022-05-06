@@ -49,22 +49,16 @@
   }
 
   function updateActiveTab(val) {
-    console.log(val);
     val = (val) ? val : 'all'
     const spanCountActive = document.querySelector(".options__count--active");
     const spanCount = document.querySelector(`.options__count[data-count="${val}"]`);
-    console.log(spanCount);
     spanCountActive.classList.remove("options__count--active");
-    // spanCount.classList.add("options__count--" + val);
-    const newClass = `options__count--active options__count--active--${val}`
-    spanCount.classList.add('options__count--active options__count--active--Economic_Development');
+    spanCount.classList.add('options__count--active', `options__count--active--${val}`);
 
     const activeTab = document.querySelector(".options__btn--tab--active");
     const tabActivate = document.querySelector(`.options__btn--tab[data-tab="${val}"]`);
     activeTab.classList.remove("options__btn--tab--active");
-    // let newClass = `options__btn--tab--active options__btn--tab--active--${val}`
-    tabActivate.classList.add(`options__btn--tab--active options__count--active--Economic_Development`);
-    // console.log(tabActivate);
+    tabActivate.classList.add('options__btn--tab--active', `options__btn--tab--active--${val}`);
   }
 
   function handleSelect(event, selectName) {
@@ -210,13 +204,13 @@
 
 <section class="options__container">
   <div class="options__header">
-    <button class="options__btn options__btn--tab options__btn--tab--active"
+    <button class="options__btn options__btn--tab options__btn--tab--all options__btn--tab--active"
       data-tab={"all"}
       on:click={(event) => handleSelect(event, 'Policy Goal')}
       >All <span data-count={"all"} class="options__count options__count--active">{policyGoalsTotal}</span>
     </button>
     {#each dataset.policyGoals as policy}
-      <button class="options__btn--tab"
+      <button class="options__btn options__btn--tab options__btn--tab--{policy.split('_').join('-')}"
         data-tab={policy}
         value="{policy}"
         on:click={(event) => handleSelect(event, 'Policy Goal')}
