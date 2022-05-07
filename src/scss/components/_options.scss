@@ -54,19 +54,19 @@
       margin-right: rem(16);
     }
 
-    // &--tab--active {
-    //   transition: border 0.3s ease-in-out;
-    //   border-bottom: 3px solid $color-borders-gray-400;
-    // }
+    &--tab--active {
+      border-bottom: 3px solid $color-borders-gray-400;
+      transition: border-bottom 0.3s ease-in-out;
+    }
 
     &--tab--all--active {
-      transition: border 0.3s ease-in-out;
       border-bottom: 3px solid $color-borders-gray-400;
+      transition: border-bottom 0.3s ease-in-out;
 
       .options__count {
         color: $color-text-white;
         background-color: $color-text-gray-400;
-        transition: background 0.3s ease-in-out, border 0.3s ease-in-out;
+        transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
       }
     }
 
@@ -76,79 +76,79 @@
 
     &--tab--all:hover {
       border-bottom: 3px solid $color-borders-gray-400;
-      transition: border 0.3s ease-in-out;
+      transition: border-bottom 0.3s ease-in-out;
 
       // only on selected
       .options__count {
         color: $color-text-gray-300;
         background-color: $color-background-gray-300;
-        transition: background 0.3s ease-in-out, border 0.3s ease-in-out;
+        transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
       }
     }
 
     &--tab--Economic-Development:hover {
       border-bottom: 3px solid $color-policy-goals-economic-development;
-      transition: border 0.3s ease-in-out;
+      transition: border-bottom 0.3s ease-in-out;
 
       .options__count {
         color: $color-text-gray-300;
         background-color: $color-background-gray-300;
-        transition: background 0.3s ease-in-out, border 0.3s ease-in-out;
+        transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
       }
     }
 
     &--tab--Economic-Development--active {
-      transition: border 0.3s ease-in-out;
       border-bottom: 3px solid $color-policy-goals-economic-development;
+      transition: border-bottom 0.3s ease-in-out;
 
       .options__count {
         color: $color-text-white;
         background-color: $color-policy-goals-economic-development;
-        transition: background 0.3s ease-in-out;
+        transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
       }
     }
 
     &--tab--Emissions-Reduction:hover {
       border-bottom: 3px solid $color-policy-goals-emissions-reduction;
-      transition: border 0.3s ease-in-out;
+      transition: border-bottom 0.3s ease-in-out;
 
       .options__count {
         color: $color-text-gray-300;
         background-color: $color-background-gray-300;
-        transition: background 0.3s ease-in-out, border 0.3s ease-in-out;
+        transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
       }
     }
 
     &--tab--Emissions-Reduction--active {
-      transition: border 0.3s ease-in-out;
       border-bottom: 3px solid $color-policy-goals-emissions-reduction;
+      transition: border-bottom 0.3s ease-in-out;
 
       .options__count {
         color: $color-text-white;
         background-color: $color-policy-goals-emissions-reduction;
-        transition: background 0.3s ease-in-out;
+        transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
       }
     }
 
     &--tab--Resilience:hover {
       border-bottom: 3px solid $color-policy-goals-resilience;
-      transition: border 0.3s ease-in-out;
+      transition: border-bottom 0.3s ease-in-out;
 
       .options__count {
         color: $color-text-gray-300;
         background-color: $color-background-gray-300;
-        transition: background 0.3s ease-in-out, border 0.3s ease-in-out;
+        transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
       }
     }
 
     &--tab--Resilience--active {
       border-bottom: 3px solid $color-policy-goals-resilience;
-      transition: border 0.3s ease-in-out;
+      transition: border-bottom 0.3s ease-in-out;
 
       .options__count {
         color: $color-text-white;
         background-color: $color-policy-goals-resilience;
-        transition: background 0.3s ease-in-out, border 0.3s ease-in-out;
+        transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
       }
     }
   }
@@ -171,7 +171,7 @@
     &--active {
       color: $color-text-white;
       background-color: $color-text-gray-400;
-      transition: background 0.3s ease-in-out, border 0.3s ease-in-out;
+      transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
     }
   }
 }
