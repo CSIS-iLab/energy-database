@@ -98,7 +98,7 @@
 
 </script>
 
-<div>
+<div class="table__wrapper">
   <div class="table__container table__container--sticky" id="table-header">
     <table class="table">
       <thead>

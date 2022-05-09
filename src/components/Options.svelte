@@ -217,7 +217,6 @@
       <div class="label">State</div>
       <Select
         showChevron={true}
-        indicatorSvg={chevron}
         bind:listOpen={isListOpen}
         listOffset={16}
         {optionIdentifier} labelIdentifier={'name'} items={dataset.states}
@@ -230,7 +229,6 @@
     <div class="select-container">
       <div class="label">Authority</div>
       <Select
-        inputStyles="box-sizing: border-box; border-bottom: 1px solid #D3D4D6;"
         showChevron={true}
         {optionIdentifier} {labelIdentifier} items={dataset.authority}
         placeholder="Select an authority"
@@ -242,7 +240,6 @@
     <div class="select-container">
       <div class="label">Resource Type</div>
       <Select
-        inputStyles="box-sizing: border-box; border-bottom: 1px solid #D3D4D6;"
         showChevron={true}
         {optionIdentifier} {labelIdentifier} items={dataset.resourceTypes}
         placeholder="Select a type"

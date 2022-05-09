@@ -14,6 +14,9 @@
   // thead, tbody {
   //   width: 100vw;
   // }
+  &__wrapper {
+    background-color: $color-background-white;
+  }
 
   th {
     text-transform: uppercase;

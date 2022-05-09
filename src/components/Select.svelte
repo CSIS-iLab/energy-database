@@ -23,5 +23,4 @@
 </select>
 
 <style lang="scss">
-
 </style>

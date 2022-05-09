@@ -22,8 +22,10 @@
   };
 
   let showOptions = () => {
-    (isListOpen) ? optionsList.style.display = 'none' : optionsList.style.display = 'block'
-    isListOpen = !isListOpen
+    if (!isListOpen) {
+      optionsList.classList.toggle("hide");
+      isListOpen = !isListOpen
+    }
   }
 
   $: if (selectedValue.length > 0 && selectedValue !== "") {
@@ -32,10 +34,13 @@
     selectLabel = `Select ${selectName}`
   }
 
-	let handleClickOutside = (event) => {
-    optionsList.style.display = 'none'
-    isListOpen = false
+	let handleClickOutside = () => {
+    if (isListOpen) {
+      optionsList.classList.toggle("hide");
+      isListOpen = !isListOpen
+    }
 	}
+
 </script>
 
 <div>
@@ -45,7 +50,7 @@
     bind:innerHTML={selectLabel}
     on:click={showOptions}
   >Select {selectName}</div>
-  <div class="select__tags-options" bind:this={optionsList}
+  <div class="select__tags-options hide" bind:this={optionsList}
     use:clickOutside on:click_outside={handleClickOutside}
   >
     {#each options as option}
