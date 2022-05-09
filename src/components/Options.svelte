@@ -220,7 +220,6 @@
         indicatorSvg={chevron}
         bind:listOpen={isListOpen}
         listOffset={16}
-        inputStyles="box-sizing: border-box; border-bottom: 1px solid #D3D4D6; z-index: 16;"
         {optionIdentifier} labelIdentifier={'name'} items={dataset.states}
         placeholder="Select a state"
         on:select={(event) => handleSelect(event, 'State')}
