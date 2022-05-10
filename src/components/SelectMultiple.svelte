@@ -9,6 +9,11 @@
   let isListOpen = false;
   let optionsList
   let selectLabel = `Select a ${selectName}`
+  let selectTagCounter
+  let selectedCounter = 0
+  let selectedTagCounterText
+  let testHTML
+  // const testHTML = ''
 
   const formatOption = (opt, type) => {
     if (selectName !== "State") {
@@ -29,8 +34,19 @@
   }
 
   $: if (selectedValue.length > 0 && selectedValue !== "") {
-    selectLabel = selectedValue
+    console.log(testHTML)
+    const firstSelected = selectedValue[0]
+    testHTML.innerHTML = firstSelected + '<span id="whatever" style="color: #0054A4" class="select__select-tag__counter"></span>'
+    selectedCounter = selectedValue.length
+    selectLabel = firstSelected
+    if (selectedCounter > 1) {
+      const spanElement = document.querySelector('#whatever')
+      console.log('more than one')
+      selectedTagCounterText = '<span class="select__select-tag__counter>+' + selectedCounter + '</span>'
+      spanElement.innerHTML = '+' +selectedCounter
+    }
   } else {
+    (selectedCounter > 1) ? selectedCounter-- : selectedCounter
     selectLabel = `Select ${selectName}`
   }
 
@@ -43,13 +59,14 @@
 
 </script>
 
-<div>
+<div class="select__select-wrapper">
   <div
     class="select__select-tag"
-    contenteditable="false"
-    bind:innerHTML={selectLabel}
+    contenteditable="true"
     on:click={showOptions}
-  >Select {selectName}</div>
+    bind:this={testHTML}
+  > Select {selectName}
+  </div>
   <div class="select__tags-options hide" bind:this={optionsList}
     use:clickOutside on:click_outside={handleClickOutside}
   >

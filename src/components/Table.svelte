@@ -14,7 +14,8 @@
     // console.log(extraContent);
     extraContent.classList.add('active');
     extraContent.classList.toggle("hide");
-    row.isOpen = !row.isOpen;
+    (row.isOpen) ? row.isOpen = true : row.isOpen = !row.isOpen
+    // row.isOpen = !row.isOpen;
     // console.log(rowIsOpen.value)
     // const input = Array.from(document.querySelectorAll("input"));
     // input.map(item => {

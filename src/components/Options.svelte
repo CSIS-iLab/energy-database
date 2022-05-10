@@ -192,9 +192,9 @@
   })
 </script>
 
-  <section class="table-container__header">
-    <h2 class="table-container__subtitle">Explore Policy Goals</h2>
-  </section>
+<section class="table-container__header">
+  <h2 class="table-container__subtitle">Explore Policy Goals</h2>
+</section>
 
 <section class="options__container">
   <div class="options__header">
@@ -303,5 +303,10 @@
       // left: 0;
       // top: -4px;
     }
+  }
+
+  :global(.listContainer) {
+    --listZIndex: 15;
+    --listMaxHeight: 450px;
   }
 </style>
