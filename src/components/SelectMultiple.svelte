@@ -66,7 +66,7 @@
 <div class="select__select-wrapper">
   <div
     class="select__select-tag"
-    contenteditable="true"
+    contenteditable="false"
     on:click={showOptions}
     bind:this={tagsHTML}
   > Select {selectName}
@@ -94,14 +94,6 @@
     {/each}
   </div>
 </div>
-
-
-<!-- <select multiple name={selectName} bind:value={selectedValue}>
-  <option value="">Select a {selectName}</option>
-  {#each options as option}
-    <option value={formatOption(option, "value")}>{formatOption(option, "name")}</option>
-  {/each}
-</select> -->
 
 <style lang="scss">
   @use "../scss/components/select";
