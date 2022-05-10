@@ -23,6 +23,15 @@
     display: flex;
     justify-content: space-between;
     padding-bottom: rem(16);
+
+    &-inner {
+      display: flex;
+      align-items: center;
+
+      button + button {
+        margin-left: 0;
+      }
+    }
   }
 
   &__header {

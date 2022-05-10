@@ -8,12 +8,12 @@
   
   let isListOpen = false;
   let optionsList
-  let selectLabel = `Select a ${selectName}`
-  let selectTagCounter
+  let selectLabel
   let selectedCounter = 0
   let selectedTagCounterText
-  let testHTML
-  // const testHTML = ''
+  let tagsHTML
+  let isTagSelected = false
+  let spanElement
 
   const formatOption = (opt, type) => {
     if (selectName !== "State") {
@@ -34,20 +34,24 @@
   }
 
   $: if (selectedValue.length > 0 && selectedValue !== "") {
-    console.log(testHTML)
     const firstSelected = selectedValue[0]
-    testHTML.innerHTML = firstSelected + '<span id="whatever" style="color: #0054A4" class="select__select-tag__counter"></span>'
+    tagsHTML.innerHTML = firstSelected + '<span id="whatever" style="color: #0054A4" class="select__select-tag__counter"></span>'
     selectedCounter = selectedValue.length
     selectLabel = firstSelected
+    isTagSelected = !isTagSelected
+    spanElement = document.querySelector('#whatever')
     if (selectedCounter > 1) {
-      const spanElement = document.querySelector('#whatever')
-      console.log('more than one')
       selectedTagCounterText = '<span class="select__select-tag__counter>+' + selectedCounter + '</span>'
       spanElement.innerHTML = '+' +selectedCounter
     }
   } else {
     (selectedCounter > 1) ? selectedCounter-- : selectedCounter
     selectLabel = `Select ${selectName}`
+    if (isTagSelected) {
+      tagsHTML.innerHTML = selectLabel
+      spanElement.innerHTML = ''
+      isTagSelected = !isTagSelected
+    }
   }
 
 	let handleClickOutside = () => {
@@ -64,7 +68,7 @@
     class="select__select-tag"
     contenteditable="true"
     on:click={showOptions}
-    bind:this={testHTML}
+    bind:this={tagsHTML}
   > Select {selectName}
   </div>
   <div class="select__tags-options hide" bind:this={optionsList}

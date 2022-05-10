@@ -262,10 +262,8 @@
   <section class="options__navigation">
     <!-- div class="table__container table__container--sticky" -->
     <Search bind:searchText/>
-    <div>
+    <div class="options__navigation-inner">
       <span class="table__total-entries">Showing {totalEntries} {totalEntries > 1 ? "entries" : "entry"}</span>
-      <!-- <Button id='btn-scroll-left' iconName="Icon-left" classes="btn btn--scroll btn--scroll--left inactive" ariaLabel="Scroll table to the left" on:click={handleScrollLeft} /> -->
-      <!-- <Button id='btn-scroll-right' iconName="Icon-right" classes="btn btn--scroll btn--scroll--right" ariaLabel="Scroll table to the right" on:click={handleScrollRight} /> -->
       <button id='btn-scroll-left' class="btn btn--scroll btn--scroll--left inactive" ariaLabel="Scroll table to the left"
         on:click={handleScrollLeft}><Icon id="icon-scroll-left" name="Icon-left" class="icon inactive"/></button>
       <button id='btn-scroll-right' class="btn btn--scroll btn--scroll--right" ariaLabel="Scroll table to the right"
