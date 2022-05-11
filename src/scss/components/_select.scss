@@ -81,17 +81,20 @@
 
   &__select-tag__counter {
     @extend %text-style-ui-2;
-    color: royalblue !important;
+    // color: royalblue !important;
     position: relative;
     right: 0;
   }
 
   &__select-tag {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
     @extend %text-style-ui-2;
     color: $color-text-gray-200;
     position: relative;
     top: rem(10);
-
+    width: 150px;
     // border-bottom: 1px solid #D3D4D6;
 
     &::placeholder {
