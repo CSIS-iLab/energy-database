@@ -54,6 +54,7 @@
     &__link {
       @extend %text-style-ui-2;
       color: $color-brand-blue-600;
+      text-decoration: none;
 
       &:hover {
         color: $color-brand-blue-700;
@@ -78,5 +79,9 @@
     span {
       color: $color-brand-blue-600;
     }
+  }
+
+  &__icon-container {
+
   }
 }

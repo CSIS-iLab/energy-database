@@ -52,6 +52,8 @@
 
   &__btn {
     display: flex;
+    color: $color-text-gray-300;
+    @extend %text-style-ui-2;
 
     &--tab {
       display: flex;
@@ -88,10 +90,10 @@
     }
 
     &--tab--all:hover {
+      color: $color-text-gray-500;
       border-bottom: 3px solid $color-borders-gray-400;
-      transition: border-bottom 0.3s ease-in-out;
+      transition: color 0.3s ease-in-out, border-bottom 0.3s ease-in-out;
 
-      // only on selected
       .options__count {
         color: $color-text-gray-300;
         background-color: $color-background-gray-300;
@@ -100,8 +102,9 @@
     }
 
     &--tab--Economic-Development:hover {
+      color: $color-text-gray-500;
       border-bottom: 3px solid $color-policy-goals-economic-development;
-      transition: border-bottom 0.3s ease-in-out;
+      transition: color 0.3s ease-in-out, border-bottom 0.3s ease-in-out;
 
       .options__count {
         color: $color-text-gray-300;
@@ -122,8 +125,9 @@
     }
 
     &--tab--Emissions-Reduction:hover {
+      color: $color-text-gray-500;
       border-bottom: 3px solid $color-policy-goals-emissions-reduction;
-      transition: border-bottom 0.3s ease-in-out;
+      transition: color 0.3s ease-in-out, border-bottom 0.3s ease-in-out;
 
       .options__count {
         color: $color-text-gray-300;
@@ -139,13 +143,14 @@
       .options__count {
         color: $color-text-white;
         background-color: $color-policy-goals-emissions-reduction;
-        transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+        transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
       }
     }
 
     &--tab--Resilience:hover {
+      color: $color-text-gray-500;
       border-bottom: 3px solid $color-policy-goals-resilience;
-      transition: border-bottom 0.3s ease-in-out;
+      transition: color 0.3s ease-in-out, border-bottom 0.3s ease-in-out;
 
       .options__count {
         color: $color-text-gray-300;
