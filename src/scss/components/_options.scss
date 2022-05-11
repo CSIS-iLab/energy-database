@@ -171,6 +171,11 @@
     }
   }
 
+  &__table-total-entries {
+    color: $color-text-gray-300;
+    @extend %text-style-ui-3;
+  }
+
   @include breakpoint('medium') {
     &__btn--tab {
       inline-size: initial;

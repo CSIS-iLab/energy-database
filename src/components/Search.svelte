@@ -38,8 +38,6 @@ $: if (btnSearch) {
   <span class="search__icon">
     <Icon
       name="Icon-magnify"
-      width={"1rem"}
-      height={"1rem"}
       class="icon"
     />
   </span>

@@ -77,6 +77,7 @@
     {#each options as option}
       <div class="checkbox__container">
         <input
+        class="checkbox__check"
         id={formatOption(option, "value")}
         type="checkbox"
         name="tags"

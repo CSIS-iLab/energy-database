@@ -147,13 +147,8 @@
   }
 
   function handleScrollRight() {
-    // let scrollLeft = document.querySelector("#table-header").scrollLeft
-    // document.querySelector("#table-header").scrollLeft = scrollLeft + 150
-
     const tableContainer = document.getElementById('table-body') 
     const table = document.getElementsByClassName('table')[0]
-    // const btnLeft = document.querySelector('#btn-scroll-left')
-    // const btnRight = document.querySelector('#btn-scroll-right')
     const btnIconLeft = document.querySelector('#icon-scroll-left')
     const btnIconRight = document.querySelector('#icon-scroll-right')
     // console.log(tableContainer);
@@ -170,8 +165,6 @@
 
     const tableContainer = document.getElementById('table-body') 
     const table = document.getElementsByClassName('table')[0]
-    // const btnLeft = document.querySelector('#btn-scroll-left')
-    // const btnRight = document.querySelector('#btn-scroll-right')
     const btnIconLeft = document.querySelector('#icon-scroll-left')
     const btnIconRight = document.querySelector('#icon-scroll-right')
     tableContainer.addEventListener('scroll', () => {
@@ -263,7 +256,7 @@
     <!-- div class="table__container table__container--sticky" -->
     <Search bind:searchText/>
     <div class="options__navigation-inner">
-      <span class="table__total-entries">Showing {totalEntries} {totalEntries > 1 ? "entries" : "entry"}</span>
+      <span class="options__table-total-entries">Showing {totalEntries} {totalEntries > 1 ? "entries" : "entry"}</span>
       <button id='btn-scroll-left' class="btn btn--scroll btn--scroll--left inactive" ariaLabel="Scroll table to the left"
         on:click={handleScrollLeft}><Icon id="icon-scroll-left" name="Icon-left" class="icon inactive"/></button>
       <button id='btn-scroll-right' class="btn btn--scroll btn--scroll--right" ariaLabel="Scroll table to the right"
@@ -295,7 +288,7 @@
       width: 1rem;
       height: 1rem;
       color: royalblue;
-      margin-right: 0.3em;
+      margin-right: 0.375rem;
       text-align: center;
       // position: relative;
       // left: 0;
