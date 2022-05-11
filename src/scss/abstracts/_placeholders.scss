@@ -2,9 +2,10 @@
 @use 'mixins' as *;
 
 %text-style-heading-1 {
-	@include font-clamp(42px, 53px);
+	@include font-clamp(36px, 53px);
 	font-family: $font-family-default;
   font-weight: $font-weight-default;
+  line-height: 1.1;
 }
 
 %text-style-heading-2 {

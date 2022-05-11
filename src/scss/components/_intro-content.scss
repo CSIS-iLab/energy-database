@@ -9,7 +9,7 @@ main {
 }
 
 .intro-content {
-  padding-top: rem(56);
+  padding-top: rem(132px);
   max-width: $size__intro-content-wide-max-width;
   text-align: center;
 
@@ -61,11 +61,8 @@ main {
   }
 
   &__more {
-    // TODO: remove this margin or the padding top on __grahps
-    margin-bottom: rem(56);
     // color: $color-brand-blue-600;
     
-      
     &__icon-container {
       position: relative;
       margin-right: rem(4);
@@ -85,9 +82,10 @@ main {
   &__link {
     color: $color-brand-blue-600;
     text-decoration: none;
+    transition: $transition__link;
 
     &--more {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       justify-content: center;
       @extend %text-style-ui-3;
@@ -96,6 +94,7 @@ main {
     .intro-content__more__icon-container {
       // color brand-blue-600
       filter: invert(39%) sepia(72%) saturate(6596%) hue-rotate(200deg) brightness(100%) contrast(84%);
+      transition: $transition__link;
     }
 
     &:hover {
@@ -104,6 +103,7 @@ main {
       .intro-content__more__icon-container {
         // color: $color-brand-blue-700;
         filter: invert(22%) sepia(54%) saturate(2858%) hue-rotate(194deg) brightness(92%) contrast(101%);
+        transition: $transition__link;
       }
     }
   
@@ -119,8 +119,8 @@ main {
 
     &:focus {
       color: $color-brand-blue-700;
-      background-color: $color-background-light-blue-100;
-
+      background-color: $color-background-light-blue-300;
+      outline-color: $color-focus-outline;
       .intro-content__more__icon-container {
         // color: $color-brand-blue-700;
         filter: invert(22%) sepia(54%) saturate(2858%) hue-rotate(194deg) brightness(92%) contrast(101%);
@@ -156,8 +156,5 @@ main {
 
 .wrapper {
   // background-color: $color-background-gray-100;
-  background: linear-gradient(201.75deg, rgba(253, 254, 255, 0.5) 4.76%, rgba(224, 239, 248, 0.5) 29.06%, rgba(248, 248, 248, 0.5) 71.58%),
-    linear-gradient(164.14deg, #E0EFF8 25.66%, rgba(224, 239, 248, 0.14) 62.15%),
-    linear-gradient(0deg, #F8F8F8, #F8F8F8),
-    #F5F5F5;
+  background: linear-gradient(0deg, #F8F8F8 30px, rgba(248, 248, 248, 0) 300px), linear-gradient(201.75deg, rgba(253, 254, 255, 0.5) 2.76%, rgba(224, 239, 248, 0.5) 29.06%, rgba(248, 248, 248, 0.5) 71.58%), linear-gradient(157.14deg, #E0EFF8 25.66%, rgba(224, 239, 248, 0.14) 62.15%), #F8F8F8
 }
