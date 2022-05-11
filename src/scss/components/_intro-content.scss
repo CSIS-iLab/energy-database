@@ -53,6 +53,7 @@ main {
     margin-bottom: rem(16);
     max-width: $size__content-max-width;
     text-align: center;
+    @extend %text-style-paragraph-1;
 
     span {
       color: $color-brand-blue-600;
@@ -62,6 +63,69 @@ main {
   &__more {
     // TODO: remove this margin or the padding top on __grahps
     margin-bottom: rem(56);
+    // color: $color-brand-blue-600;
+    
+      
+    &__icon-container {
+      position: relative;
+      margin-right: rem(4);
+      top: rem(2);
+    }
+      
+    // &:hover {
+    //   // color: $color-brand-blue-700;
+    //     filter: invert(39%) sepia(72%) saturate(6596%) hue-rotate(200deg) brightness(100%) contrast(84%);
+    // }
+
+    // &:visited {
+    //   color: $color-brand-blue-800;
+    // }
+  }
+
+  &__link {
+    color: $color-brand-blue-600;
+    text-decoration: none;
+
+    &--more {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      @extend %text-style-ui-3;
+    }
+
+    .intro-content__more__icon-container {
+      // color brand-blue-600
+      filter: invert(39%) sepia(72%) saturate(6596%) hue-rotate(200deg) brightness(100%) contrast(84%);
+    }
+
+    &:hover {
+      color: $color-brand-blue-700;
+
+      .intro-content__more__icon-container {
+        // color: $color-brand-blue-700;
+        filter: invert(22%) sepia(54%) saturate(2858%) hue-rotate(194deg) brightness(92%) contrast(101%);
+      }
+    }
+  
+    &:visited {
+      color: $color-brand-blue-870;
+
+      .intro-content__more__icon-container {
+        // color: $color-brand-blue-800;
+        // opacity: 0.7;
+        filter: invert(9%) sepia(41%) saturate(6837%) hue-rotate(211deg) brightness(98%) contrast(99%);
+      }
+    }
+
+    &:focus {
+      color: $color-brand-blue-700;
+      background-color: $color-background-light-blue-100;
+
+      .intro-content__more__icon-container {
+        // color: $color-brand-blue-700;
+        filter: invert(22%) sepia(54%) saturate(2858%) hue-rotate(194deg) brightness(92%) contrast(101%);
+      }
+    }
   }
 
   &__graphs {
