@@ -33,7 +33,7 @@
     border: 1px solid #EEEEEE;
     border-top: none;
     text-align: left;
-    padding: 8px;
+    // padding: 8px;
     color: #363D41;
     // font-size: 14px;
   }
@@ -140,7 +140,7 @@
 
     .link a {
       color: $color-brand-blue-600;
-      text-decoration: underline;
+      text-decoration: none;
 
       .icon-container {
         // color brand-blue-600
@@ -234,6 +234,7 @@
       align-items: flex-start;
       padding: 0px;
       gap: rem(8);
+      pointer-events: none;
     }
 
     &__policy-goal {
@@ -257,6 +258,9 @@
       }
     }
 
+    &--tags {
+
+    }
   }
 }
 
@@ -266,3 +270,7 @@
   margin-right: rem(16);
 }
 
+.icon-tag-container {
+  pointer-events: none;
+  margin-right: rem(8);
+}

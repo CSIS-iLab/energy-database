@@ -173,6 +173,7 @@
 
   &__table-total-entries {
     color: $color-text-gray-300;
+    margin-right: rem(16);
     @extend %text-style-ui-3;
   }
 

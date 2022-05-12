@@ -123,7 +123,7 @@
             <td class="table__body__cell">{rows.type_of_resource}</td>
             <td class="table__body__cell">
               {#each rows.tags as tag}
-                <Icon name="icon {tag}" class="icon__tags" />
+                <span class="icon-tag-container"><Icon name="icon {tag}" class="icon__tags" /></span>
               {/each}
             </td>
           </tr>

@@ -205,52 +205,52 @@
       </button>
     {/each}
   </div>
-  <div class="selects">
-    <div class="select-container">
-      <div class="label">State</div>
-      <Select
-        showChevron={true}
-        bind:listOpen={isListOpen}
-        listOffset={16}
-        {optionIdentifier} labelIdentifier={'name'} items={dataset.states}
-        placeholder="Select a state"
-        on:select={(event) => handleSelect(event, 'State')}
-        on:clear={() => handleClear('State')}
-      />
-    </div>
-
-    <div class="select-container">
-      <div class="label">Authority</div>
-      <Select
-        showChevron={true}
-        {optionIdentifier} {labelIdentifier} items={dataset.authority}
-        placeholder="Select an authority"
-        on:select={(event) => handleSelect(event, 'Authority')}
-        on:clear={() => handleClear('Authority')}
-      />
-    </div>
-
-    <div class="select-container">
-      <div class="label">Resource Type</div>
-      <Select
-        showChevron={true}
-        {optionIdentifier} {labelIdentifier} items={dataset.resourceTypes}
-        placeholder="Select a type"
-        on:select={(event) => handleSelect(event, 'ResourceType')}
-        on:clear={(event) => handleClear(event, 'ResourceType')}
-      />
-    </div>
-    
-    <div class="select-container">
-      <div class="label">Tags</div>
-      <SelectMultiple
-        bind:selectedValue={selectedTags}
-        options={dataset.tags}
-        selectName="tags"
-      />
-    </div>
-  </div>
 </section>
+<div class="selects">
+  <div class="select-container">
+    <div class="label">State</div>
+    <Select
+      showChevron={true}
+      bind:listOpen={isListOpen}
+      listOffset={16}
+      {optionIdentifier} labelIdentifier={'name'} items={dataset.states}
+      placeholder="Select a state"
+      on:select={(event) => handleSelect(event, 'State')}
+      on:clear={() => handleClear('State')}
+    />
+  </div>
+
+  <div class="select-container">
+    <div class="label">Authority</div>
+    <Select
+      showChevron={true}
+      {optionIdentifier} {labelIdentifier} items={dataset.authority}
+      placeholder="Select an authority"
+      on:select={(event) => handleSelect(event, 'Authority')}
+      on:clear={() => handleClear('Authority')}
+    />
+  </div>
+
+  <div class="select-container">
+    <div class="label">Resource Type</div>
+    <Select
+      showChevron={true}
+      {optionIdentifier} {labelIdentifier} items={dataset.resourceTypes}
+      placeholder="Select a type"
+      on:select={(event) => handleSelect(event, 'ResourceType')}
+      on:clear={(event) => handleClear(event, 'ResourceType')}
+    />
+  </div>
+  
+  <div class="select-container">
+    <div class="label">Tags</div>
+    <SelectMultiple
+      bind:selectedValue={selectedTags}
+      options={dataset.tags}
+      selectName="tags"
+    />
+  </div>
+</div>
 <div class="options options__container options__container--sticky">
   <section class="options__navigation">
     <!-- div class="table__container table__container--sticky" -->
