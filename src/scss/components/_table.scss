@@ -34,7 +34,7 @@
     border-top: none;
     text-align: left;
     // padding: 8px;
-    color: #363D41;
+    // color: #363D41;
     // font-size: 14px;
   }
   
@@ -271,6 +271,12 @@
 }
 
 .icon-tag-container {
-  pointer-events: none;
+  // pointer-events: none;
   margin-right: rem(8);
+}
+
+.tooltip {
+  @extend %text-style-ui-4;
+  color: $color-text-gray-500;
+  background-color: $color-background-white;
 }

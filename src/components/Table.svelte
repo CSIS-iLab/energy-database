@@ -1,5 +1,6 @@
 <script>
   import { onMount } from "svelte";
+  import tippy from "sveltejs-tippy";
   import Icon from "./Icons.svelte";
 
   // export let dataset
@@ -84,6 +85,15 @@
     scrollSync();
   });
 
+  function formatTippy(text) {
+    const test = `<span class='tooltip'>${text}</span>`
+    return {
+      content: test,
+      allowHTML: true,
+      placement: "top",
+      theme: 'light',
+    }
+  }
 </script>
 
 <div class="table__wrapper">
@@ -123,7 +133,7 @@
             <td class="table__body__cell">{rows.type_of_resource}</td>
             <td class="table__body__cell">
               {#each rows.tags as tag}
-                <span class="icon-tag-container"><Icon name="icon {tag}" class="icon__tags" /></span>
+                <span class="icon-tag-container" use:tippy={formatTippy(tag)}><Icon name="icon {tag}" class="icon__tags"/></span>
               {/each}
             </td>
           </tr>
@@ -157,5 +167,13 @@
 </div>
 
 <style lang="scss">
+  @use '../scss/abstracts/' as *;
   @use "../scss/components/table";
+
+  :global(.tooltip) {
+    @extend %text-style-ui-4;
+    color: $color-text-gray-500;
+    background-color: $color-background-white;
+    border: 0;
+  }
 </style>
