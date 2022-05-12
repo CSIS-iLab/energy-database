@@ -69,7 +69,7 @@
     contenteditable="false"
     on:click={showOptions}
     bind:this={tagsHTML}
-  > Select {selectName}
+  > <span>Select {selectName}</span>
   </div>
   <div class="select__tags-options hide" bind:this={optionsList}
     use:clickOutside on:click_outside={handleClickOutside}
