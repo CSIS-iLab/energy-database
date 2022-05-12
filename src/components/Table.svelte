@@ -6,25 +6,12 @@
   export let filteredData;
   export let row;
   let hide = 'hide'
-  // let extraContent
-  // export let states
+
   function handleClick(e) {
-    // console.log(extraContent);
     const extraContent = e.target.parentNode.nextElementSibling;
-    // console.log(extraContent);
     extraContent.classList.add('active');
     extraContent.classList.toggle("hide");
     (row.isOpen) ? row.isOpen = true : row.isOpen = !row.isOpen
-    // row.isOpen = !row.isOpen;
-    // console.log(rowIsOpen.value)
-    // const input = Array.from(document.querySelectorAll("input"));
-    // input.map(item => {
-    //   console.log(item)
-    // });
-    // console.log(e);
-      // if extracontent has class of active then select is clicked close extracontent 
-
-    // console.log(input)
   }
 
   const headerNames = [
@@ -119,15 +106,13 @@
         {#each filteredData as rows}
           <tr on:click={(e) => handleClick(e)}>
             <td class="table__body__cell"
-              ><Icon
+              ><span class="icon-container"><Icon
                 name="Icon-down"
-                width={"1rem"}
-                height={"1rem"}
                 class="icon"
-              />{rows.activity.title}</td
+              /></span>{rows.activity.title}</td
             >
             <td class="table__body__cell">{rows.state}</td>
-            <td class="table__body__cell">{rows.policy_goals}</td>
+            <td class="table__body__cell">{@html rows.policy_goals.map(PG => '<span class="table__body__cell--'+ PG.toLowerCase() +'">'+ PG.split('_').join(' ') +'</span>')}</td>
             <td class="table__body__cell">{rows.authority}</td>
             <td class="table__body__cell">{rows.type_of_resource}</td>
             <td class="table__body__cell">
@@ -145,13 +130,13 @@
                   <a
                     href={rows.activity.link}
                     target="_blank"
-                    rel="noopener noreferrer">{rows.activity.link}</a
+                    rel="noopener noreferrer">{rows.activity.link} <span class="icon-container"><Icon name="Icon-open-blank" class="icon"/></span></a
                   >
                 </div>
-                <div class="policy-goals">
+                <!-- <div class="policy-goals">
                   <span class="policy-goals__title">Policy Goals:</span>
                   {rows.policy_goals}
-                </div>
+                </div> -->
               </div>
             </td>
           </tr>

@@ -35,7 +35,7 @@
     text-align: left;
     padding: 8px;
     color: #363D41;
-    font-size: 14px;
+    // font-size: 14px;
   }
   
   
@@ -45,6 +45,7 @@
       color: $color-text-gray-500;
       padding: rem(12) rem(16);
       background-color: $color-background-white;
+      @extend %text-style-ui-2-bold;
 
       &:first-child {
         padding: rem(12) rem(16);
@@ -107,7 +108,11 @@
 }
 
 .table__body {
+  border-top: 0;
+
   tr {
+    // padding-left: var(--container-padding);
+    // padding-right: var(--container-padding);
     background-color: #fff;
     border: none;
     cursor: pointer;
@@ -119,13 +124,59 @@
   
   .extra-content {
 
+    .table__body__cell {
+      padding-left: rem(48);
+    }
+
     &__container {
       padding: rem(12) rem(16) rem(32) 0;
-      max-width: rem(750px);
+      max-width: rem(750);
+      @extend %text-style-paragraph-2;
     }
+
     .link {
-      color: blue;
+      margin-top: rem(12);
+    }
+
+    .link a {
+      color: $color-brand-blue-600;
       text-decoration: underline;
+
+      .icon-container {
+        // color brand-blue-600
+        margin-left: rem(5);
+        filter: invert(39%) sepia(72%) saturate(6596%) hue-rotate(200deg) brightness(100%) contrast(84%);
+      }
+
+      &:hover {
+        color: $color-brand-blue-700;
+
+        .icon-container {
+          // color brand-blue-700
+          filter: invert(22%) sepia(54%) saturate(2858%) hue-rotate(194deg) brightness(92%) contrast(101%);
+        }
+      }
+
+      &:focus {
+        color: $color-brand-blue-700;
+        background-color: $color-background-light-blue-100;
+        outline: 0;
+
+        .icon-container {
+          // color: $color-brand-blue-700;
+          filter: invert(22%) sepia(54%) saturate(2858%) hue-rotate(194deg) brightness(92%) contrast(101%);
+        }
+      }
+
+      &:visited {
+        color: $color-brand-blue-870;
+
+        .icon-container {
+          // color: $color-brand-blue-800;
+          opacity: 0.7;
+          filter: invert(9%) sepia(41%) saturate(6837%) hue-rotate(211deg) brightness(98%) contrast(99%);
+        }
+      }
     }
   
     .policy-goals {
@@ -142,10 +193,11 @@
     padding: rem(12) rem(16);
     background-color: $color-background-white;
     overflow-wrap: break-word;
+    @extend %text-style-ui-2;
 
     &:first-child {
       padding: rem(12) rem(16);
-      padding-left: rem(48);
+      // padding-left: rem(48);
       max-width: rem(440);
       min-width: rem(440);
       // word-break: break-word;
@@ -175,5 +227,27 @@
       min-width: rem(240);
       max-width: rem(240);
     }
+
+    &--emissions_reduction {
+      color: $color-policy-goals-emissions-reduction-text;
+      background-color: $color-policy-goals-emissions-reduction-fill;
+    }
+
+    &--economic_development {
+      color: $color-policy-goals-economic-development-text;
+      background-color: $color-policy-goals-economic-development-fill;
+    }
+
+    &--resilience {
+      color: $color-policy-goals-resilience-text;
+      background-color: $color-policy-goals-resilience-fill;
+    }
   }
 }
+
+
+.icon-container {
+  pointer-events: none;
+  margin-right: rem(16);
+}
+
