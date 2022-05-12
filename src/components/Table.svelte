@@ -112,7 +112,13 @@
               /></span>{rows.activity.title}</td
             >
             <td class="table__body__cell">{rows.state}</td>
-            <td class="table__body__cell">{@html rows.policy_goals.map(PG => '<span class="table__body__cell--'+ PG.toLowerCase() +'">'+ PG.split('_').join(' ') +'</span>')}</td>
+            <td class="table__body__cell">
+              <div class="table__body__cell__policy-goal-container">
+                {#each rows.policy_goals as policyGoal}
+                  <span class="table__body__cell__policy-goal table__body__cell__policy-goal--{policyGoal.toLowerCase()}">{policyGoal.split('_').join(' ')}</span>
+                {/each}
+              </div>
+            </td>
             <td class="table__body__cell">{rows.authority}</td>
             <td class="table__body__cell">{rows.type_of_resource}</td>
             <td class="table__body__cell">
