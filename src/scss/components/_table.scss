@@ -78,7 +78,23 @@
         min-width: rem(240);
         max-width: rem(240);
       }
+
+      &__container {
+        display: flex;
+      }
     }
+  }
+
+  .sort-icons-container {
+    display:flex;
+    flex-direction: column;
+    margin-left: rem(4);
+    cursor: pointer;
+  }
+
+  .sort-icon {
+    font-size: rem(8);
+    pointer-events: none;
   }
 
   &__container {

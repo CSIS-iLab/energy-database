@@ -103,9 +103,15 @@
       <thead>
         <tr class="table__header-row">
           {#each headerNames as name}
-            <th class="table__cell--header" scope="col" on:click={sort(name)}
-              >{name}</th
-            >
+            <th class="table__cell--header" scope="col">
+              <div class="table__cell--header__container">
+                <span>{name}</span>
+                <div class="sort-icons-container" on:click={sort(name)}>
+                  <button class="sort-icon">▲</button>
+                  <button class="sort-icon">▼</button>
+                </div>
+              </div>
+            </th>
           {/each}
         </tr>
       </thead>
