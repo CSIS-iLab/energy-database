@@ -12,6 +12,7 @@
   let selectedCounter = 0
   let selectedTagCounterText
   let tagsHTML
+  let spanHTML
   let isTagSelected = false
   let spanElement
 
@@ -36,20 +37,21 @@
   $: if (selectedValue.length > 0 && selectedValue !== "") {
     const firstSelected = selectedValue[0]
     tagsHTML.innerHTML = firstSelected + '<span id="whatever" style="color: #0054A4" class="select__select-tag__counter"></span>'
-    selectedCounter = selectedValue.length
+    selectedCounter = selectedValue.length -1
     selectLabel = firstSelected
     isTagSelected = !isTagSelected
     spanElement = document.querySelector('#whatever')
     if (selectedCounter > 1) {
       selectedTagCounterText = '<span class="select__select-tag__counter>+' + selectedCounter + '</span>'
-      spanElement.innerHTML = '+' +selectedCounter
+      spanElement = '+' +selectedCounter
     }
   } else {
-    (selectedCounter > 1) ? selectedCounter-- : selectedCounter
+    console.log(selectedCounter);
+    (selectedCounter > 1) ? selectedCounter-- : selectedCounter = 0
     selectLabel = `Select ${selectName}`
     if (isTagSelected) {
       tagsHTML.innerHTML = selectLabel
-      spanElement.innerHTML = ''
+      spanElement = ''
       isTagSelected = !isTagSelected
     }
   }
@@ -63,13 +65,16 @@
 
 </script>
 
-<div class="select__select-wrapper">
-  <div
-    class="select__select-tag"
-    contenteditable="false"
-    on:click={showOptions}
-    bind:this={tagsHTML}
-  > <span>Select {selectName}</span>
+<div class="select__select-wrapper" bind:this={spanHTML}>
+  <div class="fixing">
+    <div
+      class="select__select-tag"
+      contenteditable="false"
+      on:click={showOptions}
+      bind:this={tagsHTML}
+    ><span>Select {selectName}</span>
+    </div>
+    <span class="number-holder">{(selectedCounter > 0) ? '+' + selectedCounter : ''}</span>
   </div>
   <div class="select__tags-options hide" bind:this={optionsList}
     use:clickOutside on:click_outside={handleClickOutside}

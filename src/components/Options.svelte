@@ -120,8 +120,8 @@
   }
 
   // handle the icon
-  const chevronUp = '<svg class="test" width="28" height="15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M28 15 14 0 0 15h28z" fill="#000"/></svg>';
-  const chevronDown = '<svg width="28" height="15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m0 0 14 15L28 0H0z" fill="#000"/></svg>';
+  const chevronUp = '<svg class="iconUp" width="16" height="10" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M28 15 14 0 0 15h28z" fill="#000"/></svg>';
+  const chevronDown = '<svg class="iconDown" width="16" height="10" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="m0 0 14 15L28 0H0z" fill="#000"/></svg>';
   let chevron = chevronDown;
   let isListOpen = false;
   
@@ -210,6 +210,7 @@
   <div class="select-container">
     <div class="label">State</div>
     <Select
+      indicatorSvg={chevron}
       showChevron={true}
       bind:listOpen={isListOpen}
       listOffset={16}
@@ -223,6 +224,7 @@
   <div class="select-container">
     <div class="label">Authority</div>
     <Select
+      indicatorSvg={chevron}
       showChevron={true}
       {optionIdentifier} {labelIdentifier} items={dataset.authority}
       placeholder="Select an authority"
@@ -234,6 +236,7 @@
   <div class="select-container">
     <div class="label">Resource Type</div>
     <Select
+      indicatorSvg={chevron}
       showChevron={true}
       {optionIdentifier} {labelIdentifier} items={dataset.resourceTypes}
       placeholder="Select a type"
@@ -265,17 +268,22 @@
   </section>
 </div>
 <style lang="scss">
+  @use '../scss/abstracts/' as *;
   @use "../scss/components/table-container";
   @use "../scss/components/button";
   @use "../scss/components/label";
   @use "../scss/components/select";
   @use "../scss/components/options";
-  // @use "../scss/components/table";
-  // :global(.myclass) {
-  //   width: 200px;
-  // }
 
   :global(.selectContainer .item.active) {
+    position: relative;
+    --itemIsActiveBG: transparent;
+    --itemIsActiveColor: $color-text-gray-500;
+    --itemHoverBG: $color-background-gray-100;
+    // --itemHoverColor: $color-background-gray-100;
+    // &:focus {
+    // }
+
     &::before {
       content:'L';
       font-family: arial;
@@ -285,19 +293,38 @@
       display:inline-block;
       // vertical-align: middle;
       line-height: 1rem;
-      width: 1rem;
-      height: 1rem;
-      color: royalblue;
-      margin-right: 0.375rem;
+      // width: 1rem;
+      // height: 1rem;
+      color: $color-brand-blue-600;
       text-align: center;
-      // position: relative;
-      // left: 0;
-      // top: -4px;
+      font-size: 14px;
+      position: absolute;
+      left: 16px;
+      top: 25%;
     }
   }
 
+  :global(.selectContainer .item){
+    --itemPadding: #{rem(8)} #{rem(40)} #{rem(12)};
+  }
   :global(.listContainer) {
     --listZIndex: 15;
     --listMaxHeight: 450px;
+    --height: 1.2;
+  }
+
+  :global(.iconDown, .iconUp){
+		pointer-events: none;
+    // width: rem(12);
+    // height: rem(6);
+    filter: invert(29%) sepia(13%) saturate(765%) hue-rotate(181deg) brightness(95%) contrast(89%);
+	}
+
+  :global(.clearSelect){
+  // --clearSelectWidth: rem(16);
+  // --clearSelectHeight: rem(16);
+    width: rem(16);
+    height: rem(16);
+    // @extend %text-style-ui-2;
   }
 </style>

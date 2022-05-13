@@ -55,12 +55,18 @@
   --background: transparent;
   border-bottom: 1px solid $color-borders-gray-100;
   --borderRadius: 10px;
-  @extend %text-style-ui-1;
+  @extend %text-style-ui-2;
   width: auto;
   // max-width: rem(350);
   // --inputColor: $color-text-gray-200;
   // --placeholderColor: $color-text-gray-200;
   // vertical-align: middle;
+
+  --indicatorWidth: rem(12);
+  --indicatorHeight: rem(6);
+  // --heigth: 1.2;
+  // --clearSelectWidth: rem(16);
+  // --clearSelectHeight: rem(16);
 
   &::placeholder {
     color: $color-text-gray-200;
@@ -69,6 +75,12 @@
 
   @include breakpoint('medium') {
     max-width: rem(350);
+  }
+}
+
+.listContainer {
+  .item {
+    --height: 1.2;
   }
 }
 

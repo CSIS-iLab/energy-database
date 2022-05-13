@@ -81,6 +81,7 @@
 
       &__container {
         display: flex;
+        align-items: center;
       }
     }
   }
@@ -95,6 +96,15 @@
   .sort-icon {
     font-size: rem(8);
     pointer-events: none;
+
+    &--active {
+      color: $color-text-gray-500;
+    }
+
+    &--inactive {
+      color: $color-text-gray-100;
+    }
+
   }
 
   &__container {

@@ -9,7 +9,12 @@
   let hide = 'hide'
 
   function handleClick(e) {
-    const extraContent = e.target.parentNode.nextElementSibling;
+    let extraContent = undefined
+    if (e.target.parentNode.classList.contains('uniqueClass')){
+      extraContent = e.target.parentNode.nextElementSibling;
+    } else {
+      extraContent = e.target.parentNode.parentNode.nextElementSibling;
+    }
     extraContent.classList.add('active');
     extraContent.classList.toggle("hide");
     (row.isOpen) ? row.isOpen = true : row.isOpen = !row.isOpen
@@ -107,8 +112,8 @@
               <div class="table__cell--header__container">
                 <span>{name}</span>
                 <div class="sort-icons-container" on:click={sort(name)}>
-                  <button class="sort-icon">▲</button>
-                  <button class="sort-icon">▼</button>
+                  <button class="sort-icon sort-icon--inactive">▲</button>
+                  <button class="sort-icon sort-icon--active">▼</button>
                 </div>
               </div>
             </th>
@@ -121,7 +126,7 @@
     <table class="table table__body">
       <tbody>
         {#each filteredData as rows}
-          <tr on:click={(e) => handleClick(e)}>
+          <tr on:click={(e) => handleClick(e)} class="uniqueClass">
             <td class="table__body__cell"><span class="icon-container"><Icon
               name="Icon-down"
               class="icon"
