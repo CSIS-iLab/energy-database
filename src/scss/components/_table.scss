@@ -280,3 +280,9 @@
   color: $color-text-gray-500;
   background-color: $color-background-white;
 }
+
+.tippy-box[data-theme~='tomato'] {
+  @extend %text-style-ui-4;
+  color: $color-text-gray-500;
+  background-color: $color-background-white;
+}

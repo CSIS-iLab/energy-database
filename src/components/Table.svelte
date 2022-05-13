@@ -1,6 +1,6 @@
 <script>
   import { onMount } from "svelte";
-  import tippy from "sveltejs-tippy";
+  import tooltip from "../js/tooltip.js";
   import Icon from "./Icons.svelte";
 
   // export let dataset
@@ -85,8 +85,9 @@
     scrollSync();
   });
 
-  function formatTippy(text) {
+  function formatTooltip(text) {
     const test = `<span class='tooltip'>${text}</span>`
+    return text
     return {
       content: test,
       allowHTML: true,
@@ -115,12 +116,10 @@
       <tbody>
         {#each filteredData as rows}
           <tr on:click={(e) => handleClick(e)}>
-            <td class="table__body__cell"
-              ><span class="icon-container"><Icon
-                name="Icon-down"
-                class="icon"
-              /></span>{rows.activity.title}</td
-            >
+            <td class="table__body__cell"><span class="icon-container"><Icon
+              name="Icon-down"
+              class="icon"
+              /></span>{rows.activity.title}</td>
             <td class="table__body__cell">{rows.state}</td>
             <td class="table__body__cell">
               <div class="table__body__cell__policy-goal-container">
@@ -133,7 +132,7 @@
             <td class="table__body__cell">{rows.type_of_resource}</td>
             <td class="table__body__cell">
               {#each rows.tags as tag}
-                <span class="icon-tag-container" use:tippy={formatTippy(tag)}><Icon name="icon {tag}" class="icon__tags"/></span>
+                <span class="icon-tag-container" use:tooltip={{theme: 'energy'}} aria-label={formatTooltip(tag)}><Icon name="icon {tag}" class="icon__tags"/></span>
               {/each}
             </td>
           </tr>
@@ -169,11 +168,20 @@
 <style lang="scss">
   @use '../scss/abstracts/' as *;
   @use "../scss/components/table";
-
-  :global(.tooltip) {
+  :global(.tippy-box[data-theme~='energy']) {
     @extend %text-style-ui-4;
     color: $color-text-gray-500;
     background-color: $color-background-white;
-    border: 0;
+    padding: rem(6) rem(6) rem(8) rem(6);
+    filter: drop-shadow(0px 1px 9px rgba(0, 0, 0, 0.06)) drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.1));
+  }
+
+  :global(
+    .tippy-box[data-theme~='energy'][data-placement^='top'] > .tippy-arrow::before,
+    .tippy-box[data-theme~='energy'][data-placement^='bottom'] > .tippy-arrow::before,
+    .tippy-box[data-theme~='energy'][data-placement^='left'] > .tippy-arrow::before,
+    .tippy-box[data-theme~='energy'][data-placement^='right'] > .tippy-arrow::before
+  ){
+    border-top-color: $color-background-white;
   }
 </style>
