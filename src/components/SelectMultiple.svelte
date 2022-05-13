@@ -37,7 +37,7 @@
   $: if (selectedValue.length > 0 && selectedValue !== "") {
     const firstSelected = selectedValue[0]
     tagsHTML.innerHTML = firstSelected + '<span id="whatever" style="color: #0054A4" class="select__select-tag__counter"></span>'
-    selectedCounter = selectedValue.length -1
+    selectedCounter = selectedValue.length - 1
     selectLabel = firstSelected
     isTagSelected = !isTagSelected
     spanElement = document.querySelector('#whatever')
@@ -46,7 +46,7 @@
       spanElement = '+' +selectedCounter
     }
   } else {
-    console.log(selectedCounter);
+    // console.log(selectedCounter);
     (selectedCounter > 1) ? selectedCounter-- : selectedCounter = 0
     selectLabel = `Select ${selectName}`
     if (isTagSelected) {
@@ -66,7 +66,7 @@
 </script>
 
 <div class="select__select-wrapper" bind:this={spanHTML}>
-  <div class="fixing">
+  <div class="select__select-tags-container">
     <div
       class="select__select-tag"
       contenteditable="false"
@@ -74,7 +74,7 @@
       bind:this={tagsHTML}
     ><span>Select {selectName}</span>
     </div>
-    <span class="number-holder">{(selectedCounter > 0) ? '+' + selectedCounter : ''}</span>
+    <span class="select__select-tag__counter">{(selectedCounter > 0) ? '+' + selectedCounter : ''}</span>
   </div>
   <div class="select__tags-options hide" bind:this={optionsList}
     use:clickOutside on:click_outside={handleClickOutside}

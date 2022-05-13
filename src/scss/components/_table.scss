@@ -126,7 +126,7 @@
 
     &--sticky {
       position: sticky;
-      top: 34px;
+      top: rem(56);
       // top: calc(var(--optionsHeight) - 2px);
       z-index: 10;
     }

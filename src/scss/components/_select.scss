@@ -99,11 +99,16 @@
     
   }
 
+  &__select-tags-container {
+    display: flex;
+    align-items: center;
+  }
+
   &__select-tag__counter {
     @extend %text-style-ui-2;
-    // color: royalblue !important;
+    color: $color-brand-blue-700;
     position: relative;
-    right: 0;
+    top: rem(10);
   }
 
   &__select-tag {
@@ -114,7 +119,7 @@
     color: $color-text-gray-200;
     position: relative;
     top: rem(10);
-    width: rem(150);
+    width: rem(200);
     height: rem(20);
 
     &::placeholder {
