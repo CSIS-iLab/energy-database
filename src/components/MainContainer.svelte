@@ -39,11 +39,16 @@
           filteredPolicyGoal &&
           filteredTags
       }
-    )
+    ).sort(( a, b ) => {
+      if (a.activity.title < b.activity.title) {
+        return -1;
+      } else if (a.activity.title > b.activity.title) {
+        return 1;
+      } else {
+        return 0;
+      }
+    })
   }
-
-  $: console.log(row.isOpen)
-
 </script>
 
 <div id="site-content">

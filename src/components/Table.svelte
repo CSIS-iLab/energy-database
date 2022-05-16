@@ -6,6 +6,10 @@
   export let filteredData;
   export let row;
 
+  let sortIconContainer
+
+  const sortByColumns = ['activity', 'state', 'authority', 'type of resource']
+
   function handleClick(e) {
     let extraContent = undefined
     let iconUp = undefined
@@ -27,10 +31,6 @@
     iconDown.classList.toggle('hide');
     // row.isOpen = !row.isOpen;
     (row.isOpen) ? row.isOpen = true : row.isOpen = !row.isOpen
-    if (row.isOpen) {
-      
-    }
-
   }
 
   const headerNames = [
@@ -42,10 +42,13 @@
     "Tags",
   ];
 
-  let sortBy = { col: "activity", ascending: true };
+  $: sortBy = { col: "activity", ascending: false };
 
-  $: sort = (column) => {
+  $: console.log(sortBy);
+
+  $: sort = (e, column) => {
     column = column.toLowerCase().replace(/\s/g, "_"); // replace spaces using regex with undesrscore
+    console.log(e.target);
     if (sortBy.col == column) {
       sortBy.ascending = !sortBy.ascending;
     } else {
@@ -76,13 +79,11 @@
         ? 1 * sortModifier
         : 0;
 
-    console.log(filteredData);
+    // console.log(filteredData);
     filteredData = filteredData.sort(sort);
   };
 
   onMount(() => {
-    sort("activity");
-
     // Sync horizontal scroll of table header and table body
     // Inspired by https://codepen.io/Goweb/pen/rgrjWx
     const scrollSync = () => {
@@ -114,10 +115,12 @@
             <th class="table__cell--header" scope="col">
               <div class="table__cell--header__container">
                 <span>{name}</span>
-                <div class="sort-icons-container" on:click={sort(name)}>
+                {#if sortByColumns.includes(name.toLowerCase())}
+                <div class="sort-icons-container" bind:this={sortIconContainer} on:click={(e) => sort(e, name)}>
                   <button class="sort-icon sort-icon--inactive">▲</button>
-                  <button class="sort-icon sort-icon--active">▼</button>
+                  <button class="sort-icon {sortBy.col == name.toLowerCase().split(' ').join('_') ? 'sort-icon--active' : 'sort-icon--inactive'}">▼</button>
                 </div>
+                {/if}
               </div>
             </th>
           {/each}
@@ -176,7 +179,7 @@
           </tr>
         {:else}
           <tr>
-            <td colspan="6">No data found</td>
+            <td colspan="6" class="table__body__cell"><div>No data found</div></td>
           </tr>
         {/each}
       </tbody>
