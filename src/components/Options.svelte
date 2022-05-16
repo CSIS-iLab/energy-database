@@ -31,23 +31,6 @@
   const optionIdentifier = 'value';
   const labelIdentifier = 'label';
 
-  function closeExtraContent() {
-    // if (row.isOpen) {
-    row.isOpen = !row.isOpen
-    console.log('open')
-    const extraContent = document.querySelectorAll(".extra-content");
-    // console.log(extraContent);
-      extraContent.forEach(content => {
-        // console.log('inside the extra content');
-        // console.log(content.classList.contains('active'))
-        if (content.classList.contains('active')) {
-          content.classList.remove('active')
-          content.classList.add('hide');
-        }
-      });
-    // }
-  }
-
   function updateActiveTab(val) {
     const value = (val) ? val.split('_').join('-') : 'all'
     console.log(value);
@@ -62,32 +45,38 @@
     tabActivate.classList.add('options__btn--tab--active', `options__btn--tab--${value}--active`);
   }
 
+  function toggleIcons (iconUp, iconDown) {
+    if (!iconUp.classList.contains('hide')) {
+      iconUp.classList.toggle('hide')
+    }
+    if (iconDown.classList.contains('hide')) {
+      iconDown.classList.toggle('hide')
+    }
+  }
   function handleSelect(event, selectName) {
-    // row.isOpen = !row.isOpen
     if (row.isOpen) {
-      // closeExtraContent()
       row.isOpen = !row.isOpen
       console.log('open')
       const extraContent = document.querySelectorAll(".extra-content");
-      // console.log(extraContent);
         extraContent.forEach(content => {
-          // console.log('inside the extra content');
-          // console.log(content.classList.contains('active'))
           if (content.classList.contains('active')) {
+            const iconUp = content.previousElementSibling.children[0].children[0].children[1]
+            const iconDown = content.previousElementSibling.children[0].children[0].children[0]
+            
             content.classList.remove('active')
             content.classList.add('hide');
+
+            toggleIcons(iconUp, iconDown)
           }
         });
     }
     if (selectName === 'State') {
-      // console.log(event.detail.value)
       selectedState = event.detail.value
     } else if (selectName === 'Authority') {
       selectedAuthority = event.detail.value
     } else if (selectName === 'Policy Goal') {
       updateActiveTab(event.target.value)
       selectedPolicyGoal = event.target.value
-      // console.log(selectedPolicyGoal, event)
     }  else {
       selectedResourceType = event.detail.value
     }
@@ -96,18 +85,19 @@
   export function handleClear(selectName) {
     console.log('inside handleClear', row.isOpen);
     if (row.isOpen) {
-      // closeExtraContent()
       row.isOpen = !row.isOpen
       console.log('close')
       const extraContent = document.querySelectorAll(".extra-content");
-      // console.log(extraContent);
         extraContent.forEach(content => {
-          // console.log('inside the extra content');
-          // console.log(content.classList.contains('active'))
           if (content.classList.contains('active')) {
             content.classList.remove('active')
             content.classList.add('hide');
+
+            const iconUp = content.previousElementSibling.children[0].children[0].children[1]
+            const iconDown = content.previousElementSibling.children[0].children[0].children[0]
+            toggleIcons(iconUp, iconDown)
           }
+
         });
     }
     if (selectName === 'State') {
@@ -128,12 +118,7 @@
   $: chevron = isListOpen ? chevronUp : chevronDown;
 
   function handleScrollLeft() {
-    // let scrollLeft = document.querySelector("#table-header").scrollLeft
-    // document.querySelector("#table-header").scrollLeft = scrollLeft - 150
     const tableContainer = document.getElementById('table-body') 
-    // const table = document.getElementsByClassName('table')[0]
-    // const btnRight = document.querySelector('#btn-scroll-right')
-    // const btnLeft = document.querySelector('#btn-scroll-left')
     const btnIconLeft = document.querySelector('#icon-scroll-left')
     const btnIconRight = document.querySelector('#icon-scroll-right')
     

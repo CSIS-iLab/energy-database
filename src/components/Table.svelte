@@ -3,21 +3,34 @@
   import tooltip from "../js/tooltip.js";
   import Icon from "./Icons.svelte";
 
-  // export let dataset
   export let filteredData;
   export let row;
-  let hide = 'hide'
 
   function handleClick(e) {
     let extraContent = undefined
+    let iconUp = undefined
+    let iconDown = undefined
     if (e.target.parentNode.classList.contains('uniqueClass')){
       extraContent = e.target.parentNode.nextElementSibling;
+      iconUp = e.target.parentNode.children[0].children[0].children[1]
+      iconDown = e.target.parentNode.children[0].children[0].children[0]
     } else {
       extraContent = e.target.parentNode.parentNode.nextElementSibling;
+      iconUp = e.target.parentNode.parentNode.children[0].children[0].children[1]
+      iconDown = e.target.parentNode.parentNode.children[0].children[0].children[0]
     }
+    // Show/Hide extraContent
     extraContent.classList.add('active');
     extraContent.classList.toggle("hide");
+    // Show/hide icons
+    iconUp.classList.toggle('hide');
+    iconDown.classList.toggle('hide');
+    // row.isOpen = !row.isOpen;
     (row.isOpen) ? row.isOpen = true : row.isOpen = !row.isOpen
+    if (row.isOpen) {
+      
+    }
+
   }
 
   const headerNames = [
@@ -29,7 +42,7 @@
     "Tags",
   ];
 
-  let sortBy = { col: "activity", ascending: false };
+  let sortBy = { col: "activity", ascending: true };
 
   $: sort = (column) => {
     column = column.toLowerCase().replace(/\s/g, "_"); // replace spaces using regex with undesrscore
@@ -69,6 +82,7 @@
 
   onMount(() => {
     sort("activity");
+
     // Sync horizontal scroll of table header and table body
     // Inspired by https://codepen.io/Goweb/pen/rgrjWx
     const scrollSync = () => {
@@ -86,20 +100,9 @@
       };
       bindSyncScrolling(tableHeader, tableBody);
     };
-
     scrollSync();
-  });
 
-  function formatTooltip(text) {
-    const test = `<span class='tooltip'>${text}</span>`
-    return text
-    return {
-      content: test,
-      allowHTML: true,
-      placement: "top",
-      theme: 'light',
-    }
-  }
+  });
 </script>
 
 <div class="table__wrapper">
@@ -128,8 +131,13 @@
         {#each filteredData as rows}
           <tr on:click={(e) => handleClick(e)} class="uniqueClass">
             <td class="table__body__cell"><span class="icon-container"><Icon
+              id="Icon-down"
               name="Icon-down"
               class="icon"
+              /><Icon
+              id="Icon-up"
+              name="Icon-up"
+              class="icon hide"
               /></span>{rows.activity.title}</td>
             <td class="table__body__cell">{rows.state}</td>
             <td class="table__body__cell">
@@ -143,7 +151,7 @@
             <td class="table__body__cell">{rows.type_of_resource}</td>
             <td class="table__body__cell">
               {#each rows.tags as tag}
-                <span class="icon-tag-container" use:tooltip={{theme: 'energy'}} aria-label={formatTooltip(tag)}><Icon name="icon {tag}" class="icon__tags"/></span>
+                <span class="icon-tag-container" use:tooltip={{theme: 'energy'}} aria-label={tag}><Icon name="icon {tag}" class="icon__tags"/></span>
               {/each}
             </td>
           </tr>
