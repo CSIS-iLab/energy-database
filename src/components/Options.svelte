@@ -269,7 +269,7 @@
       line-height: 1rem;
       color: $color-brand-blue-600;
       text-align: center;
-      @include font-size(14px);
+      font-size: 14px;
       position: absolute;
       left: 16px;
       top: 25%;
@@ -281,7 +281,7 @@
   }
   :global(.listContainer) {
     --listZIndex: 15;
-    --listMaxHeight: rem(450);
+    --listMaxHeight: #{rem(450)};
     --height: 1.2;
   }
 
@@ -294,4 +294,11 @@
     width: rem(16);
     height: rem(16);
   }
+
+  :global(.selectContainer > input)  {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
 </style>
