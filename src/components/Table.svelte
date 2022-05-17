@@ -30,7 +30,6 @@
     // Show/hide icons
     iconUp.classList.toggle('hide');
     iconDown.classList.toggle('hide');
-    // row.isOpen = !row.isOpen;
     (row.isOpen) ? row.isOpen = true : row.isOpen = !row.isOpen
   }
 
@@ -45,13 +44,8 @@
 
   $: sortBy = { col: "activity", ascending: true };
   
-
-  $: console.log(sortBy);
-
   $: sort = (e, column) => {
-    console.log(e.target.chilNodes);
     column = column.toLowerCase().replace(/\s/g, "_"); // replace spaces using regex with undesrscore
-    console.log(document.querySelectorAll('.sort-icon--active'));
     const iconsActive = document.querySelectorAll('.sort-icon--active');
     iconsActive.forEach(icon => {
       icon.classList.remove('sort-icon--active');
@@ -59,12 +53,9 @@
     // (sortBy.col == name.toLowerCase().split(' ').join('_') && sortBy.ascending) ? 'sort-icon--inactive' : 'sort-icon--active'
     if (sortBy.col == column) {
       sortBy.ascending = !sortBy.ascending;
-      // sortClass = sortBy.ascending ? 'inactive' : 'active';
       sortClass = sortBy.ascending ? 'active' : 'inactive';
-      console.log(sortClass);
     } else {
       sortClass = 'inactive';
-      // sortClass = 'inactive';
       sortBy.col = column;
       sortBy.ascending = true;
     }
@@ -101,8 +92,7 @@
       icon.classList.remove('sort-icon--active');
     });
     const divActivity = document.querySelector('.table__cell--header__container__activity');
-    // console.log(divActivity.children[1].children[1]);
-    const iconActiveByDefault = divActivity.children[1].children[1].classList.add('sort-icon--active');
+    divActivity.children[1].children[1].classList.add('sort-icon--active');
     // Sync horizontal scroll of table header and table body
     // Inspired by https://codepen.io/Goweb/pen/rgrjWx
     const scrollSync = () => {

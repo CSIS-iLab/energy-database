@@ -6,8 +6,6 @@
     const url = window.location.href
     //Use the clipboard's writeText method to pass the inputs text to the clipboard
     navigator.clipboard.writeText(url).then(res=>{
-        console.log("Input data copied to clipboard successfully");
-        console.log(url)
     })
   }
 </script>

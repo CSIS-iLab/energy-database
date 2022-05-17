@@ -50,7 +50,6 @@
   function handleSelect(event, selectName) {
     if (row.isOpen) {
       row.isOpen = !row.isOpen
-      console.log('open')
       const extraContent = document.querySelectorAll(".extra-content");
         extraContent.forEach(content => {
           if (content.classList.contains('active')) {
@@ -77,10 +76,8 @@
   }
 
   export function handleClear(selectName) {
-    console.log('inside handleClear', row.isOpen);
     if (row.isOpen) {
       row.isOpen = !row.isOpen
-      console.log('close')
       const extraContent = document.querySelectorAll(".extra-content");
         extraContent.forEach(content => {
           if (content.classList.contains('active')) {
