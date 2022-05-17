@@ -25,7 +25,8 @@
     "sass": "^1.32.8",
     "simple-svelte-autocomplete": "^2.2.3",
     "svelte": "^3.0.0",
-    "svelte-preprocess": "^4.6.9"
+    "svelte-preprocess": "^4.6.9",
+    "svelte-select": "^4.4.7"
   },
   "dependencies": {
     "d3-fetch": "^3.0.1",
