@@ -1,6 +1,7 @@
 <script>
   import Icon from "./Icons.svelte";
 </script>
+
 <section class="about" id="about">
   <div class="about__container">
     <h2 class="about__subtitle">About</h2>
@@ -23,13 +24,13 @@
     <div class="about__reports">
       <p class="about__reports__title">Associated Reports</p>
       <ul>
-        <li><a class="about__reports__link" href="https://www.csis.org/analysis/insights-emissions-reduction-among-us-states" target="_blank">Insights on Emissions Reduction among U.S. States<span class="about__icon-container"><Icon class="icon__report" name="Icon-open-blank"/></span></a></li>
-        <li><a class="about__reports__link" href="https://www.csis.org/analysis/state-strategies-expanding-economic-opportunity-clean-energy" target="_blank">State Strategies for Expanding Economic Opportunity in Clean Energy <Icon class="icon__report" name="Icon-open-blank"/></a></li>
-        <li><a class="about__reports__link" href="https://www.csis.org/programs/energy-security-and-climate-change-program/projects/clean-resilient-states-initiative" target="_blank">TBD Third Report <Icon class="icon__report" name="Icon-open-blank"/></a></li>
+        <li><a class="about__reports__link" href="https://www.csis.org/analysis/insights-emissions-reduction-among-us-states" target="_blank">Insights on Emissions Reduction among U.S. States<span class="icon-container"><Icon class="icon__report" name="Icon-open-blank"/></span></a></li>
+        <li><a class="about__reports__link" href="https://www.csis.org/analysis/state-strategies-expanding-economic-opportunity-clean-energy" target="_blank">State Strategies for Expanding Economic Opportunity in Clean Energy<span class="icon-container"><Icon class="icon__report" name="Icon-open-blank"/></span></a></li>
+        <li><a class="about__reports__link" href="https://www.csis.org/programs/energy-security-and-climate-change-program/projects/clean-resilient-states-initiative" target="_blank">TBD Third Report<span class="icon-container"><Icon class="icon__report" name="Icon-open-blank"/></span></a></li>
       </ul>
     </div>
     <div class="about__initiative">
-      <p>The <a href="https://www.csis.org/programs/energy-security-and-climate-change-program/projects/clean-resilient-states-initiative" target="_blank">Clean Resilient States Initiative</a> is a project developed by the
+      <p>The <a class="about__initiative__link" href="https://www.csis.org/programs/energy-security-and-climate-change-program/projects/clean-resilient-states-initiative" target="_blank">Clean Resilient States Initiative</a> is a project developed by the
         CSIS Energy Security & Climate Change Program to assess the extent to which
         state policies facilitate greenhouse gas emissions reductions, positive economic
         outcomes, and resilience to climate-related impacts. This database and its respective

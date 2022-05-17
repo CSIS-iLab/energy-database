@@ -1,5 +1,4 @@
 <script>
-  import Logo from './Logo.svelte';
   import SocialShare from './SocialShare.svelte';
 
 </script>
@@ -7,7 +6,6 @@
   <div class="header__inner">
     <a href="https://www.csis.org" alt="CSIS website">
       <span class="header__logo"></span>
-      <!-- <Logo className="__site-header"/> -->
     </a>
     <SocialShare />
   </div>

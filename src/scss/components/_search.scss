@@ -8,6 +8,7 @@ label[aria-hidden="true"],
 .search {
   position: relative;
   background-color: $color-background-white;
+  @extend %text-style-ui-2;
 
   &__input {
     border: 0;
@@ -48,7 +49,7 @@ label[aria-hidden="true"],
   &__btn {
     position: relative;
     right: rem(5);
-    bottom: rem(2);
+    bottom: rem(8);
     color: $color-text-gray-200;
 
     &-clear {
@@ -67,10 +68,9 @@ label[aria-hidden="true"],
 
   &__icon {
     position: absolute;
-    height: 2.3125rem;
+    padding-top: rem(9);
     padding-right: .375rem;
     padding-left: .375rem;
-    padding-top: .300rem;
     // color: $color-text-gray-200;
     filter: invert(57%) sepia(7%) saturate(666%) hue-rotate(180deg) brightness(92%) contrast(89%);
   }

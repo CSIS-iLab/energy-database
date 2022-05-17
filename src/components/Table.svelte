@@ -1,30 +1,37 @@
 <script>
   import { onMount } from "svelte";
+  import tooltip from "../js/tooltip.js";
   import Icon from "./Icons.svelte";
 
-  // export let dataset
   export let filteredData;
   export let row;
-  let hide = 'hide'
-  // let extraContent
-  // export let states
+
+  let sortIconContainer
+  $: sortClass = "inactive"
+
+  const sortByColumns = ['activity', 'state', 'authority', 'type of resource']
+
   function handleClick(e) {
-    // console.log(extraContent);
-    const extraContent = e.target.parentNode.nextElementSibling;
-    // console.log(extraContent);
+    let extraContent = undefined
+    let iconUp = undefined
+    let iconDown = undefined
+    if (e.target.parentNode.classList.contains('title')){
+      extraContent = e.target.parentNode.nextElementSibling;
+      iconUp = e.target.parentNode.children[0].children[0].children[1]
+      iconDown = e.target.parentNode.children[0].children[0].children[0]
+    } else {
+      extraContent = e.target.parentNode.parentNode.nextElementSibling;
+      iconUp = e.target.parentNode.parentNode.children[0].children[0].children[1]
+      iconDown = e.target.parentNode.parentNode.children[0].children[0].children[0]
+    }
+    // Show/Hide extraContent
     extraContent.classList.add('active');
     extraContent.classList.toggle("hide");
-    (row.isOpen) ? row.isOpen = true : row.isOpen = !row.isOpen
+    // Show/hide icons
+    iconUp.classList.toggle('hide');
+    iconDown.classList.toggle('hide');
     // row.isOpen = !row.isOpen;
-    // console.log(rowIsOpen.value)
-    // const input = Array.from(document.querySelectorAll("input"));
-    // input.map(item => {
-    //   console.log(item)
-    // });
-    // console.log(e);
-      // if extracontent has class of active then select is clicked close extracontent 
-
-    // console.log(input)
+    (row.isOpen) ? row.isOpen = true : row.isOpen = !row.isOpen
   }
 
   const headerNames = [
@@ -36,13 +43,28 @@
     "Tags",
   ];
 
-  let sortBy = { col: "activity", ascending: false };
+  $: sortBy = { col: "activity", ascending: true };
+  
 
-  $: sort = (column) => {
+  $: console.log(sortBy);
+
+  $: sort = (e, column) => {
+    console.log(e.target.chilNodes);
     column = column.toLowerCase().replace(/\s/g, "_"); // replace spaces using regex with undesrscore
+    console.log(document.querySelectorAll('.sort-icon--active'));
+    const iconsActive = document.querySelectorAll('.sort-icon--active');
+    iconsActive.forEach(icon => {
+      icon.classList.remove('sort-icon--active');
+    });
+    // (sortBy.col == name.toLowerCase().split(' ').join('_') && sortBy.ascending) ? 'sort-icon--inactive' : 'sort-icon--active'
     if (sortBy.col == column) {
       sortBy.ascending = !sortBy.ascending;
+      // sortClass = sortBy.ascending ? 'inactive' : 'active';
+      sortClass = sortBy.ascending ? 'active' : 'inactive';
+      console.log(sortClass);
     } else {
+      sortClass = 'inactive';
+      // sortClass = 'inactive';
       sortBy.col = column;
       sortBy.ascending = true;
     }
@@ -70,12 +92,17 @@
         ? 1 * sortModifier
         : 0;
 
-    console.log(filteredData);
     filteredData = filteredData.sort(sort);
   };
 
   onMount(() => {
-    sort("activity");
+    const iconsActive = document.querySelectorAll('.sort-icon--active');
+    iconsActive.forEach(icon => {
+      icon.classList.remove('sort-icon--active');
+    });
+    const divActivity = document.querySelector('.table__cell--header__container__activity');
+    // console.log(divActivity.children[1].children[1]);
+    const iconActiveByDefault = divActivity.children[1].children[1].classList.add('sort-icon--active');
     // Sync horizontal scroll of table header and table body
     // Inspired by https://codepen.io/Goweb/pen/rgrjWx
     const scrollSync = () => {
@@ -93,10 +120,9 @@
       };
       bindSyncScrolling(tableHeader, tableBody);
     };
-
     scrollSync();
-  });
 
+  });
 </script>
 
 <div class="table__wrapper">
@@ -105,9 +131,19 @@
       <thead>
         <tr class="table__header-row">
           {#each headerNames as name}
-            <th class="table__cell--header" scope="col" on:click={sort(name)}
-              >{name}</th
-            >
+            <th class="table__cell--header" scope="col">
+              <div class="table__cell--header__container table__cell--header__container__{name.toLowerCase()}">
+                <span>{name}</span>
+                {#if sortByColumns.includes(name.toLowerCase())}
+                <div class="sort-icons-container" on:click={(e) => sort(e, name)}>
+                  <button class="sort-icon sort-icon--{(sortBy.col == name.toLowerCase().split(' ').join('_') && sortBy.ascending ) ? 'inactive' : 'active'}">▲</button>
+                  <button class= "sort-icon sort-icon--{(sortBy.col == name.toLowerCase().split(' ').join('_') && sortBy.ascending ) ? 'active' : 'inactive'}">▼</button>
+                  <!-- <button class="sort-icon sort-icon--{sortClass}">▲</button>
+                  <button class= "sort-icon sort-icon--{sortClass}">▼</button> -->
+                </div>
+                {/if}
+              </div>
+            </th>
           {/each}
         </tr>
       </thead>
@@ -117,26 +153,32 @@
     <table class="table table__body">
       <tbody>
         {#each filteredData as rows}
-          <tr on:click={(e) => handleClick(e)}>
-            <td class="table__body__cell"
-              ><Icon
-                name="Icon-down"
-                width={"1rem"}
-                height={"1rem"}
-                class="icon"
-              />{rows.activity.title}</td
-            >
+          <tr on:click={(e) => handleClick(e)} class="title">
+            <td class="table__body__cell"><span class="icon-container"><Icon
+              id="Icon-down"
+              name="Icon-down"
+              class="icon"
+              /><Icon
+              id="Icon-up"
+              name="Icon-up"
+              class="icon hide"
+              /></span>{rows.activity.title}</td>
             <td class="table__body__cell">{rows.state}</td>
-            <td class="table__body__cell">{rows.policy_goals}</td>
+            <td class="table__body__cell">
+              <div class="table__body__cell__policy-goal-container">
+                {#each rows.policy_goals as policyGoal}
+                  <span class="table__body__cell__policy-goal table__body__cell__policy-goal--{policyGoal.toLowerCase()}">{policyGoal.split('_').join(' ')}</span>
+                {/each}
+              </div>
+            </td>
             <td class="table__body__cell">{rows.authority}</td>
             <td class="table__body__cell">{rows.type_of_resource}</td>
             <td class="table__body__cell">
               {#each rows.tags as tag}
-                <Icon name="icon {tag}" class="icon__tags" />
+                <span class="icon-tag-container" use:tooltip={{theme: 'energy'}} aria-label={tag}><Icon name="icon {tag}" class="icon__tags"/></span>
               {/each}
             </td>
           </tr>
-          <!-- <tr class="extra-content" class:hide class:unHide={!hide}> -->
           <tr class="extra-content hide">
             <td class="table__body__cell" colspan="6">
               <div class="extra-content__container">
@@ -145,19 +187,15 @@
                   <a
                     href={rows.activity.link}
                     target="_blank"
-                    rel="noopener noreferrer">{rows.activity.link}</a
+                    rel="noopener noreferrer">{rows.activity.link} <span class="icon-container"><Icon name="Icon-open-blank" class="icon"/></span></a
                   >
-                </div>
-                <div class="policy-goals">
-                  <span class="policy-goals__title">Policy Goals:</span>
-                  {rows.policy_goals}
                 </div>
               </div>
             </td>
           </tr>
         {:else}
           <tr>
-            <td colspan="6">No data found</td>
+            <td colspan="6" class="table__body__cell"><div>No data found</div></td>
           </tr>
         {/each}
       </tbody>
@@ -166,5 +204,22 @@
 </div>
 
 <style lang="scss">
+  @use '../scss/abstracts/' as *;
   @use "../scss/components/table";
+  :global(.tippy-box[data-theme~='energy']) {
+    @extend %text-style-ui-4;
+    color: $color-text-gray-500;
+    background-color: $color-background-white;
+    padding: rem(6) rem(6) rem(8) rem(6);
+    filter: drop-shadow(0px 1px 9px rgba(0, 0, 0, 0.06)) drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.1));
+  }
+
+  :global(
+    .tippy-box[data-theme~='energy'][data-placement^='top'] > .tippy-arrow::before,
+    .tippy-box[data-theme~='energy'][data-placement^='bottom'] > .tippy-arrow::before,
+    .tippy-box[data-theme~='energy'][data-placement^='left'] > .tippy-arrow::before,
+    .tippy-box[data-theme~='energy'][data-placement^='right'] > .tippy-arrow::before
+  ){
+    border-top-color: $color-background-white;
+  }
 </style>

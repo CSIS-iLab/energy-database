@@ -23,9 +23,6 @@ onMount(() => {
 $: if (btnSearch) {
   if (searchText.length > 0 && searchText !== "") {
     btnSearch.classList.remove("search__btn-clear--hidden");
-    // const searchDiv = document.querySelector(".search");
-    // console.log(searchDiv);
-    // searchDiv.classList.add("search search__input--active");
   } else {
     btnSearch.classList.add("search__btn-clear--hidden");
   }
@@ -38,12 +35,9 @@ $: if (btnSearch) {
   <span class="search__icon">
     <Icon
       name="Icon-magnify"
-      width={"1rem"}
-      height={"1rem"}
       class="icon"
     />
   </span>
-  <!-- <label class="search" for="search" aria-hidden="true" hidden>Keyword Search</label> -->
   <input class="search__input" type="search" name="search" id="search" placeholder="Keyword Search" bind:value={searchText}>
   <button class="search__btn search__btn-clear search__btn-clear--hidden" bind:this={btnSearch} on:click={clearSearch}>&times</button>
 </div>

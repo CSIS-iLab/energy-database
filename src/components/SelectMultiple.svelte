@@ -12,6 +12,7 @@
   let selectedCounter = 0
   let selectedTagCounterText
   let tagsHTML
+  let spanHTML
   let isTagSelected = false
   let spanElement
 
@@ -36,20 +37,20 @@
   $: if (selectedValue.length > 0 && selectedValue !== "") {
     const firstSelected = selectedValue[0]
     tagsHTML.innerHTML = firstSelected + '<span id="whatever" style="color: #0054A4" class="select__select-tag__counter"></span>'
-    selectedCounter = selectedValue.length
+    selectedCounter = selectedValue.length - 1
     selectLabel = firstSelected
     isTagSelected = !isTagSelected
     spanElement = document.querySelector('#whatever')
     if (selectedCounter > 1) {
       selectedTagCounterText = '<span class="select__select-tag__counter>+' + selectedCounter + '</span>'
-      spanElement.innerHTML = '+' +selectedCounter
+      spanElement = '+' +selectedCounter
     }
   } else {
-    (selectedCounter > 1) ? selectedCounter-- : selectedCounter
+    (selectedCounter > 1) ? selectedCounter-- : selectedCounter = 0
     selectLabel = `Select ${selectName}`
     if (isTagSelected) {
       tagsHTML.innerHTML = selectLabel
-      spanElement.innerHTML = ''
+      spanElement = ''
       isTagSelected = !isTagSelected
     }
   }
@@ -63,13 +64,16 @@
 
 </script>
 
-<div class="select__select-wrapper">
-  <div
-    class="select__select-tag"
-    contenteditable="false"
-    on:click={showOptions}
-    bind:this={tagsHTML}
-  > Select {selectName}
+<div class="select__select-wrapper" bind:this={spanHTML}>
+  <div class="select__select-tags-container">
+    <div
+      class="select__select-tag"
+      contenteditable="false"
+      on:click={showOptions}
+      bind:this={tagsHTML}
+    ><span>Select {selectName}</span>
+    </div>
+    <span class="select__select-tag__counter">{(selectedCounter > 0) ? '+' + selectedCounter : ''}</span>
   </div>
   <div class="select__tags-options hide" bind:this={optionsList}
     use:clickOutside on:click_outside={handleClickOutside}
@@ -77,17 +81,18 @@
     {#each options as option}
       <div class="checkbox__container">
         <input
+        class="checkbox__check"
         id={formatOption(option, "value")}
         type="checkbox"
         name="tags"
         value={formatOption(option, "value")}
         bind:group={selectedValue}
         >
-        <label for={formatOption(option, "value")}>
-          <Icon
+        <label class="checkbox__label" for={formatOption(option, "value")}>
+          <span class="icon-container"><Icon
             name="icon {formatOption(option, "name")}"
             class="icon__select"
-          />
+          /></span>
           {formatOption(option, "name")}
         </label>
       </div>

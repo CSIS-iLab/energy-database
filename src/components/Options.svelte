@@ -1,15 +1,9 @@
-<!--
-  This file is to test the Svelte Select component
-  site: https://github.com/rob-balfre/svelte-select
--->
 <script>
   import { onMount } from "svelte";
-  import Button from "./Button.svelte";
   import Search from "./Search.svelte";
   import Select from 'svelte-select'
   import SelectMultiple from './SelectMultiple.svelte';
   import Icon from "./Icons.svelte";
-  // import Icon from './icons/IconUp.svelte';
   
   export let dataset;
   export let filteredData;
@@ -31,26 +25,8 @@
   const optionIdentifier = 'value';
   const labelIdentifier = 'label';
 
-  function closeExtraContent() {
-    // if (row.isOpen) {
-    row.isOpen = !row.isOpen
-    console.log('open')
-    const extraContent = document.querySelectorAll(".extra-content");
-    // console.log(extraContent);
-      extraContent.forEach(content => {
-        // console.log('inside the extra content');
-        // console.log(content.classList.contains('active'))
-        if (content.classList.contains('active')) {
-          content.classList.remove('active')
-          content.classList.add('hide');
-        }
-      });
-    // }
-  }
-
   function updateActiveTab(val) {
     const value = (val) ? val.split('_').join('-') : 'all'
-    console.log(value);
     const spanCountActive = document.querySelector(`.options__count--active`);
     const spanCount = document.querySelector(`.options__count[data-count="${value}"]`);
     spanCountActive.classList.remove('options__count--active');
@@ -62,32 +38,39 @@
     tabActivate.classList.add('options__btn--tab--active', `options__btn--tab--${value}--active`);
   }
 
+  function toggleIcons (iconUp, iconDown) {
+    if (!iconUp.classList.contains('hide')) {
+      iconUp.classList.toggle('hide')
+    }
+    if (iconDown.classList.contains('hide')) {
+      iconDown.classList.toggle('hide')
+    }
+  }
+
   function handleSelect(event, selectName) {
-    // row.isOpen = !row.isOpen
     if (row.isOpen) {
-      // closeExtraContent()
       row.isOpen = !row.isOpen
       console.log('open')
       const extraContent = document.querySelectorAll(".extra-content");
-      // console.log(extraContent);
         extraContent.forEach(content => {
-          // console.log('inside the extra content');
-          // console.log(content.classList.contains('active'))
           if (content.classList.contains('active')) {
+            const iconUp = content.previousElementSibling.children[0].children[0].children[1]
+            const iconDown = content.previousElementSibling.children[0].children[0].children[0]
+            
             content.classList.remove('active')
             content.classList.add('hide');
+
+            toggleIcons(iconUp, iconDown)
           }
         });
     }
     if (selectName === 'State') {
-      // console.log(event.detail.value)
       selectedState = event.detail.value
     } else if (selectName === 'Authority') {
       selectedAuthority = event.detail.value
     } else if (selectName === 'Policy Goal') {
       updateActiveTab(event.target.value)
       selectedPolicyGoal = event.target.value
-      // console.log(selectedPolicyGoal, event)
     }  else {
       selectedResourceType = event.detail.value
     }
@@ -96,18 +79,19 @@
   export function handleClear(selectName) {
     console.log('inside handleClear', row.isOpen);
     if (row.isOpen) {
-      // closeExtraContent()
       row.isOpen = !row.isOpen
       console.log('close')
       const extraContent = document.querySelectorAll(".extra-content");
-      // console.log(extraContent);
         extraContent.forEach(content => {
-          // console.log('inside the extra content');
-          // console.log(content.classList.contains('active'))
           if (content.classList.contains('active')) {
             content.classList.remove('active')
             content.classList.add('hide');
+
+            const iconUp = content.previousElementSibling.children[0].children[0].children[1]
+            const iconDown = content.previousElementSibling.children[0].children[0].children[0]
+            toggleIcons(iconUp, iconDown)
           }
+
         });
     }
     if (selectName === 'State') {
@@ -120,20 +104,15 @@
   }
 
   // handle the icon
-  const chevronUp = '<svg class="test" width="28" height="15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M28 15 14 0 0 15h28z" fill="#000"/></svg>';
-  const chevronDown = '<svg width="28" height="15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m0 0 14 15L28 0H0z" fill="#000"/></svg>';
+  const chevronUp = '<svg class="iconUp" width="16" height="10" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M28 15 14 0 0 15h28z" fill="#000"/></svg>';
+  const chevronDown = '<svg class="iconDown" width="16" height="10" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="m0 0 14 15L28 0H0z" fill="#000"/></svg>';
   let chevron = chevronDown;
   let isListOpen = false;
   
   $: chevron = isListOpen ? chevronUp : chevronDown;
 
   function handleScrollLeft() {
-    // let scrollLeft = document.querySelector("#table-header").scrollLeft
-    // document.querySelector("#table-header").scrollLeft = scrollLeft - 150
     const tableContainer = document.getElementById('table-body') 
-    // const table = document.getElementsByClassName('table')[0]
-    // const btnRight = document.querySelector('#btn-scroll-right')
-    // const btnLeft = document.querySelector('#btn-scroll-left')
     const btnIconLeft = document.querySelector('#icon-scroll-left')
     const btnIconRight = document.querySelector('#icon-scroll-right')
     
@@ -147,16 +126,10 @@
   }
 
   function handleScrollRight() {
-    // let scrollLeft = document.querySelector("#table-header").scrollLeft
-    // document.querySelector("#table-header").scrollLeft = scrollLeft + 150
-
     const tableContainer = document.getElementById('table-body') 
     const table = document.getElementsByClassName('table')[0]
-    // const btnLeft = document.querySelector('#btn-scroll-left')
-    // const btnRight = document.querySelector('#btn-scroll-right')
     const btnIconLeft = document.querySelector('#icon-scroll-left')
     const btnIconRight = document.querySelector('#icon-scroll-right')
-    // console.log(tableContainer);
     tableContainer.scrollLeft += 100
     if (btnIconLeft.classList.contains('inactive')) {
       btnIconLeft.classList.remove('inactive')
@@ -170,8 +143,6 @@
 
     const tableContainer = document.getElementById('table-body') 
     const table = document.getElementsByClassName('table')[0]
-    // const btnLeft = document.querySelector('#btn-scroll-left')
-    // const btnRight = document.querySelector('#btn-scroll-right')
     const btnIconLeft = document.querySelector('#icon-scroll-left')
     const btnIconRight = document.querySelector('#icon-scroll-right')
     tableContainer.addEventListener('scroll', () => {
@@ -212,58 +183,60 @@
       </button>
     {/each}
   </div>
-  <div class="selects">
-    <div class="select-container">
-      <div class="label">State</div>
-      <Select
-        showChevron={true}
-        bind:listOpen={isListOpen}
-        listOffset={16}
-        {optionIdentifier} labelIdentifier={'name'} items={dataset.states}
-        placeholder="Select a state"
-        on:select={(event) => handleSelect(event, 'State')}
-        on:clear={() => handleClear('State')}
-      />
-    </div>
-
-    <div class="select-container">
-      <div class="label">Authority</div>
-      <Select
-        showChevron={true}
-        {optionIdentifier} {labelIdentifier} items={dataset.authority}
-        placeholder="Select an authority"
-        on:select={(event) => handleSelect(event, 'Authority')}
-        on:clear={() => handleClear('Authority')}
-      />
-    </div>
-
-    <div class="select-container">
-      <div class="label">Resource Type</div>
-      <Select
-        showChevron={true}
-        {optionIdentifier} {labelIdentifier} items={dataset.resourceTypes}
-        placeholder="Select a type"
-        on:select={(event) => handleSelect(event, 'ResourceType')}
-        on:clear={(event) => handleClear(event, 'ResourceType')}
-      />
-    </div>
-    
-    <div class="select-container">
-      <div class="label">Tags</div>
-      <SelectMultiple
-        bind:selectedValue={selectedTags}
-        options={dataset.tags}
-        selectName="tags"
-      />
-    </div>
-  </div>
 </section>
+<div class="selects">
+  <div class="select-container">
+    <div class="label">State</div>
+    <Select
+      indicatorSvg={chevron}
+      showChevron={true}
+      bind:listOpen={isListOpen}
+      listOffset={16}
+      {optionIdentifier} labelIdentifier={'name'} items={dataset.states}
+      placeholder="Select a state"
+      on:select={(event) => handleSelect(event, 'State')}
+      on:clear={() => handleClear('State')}
+    />
+  </div>
+
+  <div class="select-container">
+    <div class="label">Authority</div>
+    <Select
+      indicatorSvg={chevron}
+      showChevron={true}
+      {optionIdentifier} {labelIdentifier} items={dataset.authority}
+      placeholder="Select an authority"
+      on:select={(event) => handleSelect(event, 'Authority')}
+      on:clear={() => handleClear('Authority')}
+    />
+  </div>
+
+  <div class="select-container">
+    <div class="label">Resource Type</div>
+    <Select
+      indicatorSvg={chevron}
+      showChevron={true}
+      {optionIdentifier} {labelIdentifier} items={dataset.resourceTypes}
+      placeholder="Select a type"
+      on:select={(event) => handleSelect(event, 'ResourceType')}
+      on:clear={(event) => handleClear(event, 'ResourceType')}
+    />
+  </div>
+  
+  <div class="select-container">
+    <div class="label">Tags</div>
+    <SelectMultiple
+      bind:selectedValue={selectedTags}
+      options={dataset.tags}
+      selectName="tags"
+    />
+  </div>
+</div>
 <div class="options options__container options__container--sticky">
   <section class="options__navigation">
-    <!-- div class="table__container table__container--sticky" -->
     <Search bind:searchText/>
     <div class="options__navigation-inner">
-      <span class="table__total-entries">Showing {totalEntries} {totalEntries > 1 ? "entries" : "entry"}</span>
+      <span class="options__table-total-entries">Showing {totalEntries} {totalEntries > 1 ? "entries" : "entry"}</span>
       <button id='btn-scroll-left' class="btn btn--scroll btn--scroll--left inactive" ariaLabel="Scroll table to the left"
         on:click={handleScrollLeft}><Icon id="icon-scroll-left" name="Icon-left" class="icon inactive"/></button>
       <button id='btn-scroll-right' class="btn btn--scroll btn--scroll--right" ariaLabel="Scroll table to the right"
@@ -271,18 +244,21 @@
     </div>
   </section>
 </div>
+
 <style lang="scss">
+  @use '../scss/abstracts/' as *;
   @use "../scss/components/table-container";
   @use "../scss/components/button";
   @use "../scss/components/label";
   @use "../scss/components/select";
   @use "../scss/components/options";
-  // @use "../scss/components/table";
-  // :global(.myclass) {
-  //   width: 200px;
-  // }
 
   :global(.selectContainer .item.active) {
+    position: relative;
+    --itemIsActiveBG: transparent;
+    --itemIsActiveColor: $color-text-gray-500;
+    --itemHoverBG: $color-background-gray-100;
+
     &::before {
       content:'L';
       font-family: arial;
@@ -290,21 +266,32 @@
       -webkit-transform: scaleX(-1) rotate(-35deg); /* Chrome, Safari, Opera */
       transform: scaleX(-1) rotate(-35deg);
       display:inline-block;
-      // vertical-align: middle;
       line-height: 1rem;
-      width: 1rem;
-      height: 1rem;
-      color: royalblue;
-      margin-right: 0.3em;
+      color: $color-brand-blue-600;
       text-align: center;
-      // position: relative;
-      // left: 0;
-      // top: -4px;
+      font-size: 14px;
+      position: absolute;
+      left: 16px;
+      top: 25%;
     }
   }
 
+  :global(.selectContainer .item){
+    --itemPadding: #{rem(8)} #{rem(40)} #{rem(12)};
+  }
   :global(.listContainer) {
     --listZIndex: 15;
     --listMaxHeight: 450px;
+    --height: 1.2;
+  }
+
+  :global(.iconDown, .iconUp){
+		pointer-events: none;
+    filter: invert(29%) sepia(13%) saturate(765%) hue-rotate(181deg) brightness(95%) contrast(89%);
+	}
+
+  :global(.clearSelect){
+    width: rem(16);
+    height: rem(16);
   }
 </style>
