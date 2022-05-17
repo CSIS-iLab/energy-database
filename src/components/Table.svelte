@@ -128,8 +128,6 @@
                 <div class="sort-icons-container" on:click={(e) => sort(e, name)}>
                   <button class="sort-icon sort-icon--{(sortBy.col == name.toLowerCase().split(' ').join('_') && sortBy.ascending ) ? 'inactive' : 'active'}">▲</button>
                   <button class= "sort-icon sort-icon--{(sortBy.col == name.toLowerCase().split(' ').join('_') && sortBy.ascending ) ? 'active' : 'inactive'}">▼</button>
-                  <!-- <button class="sort-icon sort-icon--{sortClass}">▲</button>
-                  <button class= "sort-icon sort-icon--{sortClass}">▼</button> -->
                 </div>
                 {/if}
               </div>
@@ -185,7 +183,9 @@
           </tr>
         {:else}
           <tr>
-            <td colspan="6" class="table__body__cell"><div>No data found</div></td>
+            <td class="table__body__cell table__body__cell__no-data__title"  colspan="6"><div>0 entries found.</div>
+            <p class="table__body__cell__no-data__desc">Try changing or removing filters to adjust the results.</p>
+            </td>
           </tr>
         {/each}
       </tbody>

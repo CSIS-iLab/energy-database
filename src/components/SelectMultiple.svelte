@@ -16,6 +16,14 @@
   let isTagSelected = false
   let spanElement
 
+  // handle the icon
+  const chevronUp = '<svg class="iconUp" width="16" height="10" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M28 15 14 0 0 15h28z" fill="#000"/></svg>';
+  const chevronDown = '<svg class="iconDown" width="16" height="10" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="m0 0 14 15L28 0H0z" fill="#000"/></svg>';
+  let chevron = chevronDown;
+  // let isListOpen = false;
+  
+  $: chevron = isListOpen ? chevronUp : chevronDown;
+
   const formatOption = (opt, type) => {
     if (selectName !== "State") {
       return opt;
@@ -74,6 +82,7 @@
     ><span>Select {selectName}</span>
     </div>
     <span class="select__select-tag__counter">{(selectedCounter > 0) ? '+' + selectedCounter : ''}</span>
+    <!-- <span><Icon /></span> -->
   </div>
   <div class="select__tags-options hide" bind:this={optionsList}
     use:clickOutside on:click_outside={handleClickOutside}

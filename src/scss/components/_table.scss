@@ -106,8 +106,12 @@
 
     &--sticky {
       position: sticky;
-      top: rem(56);
+      top: rem(48);
       z-index: 10;
+      
+      @include breakpoint('medium') {
+        top: rem(56);
+      }
     }
   }
 }
@@ -192,6 +196,7 @@
   }
 
   &__cell {
+    // display: flex;
     color: $color-text-gray-500;
     padding: rem(12) rem(16);
     background-color: $color-background-white;
@@ -259,6 +264,10 @@
         color: $color-policy-goals-resilience-text;
         background-color: $color-policy-goals-resilience-fill;
       }
+    }
+
+    div {
+      @extend %text-style-paragraph-1;
     }
   }
 }
