@@ -269,7 +269,7 @@
       line-height: 1rem;
       color: $color-brand-blue-600;
       text-align: center;
-      font-size: 14px;
+      @include font-size(14px);
       position: absolute;
       left: 16px;
       top: 25%;
@@ -281,7 +281,7 @@
   }
   :global(.listContainer) {
     --listZIndex: 15;
-    --listMaxHeight: 450px;
+    --listMaxHeight: rem(450);
     --height: 1.2;
   }
 

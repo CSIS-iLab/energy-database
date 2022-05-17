@@ -39,6 +39,7 @@
   width: auto;
   --indicatorWidth: rem(12);
   --indicatorHeight: rem(6);
+  --inputFontSize: rem(16);
 
   &::placeholder {
     color: $color-text-gray-200;
