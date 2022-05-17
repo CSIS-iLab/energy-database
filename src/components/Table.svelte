@@ -14,7 +14,7 @@
     let extraContent = undefined
     let iconUp = undefined
     let iconDown = undefined
-    if (e.target.parentNode.classList.contains('uniqueClass')){
+    if (e.target.parentNode.classList.contains('title')){
       extraContent = e.target.parentNode.nextElementSibling;
       iconUp = e.target.parentNode.children[0].children[0].children[1]
       iconDown = e.target.parentNode.children[0].children[0].children[0]
@@ -79,7 +79,6 @@
         ? 1 * sortModifier
         : 0;
 
-    // console.log(filteredData);
     filteredData = filteredData.sort(sort);
   };
 
@@ -132,7 +131,7 @@
     <table class="table table__body">
       <tbody>
         {#each filteredData as rows}
-          <tr on:click={(e) => handleClick(e)} class="uniqueClass">
+          <tr on:click={(e) => handleClick(e)} class="title">
             <td class="table__body__cell"><span class="icon-container"><Icon
               id="Icon-down"
               name="Icon-down"
@@ -158,7 +157,6 @@
               {/each}
             </td>
           </tr>
-          <!-- <tr class="extra-content" class:hide class:unHide={!hide}> -->
           <tr class="extra-content hide">
             <td class="table__body__cell" colspan="6">
               <div class="extra-content__container">
@@ -170,10 +168,6 @@
                     rel="noopener noreferrer">{rows.activity.link} <span class="icon-container"><Icon name="Icon-open-blank" class="icon"/></span></a
                   >
                 </div>
-                <!-- <div class="policy-goals">
-                  <span class="policy-goals__title">Policy Goals:</span>
-                  {rows.policy_goals}
-                </div> -->
               </div>
             </td>
           </tr>

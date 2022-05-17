@@ -1,6 +1,7 @@
 <script>
   import Icon from "./Icons.svelte";
 </script>
+
 <section class="about" id="about">
   <div class="about__container">
     <h2 class="about__subtitle">About</h2>

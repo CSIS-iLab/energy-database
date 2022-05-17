@@ -6,16 +6,11 @@
   &__container {
     padding-left: var(--container-padding);
     padding-right: var(--container-padding);
-    // margin-bottom: rem(48);
 
     &--sticky {
       position: sticky;
       top: 0;
       z-index: 10;
-    }
-
-    @include breakpoint('medium') {
-      // margin-bottom: rem(56);
     }
   }
 

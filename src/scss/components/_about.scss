@@ -2,7 +2,6 @@
 
 .about {
   color: $color-text-gray-500;
-  // max-width: $size__content-max-width;
   background-color: $color-background-gray-100;
   padding-top: rem(80);
   padding-bottom: rem(56);
@@ -25,7 +24,6 @@
 
   &__description {
     @extend %text-style-paragraph-1;
-    // color: $color-text-gray-500;
 
     p:first-child {
       padding-bottom: rem(32);

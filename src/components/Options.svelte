@@ -1,15 +1,9 @@
-<!--
-  This file is to test the Svelte Select component
-  site: https://github.com/rob-balfre/svelte-select
--->
 <script>
   import { onMount } from "svelte";
-  import Button from "./Button.svelte";
   import Search from "./Search.svelte";
   import Select from 'svelte-select'
   import SelectMultiple from './SelectMultiple.svelte';
   import Icon from "./Icons.svelte";
-  // import Icon from './icons/IconUp.svelte';
   
   export let dataset;
   export let filteredData;
@@ -33,7 +27,6 @@
 
   function updateActiveTab(val) {
     const value = (val) ? val.split('_').join('-') : 'all'
-    console.log(value);
     const spanCountActive = document.querySelector(`.options__count--active`);
     const spanCount = document.querySelector(`.options__count[data-count="${value}"]`);
     spanCountActive.classList.remove('options__count--active');
@@ -53,6 +46,7 @@
       iconDown.classList.toggle('hide')
     }
   }
+
   function handleSelect(event, selectName) {
     if (row.isOpen) {
       row.isOpen = !row.isOpen
@@ -136,7 +130,6 @@
     const table = document.getElementsByClassName('table')[0]
     const btnIconLeft = document.querySelector('#icon-scroll-left')
     const btnIconRight = document.querySelector('#icon-scroll-right')
-    // console.log(tableContainer);
     tableContainer.scrollLeft += 100
     if (btnIconLeft.classList.contains('inactive')) {
       btnIconLeft.classList.remove('inactive')
@@ -241,7 +234,6 @@
 </div>
 <div class="options options__container options__container--sticky">
   <section class="options__navigation">
-    <!-- div class="table__container table__container--sticky" -->
     <Search bind:searchText/>
     <div class="options__navigation-inner">
       <span class="options__table-total-entries">Showing {totalEntries} {totalEntries > 1 ? "entries" : "entry"}</span>
@@ -252,6 +244,7 @@
     </div>
   </section>
 </div>
+
 <style lang="scss">
   @use '../scss/abstracts/' as *;
   @use "../scss/components/table-container";
@@ -265,9 +258,6 @@
     --itemIsActiveBG: transparent;
     --itemIsActiveColor: $color-text-gray-500;
     --itemHoverBG: $color-background-gray-100;
-    // --itemHoverColor: $color-background-gray-100;
-    // &:focus {
-    // }
 
     &::before {
       content:'L';
@@ -276,10 +266,7 @@
       -webkit-transform: scaleX(-1) rotate(-35deg); /* Chrome, Safari, Opera */
       transform: scaleX(-1) rotate(-35deg);
       display:inline-block;
-      // vertical-align: middle;
       line-height: 1rem;
-      // width: 1rem;
-      // height: 1rem;
       color: $color-brand-blue-600;
       text-align: center;
       font-size: 14px;
@@ -300,16 +287,11 @@
 
   :global(.iconDown, .iconUp){
 		pointer-events: none;
-    // width: rem(12);
-    // height: rem(6);
     filter: invert(29%) sepia(13%) saturate(765%) hue-rotate(181deg) brightness(95%) contrast(89%);
 	}
 
   :global(.clearSelect){
-  // --clearSelectWidth: rem(16);
-  // --clearSelectHeight: rem(16);
     width: rem(16);
     height: rem(16);
-    // @extend %text-style-ui-2;
   }
 </style>

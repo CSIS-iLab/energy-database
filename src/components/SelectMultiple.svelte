@@ -46,7 +46,6 @@
       spanElement = '+' +selectedCounter
     }
   } else {
-    // console.log(selectedCounter);
     (selectedCounter > 1) ? selectedCounter-- : selectedCounter = 0
     selectLabel = `Select ${selectName}`
     if (isTagSelected) {

@@ -1,5 +1,4 @@
 <script>
-  import Logo from '../components/Logo.svelte';
   import SocialMediaShare from '../components/SocialMediaShare.svelte';
   const currentYear = new Date().getFullYear()
 </script>

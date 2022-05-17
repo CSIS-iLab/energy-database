@@ -17,7 +17,6 @@ label[aria-hidden="true"],
     padding-right: rem(32);
     padding-top: rem(8);
     padding-bottom: rem(8);
-    // @extend %text-style-ui-2;
 
     &::placeholder {
       color: $color-text-gray-200;

@@ -2,27 +2,9 @@
 
 .options {
   --border: 0;
-  // --borderRadius: 10px;
-  // --itemHoverColor: black ;
-  // --itemHoverBG: red;
-  --itemColor: #2B2F38;
-  --itemIsActiveColor: #2B2F38;
-  // --itemPadding: 0 20px 0 48px;
-  --itemIsActiveBG: #EFF5F8;
-  // --indicatorColor: purple;
-  // --placeholderColor: #7E8694;
-  // display: flex;
-  // flex-direction: column;
-  // border-bottom: 1px solid #D3D4D6;
-  
-  // @include breakpoint('medium') {
-  //   flex-direction: row;
-  //   justify-content: space-around;
-  // }
-
-  &__header {
-    // display: block;
-  }
+  --itemColor: $color-text-gray-400;
+  --itemIsActiveColor: $color-text-gray-400;
+  --itemIsActiveBG: $color-background-light-blue-100;
 
   button + button {
     margin-left: rem(16);
@@ -32,12 +14,10 @@
 .selects {
   display: flex;
   flex-direction: column;
-  // align-items: flex-start;
   padding-top: rem(32);
   padding-bottom: rem(48);
   padding-left: var(--container-padding);
   padding-right: var(--container-padding);
-  // padding: rem(32) 0 rem(48);
   gap: rem(24);
   background-color: $color-background-white;
 
@@ -57,16 +37,8 @@
   --borderRadius: 10px;
   @extend %text-style-ui-2;
   width: auto;
-  // max-width: rem(350);
-  // --inputColor: $color-text-gray-200;
-  // --placeholderColor: $color-text-gray-200;
-  // vertical-align: middle;
-
   --indicatorWidth: rem(12);
   --indicatorHeight: rem(6);
-  // --heigth: 1.2;
-  // --clearSelectWidth: rem(16);
-  // --clearSelectHeight: rem(16);
 
   &::placeholder {
     color: $color-text-gray-200;
@@ -84,20 +56,7 @@
   }
 }
 
-// .selectContainer {
-//   --listZIndex: 15;
-//   // --listMaxHeight: rem(450);
-//   input {
-//     appearance: none;
-//     border: 0;
-//   }
-// }
-
 .select {
-
-  &__select-wrapper {
-    
-  }
 
   &__select-tags-container {
     display: flex;
