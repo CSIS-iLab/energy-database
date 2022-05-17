@@ -22,6 +22,7 @@ $color-background-gray-300: rgba(228,228,228,1);
 
 $color-background-light-blue-100: rgba(239,245,248,1);
 $color-background-light-blue-200: rgba(231,239,244,1);
+$color-background-light-blue-300: rgba(151, 200, 247, 0.480);
 
 $color-focus-outline: rgba(151, 200, 247, 0.680);
 
@@ -80,5 +81,9 @@ $container-width-diff: 57.5rem; // Difference in rems between small & large brea
 
 $size__container-max-width: 1400px;
 $size__content-max-width: 680px;
-$size__intro-content-wide-max-width: 900px;
+$size__intro-content-wide-max-width: 1100px;
 $size__page-max-width: 1200px;
+
+
+/*----------  Transitions  ----------*/
+$transition__link: all 0.2s ease-in-out;

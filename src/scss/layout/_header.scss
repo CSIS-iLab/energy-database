@@ -9,6 +9,9 @@
   // linear-gradient(164.14deg, #E0EFF8 25.66%, rgba(224, 239, 248, 0.14) 62.15%),
   // linear-gradient(0deg, #F8F8F8, #F8F8F8),
   // #F5F5F5;
+  position: absolute;
+  width: 100%;
+  top: 0;
   border-bottom: 1px solid $color-text-gray-100;
   padding-right: var(--container-padding);
   padding-left: var(--container-padding);
@@ -29,6 +32,7 @@
   &__logo {
     display: inherit;
     background-image: url(/assets/static/CSIS-logo.svg);
+    background-repeat: no-repeat;
     width: 88px;
     height: 24px;
     // color gray-300
