@@ -100,9 +100,9 @@
     iconsActive.forEach(icon => {
       icon.classList.remove('sort-icon--active');
     });
-    // const divActivity = document.querySelector('.table__cell--header__container__activity');
+    const divActivity = document.querySelector('.table__cell--header__container__activity');
     // console.log(divActivity.children[1].children[1]);
-    // const iconActiveByDefault = divActivity.children[1].children[1].classList.add('sort-icon--active');
+    const iconActiveByDefault = divActivity.children[1].children[1].classList.add('sort-icon--active');
     // Sync horizontal scroll of table header and table body
     // Inspired by https://codepen.io/Goweb/pen/rgrjWx
     const scrollSync = () => {
