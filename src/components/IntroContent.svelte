@@ -57,10 +57,10 @@
               <span style="width: 27%"></span>15
             </div>
             <div class="bar">
-              <span style="width: 15%"></span>14
+              <span style="width: 23%"></span>14
             </div>
             <div class="bar">
-              <span style="width: 23%"></span>13
+              <span style="width: 15%"></span>13
             </div>
           </div>
         </div>
