@@ -3,7 +3,7 @@
 .table {
   overflow-x: auto;
   border: none;
-  border-top: 1px solid #EEEEEE;
+  border-top: 1px solid $color-borders-gray-100;
   font-family: arial, sans-serif;
   border-collapse: collapse;
   table-layout: fixed;
@@ -37,8 +37,9 @@
       background-color: $color-background-white;
       @extend %text-style-ui-2-bold;
 
-      border: 1px solid #EEEEEE;
+      border: 1px solid $color-borders-gray-100;
       border-top: none;
+      border-bottom: 1px solid $color-borders-gray-400;
       text-align: left;
 
       &:first-child {
@@ -206,7 +207,7 @@
     background-color: $color-background-white;
     overflow-wrap: break-word;
     @extend %text-style-ui-2;
-    border: 1px solid #EEEEEE;
+    border: 1px solid $color-borders-gray-100;
     border-top: none;
     text-align: left;
 
