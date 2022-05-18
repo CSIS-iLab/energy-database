@@ -4,7 +4,7 @@
   &__container {
     display: flex;
     align-items: center;
-    margin-bottom: rem(10);
+    // margin-bottom: rem(10);
     padding: rem(8);
 
     &:hover {
@@ -23,7 +23,7 @@
     display: flex;
 
     span {
-      margin-right: rem(7);
+      margin-right: rem(12);
     }
   }
 }

@@ -296,6 +296,7 @@
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+    width: auto;
   }
 
 </style>

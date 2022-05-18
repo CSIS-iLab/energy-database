@@ -128,8 +128,6 @@
                 <div class="sort-icons-container" on:click={(e) => sort(e, name)}>
                   <button class="sort-icon sort-icon--{(sortBy.col == name.toLowerCase().split(' ').join('_') && sortBy.ascending ) ? 'inactive' : 'active'}">▲</button>
                   <button class= "sort-icon sort-icon--{(sortBy.col == name.toLowerCase().split(' ').join('_') && sortBy.ascending ) ? 'active' : 'inactive'}">▼</button>
-                  <!-- <button class="sort-icon sort-icon--{sortClass}">▲</button>
-                  <button class= "sort-icon sort-icon--{sortClass}">▼</button> -->
                 </div>
                 {/if}
               </div>
@@ -144,7 +142,7 @@
       <tbody>
         {#each filteredData as rows}
           <tr on:click={(e) => handleClick(e)} class="title">
-            <td class="table__body__cell"><span class="icon-container"><Icon
+            <td class="table__body__cell table__body__cell--data"><span class="icon-container"><Icon
               id="Icon-down"
               name="Icon-down"
               class="icon"
@@ -153,17 +151,17 @@
               name="Icon-up"
               class="icon hide"
               /></span>{rows.activity.title}</td>
-            <td class="table__body__cell">{rows.state}</td>
-            <td class="table__body__cell">
+            <td class="table__body__cell table__body__cell--data">{rows.state}</td>
+            <td class="table__body__cell table__body__cell--data">
               <div class="table__body__cell__policy-goal-container">
                 {#each rows.policy_goals as policyGoal}
                   <span class="table__body__cell__policy-goal table__body__cell__policy-goal--{policyGoal.toLowerCase()}">{policyGoal.split('_').join(' ')}</span>
                 {/each}
               </div>
             </td>
-            <td class="table__body__cell">{rows.authority}</td>
-            <td class="table__body__cell">{rows.type_of_resource}</td>
-            <td class="table__body__cell">
+            <td class="table__body__cell table__body__cell--data">{rows.authority}</td>
+            <td class="table__body__cell table__body__cell--data">{rows.type_of_resource}</td>
+            <td class="table__body__cell table__body__cell--data">
               {#each rows.tags as tag}
                 <span class="icon-tag-container" use:tooltip={{theme: 'energy'}} aria-label={tag}><Icon name="icon {tag}" class="icon__tags"/></span>
               {/each}
@@ -185,7 +183,9 @@
           </tr>
         {:else}
           <tr>
-            <td colspan="6" class="table__body__cell"><div>No data found</div></td>
+            <td class="table__body__cell table__body__cell--no-data"  colspan="6"><p class="table__body__cell__no-data__title">0 entries found.</p>
+            <p class="table__body__cell__no-data__desc">Try changing or removing filters to adjust the results.</p>
+            </td>
           </tr>
         {/each}
       </tbody>
