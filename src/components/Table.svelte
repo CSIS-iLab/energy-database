@@ -142,7 +142,7 @@
       <tbody>
         {#each filteredData as rows}
           <tr on:click={(e) => handleClick(e)} class="title">
-            <td class="table__body__cell table__body__cell--data"><span class="icon-container"><Icon
+            <td class="table__body__cell table__body__cell--data"><div class="table__body__cell__title-container"><span class="icon-container"><Icon
               id="Icon-down"
               name="Icon-down"
               class="icon"
@@ -150,7 +150,7 @@
               id="Icon-up"
               name="Icon-up"
               class="icon hide"
-              /></span>{rows.activity.title}</td>
+              /></span>{rows.activity.title}</div></td>
             <td class="table__body__cell table__body__cell--data">{rows.state}</td>
             <td class="table__body__cell table__body__cell--data">
               <div class="table__body__cell__policy-goal-container">
