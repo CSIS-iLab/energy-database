@@ -7,7 +7,6 @@
   padding-bottom: rem(56);
   padding-left: var(--container-padding);
   padding-right: var(--container-padding);
-  border-top: 1px solid $color-borders-gray-100;
 
   &__container {
     @include breakpoint('medium') {
