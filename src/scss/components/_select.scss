@@ -99,6 +99,11 @@
     &::placeholder {
       color: $color-text-gray-200;
     }
+    
+    span {
+      position: relative;
+      top: -5px;
+    }
   }
 
   &__tags-options {
