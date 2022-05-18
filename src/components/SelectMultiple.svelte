@@ -82,7 +82,7 @@
     ><span>Select {selectName}</span>
     </div>
     <span class="select__select-tag__counter">{(selectedCounter > 0) ? '+' + selectedCounter : ''}</span>
-    <!-- <span><Icon /></span> -->
+    <span class="select__select-tag-icon">{@html chevron}</span>
   </div>
   <div class="select__tags-options hide" bind:this={optionsList}
     use:clickOutside on:click_outside={handleClickOutside}
