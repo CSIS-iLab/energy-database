@@ -53,8 +53,8 @@
       const extraContent = document.querySelectorAll(".extra-content");
         extraContent.forEach(content => {
           if (content.classList.contains('active')) {
-            const iconUp = content.previousElementSibling.children[0].children[0].children[1]
-            const iconDown = content.previousElementSibling.children[0].children[0].children[0]
+            const iconUp = content.previousElementSibling.children[0].children[0].children[0].children[1]
+            const iconDown = content.previousElementSibling.children[0].children[0].children[0].children[0]
             
             content.classList.remove('active')
             content.classList.add('hide');
