@@ -17,12 +17,12 @@
     let iconDown = undefined
     if (e.target.parentNode.classList.contains('title')){
       extraContent = e.target.parentNode.nextElementSibling;
-      iconUp = e.target.parentNode.children[0].children[0].children[1]
-      iconDown = e.target.parentNode.children[0].children[0].children[0]
+      iconUp = e.target.parentNode.children[0].children[0].children[0].children[1]
+      iconDown = e.target.parentNode.children[0].children[0].children[0].children[0]
     } else {
       extraContent = e.target.parentNode.parentNode.nextElementSibling;
-      iconUp = e.target.parentNode.parentNode.children[0].children[0].children[1]
-      iconDown = e.target.parentNode.parentNode.children[0].children[0].children[0]
+      iconUp = e.target.parentNode.parentNode.children[0].children[0].children[0].children[1]
+      iconDown = e.target.parentNode.parentNode.children[0].children[0].children[0].children[0]
     }
     // Show/Hide extraContent
     extraContent.classList.add('active');
@@ -50,7 +50,6 @@
     iconsActive.forEach(icon => {
       icon.classList.remove('sort-icon--active');
     });
-    // (sortBy.col == name.toLowerCase().split(' ').join('_') && sortBy.ascending) ? 'sort-icon--inactive' : 'sort-icon--active'
     if (sortBy.col == column) {
       sortBy.ascending = !sortBy.ascending;
       sortClass = sortBy.ascending ? 'active' : 'inactive';
