@@ -26,7 +26,7 @@
       <ul>
         <li><a class="about__reports__link" href="https://www.csis.org/analysis/insights-emissions-reduction-among-us-states" target="_blank">Insights on Emissions Reduction among U.S. States<span class="icon-container"><Icon class="icon__report" name="Icon-open-blank"/></span></a></li>
         <li><a class="about__reports__link" href="https://www.csis.org/analysis/state-strategies-expanding-economic-opportunity-clean-energy" target="_blank">State Strategies for Expanding Economic Opportunity in Clean Energy<span class="icon-container"><Icon class="icon__report" name="Icon-open-blank"/></span></a></li>
-        <li><a class="about__reports__link" href="https://www.csis.org/programs/energy-security-and-climate-change-program/projects/clean-resilient-states-initiative" target="_blank">TBD Third Report<span class="icon-container"><Icon class="icon__report" name="Icon-open-blank"/></span></a></li>
+        <li><a class="about__reports__link" href="https://www.csis.org/analysis/making-energy-resilient" target="_blank">Making Energy Resilient<span class="icon-container"><Icon class="icon__report" name="Icon-open-blank"/></span></a></li>
       </ul>
     </div>
     <div class="about__initiative">
