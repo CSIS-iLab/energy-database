@@ -1,5 +1,26 @@
 @use "../abstracts/" as *;
 
+/* clears the ‘X’ from Internet Explorer */
+input[type=search]::-ms-clear {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+input[type=search]::-ms-reveal {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+/* clears the ‘X’ from Chrome */
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  display: none;
+}
+
 label[aria-hidden="true"],
 [hidden] {
   display: none;
@@ -20,6 +41,7 @@ label[aria-hidden="true"],
 
     &::placeholder {
       color: $color-text-gray-200;
+    
     }
 
     &:focus {
@@ -42,8 +64,8 @@ label[aria-hidden="true"],
   }
 
   &__input--active {
-      box-shadow: 0 1px $color-brand-blue-600;
-      border-radius: 0;
+    box-shadow: 0 1px $color-brand-blue-600;
+    border-radius: 0;
   }
 
   &__btn {

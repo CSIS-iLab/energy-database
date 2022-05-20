@@ -39,9 +39,6 @@
   }
 
   function toggleIcons (iconUp, iconDown) {
-    console.log('iconUp', iconUp)
-    console.log('iconDown', iconDown)
-
     if (!iconUp.classList.contains('hide')) {
       iconUp.classList.toggle('hide')
     }
