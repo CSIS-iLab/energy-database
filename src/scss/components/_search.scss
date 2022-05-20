@@ -1,6 +1,11 @@
 @use "../abstracts/" as *;
 
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration { display: none; }
 label[aria-hidden="true"],
+
 [hidden] {
   display: none;
 }
@@ -20,6 +25,7 @@ label[aria-hidden="true"],
 
     &::placeholder {
       color: $color-text-gray-200;
+    
     }
 
     &:focus {
@@ -37,6 +43,8 @@ label[aria-hidden="true"],
         background-color: transparent;
         box-shadow: 0 1px $color-borders-gray-100;
         border-radius: 0;
+        
+        
       }
     }    
   }
@@ -71,7 +79,7 @@ label[aria-hidden="true"],
     padding-top: rem(9);
     padding-right: .375rem;
     padding-left: .375rem;
-    // color: $color-text-gray-200;
+    color: $color-text-gray-200;
     filter: invert(57%) sepia(7%) saturate(666%) hue-rotate(180deg) brightness(92%) contrast(89%);
   }
 }
