@@ -39,6 +39,9 @@
   }
 
   function toggleIcons (iconUp, iconDown) {
+    console.log('iconUp', iconUp)
+    console.log('iconDown', iconDown)
+
     if (!iconUp.classList.contains('hide')) {
       iconUp.classList.toggle('hide')
     }
@@ -84,8 +87,8 @@
             content.classList.remove('active')
             content.classList.add('hide');
 
-            const iconUp = content.previousElementSibling.children[0].children[0].children[1]
-            const iconDown = content.previousElementSibling.children[0].children[0].children[0]
+            const iconUp = content.previousElementSibling.children[0].children[0].children[0].children[1]
+            const iconDown = content.previousElementSibling.children[0].children[0].children[0].children[0]
             toggleIcons(iconUp, iconDown)
           }
 
