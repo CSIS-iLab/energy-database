@@ -47,21 +47,49 @@
     }
   }
 
+  function removeRowActiveTitleStyle() {
+    const title = document.querySelectorAll('.title--active');
+    title.forEach(item => {
+      item.classList.remove('title--active');
+    });
+  }
+
+  function removeExtraContentStyle() {
+    const extraContent = document.querySelectorAll(".extra-content");
+    extraContent.forEach(content => {
+      if (content.classList.contains('active')) {
+        const iconUp = content.previousElementSibling.children[0].children[0].children[0].children[1]
+        const iconDown = content.previousElementSibling.children[0].children[0].children[0].children[0]
+        
+        content.classList.remove('active')
+        content.classList.add('hide');
+
+        toggleIcons(iconUp, iconDown)
+      }
+    });
+  }
+
+  function switchRowBottomLine() {
+    const rowTitle = document.querySelectorAll('.title')
+    const extraContent = document.querySelectorAll('.extra-content')
+    extraContent.forEach(item => {
+      if(item.classList.contains('table__body__cell--border')) {
+        item.classList.remove('table__body__cell--border')
+      }
+    });
+    rowTitle.forEach(item => {
+      if(!item.classList.contains('table__body__cell--border')) {
+        item.classList.add('table__body__cell--border')
+      }
+    });
+  }
+
   function handleSelect(event, selectName) {
     if (row.isOpen) {
       row.isOpen = !row.isOpen
-      const extraContent = document.querySelectorAll(".extra-content");
-        extraContent.forEach(content => {
-          if (content.classList.contains('active')) {
-            const iconUp = content.previousElementSibling.children[0].children[0].children[0].children[1]
-            const iconDown = content.previousElementSibling.children[0].children[0].children[0].children[0]
-            
-            content.classList.remove('active')
-            content.classList.add('hide');
-
-            toggleIcons(iconUp, iconDown)
-          }
-        });
+      removeRowActiveTitleStyle()
+      removeExtraContentStyle()
+      switchRowBottomLine()
     }
     if (selectName === 'State') {
       selectedState = event.detail.value
@@ -75,21 +103,12 @@
     }
   }
 
-  export function handleClear(selectName) {
+  function handleClear(selectName) {
     if (row.isOpen) {
       row.isOpen = !row.isOpen
-      const extraContent = document.querySelectorAll(".extra-content");
-        extraContent.forEach(content => {
-          if (content.classList.contains('active')) {
-            content.classList.remove('active')
-            content.classList.add('hide');
-
-            const iconUp = content.previousElementSibling.children[0].children[0].children[0].children[1]
-            const iconDown = content.previousElementSibling.children[0].children[0].children[0].children[0]
-            toggleIcons(iconUp, iconDown)
-          }
-
-        });
+      removeRowActiveTitleStyle()
+      removeExtraContentStyle()
+      switchRowBottomLine()
     }
     if (selectName === 'State') {
       selectedState = ''
@@ -166,7 +185,7 @@
 
 <section class="options__container">
   <div class="options__header">
-    <button class="options__btn options__btn--tab options__btn--tab--all options__btn--tab--active"
+    <button class="options__btn options__btn--tab options__btn--tab--all options__btn--tab--active options__btn--tab--all--active"
       data-tab={"all"}
       on:click={(event) => handleSelect(event, 'Policy Goal')}
       >All <span data-count={"all"} class="options__count options__count--active">{policyGoalsTotal}</span>

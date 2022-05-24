@@ -69,21 +69,6 @@
       transition: border-bottom 0.3s ease-in-out;
     }
 
-    &--tab--all--active {
-      border-bottom: 3px solid $color-borders-gray-400;
-      transition: border-bottom 0.3s ease-in-out;
-
-      .options__count {
-        color: $color-text-white;
-        background-color: $color-text-gray-400;
-        transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-      }
-    }
-
-    &--tab:focus {
-      outline: 3px solid $color-focus-outline;
-    }
-
     &--tab--all:hover {
       color: $color-text-gray-500;
       border-bottom: 3px solid $color-borders-gray-400;
@@ -94,6 +79,21 @@
         background-color: $color-background-gray-300;
         transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
       }
+    }
+
+    &--tab--all--active, &--tab--all--active:hover {
+      border-bottom: 3px solid $color-borders-gray-400;
+      transition: border-bottom 0.3s ease-in-out;
+
+      .options__count {
+        color: $color-text-white;
+        background-color: $color-text-gray-500;
+        transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+      }
+    }
+
+    &--tab:focus {
+      outline: 3px solid $color-focus-outline;
     }
 
     &--tab--Economic-Development:hover {
