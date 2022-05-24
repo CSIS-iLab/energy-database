@@ -101,7 +101,7 @@
   }
 
   // handle the icon
-  const chevronUp = '<svg class="iconUp" width="16" height="10" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M28 15 14 0 0 15h28z" fill="#000"/></svg>';
+  const chevronUp = '<svg class="iconUp" width="16" height="10" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M28 15 14 0 0 15h28z" fill="#000"/></svg>';
   const chevronDown = '<svg class="iconDown" width="16" height="10" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="m0 0 14 15L28 0H0z" fill="#000"/></svg>';
   let chevron = chevronDown;
   let isListOpen = false;
@@ -250,6 +250,21 @@
   @use "../scss/components/select";
   @use "../scss/components/options";
 
+  :global(.selectContainer) {
+    &:hover {
+      --borderRadius: 0;
+      --background: #{$color-background-gray-100};
+      // --indicatorColor: #{$color-brand-blue-600};
+    }
+  }
+
+  :global(.selectContainer input:focus) {
+      --borderFocusColor: #{$color-brand-blue-600};
+      --indicatorColor: #{$color-brand-blue-600};
+      // color brand blue 600
+      // filter: invert(39%) sepia(72%) saturate(6596%) hue-rotate(200deg) brightness(100%) contrast(84%);
+  }
+
   :global(.selectContainer .item.active) {
     position: relative;
     --itemIsActiveBG: transparent;
@@ -282,10 +297,27 @@
     --height: 1.2;
   }
 
-  :global(.iconDown, .iconUp){
+  :global(.iconDown){
 		pointer-events: none;
     filter: invert(29%) sepia(13%) saturate(765%) hue-rotate(181deg) brightness(95%) contrast(89%);
+
+    &:hover,
+    &:focus {
+      // color brand blue 600
+      filter: invert(39%) sepia(72%) saturate(6596%) hue-rotate(200deg) brightness(100%) contrast(84%);
+    }
 	}
+
+  :global(.iconUp) {
+		pointer-events: none;
+    filter: invert(29%) sepia(13%) saturate(765%) hue-rotate(181deg) brightness(95%) contrast(89%);
+
+    &:hover,
+    &:focus {
+      // color brand blue 600
+      filter: invert(39%) sepia(72%) saturate(6596%) hue-rotate(200deg) brightness(100%) contrast(84%);
+    }
+  }
 
   :global(.clearSelect){
     width: rem(16);
@@ -298,5 +330,4 @@
     white-space: nowrap;
     width: auto;
   }
-
 </style>

@@ -46,6 +46,14 @@
     @extend %text-style-ui-2;
   }
 
+  &:hover {
+    border-color: $color-brand-blue-600;
+  }
+
+  &:focus {
+    border-color: $color-brand-blue-600;
+  }
+
   @include breakpoint('medium') {
     max-width: rem(350);
   }
@@ -59,6 +67,11 @@
 
 .select {
   &__select-wrapper {
+
+    &:hover {
+      background-color: $color-background-gray-100;
+    }
+
     &::after {
       content: '';
       // position: relative;
