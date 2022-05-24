@@ -269,17 +269,25 @@
       font-size: 14px;
       position: absolute;
       left: 16px;
-      top: 25%;
+      top: 10px;
     }
   }
 
+  :global(.selectContainer){
+    --internalPadding: 0 4px !important;
+  }
   :global(.selectContainer .item){
     --itemPadding: #{rem(8)} #{rem(40)} #{rem(12)};
+    text-overflow: unset !important;
+    overflow: unset !important;
+    white-space: unset !important;
+    
   }
   :global(.listContainer) {
     --listZIndex: 15;
     --listMaxHeight: #{rem(450)};
     --height: 1.2;
+    min-width: 250px !important;
   }
 
   :global(.iconDown, .iconUp){
@@ -293,10 +301,13 @@
   }
 
   :global(.selectContainer > input)  {
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    width: auto;
+    --inputPadding: 0 28px 0 4px;
   }
+
+  :global(.indicator) {
+    --indicatorRight: 4px;
+    top: auto !important;
+  }
+
 
 </style>

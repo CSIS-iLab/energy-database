@@ -34,7 +34,7 @@ input[type=checkbox] {
   opacity: 0;
 
   + label {
-    @extend %text-style-ui-1;
+    @extend %text-style-ui-2;
     line-height: 1;
     color: $color-text-gray-400;
     position: relative;

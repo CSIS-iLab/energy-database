@@ -18,7 +18,7 @@
   }
 
   th {
-    text-transform: uppercase;
+    //text-transform: uppercase;
   }
   
   // td,
@@ -130,11 +130,17 @@
     cursor: pointer;
   }
 
+  tr:hover {
+    background-color: $color-background-gray-100 !important;
+  }
+
   .hide {
     display: none;
   }
   
   .extra-content {
+    background-color: $color-background-gray-100 !important;
+
 
     .table__body__cell {
       padding-left: rem(48);
@@ -204,12 +210,13 @@
     // display: flex;
     color: $color-text-gray-500;
     
-    background-color: $color-background-white;
+    //background-color: $color-background-white;
     overflow-wrap: break-word;
     @extend %text-style-ui-2;
     border: 1px solid $color-borders-gray-100;
     border-top: none;
     text-align: left;
+    vertical-align: top;
 
     &--data {
       padding: rem(12) rem(16);
@@ -317,3 +324,5 @@
   color: $color-text-gray-500;
   background-color: $color-background-white;
 }
+
+

@@ -38,7 +38,7 @@
     &::before {
       content: "";
       position: absolute;
-      border-bottom: 3px solid $color-borders-gray-300;
+      border-bottom: 3px solid $color-background-gray-300;
       bottom: 0;
       left: -6vw;
       width: 100vw;
@@ -60,7 +60,7 @@
       padding-bottom: rem(16); 
       padding-left: rem(8);
       padding-right: rem(4);
-      border-bottom: 3px solid $color-borders-gray-300;
+      border-bottom: 3px solid $color-background-gray-300;
       margin-right: rem(16);
     }
 
@@ -108,7 +108,7 @@
       }
     }
 
-    &--tab--Economic-Development--active {
+    &--tab--Economic-Development--active, &--tab--Economic-Development--active:hover {
       border-bottom: 3px solid $color-policy-goals-economic-development;
       transition: border-bottom 0.3s ease-in-out;
 
@@ -131,7 +131,7 @@
       }
     }
 
-    &--tab--Emissions-Reduction--active {
+    &--tab--Emissions-Reduction--active,  &--tab--Emissions-Reduction--active:hover {
       border-bottom: 3px solid $color-policy-goals-emissions-reduction;
       transition: border-bottom 0.3s ease-in-out;
 
@@ -154,7 +154,7 @@
       }
     }
 
-    &--tab--Resilience--active {
+    &--tab--Resilience--active, &--tab--Resilience--active:hover {
       border-bottom: 3px solid $color-policy-goals-resilience;
       transition: border-bottom 0.3s ease-in-out;
 
