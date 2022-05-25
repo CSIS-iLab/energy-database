@@ -39,7 +39,7 @@
   --border: 0;
   --background: transparent;
   border-bottom: 1px solid $color-borders-gray-100;
-  --borderRadius: 10px;
+  --borderRadius: 0;
   // --borderFocusColor: #{$color-brand-blue-600};
   @extend %text-style-ui-2;
   // width: auto;
@@ -56,15 +56,16 @@
 
   &:hover {
     border-color: $color-brand-blue-600;
-
-    // .indicator {
-    //   // color brand blue 600
-    //   filter: invert(39%) sepia(72%) saturate(6596%) hue-rotate(200deg) brightness(100%) contrast(84%);
-    // }
   }
 
-  &:focus {
-    border-color: $color-brand-blue-600;
+  &:focus-within {
+    // border-color: $color-brand-blue-600;
+    border-bottom: 1px solid $color-brand-blue-600;
+
+    .select__select-tag-icon {
+      // color brand blue 600
+      filter: invert(39%) sepia(72%) saturate(6596%) hue-rotate(200deg) brightness(100%) contrast(84%);
+    }
   }
 
   @include breakpoint('medium') {
@@ -88,6 +89,13 @@
     &:hover {
       background-color: $color-background-gray-100;
 
+      .select__select-tag-icon {
+        // color brand blue 600
+        filter: invert(39%) sepia(72%) saturate(6596%) hue-rotate(200deg) brightness(100%) contrast(84%);
+      }
+    }
+
+    &:focus-within {
       .select__select-tag-icon {
         // color brand blue 600
         filter: invert(39%) sepia(72%) saturate(6596%) hue-rotate(200deg) brightness(100%) contrast(84%);
@@ -142,9 +150,7 @@
     }
 
     &:focus {
-      .select-container {
-        border-color: $color-brand-blue-600;
-      }
+      outline: none;
     }
 
     @include breakpoint('medium') {
@@ -163,10 +169,6 @@
       @include breakpoint('medium') {
         //top: rem(10);
       }
-    }
-
-    &--active {
-      color: $color-brand-blue-600;
     }
   }
 

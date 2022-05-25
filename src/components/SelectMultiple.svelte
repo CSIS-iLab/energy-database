@@ -92,6 +92,7 @@
 
   $: if (selectedValue.length > 0 && selectedValue !== "") {
     const firstSelected = selectedValue[0]
+    tagsHTML.classList.add('select__select-tag--selected')
     tagsHTML.innerHTML = firstSelected + '<span id="whatever" style="color: #0054A4" class="select__select-tag__counter"></span>'
     selectedCounter = selectedValue.length - 1
     selectLabel = firstSelected
@@ -106,6 +107,7 @@
     selectLabel = `Select ${selectName}`
     if (isTagSelected) {
       tagsHTML.innerHTML = selectLabel
+      tagsHTML.classList.remove('select__select-tag--selected')
       spanElement = ''
       isTagSelected = !isTagSelected
     }
@@ -159,7 +161,13 @@
 </div>
 
 <style lang="scss">
+  @use "../scss/abstracts" as *;
   @use "../scss/components/select";
   @use "../scss/components/checkbox";
   @use "../scss/components/icon";
+
+  :global(.select__select-tag--selected) {
+    color: $color-brand-blue-600 !important;
+  }
+
 </style>

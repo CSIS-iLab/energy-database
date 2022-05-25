@@ -317,13 +317,6 @@
     --internalPadding: 0 4px !important;
   }
 
-  // :global(.selectContainer:hover) {
-  //   .iconDown {
-  //     --indicatorColor: #{$color-brand-blue-600};
-  //     // color brand blue 600
-  //     filter: invert(39%) sepia(72%) saturate(6596%) hue-rotate(200deg) brightness(100%) contrast(84%);
-  //   }
-  // }
   :global(.selectContainer .item){
     --itemPadding: #{rem(8)} #{rem(40)} #{rem(12)};
     text-overflow: unset !important;
@@ -372,35 +365,18 @@
   :global(.indicator) {
     --indicatorRight: 4px;
     top: auto !important;
-    
-    // &:hover {
-    //   --indicatorColor: #{$color-brand-blue-600};
-    //   // color brand blue 600
-    //   filter: invert(39%) sepia(72%) saturate(6596%) hue-rotate(200deg) brightness(100%) contrast(84%);
-    // }
   }
-
-  :global(.selectContainer:focus .indicator) {
-    // color brand blue 600
-    filter: invert(39%) sepia(72%) saturate(6596%) hue-rotate(200deg) brightness(100%) contrast(84%);
-  }
-
-  // .select-container :global(.selectContainer input:focus) {
-  //   border-bottom: 1px solid $color-brand-blue-600;
-  //   // --borderFocusColor: #{$color-brand-blue-600};
-  // }
 
   :global(.selectedItem) {
     color: $color-brand-blue-600;
   }
-
   .select-container :global(.selectContainer:hover .indicator) {
     // color brand blue 600
     filter: invert(39%) sepia(72%) saturate(6596%) hue-rotate(200deg) brightness(100%) contrast(84%);
   }
 
-  // .select-container :global(.selectContainer input:focus .indicator) {
-  //   // color brand blue 600
-  //   filter: invert(39%) sepia(72%) saturate(6596%) hue-rotate(200deg) brightness(100%) contrast(84%);
-  // }
+  .select-container :global(.selectContainer:focus-within .indicator) {
+    // color brand blue 600
+    filter: invert(39%) sepia(72%) saturate(6596%) hue-rotate(200deg) brightness(100%) contrast(84%);
+  }
 </style>
