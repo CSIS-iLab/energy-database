@@ -19,16 +19,12 @@
     let iconDown = undefined
     if (e.target.parentNode.classList.contains('title') ) {
       title = e.target.parentNode
-      console.log(title);
-      // title.classList.toggle('table__body__cell--border')
       currentRow = title.nextElementSibling
       extraContent = e.target.parentNode.nextElementSibling;
       iconUp = e.target.parentNode.children[0].children[0].children[0].children[1]
       iconDown = e.target.parentNode.children[0].children[0].children[0].children[0]
     } else {
       title = e.target.parentNode.parentNode
-      console.log(title);
-      // title.classList.toggle('table__body__cell--border')
       currentRow = title.nextElementSibling
       extraContent = e.target.parentNode.parentNode.nextElementSibling;
       iconUp = e.target.parentNode.parentNode.children[0].children[0].children[0].children[1]

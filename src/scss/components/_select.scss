@@ -40,6 +40,7 @@
   --background: transparent;
   border-bottom: 1px solid $color-borders-gray-100;
   --borderRadius: 10px;
+  // --borderFocusColor: #{$color-brand-blue-600};
   @extend %text-style-ui-2;
   // width: auto;
   --indicatorWidth: rem(12);
@@ -55,6 +56,11 @@
 
   &:hover {
     border-color: $color-brand-blue-600;
+
+    // .indicator {
+    //   // color brand blue 600
+    //   filter: invert(39%) sepia(72%) saturate(6596%) hue-rotate(200deg) brightness(100%) contrast(84%);
+    // }
   }
 
   &:focus {
@@ -81,6 +87,11 @@
 
     &:hover {
       background-color: $color-background-gray-100;
+
+      .select__select-tag-icon {
+        // color brand blue 600
+        filter: invert(39%) sepia(72%) saturate(6596%) hue-rotate(200deg) brightness(100%) contrast(84%);
+      }
     }
 
     &::after {
@@ -130,6 +141,12 @@
       color: $color-text-gray-200;
     }
 
+    &:focus {
+      .select-container {
+        border-color: $color-brand-blue-600;
+      }
+    }
+
     @include breakpoint('medium') {
       //top: rem(16);
     }
@@ -146,6 +163,10 @@
       @include breakpoint('medium') {
         //top: rem(10);
       }
+    }
+
+    &--active {
+      color: $color-brand-blue-600;
     }
   }
 

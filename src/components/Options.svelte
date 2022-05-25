@@ -124,6 +124,7 @@
   const chevronDown = '<svg class="iconDown" width="16" height="10" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="m0 0 14 15L28 0H0z" fill="#000"/></svg>';
   let chevron = chevronDown;
   let isListOpen = false;
+  let listStateOpen = false;
   
   $: chevron = isListOpen ? chevronUp : chevronDown;
 
@@ -156,7 +157,7 @@
   }
 
   onMount( () => {
-
+    isListOpen = false;
     const tableContainer = document.getElementById('table-body') 
     const table = document.getElementsByClassName('table')[0]
     const btnIconLeft = document.querySelector('#icon-scroll-left')
@@ -207,7 +208,6 @@
       indicatorSvg={chevron}
       showChevron={true}
       bind:listOpen={isListOpen}
-      listOffset={16}
       {optionIdentifier} labelIdentifier={'name'} items={dataset.states}
       placeholder="Select a state"
       on:select={(event) => handleSelect(event, 'State')}
@@ -277,12 +277,18 @@
     }
   }
 
-  :global(.selectContainer input:focus) {
-      --borderFocusColor: #{$color-brand-blue-600};
-      --indicatorColor: #{$color-brand-blue-600};
-      // color brand blue 600
-      // filter: invert(39%) sepia(72%) saturate(6596%) hue-rotate(200deg) brightness(100%) contrast(84%);
-  }
+  // :global(.selectContainer:focus) {
+  //   border-color: $color-brand-blue-600;
+  //   --borderFocusColor: #{$color-brand-blue-600};
+  // }
+
+  // :global(.selectContainer input:focus) {
+  //   border-color: $color-brand-blue-600 !important;
+  //     // --borderFocusColor: #{$color-brand-blue-600};
+  //     // --indicatorColor: #{$color-brand-blue-600};
+  //     // color brand blue 600
+  //     // filter: invert(39%) sepia(72%) saturate(6596%) hue-rotate(200deg) brightness(100%) contrast(84%);
+  // }
 
   :global(.selectContainer .item.active) {
     position: relative;
@@ -310,6 +316,14 @@
   :global(.selectContainer){
     --internalPadding: 0 4px !important;
   }
+
+  // :global(.selectContainer:hover) {
+  //   .iconDown {
+  //     --indicatorColor: #{$color-brand-blue-600};
+  //     // color brand blue 600
+  //     filter: invert(39%) sepia(72%) saturate(6596%) hue-rotate(200deg) brightness(100%) contrast(84%);
+  //   }
+  // }
   :global(.selectContainer .item){
     --itemPadding: #{rem(8)} #{rem(40)} #{rem(12)};
     text-overflow: unset !important;
@@ -358,7 +372,35 @@
   :global(.indicator) {
     --indicatorRight: 4px;
     top: auto !important;
+    
+    // &:hover {
+    //   --indicatorColor: #{$color-brand-blue-600};
+    //   // color brand blue 600
+    //   filter: invert(39%) sepia(72%) saturate(6596%) hue-rotate(200deg) brightness(100%) contrast(84%);
+    // }
   }
 
+  :global(.selectContainer:focus .indicator) {
+    // color brand blue 600
+    filter: invert(39%) sepia(72%) saturate(6596%) hue-rotate(200deg) brightness(100%) contrast(84%);
+  }
 
+  // .select-container :global(.selectContainer input:focus) {
+  //   border-bottom: 1px solid $color-brand-blue-600;
+  //   // --borderFocusColor: #{$color-brand-blue-600};
+  // }
+
+  :global(.selectedItem) {
+    color: $color-brand-blue-600;
+  }
+
+  .select-container :global(.selectContainer:hover .indicator) {
+    // color brand blue 600
+    filter: invert(39%) sepia(72%) saturate(6596%) hue-rotate(200deg) brightness(100%) contrast(84%);
+  }
+
+  // .select-container :global(.selectContainer input:focus .indicator) {
+  //   // color brand blue 600
+  //   filter: invert(39%) sepia(72%) saturate(6596%) hue-rotate(200deg) brightness(100%) contrast(84%);
+  // }
 </style>

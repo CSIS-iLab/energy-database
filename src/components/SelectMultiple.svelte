@@ -17,10 +17,9 @@
   let spanElement
 
   // handle the icon
-  const chevronUp = '<svg class="iconUp" width="16" height="10" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M28 15 14 0 0 15h28z" fill="#000"/></svg>';
+  const chevronUp = '<svg class="iconUp" width="16" height="10" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M28 15 14 0 0 15h28z" fill="#000"/></svg>';
   const chevronDown = '<svg class="iconDown" width="16" height="10" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="m0 0 14 15L28 0H0z" fill="#000"/></svg>';
   let chevron = chevronDown;
-  // let isListOpen = false;
   
   $: chevron = isListOpen ? chevronUp : chevronDown;
 
@@ -124,6 +123,7 @@
 <div class="select__select-wrapper" bind:this={spanHTML}>
   <div class="select__select-tags-container">
     <div
+      tabindex="0"
       class="select__select-tag"
       contenteditable="false"
       on:click={showOptions}
