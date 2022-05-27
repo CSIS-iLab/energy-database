@@ -6,6 +6,7 @@
   &__container {
     padding-left: var(--container-padding);
     padding-right: var(--container-padding);
+    padding-top: 8px;
 
     &--sticky {
       position: sticky;

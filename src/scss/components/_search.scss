@@ -90,9 +90,12 @@ label[aria-hidden="true"],
 
   &__icon {
     position: absolute;
-    padding-top: rem(9);
+    //padding-top: rem(9);
     padding-right: .375rem;
     padding-left: .375rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
     // color: $color-text-gray-200;
     filter: invert(57%) sepia(7%) saturate(666%) hue-rotate(180deg) brightness(92%) contrast(89%);
   }

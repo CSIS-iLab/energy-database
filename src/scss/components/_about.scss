@@ -40,7 +40,7 @@
       padding: 0;
 
       li {
-        margin-bottom: rem(8);
+        margin-bottom: rem(4);
 
         &:last-child {
           margin-bottom: rem(56);
@@ -92,7 +92,7 @@
   }
 
   &__initiative {
-    @extend %text-style-paragraph-1-italic;
+    @extend %text-style-paragraph-2-italic;
 
     &__link {
       color: $color-brand-blue-600;

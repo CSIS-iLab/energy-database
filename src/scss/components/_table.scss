@@ -127,11 +127,16 @@
   tr {
     background-color: $color-background-white;
     // border: none;
+    transition: $transition__link;
+  }
+
+  .title {
     cursor: pointer;
   }
 
-  tr:hover {
+  .title:hover {
     background-color: $color-background-gray-100;
+    transition: $transition__link;
   }
 
   .hide {
@@ -139,11 +144,11 @@
   }
   
   .title--active {
-    background-color: $color-background-gray-100;
+    background-color: $color-background-gray-200;
   }
 
   .extra-content {
-    background-color: $color-background-gray-100;
+    background-color: $color-background-gray-200;
 
 
     .table__body__cell {
@@ -313,7 +318,7 @@
     }
 
     &__no-data__desc {
-      @extend %text-style-paragraph-1-italic;
+      @extend %text-style-paragraph-2-italic;
       color: $color-text-gray-200;
     }
   }
