@@ -35,7 +35,7 @@
     title.classList.toggle('table__body__cell--border')
     currentRow.classList.toggle('table__body__cell--border')
     // Show/Hide extraContent
-    extraContent.classList.add('active');
+    extraContent.classList.toggle('active');
     extraContent.classList.toggle("hide");
     // Show/hide icons
     iconUp.classList.toggle('hide');
@@ -151,15 +151,7 @@
       <tbody>
         {#each filteredData as rows}
           <tr on:click={(e) => handleClick(e)} class="title table__body__cell--border">
-            <td class="table__body__cell table__body__cell--data"><div class="table__body__cell__title-container"><span class="icon-container"><Icon
-              id="Icon-down"
-              name="Icon-down"
-              class="icon"
-              /><Icon
-              id="Icon-up"
-              name="Icon-up"
-              class="icon hide"
-              /></span>{rows.activity.title}</div></td>
+            <td class="table__body__cell table__body__cell--data"><div class="table__body__cell__title-container"><span class="icon-container"></span>{rows.activity.title}</div></td>
             <td class="table__body__cell table__body__cell--data">{rows.state}</td>
             <td class="table__body__cell table__body__cell--data">
               <div class="table__body__cell__policy-goal-container">

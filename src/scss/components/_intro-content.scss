@@ -193,6 +193,7 @@ main {
 				display: flex;
 				align-items: center;
 				background: $color-background-gray-300;
+				@extend %text-style-ui-4;
 			}
 
 			span {
