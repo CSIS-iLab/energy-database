@@ -47,21 +47,49 @@
     }
   }
 
+  function removeRowActiveTitleStyle() {
+    const title = document.querySelectorAll('.title--active');
+    title.forEach(item => {
+      item.classList.remove('title--active');
+    });
+  }
+
+  function removeExtraContentStyle() {
+    const extraContent = document.querySelectorAll(".extra-content");
+    extraContent.forEach(content => {
+      if (content.classList.contains('active')) {
+        const iconUp = content.previousElementSibling.children[0].children[0].children[0].children[1]
+        const iconDown = content.previousElementSibling.children[0].children[0].children[0].children[0]
+        
+        content.classList.remove('active')
+        content.classList.add('hide');
+
+        toggleIcons(iconUp, iconDown)
+      }
+    });
+  }
+
+  function switchRowBottomLine() {
+    const rowTitle = document.querySelectorAll('.title')
+    const extraContent = document.querySelectorAll('.extra-content')
+    extraContent.forEach(item => {
+      if(item.classList.contains('table__body__cell--border')) {
+        item.classList.remove('table__body__cell--border')
+      }
+    });
+    rowTitle.forEach(item => {
+      if(!item.classList.contains('table__body__cell--border')) {
+        item.classList.add('table__body__cell--border')
+      }
+    });
+  }
+
   function handleSelect(event, selectName) {
     if (row.isOpen) {
       row.isOpen = !row.isOpen
-      const extraContent = document.querySelectorAll(".extra-content");
-        extraContent.forEach(content => {
-          if (content.classList.contains('active')) {
-            const iconUp = content.previousElementSibling.children[0].children[0].children[0].children[1]
-            const iconDown = content.previousElementSibling.children[0].children[0].children[0].children[0]
-            
-            content.classList.remove('active')
-            content.classList.add('hide');
-
-            toggleIcons(iconUp, iconDown)
-          }
-        });
+      removeRowActiveTitleStyle()
+      removeExtraContentStyle()
+      switchRowBottomLine()
     }
     if (selectName === 'State') {
       selectedState = event.detail.value
@@ -75,21 +103,12 @@
     }
   }
 
-  export function handleClear(selectName) {
+  function handleClear(selectName) {
     if (row.isOpen) {
       row.isOpen = !row.isOpen
-      const extraContent = document.querySelectorAll(".extra-content");
-        extraContent.forEach(content => {
-          if (content.classList.contains('active')) {
-            content.classList.remove('active')
-            content.classList.add('hide');
-
-            const iconUp = content.previousElementSibling.children[0].children[0].children[0].children[1]
-            const iconDown = content.previousElementSibling.children[0].children[0].children[0].children[0]
-            toggleIcons(iconUp, iconDown)
-          }
-
-        });
+      removeRowActiveTitleStyle()
+      removeExtraContentStyle()
+      switchRowBottomLine()
     }
     if (selectName === 'State') {
       selectedState = ''
@@ -101,10 +120,11 @@
   }
 
   // handle the icon
-  const chevronUp = '<svg class="iconUp" width="16" height="10" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M28 15 14 0 0 15h28z" fill="#000"/></svg>';
+  const chevronUp = '<svg class="iconUp" width="16" height="10" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M28 15 14 0 0 15h28z" fill="#000"/></svg>';
   const chevronDown = '<svg class="iconDown" width="16" height="10" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="m0 0 14 15L28 0H0z" fill="#000"/></svg>';
   let chevron = chevronDown;
   let isListOpen = false;
+  let listStateOpen = false;
   
   $: chevron = isListOpen ? chevronUp : chevronDown;
 
@@ -137,7 +157,7 @@
   }
 
   onMount( () => {
-
+    isListOpen = false;
     const tableContainer = document.getElementById('table-body') 
     const table = document.getElementsByClassName('table')[0]
     const btnIconLeft = document.querySelector('#icon-scroll-left')
@@ -166,7 +186,7 @@
 
 <section class="options__container">
   <div class="options__header">
-    <button class="options__btn options__btn--tab options__btn--tab--all options__btn--tab--active"
+    <button class="options__btn options__btn--tab options__btn--tab--all options__btn--tab--active options__btn--tab--all--active"
       data-tab={"all"}
       on:click={(event) => handleSelect(event, 'Policy Goal')}
       >All <span data-count={"all"} class="options__count options__count--active">{policyGoalsTotal}</span>
@@ -188,7 +208,6 @@
       indicatorSvg={chevron}
       showChevron={true}
       bind:listOpen={isListOpen}
-      listOffset={16}
       {optionIdentifier} labelIdentifier={'name'} items={dataset.states}
       placeholder="Select a state"
       on:select={(event) => handleSelect(event, 'State')}
@@ -250,6 +269,13 @@
   @use "../scss/components/select";
   @use "../scss/components/options";
 
+  :global(.selectContainer) {
+    &:hover {
+      --borderRadius: 0;
+      --background: #{$color-background-gray-100};
+    }
+  }
+
   :global(.selectContainer .item.active) {
     position: relative;
     --itemIsActiveBG: transparent;
@@ -269,23 +295,52 @@
       font-size: 14px;
       position: absolute;
       left: 16px;
-      top: 25%;
+      top: 10px;
     }
   }
 
+  :global(.selectContainer){
+    --internalPadding: 0 4px !important;
+    --itemFirstBorderRadius: 2px;
+  }
+  
+
   :global(.selectContainer .item){
     --itemPadding: #{rem(8)} #{rem(40)} #{rem(12)};
+    text-overflow: unset !important;
+    overflow: unset !important;
+    white-space: unset !important;
+    
   }
   :global(.listContainer) {
+    --listBorderRadius: rem(2);
     --listZIndex: 15;
     --listMaxHeight: #{rem(450)};
     --height: 1.2;
+    min-width: 250px !important;
   }
 
-  :global(.iconDown, .iconUp){
+  :global(.iconDown){
 		pointer-events: none;
     filter: invert(29%) sepia(13%) saturate(765%) hue-rotate(181deg) brightness(95%) contrast(89%);
+
+    &:hover,
+    &:focus {
+      // color brand blue 600
+      filter: invert(39%) sepia(72%) saturate(6596%) hue-rotate(200deg) brightness(100%) contrast(84%);
+    }
 	}
+
+  :global(.iconUp) {
+		pointer-events: none;
+    filter: invert(29%) sepia(13%) saturate(765%) hue-rotate(181deg) brightness(95%) contrast(89%);
+
+    &:hover,
+    &:focus {
+      // color brand blue 600
+      filter: invert(39%) sepia(72%) saturate(6596%) hue-rotate(200deg) brightness(100%) contrast(84%);
+    }
+  }
 
   :global(.clearSelect){
     width: rem(16);
@@ -293,10 +348,24 @@
   }
 
   :global(.selectContainer > input)  {
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    width: auto;
+    --inputPadding: 0 28px 0 4px;
   }
 
+  :global(.indicator) {
+    --indicatorRight: 4px;
+    top: auto !important;
+  }
+
+  :global(.selectedItem) {
+    color: $color-brand-blue-600;
+  }
+  .select-container :global(.selectContainer:hover .indicator) {
+    // color brand blue 600
+    filter: invert(39%) sepia(72%) saturate(6596%) hue-rotate(200deg) brightness(100%) contrast(84%);
+  }
+
+  .select-container :global(.selectContainer:focus-within .indicator) {
+    // color brand blue 600
+    filter: invert(39%) sepia(72%) saturate(6596%) hue-rotate(200deg) brightness(100%) contrast(84%);
+  }
 </style>

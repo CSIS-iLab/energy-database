@@ -55,6 +55,11 @@
   font-style: italic;
 }
 
+%text-style-paragraph-2-italic {
+  @extend %text-style-paragraph-2;
+  font-style: italic;
+}
+
 %text-style-ui-1 {
 	@include font-size(18px);
   font-family: $font-family-default;

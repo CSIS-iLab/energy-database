@@ -24,7 +24,7 @@
     'desc social'
     'desc address'
     'copyright copyright';
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 1fr;
     padding-top: rem(56);
     // padding-bottom: rem(32);
     // grid-template-columns: 3fr 4fr 3fr;
@@ -102,7 +102,7 @@
   &__social {
     grid-area: social;
     margin-left: -10px;
-    margin-bottom: rem(8px);
+    margin-bottom: rem(8);
    
     @include breakpoint('medium') {
       display: flex;

@@ -17,12 +17,57 @@
   let spanElement
 
   // handle the icon
-  const chevronUp = '<svg class="iconUp" width="16" height="10" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M28 15 14 0 0 15h28z" fill="#000"/></svg>';
+  const chevronUp = '<svg class="iconUp" width="16" height="10" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M28 15 14 0 0 15h28z" fill="#000"/></svg>';
   const chevronDown = '<svg class="iconDown" width="16" height="10" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="m0 0 14 15L28 0H0z" fill="#000"/></svg>';
   let chevron = chevronDown;
-  // let isListOpen = false;
   
   $: chevron = isListOpen ? chevronUp : chevronDown;
+
+
+  function toggleIcons (iconUp, iconDown) {
+    if (!iconUp.classList.contains('hide')) {
+      iconUp.classList.toggle('hide')
+    }
+    if (iconDown.classList.contains('hide')) {
+      iconDown.classList.toggle('hide')
+    }
+  }
+  function removeRowActiveTitleStyle() {
+    const title = document.querySelectorAll('.title--active');
+    title.forEach(item => {
+      item.classList.remove('title--active');
+    });
+  }
+
+  function removeExtraContentStyle() {
+    const extraContent = document.querySelectorAll(".extra-content");
+    extraContent.forEach(content => {
+      if (content.classList.contains('active')) {
+        const iconUp = content.previousElementSibling.children[0].children[0].children[0].children[1]
+        const iconDown = content.previousElementSibling.children[0].children[0].children[0].children[0]
+        
+        content.classList.remove('active')
+        content.classList.add('hide');
+
+        toggleIcons(iconUp, iconDown)
+      }
+    });
+  }
+
+  function switchRowBottomLine() {
+    const rowTitle = document.querySelectorAll('.title')
+    const extraContent = document.querySelectorAll('.extra-content')
+    extraContent.forEach(item => {
+      if(item.classList.contains('table__body__cell--border')) {
+        item.classList.remove('table__body__cell--border')
+      }
+    });
+    rowTitle.forEach(item => {
+      if(!item.classList.contains('table__body__cell--border')) {
+        item.classList.add('table__body__cell--border')
+      }
+    });
+  }
 
   const formatOption = (opt, type) => {
     if (selectName !== "State") {
@@ -38,12 +83,16 @@
   let showOptions = () => {
     if (!isListOpen) {
       optionsList.classList.toggle("hide");
+      removeRowActiveTitleStyle()
+      removeExtraContentStyle()
+      switchRowBottomLine()
       isListOpen = !isListOpen
     }
   }
 
   $: if (selectedValue.length > 0 && selectedValue !== "") {
     const firstSelected = selectedValue[0]
+    tagsHTML.classList.add('select__select-tag--selected')
     tagsHTML.innerHTML = firstSelected + '<span id="whatever" style="color: #0054A4" class="select__select-tag__counter"></span>'
     selectedCounter = selectedValue.length - 1
     selectLabel = firstSelected
@@ -58,6 +107,7 @@
     selectLabel = `Select ${selectName}`
     if (isTagSelected) {
       tagsHTML.innerHTML = selectLabel
+      tagsHTML.classList.remove('select__select-tag--selected')
       spanElement = ''
       isTagSelected = !isTagSelected
     }
@@ -73,11 +123,11 @@
 </script>
 
 <div class="select__select-wrapper" bind:this={spanHTML}>
-  <div class="select__select-tags-container">
+  <div class="select__select-tags-container" on:click={showOptions}>
     <div
+      tabindex="0"
       class="select__select-tag"
       contenteditable="false"
-      on:click={showOptions}
       bind:this={tagsHTML}
     ><span>Select {selectName}</span>
     </div>
@@ -110,7 +160,13 @@
 </div>
 
 <style lang="scss">
+  @use "../scss/abstracts" as *;
   @use "../scss/components/select";
   @use "../scss/components/checkbox";
   @use "../scss/components/icon";
+
+  :global(.select__select-tag--selected) {
+    color: $color-brand-blue-600 !important;
+  }
+
 </style>
