@@ -5,7 +5,7 @@ main {
 }
 
 .intro-content {
-	padding-top: rem(132px);
+	padding-top: rem(132);
 	max-width: $size__intro-content-wide-max-width;
 	text-align: center;
 
@@ -151,7 +151,7 @@ main {
 	}
 
 	&__title {
-		margin-bottom: rem(10px);
+		margin-bottom: rem(10);
 		@extend %text-style-ui-5-bold-caps;
 	}
 
@@ -162,8 +162,8 @@ main {
 	&__column {
 		&--labels div,
 		&--bars .bar {
-			height: rem(24px);
-			margin-bottom: rem(12px);
+			height: rem(24);
+			margin-bottom: rem(12);
 			@extend %text-style-ui-3;
 			line-height: 1;
 		}
@@ -200,7 +200,7 @@ main {
 				height: 100%;
 				background: $color-text-gray-500;
 				display: inline-block;
-				margin-right: rem(5px);
+				margin-right: rem(5);
 			}
 
 			&:before,

@@ -102,7 +102,7 @@
   &__social {
     grid-area: social;
     margin-left: -10px;
-    margin-bottom: rem(8px);
+    margin-bottom: rem(8);
    
     @include breakpoint('medium') {
       display: flex;

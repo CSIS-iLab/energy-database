@@ -273,22 +273,8 @@
     &:hover {
       --borderRadius: 0;
       --background: #{$color-background-gray-100};
-      // --indicatorColor: #{$color-brand-blue-600};
     }
   }
-
-  // :global(.selectContainer:focus) {
-  //   border-color: $color-brand-blue-600;
-  //   --borderFocusColor: #{$color-brand-blue-600};
-  // }
-
-  // :global(.selectContainer input:focus) {
-  //   border-color: $color-brand-blue-600 !important;
-  //     // --borderFocusColor: #{$color-brand-blue-600};
-  //     // --indicatorColor: #{$color-brand-blue-600};
-  //     // color brand blue 600
-  //     // filter: invert(39%) sepia(72%) saturate(6596%) hue-rotate(200deg) brightness(100%) contrast(84%);
-  // }
 
   :global(.selectContainer .item.active) {
     position: relative;
@@ -315,7 +301,9 @@
 
   :global(.selectContainer){
     --internalPadding: 0 4px !important;
+    --itemFirstBorderRadius: 2px;
   }
+  
 
   :global(.selectContainer .item){
     --itemPadding: #{rem(8)} #{rem(40)} #{rem(12)};
@@ -325,6 +313,7 @@
     
   }
   :global(.listContainer) {
+    --listBorderRadius: rem(2);
     --listZIndex: 15;
     --listMaxHeight: #{rem(450)};
     --height: 1.2;

@@ -123,12 +123,11 @@
 </script>
 
 <div class="select__select-wrapper" bind:this={spanHTML}>
-  <div class="select__select-tags-container">
+  <div class="select__select-tags-container" on:click={showOptions}>
     <div
       tabindex="0"
       class="select__select-tag"
       contenteditable="false"
-      on:click={showOptions}
       bind:this={tagsHTML}
     ><span>Select {selectName}</span>
     </div>
