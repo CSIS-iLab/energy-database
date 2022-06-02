@@ -3,7 +3,7 @@
 </script>
 
 <div class="wrapper">
-  <main class="container intro-content">
+  <main class="container intro-content" id="intro" aria-label="Intro Content">
     <p class="intro-content__overline--small">Clean Resilient States Initiative</p>
     <p class="intro-content__overline--regular">by the Energy Security and Climate Change Program</p>
     <h1 class="intro-content__title">U.S. State Actions on Climate, Energy, and Economy</h1>
