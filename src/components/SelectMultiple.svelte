@@ -120,7 +120,13 @@
     }
 	}
 
+  function onKeyDown(e) {
+    console.log(e.keyCode)    
+  }
+
 </script>
+
+<svelte:window on:keydown={onKeyDown}/>
 
 <div class="select__select-wrapper" bind:this={spanHTML}>
   <div class="select__select-tags-container" on:click={showOptions}>
