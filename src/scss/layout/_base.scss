@@ -17,16 +17,16 @@
 
   &::-webkit-scrollbar {
     width: rem(8);
+    height: rem(8);
   }
 
   &::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px $color-text-gray-300;
-    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px $color-background-white;
   }
 
   &::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px $color-background-light-blue-300;
+    -webkit-box-shadow: inset 0 0 6px $color-scrollbar-background;
   }
 }
 
