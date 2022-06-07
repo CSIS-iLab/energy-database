@@ -96,7 +96,6 @@
   &__initiative {
     @extend %text-style-paragraph-2;
 
-
     &__link {
       color: $color-brand-blue-600;
       text-decoration: none;
@@ -122,7 +121,8 @@
     margin-bottom: rem(8);
 
     &__title {
-      @extend %text-style-heading-3;
+      @extend %text-style-heading-4;
+      margin-bottom: rem(12);
     }
 
     &__description {
