@@ -7,13 +7,27 @@
     padding-left: var(--container-padding);
     padding-right: var(--container-padding);
     padding-top: 8px;
-    width: 100vw;
+    // width: 100vw;
     overflow-x: scroll;
 
     &--sticky {
       position: sticky;
       top: 0;
       z-index: 11;
+    }
+
+    &::-webkit-scrollbar {
+      width: rem(10);
+      height: rem(10);
+    }
+  
+    &::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 9px $color-background-white;
+    }
+  
+    &::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      -webkit-box-shadow: inset 0 0 9px $color-scrollbar-background;
     }
   }
 
