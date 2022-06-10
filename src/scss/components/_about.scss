@@ -55,6 +55,13 @@
       color: $color-brand-blue-600;
       text-decoration: none;
 
+      &--back-top {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        @extend %text-style-ui-3;
+      }
+
       .icon-container {
       // color brand-blue-600
         margin-left: rem(4);
@@ -150,6 +157,46 @@
       &:visited {
         color: $color-brand-blue-870;
       }
+    }
+  }
+
+  .back-top-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: rem(24);
+    margin-left: auto;
+    margin-right: auto;
+
+    a {
+      text-decoration: none;
+    }
+
+    &__link {
+      @extend %text-style-ui-3;
+      color: $color-brand-blue-600;
+
+      .back-top__icon-container {
+        // color brand-blue-600
+        filter: invert(39%) sepia(72%) saturate(6596%) hue-rotate(200deg) brightness(100%) contrast(84%);
+        transition: $transition__link;
+      }
+
+      &:hover {
+        color: $color-brand-blue-700;
+  
+        .back-top__icon-container {
+          // color: $color-brand-blue-700;
+          filter: invert(22%) sepia(54%) saturate(2858%) hue-rotate(194deg) brightness(92%) contrast(101%);
+          transition: $transition__link;
+        }
+      }
+    }
+
+    &__icon-container {
+      position: relative;
+      margin-left: rem(4);
+      top: rem(2);
     }
   }
 }
