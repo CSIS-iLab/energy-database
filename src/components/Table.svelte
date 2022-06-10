@@ -131,7 +131,7 @@
         <tr class="table__header-row">
           {#each headerNames as name}
             <th class="table__cell--header" scope="col">
-              <div class="table__cell--header__container table__cell--header__container__{name.toLowerCase()}">
+              <div class="table__cell--header__container table__cell--header__container__{name.toLowerCase().split(' ').join('-')}" on:click={ (sortByColumns.includes(name.toLowerCase())) ? (e) => sort(e, name) : ''}>
                 <span>{name}</span>
                 {#if sortByColumns.includes(name.toLowerCase())}
                 <div class="sort-icons-container" on:click={(e) => sort(e, name)}>
