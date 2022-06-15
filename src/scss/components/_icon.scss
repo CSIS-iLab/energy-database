@@ -39,6 +39,11 @@
     position: relative;
     bottom: -2px;    
   }
+
+  &__back-top {
+    width: rem(18);
+    height: rem(18);
+  }
 }
 
 .active {
