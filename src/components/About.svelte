@@ -45,7 +45,7 @@
     </div>
     <div class="back-top-container">
     <a class="back-top-container__link" href="#top"><span>Back to Top</span><span class="back-top-container__icon-container back-top__icon-container">
-        <Icon class="icon__info" name="Icon-up" />
+        <Icon class="icon__info" name="Icon-arrow-up" />
       </span>
     </a>
     </div>
