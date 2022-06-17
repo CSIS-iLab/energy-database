@@ -191,6 +191,22 @@
           transition: $transition__link;
         }
       }
+
+      &:focus {
+        color: $color-brand-blue-700;
+        background-color: $color-background-light-blue-100;
+        outline: 0;
+
+        .back-top__icon-container {
+          // color: $color-brand-blue-700;
+          filter: invert(22%) sepia(54%) saturate(2858%) hue-rotate(194deg) brightness(92%) contrast(101%);
+          transition: $transition__link;
+        }
+      }
+
+      &:visited {
+        color: $color-brand-blue-870;
+      }
     }
 
     &__icon-container {
