@@ -253,9 +253,9 @@
     <Search bind:searchText/>
     <div class="options__navigation-inner">
       <span class="options__table-total-entries">Showing {totalEntries} {totalEntries > 1 ? "entries" : "entry"}</span>
-      <button id='btn-scroll-left' class="btn btn--scroll btn--scroll--left inactive" ariaLabel="Scroll table to the left"
+      <button id='btn-scroll-left' class="btn btn--scroll btn--scroll--left inactive" aria-label="Scroll table to the left"
         on:click={handleScrollLeft}><Icon id="icon-scroll-left" name="Icon-left" class="icon inactive"/></button>
-      <button id='btn-scroll-right' class="btn btn--scroll btn--scroll--right" ariaLabel="Scroll table to the right"
+      <button id='btn-scroll-right' class="btn btn--scroll btn--scroll--right" aria-label="Scroll table to the right"
         on:click={handleScrollRight}><Icon id="icon-scroll-right" name="Icon-right" class="icon"/></button>
     </div>
   </section>
