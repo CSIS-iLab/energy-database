@@ -10,7 +10,7 @@
     </a>
   </li>
   <li class="social__item">
-    <a href="https://twitter.com/intent/tweet?url={window.location.href}&amp;via=CSIS&amp;related=CSIS" class="social__link" target="_blank" aria-label="Visit the State Energy Twitter page">
+    <a href="https://twitter.com/CSISEnergy" class="social__link" target="_blank" aria-label="Visit the State Energy Twitter page">
       <Icon class="icon__social" name="Icon-twitter" />
     </a>
   </li>

@@ -120,6 +120,7 @@
     }
 	}
 
+  // todo: add keyboard functionality
   function onKeyDown(e) {
     console.log(e.keyCode)    
   }

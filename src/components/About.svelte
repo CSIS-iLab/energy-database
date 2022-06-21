@@ -40,7 +40,7 @@
     </div>
     <div class="about__development">
       <h3 class="about__development__title">Development Team</h3>
-      <p class="about__development__description">State Energy is a product of the <a class="about__development__link" href="https://www.csis.org/programs/dracopoulos-ideas-lab" target="_blank">Andreas C. Dracopoulos iDeas Lab</a>, the in-house digital, multimedia, and design agency at the Center for Strategic and International Studies.</p>
+      <p class="about__development__description">The Clean Resilient States Initiative database is a product of the <a class="about__development__link" href="https://www.csis.org/programs/dracopoulos-ideas-lab" target="_blank">Andreas C. Dracopoulos iDeas Lab</a>, the in-house digital, multimedia, and design agency at the Center for Strategic and International Studies.</p>
       <p class="about__development__description">Produced by Tucker Harris, Serven Maraghi & José Romero.</p>
     </div>
     <div class="back-top-container">

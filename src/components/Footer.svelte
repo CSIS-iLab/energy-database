@@ -14,7 +14,7 @@
   </div>
   <div class="footer__desc">
     <p>
-      Established in Washington, D.C. nearly 60 years ago, the Center for Strategic and International Studies (CSIS) is a bipartisan, nonprofit policy research organization dedicated to advancing practical ideas that address the world’s greatest challenges.
+      Established in Washington, D.C., nearly 60 years ago, the Center for Strategic and International Studies (CSIS) is a bipartisan, nonprofit policy research organization dedicated to advancing practical ideas that address the world’s greatest challenges.
     </p>
   </div>
   <div class="footer__social">

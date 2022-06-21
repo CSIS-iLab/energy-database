@@ -1,7 +1,8 @@
 <script>
-  import { onMount } from "svelte";
-  import tooltip from "../js/tooltip.js";
-  import Icon from "./Icons.svelte";
+  import { onMount } from "svelte"
+  // import tooltip from "../js/tooltip.js";
+  import tooltip from "../js/tooltip"
+  import Icon from "./Icons.svelte"
 
   export let filteredData;
   export let row;
@@ -15,20 +16,17 @@
     let title = undefined
     let currentRow = undefined
     let extraContent = undefined
-    let iconUp = undefined
-    let iconDown = undefined
+    // let iconUp = undefined
+    // let iconDown = undefined
+    
     if (e.target.parentNode.classList.contains('title') ) {
       title = e.target.parentNode
       currentRow = title.nextElementSibling
       extraContent = e.target.parentNode.nextElementSibling;
-      iconUp = e.target.parentNode.children[0].children[0].children[0].children[1]
-      iconDown = e.target.parentNode.children[0].children[0].children[0].children[0]
     } else {
       title = e.target.parentNode.parentNode
       currentRow = title.nextElementSibling
       extraContent = e.target.parentNode.parentNode.nextElementSibling;
-      iconUp = e.target.parentNode.parentNode.children[0].children[0].children[0].children[1]
-      iconDown = e.target.parentNode.parentNode.children[0].children[0].children[0].children[0]
     }
 
     title.classList.toggle('title--active')
@@ -37,9 +35,6 @@
     // Show/Hide extraContent
     extraContent.classList.toggle('active');
     extraContent.classList.toggle("hide");
-    // Show/hide icons
-    iconUp.classList.toggle('hide');
-    iconDown.classList.toggle('hide');
     (row.isOpen) ? row.isOpen = true : row.isOpen = !row.isOpen
   }
 
@@ -164,7 +159,7 @@
             <td class="table__body__cell table__body__cell--data">{rows.type_of_resource}</td>
             <td class="table__body__cell table__body__cell--data">
               {#each rows.tags as tag}
-                <span class="icon-tag-container" use:tooltip={{theme: 'energy'}} aria-hidden="true"><Icon name="icon {tag}" class="icon__tags"/></span>
+                <span class="icon-tag-container" use:tooltip={{theme: 'energy'}} aria-hidden="true" aria-label={tag}><Icon name="icon {tag}" class="icon__tags"/></span>
               {/each}
             </td>
           </tr>
