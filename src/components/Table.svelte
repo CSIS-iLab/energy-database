@@ -1,6 +1,5 @@
 <script>
   import { onMount } from "svelte"
-  // import tooltip from "../js/tooltip.js";
   import tooltip from "../js/tooltip"
   import Icon from "./Icons.svelte"
 
@@ -16,8 +15,6 @@
     let title = undefined
     let currentRow = undefined
     let extraContent = undefined
-    // let iconUp = undefined
-    // let iconDown = undefined
     
     if (e.target.parentNode.classList.contains('title') ) {
       title = e.target.parentNode
