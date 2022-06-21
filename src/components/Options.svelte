@@ -38,15 +38,6 @@
     tabActivate.classList.add('options__btn--tab--active', `options__btn--tab--${value}--active`);
   }
 
-  function toggleIcons (iconUp, iconDown) {
-    if (!iconUp.classList.contains('hide')) {
-      iconUp.classList.toggle('hide')
-    }
-    if (iconDown.classList.contains('hide')) {
-      iconDown.classList.toggle('hide')
-    }
-  }
-
   function removeRowActiveTitleStyle() {
     const title = document.querySelectorAll('.title--active');
     title.forEach(item => {
@@ -58,13 +49,8 @@
     const extraContent = document.querySelectorAll(".extra-content");
     extraContent.forEach(content => {
       if (content.classList.contains('active')) {
-        const iconUp = content.previousElementSibling.children[0].children[0].children[0].children[1]
-        const iconDown = content.previousElementSibling.children[0].children[0].children[0].children[0]
-        
         content.classList.remove('active')
         content.classList.add('hide');
-
-        toggleIcons(iconUp, iconDown)
       }
     });
   }

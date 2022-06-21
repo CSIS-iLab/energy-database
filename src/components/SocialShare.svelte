@@ -10,7 +10,6 @@
   }
 </script>
 
-<!-- TODO: Get the links from the program to update them -->
 <ul class="share">
   <li class="share__item">
     <a href="https://www.facebook.com/sharer.php?u={window.location.href}" class="share__link" target="_blank" aria-label="Share on Facebook">
