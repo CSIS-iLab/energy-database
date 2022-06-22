@@ -154,7 +154,7 @@
             </td>
             <td class="table__body__cell table__body__cell--data">{rows.authority}</td>
             <td class="table__body__cell table__body__cell--data">{rows.type_of_resource}</td>
-            <td class="table__body__cell table__body__cell--data">
+            <td class="table__body__cell table__body__cell--data table__body__cell__icon-container">
               {#each rows.tags as tag}
                 <span class="icon-tag-container" use:tooltip={{theme: 'energy'}} aria-hidden="true" aria-label={tag}><Icon name="icon {tag}" class="icon__tags"/></span>
               {/each}
