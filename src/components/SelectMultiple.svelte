@@ -1,4 +1,6 @@
 <script>
+import { onMount } from "svelte";
+
   import {clickOutside} from "../js/clickOutside.js";
   import Icon from "./Icons.svelte";
 
@@ -120,17 +122,24 @@
     }
 	}
 
-  // todo: add keyboard functionality
   function onKeyDown(e) {
-    console.log(e.keyCode)    
+    if (e.keyCode == 13 || e.keyCode == 32) {
+      showOptions()
+    }
+    if (e.keyCode == 27) {
+      handleClickOutside()
+    }
   }
+
+  onMount( () => {
+    const selectTags = document.querySelector('#selectTags')
+    selectTags.addEventListener('keydown', onKeyDown)
+  })
 
 </script>
 
-<svelte:window on:keydown={onKeyDown}/>
-
 <div class="select__select-wrapper" bind:this={spanHTML}>
-  <div class="select__select-tags-container" on:click={showOptions}>
+  <div id="selectTags" class="select__select-tags-container" on:click={showOptions}>
     <div
       tabindex="0"
       class="select__select-tag"
