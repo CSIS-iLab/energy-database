@@ -73,7 +73,7 @@
             <!-- iterate and add the most refereced authorities values -->
             {#each mostReferencesAuhorities as authority}
               <div class="bar">
-                <span style="width: 25%"></span>{Object.values(authority)}
+                <span style="width: {(Object.values(authority) / totalEntries) * 100}%"></span>{Object.values(authority)}
               </div>  
             {/each}
           </div>
