@@ -5,13 +5,21 @@
   let authorities = []
   let tags = [] 
   const totalEntries = filteredData.length
-  $: console.log(totalEntries)
   
-  function getMostReferencesAuthorities() {
+  function getMostReferencedAuthorities() {
     filteredData.forEach(element => {
       authorities.push(element.authority)
     });
     return countOccurences(authorities)
+  }
+
+  function getTopTags() {
+    filteredData.forEach(element => {
+      element.tags.forEach(tag => {
+        tags.push(tag)
+      })
+    });
+    return countOccurences(tags)
   }
 
   function countOccurences(array) {
@@ -38,7 +46,8 @@
     return topThree
   }
 
-  const mostReferencesAuhorities = getMostReferencesAuthorities()
+  const topTags = getTopTags()
+  const mostReferencedAuhorities = getMostReferencedAuthorities()
 </script>
 
 <div class="wrapper">
@@ -65,13 +74,13 @@
         <div class="intro-bar__content">
           <div class="intro-bar__column--labels">
             <!-- iterate and add the most refereced authorities -->
-            {#each mostReferencesAuhorities as  authority}
+            {#each mostReferencedAuhorities as  authority}
               <div><span>{Object.keys(authority)}</span></div>
             {/each}
           </div>
           <div class="intro-bar__column--bars" data-total-entries={totalEntries}>
             <!-- iterate and add the most refereced authorities values -->
-            {#each mostReferencesAuhorities as authority}
+            {#each mostReferencedAuhorities as authority}
               <div class="bar">
                 <span style="width: {(Object.values(authority) / totalEntries) * 100}%"></span>{Object.values(authority)}
               </div>  
@@ -84,20 +93,18 @@
         <div class="intro-bar__title">Top Tags</div>
         <div class="intro-bar__content">
           <div class="intro-bar__column--labels">
-            <div><span>Anticipating Climate Impacts</span></div>
-            <div><span>Technology or System Standards</span></div>
-            <div><span>Energy Storage</span></div>
+            <!-- iterate and add the top tags -->
+            {#each topTags as tag}
+            <div><span>{Object.keys(tag)}</span></div>
+            {/each}
           </div>
           <div class="intro-bar__column--bars" data-total-entries={totalEntries}>
+            <!-- iterate and add the top tags values -->
+            {#each topTags as tag}
             <div class="bar">
-              <span style="width: 27%"></span>15
+              <span style="width:  {(Object.values(tag) / totalEntries) * 100}%"></span>{Object.values(tag)}
             </div>
-            <div class="bar">
-              <span style="width: 23%"></span>14
-            </div>
-            <div class="bar">
-              <span style="width: 15%"></span>13
-            </div>
+            {/each}
           </div>
         </div>
       </div>
