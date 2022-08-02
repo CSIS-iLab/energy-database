@@ -88,7 +88,7 @@
             <div><span>Technology or System Standards</span></div>
             <div><span>Energy Storage</span></div>
           </div>
-          <div class="intro-bar__column--bars">
+          <div class="intro-bar__column--bars" data-total-entries={totalEntries}>
             <div class="bar">
               <span style="width: 27%"></span>15
             </div>

@@ -220,7 +220,7 @@ main {
 			}
 
 			&:after {
-				content: "55";
+				content: attr(data-total-entries);
 				right: -10px;
 			}
 		}
