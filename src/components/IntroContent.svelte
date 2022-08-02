@@ -1,5 +1,44 @@
 <script>
   import Icon from "./Icons.svelte";
+
+  export let filteredData
+  let authorities = []
+  let tags = [] 
+  const totalEntries = filteredData.length
+  $: console.log(totalEntries)
+  
+  function getMostReferencesAuthorities() {
+    filteredData.forEach(element => {
+      authorities.push(element.authority)
+    });
+    return countOccurences(authorities)
+  }
+
+  function countOccurences(array) {
+    const counts = {};
+    array.forEach(function (x) {
+      counts[x] = (counts[x] || 0) + 1;
+    })
+    return getTopThree(counts)
+  }
+
+  function getTopThree(obj) {
+    const sortable = Object.fromEntries(
+        Object.entries(obj).sort(([,a],[,b]) => b-a)
+    );
+
+    let topThree = []
+    let objNames = Object.keys(sortable)
+
+    objNames.forEach((name, i) => {
+      if (i < 3) {
+        topThree.push({[name]: sortable[name]})
+      }
+    })
+    return topThree
+  }
+
+  const mostReferencesAuhorities = getMostReferencesAuthorities()
 </script>
 
 <div class="wrapper">
@@ -25,21 +64,18 @@
         <div class="intro-bar__title">Most Referenced Authorities</div>
         <div class="intro-bar__content">
           <div class="intro-bar__column--labels">
-            <div><span>State Energy Office</span></div>
-            <div><span>Utility Commission</span></div>
-            <div><span>Executive Branch</span></div>
+            <!-- iterate and add the most refereced authorities -->
+            {#each mostReferencesAuhorities as  authority}
+              <div><span>{Object.keys(authority)}</span></div>
+            {/each}
           </div>
-          <div class="intro-bar__column--bars">
-            <div class="bar">
-              <span style="width: 25%"></span>14
-            </div>
-            <div class="bar">
-              <span style="width: 18%"></span>10
-            </div>
-            <div class="bar">
-              <span style="width: 18%"></span>10
-            </div>
-
+          <div class="intro-bar__column--bars" data-total-entries={totalEntries}>
+            <!-- iterate and add the most refereced authorities values -->
+            {#each mostReferencesAuhorities as authority}
+              <div class="bar">
+                <span style="width: 25%"></span>{Object.values(authority)}
+              </div>  
+            {/each}
           </div>
         </div>
       </div>
