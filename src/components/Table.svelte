@@ -19,19 +19,19 @@
     if (e.target.parentNode.classList.contains('title') ) {
       title = e.target.parentNode
       currentRow = title.nextElementSibling
-      extraContent = e.target.parentNode.nextElementSibling;
+      extraContent = e.target.parentNode.nextElementSibling
     } else {
       title = e.target.parentNode.parentNode
       currentRow = title.nextElementSibling
-      extraContent = e.target.parentNode.parentNode.nextElementSibling;
+      extraContent = e.target.parentNode.parentNode.nextElementSibling
     }
 
     title.classList.toggle('title--active')
     title.classList.toggle('table__body__cell--border')
     currentRow.classList.toggle('table__body__cell--border')
     // Show/Hide extraContent
-    extraContent.classList.toggle('active');
-    extraContent.classList.toggle("hide");
+    extraContent.classList.toggle('active')
+    extraContent.classList.toggle("hide")
     (row.isOpen) ? row.isOpen = true : row.isOpen = !row.isOpen
   }
 
