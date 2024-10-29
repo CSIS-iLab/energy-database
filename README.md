@@ -10,7 +10,7 @@ cd energy-database
 npm install
 ```
 
-...then start [Rollup](https://rollupjs.org):
+...then start it:
 
 ```bash
 npm run dev
