@@ -12,7 +12,6 @@
   const sortByColumns = ['activity', 'state', 'authority', 'type of resource']
 
 function handleClick(e) {
-  // console.log(e)
     let title = undefined
     let currentRow = undefined
     let extraContent = undefined
@@ -34,7 +33,6 @@ function handleClick(e) {
     extraContent.classList.toggle('active');
     extraContent.classList.toggle("hide");
     (row.isOpen) ? row.isOpen = true : row.isOpen = !row.isOpen
-    // row.isOpen = row.isOpen ? true : !row.isOpen
 }
 
 

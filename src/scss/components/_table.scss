@@ -409,17 +409,7 @@
       color: $color-text-gray-200;
     }
   }
-}
-
-// .title--active .table__body__cell__title-container .icon-container::before {
-//   transform: rotate(-45deg) !important;
-//   transition: $transition__link !important;
-// }
-// .title--active .table__body__cell__title-container .icon-container::after {
-//   transform: rotate(45deg) !important;
-//   transition: $transition__link !important;
-// }
-  
+} 
 
 .icon-container {
   pointer-events: none;
