@@ -19,11 +19,11 @@ function handleClick(e) {
     if (e.target.parentNode.classList.contains('title') ) {
       title = e.target.parentNode
       currentRow = title.nextElementSibling
-      extraContent = e.target.parentNode.nextElementSibling;
+      extraContent = e.target.parentNode.nextElementSibling
     } else {
       title = e.target.parentNode.parentNode
       currentRow = title.nextElementSibling
-      extraContent = e.target.parentNode.parentNode.nextElementSibling;
+      extraContent = e.target.parentNode.parentNode.nextElementSibling
     }
 
     title.classList.toggle('title--active')
