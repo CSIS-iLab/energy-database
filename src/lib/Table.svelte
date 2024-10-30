@@ -11,7 +11,7 @@
 
   const sortByColumns = ['activity', 'state', 'authority', 'type of resource']
 
-  function handleClick(e) {
+function handleClick(e) {
     let title = undefined
     let currentRow = undefined
     let extraContent = undefined
@@ -30,10 +30,11 @@
     title.classList.toggle('table__body__cell--border')
     currentRow.classList.toggle('table__body__cell--border')
     // Show/Hide extraContent
-    extraContent.classList.toggle('active')
-    extraContent.classList.toggle("hide")
+    extraContent.classList.toggle('active');
+    extraContent.classList.toggle("hide");
     (row.isOpen) ? row.isOpen = true : row.isOpen = !row.isOpen
-  }
+}
+
 
   const headerNames = [
     "Activity",
@@ -189,6 +190,17 @@
 <style lang="scss">
   @use '../scss/abstracts/' as *;
   @use "../scss/components/table";
+
+  :global(.title--active .table__body__cell__title-container .icon-container::before) {
+    transform: rotate(-45deg);
+    transition: $transition__link;
+  }
+
+  :global(.title--active .table__body__cell__title-container .icon-container::after) {
+    transform: rotate(45deg);
+    transition: $transition__link;
+  }
+
   :global(.tippy-box[data-theme~='energy']) {
     @extend %text-style-ui-4;
     color: $color-text-gray-500;

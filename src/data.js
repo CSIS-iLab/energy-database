@@ -33,11 +33,11 @@ export default function getData() {
 
     return {
       data: data,
-      states: states,
-      tags: tags.map(tagName => tagName.split('_').join(' ')),
-      authority: authority,
-      resourceTypes: resourceTypes,
-      policyGoals: policyGoals,
+      states: states.sort((a, b) => sortAlphabetically(a, b)),
+      tags: tags.map((tagName) => tagName.split("_").join(" ")).sort(),
+      authority: authority.sort(),
+      resourceTypes: resourceTypes.sort(),
+      policyGoals: policyGoals.sort(),
     }
   })
   return dataPromise
@@ -59,4 +59,14 @@ function formatStates(row) {
         value: row.find(r => r.state === state).state,
       }
     })
+}
+
+function sortAlphabetically(a, b) {
+  if (a.name < b.name) {
+    return -1
+  }
+  if (a.name > b.name) {
+    return 1
+  }
+  return 0
 }
