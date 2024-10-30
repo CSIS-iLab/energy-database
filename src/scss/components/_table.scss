@@ -183,7 +183,7 @@
       padding: 0;
       width: calc(100vw - rem(32) * 2);
       max-width: rem(750);
-      max-height: 0px;
+      max-height: fit-content;
       @extend %text-style-paragraph-2;
       transition: $transition__link;
 
@@ -368,7 +368,6 @@
       }
     }
     
-
     &__policy-goal-container {
       display: flex;
       flex-direction: column;
@@ -409,19 +408,7 @@
       color: $color-text-gray-200;
     }
   }
-}
-
-.title--active .table__body__cell__title-container .icon-container {
-  &:before {
-    transform: rotate(-45deg);
-    transition: $transition__link;
-  }
-  &:after {
-    transform: rotate(45deg);
-    transition: $transition__link;
-  }
-  
-}
+} 
 
 .icon-container {
   pointer-events: none;

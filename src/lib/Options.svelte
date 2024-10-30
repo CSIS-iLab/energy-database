@@ -221,7 +221,7 @@
       {optionIdentifier} {labelIdentifier} items={dataset.resourceTypes}
       placeholder="Select a type"
       on:select={(event) => handleSelect(event, 'ResourceType')}
-      on:clear={(event) => handleClear(event, 'ResourceType')}
+      on:clear={() => handleClear('ResourceType')}
     />
   </div>
   
